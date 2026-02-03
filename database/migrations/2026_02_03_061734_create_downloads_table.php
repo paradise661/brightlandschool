@@ -16,10 +16,12 @@ return new class extends Migration
             $table->foreignId('download_categories_id')->constrained()->cascadeOnDelete();
             $table->integer('order')->nullable();
             $table->boolean('status')->default(0);
+            $table->unsignedBigInteger('file_size')->nullable();
             $table->unsignedBigInteger('views')->default(0);
-            $table->string('name')->unique();
+            $table->string('name')->nullable();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('file')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('slug')->nullable();
             $table->string('seo_title')->nullable();

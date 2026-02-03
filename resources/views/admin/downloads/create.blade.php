@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Create New Blogs')
+@section('title', 'Create New Downloads')
 
 @section('content')
     @include('admin.includes.message')
@@ -8,15 +8,16 @@
     <div class="content">
         <div class="card container-fluid mb-4 p-6">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Create Blogs</h3>
+                <h3 class="mb-0">Create Download</h3>
                 <small class="text-muted float-end">
-                    <a class="btn btn-sm btn-primary" href="{{ route('blog.index') }}"><i class="fa-solid fa-arrow-left"></i>
+                    <a class="btn btn-sm btn-primary" href="{{ route('downloads.index') }}"><i
+                            class="fa-solid fa-arrow-left"></i>
                         Back</a>
                 </small>
             </div>
 
             <div class="card-body p-0">
-                <form class="row" method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
+                <form class="row" method="POST" action="{{ route('downloads.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     @php
@@ -25,12 +26,6 @@
                             'description' => 'Description',
                         ];
 
-                        $seo = [
-                            'seo_title' => 'SEO Title',
-                            'seo_keywords' => 'SEO Keywords',
-                            'seo_description' => 'SEO Description',
-                            'seo_schema' => 'SEO Schema',
-                        ];
                     @endphp
 
                     <!-- Blog Fields -->
@@ -56,28 +51,6 @@
                             @endforeach
                         </div>
 
-                        <!-- SEO Fields -->
-                        <div class="card-body card shadow br-8">
-                            @foreach ($seo as $name => $label)
-                                <div class="form-group mb-3">
-                                    <label for="{{ $name }}">{{ $label }}</label>
-                                    @if ($name == 'seo_description' || $name == 'seo_schema')
-                                        <textarea class="form-control br-8 @error($name) is-invalid @enderror" id="{{ $name }}"
-                                            name="{{ $name }}" rows="{{ $name == 'seo_schema' ? 6 : 3 }}"
-                                            placeholder="Enter {{ strtolower($label) }}">{{ old($name) }}</textarea>
-                                    @else
-                                        <input class="form-control br-8 @error($name) is-invalid @enderror" type="text"
-                                            name="{{ $name }}" value="{{ old($name) }}"
-                                            placeholder="Enter {{ strtolower($label) }}">
-                                    @endif
-                                    @error($name)
-                                        <div class="invalid-feedback" style="display: block;">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            @endforeach
-                        </div>
                     </div>
 
                     <div class="col-md-4">
@@ -106,7 +79,7 @@
                             <div class="form-group mb-3 d-flex align-items-center">
                                 <label class="m-0 p-0">Category</label>
 
-                                <select class="form-select ms-5" name="blogcategories_id" required>
+                                <select class="form-select ms-5" name="download_categories_id" required>
                                     <option value="">Select Category</option>
 
                                     @foreach ($categories as $category)
@@ -118,32 +91,14 @@
                             </div>
                             <hr class="shadow-sm">
 
-                            <div class="form-group mb-3 mt-2">
-                                <label for="image">Featured Image</label>
-                                <div class="custom-file">
-                                    <input class="dropify @error('image') is-invalid @enderror" id="image"
-                                        data-show-remove="false" type="file" name="image">
-                                    @error('image')
-                                        <div class="invalid-feedback" style="display: block;">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+                            <div class="form-group mb-3">
+                                <label for="file">File</label>
+                                <input class="dropify @error('file') is-invalid @enderror" id="file" type="file"
+                                    name="file" accept=".pdf">
+                                @error('file')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="form-group mb-3 mt-2">
-                                <label for="image">Banner Image</label>
-                                <div class="custom-file">
-                                    <input class="dropify @error('banner_image') is-invalid @enderror" id="banner_image"
-                                        data-show-remove="false" type="file" name="banner_image">
-                                    @error('image')
-                                        <div class="invalid-feedback" style="display: block;">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <hr class="shadow-sm">
 
                             <div class="card-footers d-flex justify-content-center">
                                 <button class="btn btn-sm btn-primary w-full" type="submit"><i

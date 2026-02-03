@@ -40,7 +40,7 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">CMS</span></li>
         <!-- Cards -->
         <li
-            class="menu-item {{ Request::segment(2) == 'downloads-category' || Request::segment(2) == 'downloads-category' ? 'active open' : '' }}">
+            class="menu-item {{ Request::segment(2) == 'downloads' || Request::segment(2) == 'downloads-category' ? 'active open' : '' }}">
             <a class="menu-link text-decoration-none menu-toggle" href="#">
                 <i class="menu-icon tf-icons bx bxs-download"></i>
                 <div data-i18n="General Setting">Downloads</div>

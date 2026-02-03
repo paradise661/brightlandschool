@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $blogs = Post::where('status', 1)
-            ->orderByRaw('ISNULL(`order`), `order` ASC')
+            ->orderBy('order', 'ASC')
             ->paginate(10);
 
         //
