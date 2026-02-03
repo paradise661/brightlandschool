@@ -28,17 +28,18 @@ class DownloadCategoryController extends Controller
         DownloadCategory::create($input);
         return redirect()->route('downloads-category.index')->with('message', 'Created Successfully');
     }
-    public function edit(DownloadCategory $download_category)
+    public function edit(DownloadCategory $downloads_category)
     {
-        return view('admin.downloads.category.edit', compact('download_category'));
+        return view('admin.downloads.category.edit', compact('downloads_category'));
     }
-    public function update(UpdateDownloadRequest $request, DownloadCategory $download_category)
+    public function update(UpdateDownloadRequest $request, DownloadCategory $downloads_category)
     {
         $input = $request->all();
         $input['slug'] = Str::slug($request->name);
-        $download_category->update($input);
+        $downloads_category->update($input);
         return redirect()->route('downloads-category.index')->with('message', 'Updated Successfully');
     }
+
     public function destroy(DownloadCategory $download_category)
     {
         $download_category->delete();

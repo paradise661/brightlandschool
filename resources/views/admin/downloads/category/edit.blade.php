@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $download_category->name)
+@section('title', 'Edit ' . $downloads_category->name)
 
 @section('content')
     @include('admin.includes.message')
@@ -7,7 +7,7 @@
     <div class="content">
         <div class="card container-fluid mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Edit Category - {{ $download_category->name }}</h5>
+                <h5 class="mb-0">Edit Category - {{ $downloads_category->name }}</h5>
                 <small class="text-muted float-end">
                     <a class="btn btn-sm btn-primary" href="{{ route('downloads-category.index') }}"><i
                             class="fa-solid fa-arrow-left"></i>
@@ -15,7 +15,8 @@
                 </small>
             </div>
             <div class="card-body p-0">
-                <form class="row" method="POST" action="{{ route('downloads-category.update', $download_category->id) }}"
+                <form class="row" method="POST"
+                    action="{{ route('downloads-category.update', $downloads_category->id) }}"
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
@@ -26,7 +27,7 @@
                             <div class="form-group mb-3">
                                 <label for="name">Name</label>
                                 <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
-                                    name="name" value="{{ old('name', $download_category->name) }}"
+                                    name="name" value="{{ old('name', $downloads_category->name) }}"
                                     placeholder="Enter Name">
                                 @error('name')
                                     <div class="invalid-feedback" role="alert" style="display: block;">
@@ -44,9 +45,9 @@
                             <div class="form-group mb-3 d-flex align-items-center">
                                 <label class="m-0 p-0">Status</label>
                                 <select class="form-select ms-5" id="status" name="status">
-                                    <option class="p-3" value="0" @if ($download_category->status == 0) selected @endif>
+                                    <option class="p-3" value="0" @if ($downloads_category->status == 0) selected @endif>
                                         Draft</option>
-                                    <option class="p-3" value="1" @if ($download_category->status == 1) selected @endif>
+                                    <option class="p-3" value="1" @if ($downloads_category->status == 1) selected @endif>
                                         Publish</option>
                                 </select>
                             </div>
@@ -55,7 +56,7 @@
                             <div class="form-group mb-3 d-flex align-items-center">
                                 <label for="order">Order</label>
                                 <input class="form-control ms-5 @error('order') is-invalid @enderror" type="number"
-                                    name="order" value="{{ old('order', $download_category->order) }}"
+                                    name="order" value="{{ old('order', $downloads_category->order) }}"
                                     placeholder="Enter Order">
                                 @error('order')
                                     <div class="invalid-feedback" style="display: block;">

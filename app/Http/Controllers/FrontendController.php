@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Download;
+use App\Models\DownloadCategory;
 use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
@@ -80,7 +81,7 @@ class FrontendController extends Controller
     }
     public function downloads()
     {
-        $downloads = Download::where('status', 1)
+        $downloads = Download::with('category')->where('status', 1)
             ->orderBy('order')
             ->latest()
             ->get();
@@ -91,7 +92,6 @@ class FrontendController extends Controller
             } else {
                 $download->file_url = null;
             }
-
             $download->file_size_formatted = $download->file_size
                 ? humanFileSize($download->file_size)
                 : 'N/A';
@@ -99,7 +99,13 @@ class FrontendController extends Controller
             return $download;
         });
 
-        return view('frontend.download.index', compact('downloads'));
+
+        // Get all unique categories from downloads
+        $categories = DownloadCategory::whereHas('downloads', function ($q) {
+            $q->where('status', 1);
+        })->orderBy('name')->get();
+
+        return view('frontend.download.index', compact('downloads', 'categories'));
     }
 
     public function downloadFile($slug)

@@ -36,6 +36,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
     <style>
         ::-webkit-scrollbar {
             display: none;
@@ -98,6 +99,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script>
         window.FontAwesomeConfig = {
             autoReplaceSvg: 'nest'
@@ -115,6 +118,8 @@
 
     @include('layouts.frontend.footer')
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             alert('Mobile menu functionality would be implemented here');
