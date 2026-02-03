@@ -122,29 +122,58 @@
                 </div> --}}
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="resource-card bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 shadow-lg border border-blue-100"
-                        id="resource-1">
-                        <div class="flex items-start justify-between mb-4">
-                            <div
-                                class="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-file-pdf text-white text-2xl"></i>
+
+                    @forelse ($downloads as $download)
+                        <div
+                            class="resource-card bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 shadow-lg border border-blue-100">
+
+                            <div class="flex items-start justify-between mb-4">
+                                <div
+                                    class="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-white text-2xl"></i>
+                                </div>
+                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                                    PDF
+                                </span>
                             </div>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+
+                            <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">
+                                {{ $download->name }}
+                            </h3>
+
+                            <p class="text-gray-600 text-sm mb-4">
+                                {{ Str::limit(strip_tags($download->description), 120) }}
+                            </p>
+
+                            <div class="flex flex-wrap items-center justify-between text-sm text-gray-500 mb-4 gap-2">
+                                <span>
+                                    <i class="fa-solid fa-calendar mr-2"></i>
+                                    {{ $download->created_at->format('M d, Y') }}
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-file-arrow-down mr-2"></i>
+                                    {{ $download->file_size_formatted }}
+                                </span>
+
+                                <span class="text-gray-500 text-xs">
+                                    <i class="fa-solid fa-eye mr-2 text-primary"></i>
+                                    {{ number_format($download->views) }} Downloads
+                                </span>
+                            </div>
+
+                            <a class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center"
+                                href="{{ route('downloads.file', $download->slug) }}">
+                                <i class="fa-solid fa-download mr-2"></i>Download
+                            </a>
+
                         </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Academic Calendar 2024</h3>
-                        <p class="text-gray-600 text-sm mb-4">Complete academic calendar for the year 2024 including all
-                            important dates and holidays.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fa-solid fa-calendar mr-2"></i>Jan 15, 2024</span>
-                            <span><i class="fa-solid fa-file-arrow-down mr-2"></i>2.4 MB</span>
-                        </div>
-                        <button
-                            class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center">
-                            <i class="fa-solid fa-download mr-2"></i>Download
-                        </button>
-                    </div>
+                    @empty
+                        <p class="text-gray-500">No downloads available.</p>
+                    @endforelse
 
                 </div>
+
             </div>
         </section>
 

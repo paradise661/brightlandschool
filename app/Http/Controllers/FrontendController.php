@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Download;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
@@ -78,6 +80,40 @@ class FrontendController extends Controller
     }
     public function downloads()
     {
-        return view('frontend.download.index');
+        $downloads = Download::where('status', 1)
+            ->orderBy('order')
+            ->latest()
+            ->get();
+
+        $downloads->transform(function ($download) {
+            if ($download->file && Storage::disk('public')->exists($download->file)) {
+                $download->file_url = Storage::disk('public')->url($download->file);
+            } else {
+                $download->file_url = null;
+            }
+
+            $download->file_size_formatted = $download->file_size
+                ? humanFileSize($download->file_size)
+                : 'N/A';
+
+            return $download;
+        });
+
+        return view('frontend.download.index', compact('downloads'));
+    }
+
+    public function downloadFile($slug)
+    {
+        $download = Download::where('slug', $slug)->firstOrFail();
+
+        if (!$download->file || !Storage::disk('public')->exists($download->file)) {
+            abort(404, 'File not found');
+        }
+        $download->increment('views');
+
+        return Storage::disk('public')->download(
+            $download->file,
+            $download->name . '.pdf'
+        );
     }
 }

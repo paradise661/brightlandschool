@@ -15,3 +15,4 @@ Route::get('/blog/{slug}', [FrontendController::class, 'showBlog'])->name('front
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('/admission', [FrontendController::class, 'admission'])->name('admission');
 Route::get('/downloads', [FrontendController::class, 'downloads'])->name('downloads');
+Route::get('/downloads/{slug}/file', [FrontendController::class, 'downloadFile'])->name('downloads.file');
