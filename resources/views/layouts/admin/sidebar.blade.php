@@ -40,6 +40,27 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">CMS</span></li>
         <!-- Cards -->
         <li
+            class="menu-item {{ Request::segment(2) == 'downloads-category' || Request::segment(2) == 'downloads-category' ? 'active open' : '' }}">
+            <a class="menu-link text-decoration-none menu-toggle" href="#">
+                <i class="menu-icon tf-icons bx bxs-download"></i>
+                <div data-i18n="General Setting">Downloads</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::segment(2) == 'downloads-category' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('downloads-category.index') }}">
+                        <i class="menu-icon tf-icons bx bx-category"></i>
+                        <div>Category</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::segment(2) == 'downloads' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('downloads.index') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
+                        <div data-i18n="Accordion">Downloads</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li
             class="menu-item {{ Request::segment(2) == 'blog' || Request::segment(2) == 'blog-category' ? 'active open' : '' }}">
             <a class="menu-link text-decoration-none menu-toggle" href="#">
                 <i class="menu-icon tf-icons bx bx-news"></i>

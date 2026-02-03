@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\UserRegisterController;
 use App\Http\Controllers\Admin\ContactsController;
+use App\Http\Controllers\Admin\DownloadCategoryController;
+use App\Http\Controllers\Admin\DownloadsController;
 use App\Http\Controllers\Admin\PostController;
 
 Auth::routes(['register' => false]);
@@ -21,8 +23,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('change-password', [AuthController::class, 'store'])->name('change.password');
 
     Route::resource('contacts', ContactsController::class);
-    Route::resource('blog', PostController::class);
 
+    Route::resource('blog', PostController::class);
     Route::resource('blog-category', BlogCategoryController::class);
+
+    Route::resource('downloads', DownloadsController::class);
+    Route::resource('downloads-category', DownloadCategoryController::class);
 });
- 

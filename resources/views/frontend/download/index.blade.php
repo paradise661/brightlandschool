@@ -27,26 +27,45 @@
             color: #1e40af;
         }
     </style>
-    <section class="bg-gradient-to-r from-primary to-blue-600 py-16 md:py-20" id="page-hero">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <div
-                    class="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fa-solid fa-download text-white text-3xl md:text-4xl"></i>
-                </div>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">Downloads & Notices</h1>
-                <p class="text-lg md:text-xl text-blue-100 mb-6">Access important documents, resources, and stay updated with
-                    latest notices</p>
-                <div class="flex items-center justify-center space-x-2 text-sm md:text-base">
-                    <a class="hover:text-blue-200 transition" href="#">Home</a>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                    <span>Downloads & Notices</span>
-                </div>
+    <section class="relative h-[400px] overflow-hidden" id="blog-hero">
+        <!-- Softer Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-blue-600/50 z-10"></div>
+
+        <!-- Background image -->
+        <img class="absolute inset-0 w-full h-full object-cover"
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
+            alt="students reading books in modern library" />
+
+        <!-- Content -->
+        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
+            <div class="text-center text-white">
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
+                    Downloads
+                </h1>
+
+                <!-- Breadcrumb -->
+                <nav>
+                    <ol
+                        class="flex items-center justify-center space-x-2 text-sm bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+                        <li>
+                            <a class="text-blue-100 hover:text-white transition" href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li class="text-blue-200">›</li>
+                        <li class="text-white font-medium">
+                            downloads
+                        </li>
+                    </ol>
+                </nav>
+
             </div>
         </div>
     </section>
 
-    <section class="bg-white sticky top-[72px] z-40 shadow-md" id="tab-navigation">
+    {{-- <section class="bg-white sticky top-[72px] z-40 shadow-md" id="tab-navigation">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex justify-center space-x-8 md:space-x-16">
                 <button class="tab-btn active py-4 px-6 text-base md:text-lg font-semibold transition" data-tab="downloads">
@@ -58,7 +77,7 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <div class="tab-content" id="downloads-tab">
         <section class="py-8 bg-gray-50" id="download-filters">
@@ -92,7 +111,7 @@
 
         <section class="py-12 md:py-16 bg-white" id="download-resources">
             <div class="container mx-auto px-4 md:px-6">
-                <div class="flex items-center mb-8 md:mb-10">
+                {{-- <div class="flex items-center mb-8 md:mb-10">
                     <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                     <div>
                         <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Academic Resources
@@ -100,7 +119,7 @@
                         <p class="text-gray-600 text-sm md:text-base mt-2">Download study materials, syllabus, and academic
                             documents</p>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="resource-card bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 shadow-lg border border-blue-100"
@@ -125,125 +144,11 @@
                         </button>
                     </div>
 
-                    <div class="resource-card bg-gradient-to-br from-red-50 to-white rounded-2xl p-6 shadow-lg border border-red-100"
-                        id="resource-2">
-                        <div class="flex items-start justify-between mb-4">
-                            <div
-                                class="w-14 h-14 bg-gradient-to-br from-secondary to-red-600 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-file-pdf text-white text-2xl"></i>
-                            </div>
-                            <span
-                                class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Admission Form 2024-25</h3>
-                        <p class="text-gray-600 text-sm mb-4">Official admission form for the academic year 2024-25. Fill
-                            and submit with required documents.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fa-solid fa-calendar mr-2"></i>Jan 10, 2024</span>
-                            <span><i class="fa-solid fa-file-arrow-down mr-2"></i>1.8 MB</span>
-                        </div>
-                        <button
-                            class="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition flex items-center justify-center">
-                            <i class="fa-solid fa-download mr-2"></i>Download
-                        </button>
-                    </div>
-
-                    <div class="resource-card bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 shadow-lg border border-green-100"
-                        id="resource-3">
-                        <div class="flex items-start justify-between mb-4">
-                            <div
-                                class="w-14 h-14 bg-gradient-to-br from-green-600 to-green-700 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-file-pdf text-white text-2xl"></i>
-                            </div>
-                            <span
-                                class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Fee Structure 2024</h3>
-                        <p class="text-gray-600 text-sm mb-4">Detailed fee structure for all grades including tuition,
-                            transport, and other charges.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fa-solid fa-calendar mr-2"></i>Jan 08, 2024</span>
-                            <span><i class="fa-solid fa-file-arrow-down mr-2"></i>1.2 MB</span>
-                        </div>
-                        <button
-                            class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition flex items-center justify-center">
-                            <i class="fa-solid fa-download mr-2"></i>Download
-                        </button>
-                    </div>
-
-                    <div class="resource-card bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 shadow-lg border border-purple-100"
-                        id="resource-4">
-                        <div class="flex items-start justify-between mb-4">
-                            <div
-                                class="w-14 h-14 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-file-pdf text-white text-2xl"></i>
-                            </div>
-                            <span
-                                class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Grade 10 Syllabus</h3>
-                        <p class="text-gray-600 text-sm mb-4">Complete syllabus for Grade 10 covering all subjects with
-                            detailed chapter breakdown.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fa-solid fa-calendar mr-2"></i>Dec 28, 2023</span>
-                            <span><i class="fa-solid fa-file-arrow-down mr-2"></i>3.6 MB</span>
-                        </div>
-                        <button
-                            class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition flex items-center justify-center">
-                            <i class="fa-solid fa-download mr-2"></i>Download
-                        </button>
-                    </div>
-
-                    <div class="resource-card bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 shadow-lg border border-orange-100"
-                        id="resource-5">
-                        <div class="flex items-start justify-between mb-4">
-                            <div
-                                class="w-14 h-14 bg-gradient-to-br from-accent to-orange-600 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-file-word text-white text-2xl"></i>
-                            </div>
-                            <span
-                                class="bg-orange-100 text-accent px-3 py-1 rounded-full text-xs font-semibold">DOCX</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Leave Application Form</h3>
-                        <p class="text-gray-600 text-sm mb-4">Standard leave application form for students. Download and
-                            submit to class teacher.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fa-solid fa-calendar mr-2"></i>Dec 20, 2023</span>
-                            <span><i class="fa-solid fa-file-arrow-down mr-2"></i>850 KB</span>
-                        </div>
-                        <button
-                            class="w-full bg-accent text-white py-3 rounded-lg font-semibold hover:bg-yellow-600 transition flex items-center justify-center">
-                            <i class="fa-solid fa-download mr-2"></i>Download
-                        </button>
-                    </div>
-
-                    <div class="resource-card bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-6 shadow-lg border border-indigo-100"
-                        id="resource-6">
-                        <div class="flex items-start justify-between mb-4">
-                            <div
-                                class="w-14 h-14 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-file-pdf text-white text-2xl"></i>
-                            </div>
-                            <span
-                                class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Examination Schedule</h3>
-                        <p class="text-gray-600 text-sm mb-4">Mid-term examination schedule for all grades with date, time,
-                            and subject details.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fa-solid fa-calendar mr-2"></i>Dec 15, 2023</span>
-                            <span><i class="fa-solid fa-file-arrow-down mr-2"></i>1.5 MB</span>
-                        </div>
-                        <button
-                            class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition flex items-center justify-center">
-                            <i class="fa-solid fa-download mr-2"></i>Download
-                        </button>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 md:py-16 bg-gray-50" id="study-materials">
+        {{-- <section class="py-12 md:py-16 bg-gray-50" id="study-materials">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex items-center mb-8 md:mb-10">
                     <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
@@ -259,7 +164,7 @@
                     <div class="resource-card bg-white rounded-2xl p-6 shadow-lg border border-gray-100" id="material-1">
                         <div class="flex items-start space-x-4">
                             <div
-                                class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                             class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-book text-white text-2xl"></i>
                             </div>
                             <div class="flex-1">
@@ -371,10 +276,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </div>
 
-    <div class="tab-content hidden" id="notices-tab">
+    {{-- <div class="tab-content hidden" id="notices-tab">
         <section class="py-12 md:py-16 bg-white" id="important-notices">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex items-center mb-8 md:mb-10">
@@ -641,29 +546,10 @@
                 </div>
             </div>
         </section>
-    </div>
-
-    <section class="py-12 md:py-16 bg-gradient-to-r from-primary to-blue-600" id="cta-section">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold mb-4 md:mb-6">Stay Connected</h2>
-                <p class="text-base md:text-lg lg:text-xl text-blue-100 mb-6 md:mb-8">Subscribe to receive instant
-                    notifications about new notices and resources</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto">
-                    <input
-                        class="w-full px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                        type="email" placeholder="Enter your email address">
-                    <button
-                        class="w-full sm:w-auto bg-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-red-700 transition whitespace-nowrap">
-                        Subscribe Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div> --}}
 @endsection
 @section('scripts')
-    <script>
+    {{-- <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             alert('Mobile menu functionality would be implemented here');
         });
@@ -723,5 +609,5 @@
                 });
             });
         });
-    </script>
+    </script> --}}
 @endsection
