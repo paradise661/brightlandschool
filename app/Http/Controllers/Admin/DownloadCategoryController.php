@@ -40,9 +40,9 @@ class DownloadCategoryController extends Controller
         return redirect()->route('downloads-category.index')->with('message', 'Updated Successfully');
     }
 
-    public function destroy(DownloadCategory $download_category)
+    public function destroy(DownloadCategory $downloads_category)
     {
-        $download_category->delete();
+        $downloads_category->delete();
         return redirect()->route('downloads-category.index')->with('message', 'Deleted Successfully');
     }
 }

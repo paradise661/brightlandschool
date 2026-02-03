@@ -1,6 +1,11 @@
 @extends('layouts.frontend.master')
 @section('content')
     <style>
+        .swiper-slide {
+            width: auto;
+            /* allow button to define width */
+        }
+
         ::-webkit-scrollbar {
             display: none;
         }
@@ -65,46 +70,52 @@
         </div>
     </section>
 
-    {{-- <section class="bg-white sticky top-[72px] z-40 shadow-md" id="tab-navigation">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="flex justify-center space-x-8 md:space-x-16">
-                <button class="tab-btn active py-4 px-6 text-base md:text-lg font-semibold transition" data-tab="downloads">
-                    <i class="fa-solid fa-download mr-2"></i>Downloads
-                </button>
-                <button class="tab-btn py-4 px-6 text-base md:text-lg font-semibold text-gray-600 transition"
-                    data-tab="notices">
-                    <i class="fa-solid fa-bell mr-2"></i>Notices
-                </button>
-            </div>
-        </div>
-    </section> --}}
-
     <div class="tab-content" id="downloads-tab">
         <section class="py-8 bg-gray-50" id="download-filters">
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                        <button
-                            class="download-filter-btn px-6 py-2 bg-primary text-white rounded-full font-semibold text-sm hover:bg-blue-700 transition">All
-                            Resources</button>
-                        <button
-                            class="download-filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Academic</button>
-                        <button
-                            class="download-filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Forms</button>
-                        <button
-                            class="download-filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Syllabus</button>
-                        <button
-                            class="download-filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Circulars</button>
+
+                    @php
+                        $useSwiper = $categories->count() > 7;
+                    @endphp
+                    <div class="w-full md:w-auto">
+                        <div
+                            class="{{ $useSwiper ? 'swiper mySwiper' : 'flex flex-wrap gap-3 justify-center md:justify-start' }}">
+                            <div class="{{ $useSwiper ? 'swiper-wrapper' : 'flex flex-wrap gap-3' }}">
+                                <div class="{{ $useSwiper ? 'swiper-slide' : '' }}">
+                                    <button
+                                        class="download-filter-btn px-6 py-2 bg-primary text-white rounded-full font-semibold text-sm hover:bg-blue-700 transition">
+                                        All Resources
+                                    </button>
+                                </div>
+
+                                @foreach ($categories as $category)
+                                    <div class="{{ $useSwiper ? 'swiper-slide' : '' }}">
+                                        <button
+                                            class="download-filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">
+                                            {{ $category->name }}
+                                        </button>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @if ($useSwiper)
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            @endif
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
+
+                    <div class="flex items-center space-x-4 w-full md:w-auto">
+                        <div class="relative w-full md:w-64">
                             <input
-                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm w-64"
+                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm w-full"
                                 type="text" placeholder="Search resources...">
                             <i
                                 class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -170,4 +181,20 @@
     </div>
 @endsection
 @section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if ($useSwiper)
+                new Swiper('.mySwiper', {
+                    slidesPerView: 'auto',
+                    spaceBetween: 10,
+                    freeMode: true,
+                    grabCursor: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            @endif
+        });
+    </script>
 @endsection

@@ -81,10 +81,7 @@ class FrontendController extends Controller
     }
     public function downloads()
     {
-        $downloads = Download::with('category')->where('status', 1)
-            ->orderBy('order')
-            ->latest()
-            ->get();
+        $downloads = Download::with('category')->where('status', 1)->get();
 
         $downloads->transform(function ($download) {
             if ($download->file && Storage::disk('public')->exists($download->file)) {
@@ -98,12 +95,7 @@ class FrontendController extends Controller
 
             return $download;
         });
-
-
-        // Get all unique categories from downloads
-        $categories = DownloadCategory::whereHas('downloads', function ($q) {
-            $q->where('status', 1);
-        })->orderBy('name')->get();
+        $categories = DownloadCategory::where('status', 1)->orderBy('order', 'asc')->get();
 
         return view('frontend.download.index', compact('downloads', 'categories'));
     }
