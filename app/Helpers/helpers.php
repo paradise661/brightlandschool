@@ -141,3 +141,17 @@ if (!function_exists('humanFileSize')) {
         return $bytes . ' bytes';
     }
 }
+if (!function_exists('multiFileUpload')) {
+    function multiFileUpload($request, $name, $foldername)
+    {
+        $paths = [];
+
+        if ($request->hasFile($name)) {
+            foreach ($request->file($name) as $file) {
+                $paths[] = $file->store($foldername, 'public');
+            }
+        }
+
+        return $paths;
+    }
+}

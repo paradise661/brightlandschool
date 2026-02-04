@@ -30,6 +30,12 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::segment(2) == 'student' ? 'active' : '' }}">
+            <a class="menu-link text-decoration-none" href="#">
+                <i class="menu-icon tf-icons bx bxs-id-card"></i>
+                <div data-i18n="Accordion">Students</div>
+            </a>
+        </li>
         <li class="menu-item {{ Request::segment(2) == 'contacts' ? 'active' : '' }}">
             <a class="menu-link text-decoration-none" href="{{ route('contacts.index') }}">
                 <i class="menu-icon tf-icons bx bxs-contact"></i>

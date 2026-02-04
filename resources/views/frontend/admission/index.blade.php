@@ -1,21 +1,48 @@
 @extends('layouts.frontend.master')
 @section('content')
-    <section class="relative h-[400px] overflow-hidden" id="admission-hero">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-blue-600/80 z-10"></div>
+    <section class="relative h-[400px] overflow-hidden" id="blog-hero">
+        <!-- Softer Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-blue-600/50 z-10"></div>
+
+        <!-- Background image -->
         <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b5a73c0b6f-7610cc8942502f769f8f.png"
-            alt="students walking in school campus, happy children with backpacks, modern school building background, bright sunny day, professional photography" />
-        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center">
-            <div class="max-w-3xl text-white">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 md:mb-6 leading-tight">Student
-                    Admission Form</h1>
-                <p class="text-lg md:text-xl text-blue-100">Begin your journey towards excellence. Fill out the form below to
-                    apply for admission.</p>
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
+            alt="students reading books in modern library" />
+
+        <!-- Content -->
+        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
+            <div class="text-center text-white">
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
+                    Admission
+                </h1>
+
+                <!-- Breadcrumb -->
+                <nav class="mt-4">
+                    <ol
+                        class="inline-flex items-center space-x-2 text-sm
+                        bg-white/15 backdrop-blur-md
+                        px-5 py-2 rounded-full
+                        border border-white/20
+                        shadow-lg">
+                        <li>
+                            <a class="text-blue-100 hover:text-white transition" href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li class="text-blue-200">›</li>
+                        <li class="text-white font-medium">
+                            Admission
+                        </li>
+                    </ol>
+                </nav>
+
             </div>
         </div>
     </section>
 
-    <section class="py-12 md:py-16 bg-white" id="admission-process">
+    {{-- <section class="py-12 md:py-16 bg-white" id="admission-process">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12">
@@ -63,7 +90,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="admission-form-section">
         <div class="container mx-auto px-4 md:px-6">
@@ -71,10 +98,13 @@
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
                     <div class="bg-gradient-to-r from-primary to-blue-600 text-white p-6 md:p-8">
                         <h2 class="text-2xl md:text-3xl font-heading font-bold mb-2">Student Admission Application</h2>
-                        <p class="text-blue-100">Please fill all required fields marked with *</p>
+                        <p class="text-blue-100">Please fill all required fields marked with <span
+                                class="text-red-500">*</span></p>
                     </div>
 
-                    <form class="p-6 md:p-8 lg:p-12" id="admission-form">
+                    <form class="p-6 md:p-8 lg:p-12" id="admission-form"action="{{ route('frontend.admission.store') }}"
+                        method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-10" id="student-information">
                             <div class="flex items-center mb-6">
                                 <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
@@ -86,31 +116,39 @@
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        First Name <span class="text-red-500">*</span>
+                                    </label>
+
                                     <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter first name">
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg
+                                        focus:border-primary focus:outline-none transition"
+                                        id="first_name" data-field="first_name" name="first_name" type="text"
+                                        placeholder="Enter first name">
+
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-first_name"></p>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name <span
+                                            class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter last name">
+                                        type="text" name="last_name" placeholder="Enter last name">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="date" required>
+                                        type="date" name="date_of_birth">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Gender *</label>
                                     <select
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        required>
+                                        name="gender">
                                         <option value="">Select gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -121,7 +159,8 @@
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Blood Group</label>
                                     <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition">
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
+                                        name="blood_group">
                                         <option value="">Select blood group</option>
                                         <option value="A+">A+</option>
                                         <option value="A-">A-</option>
@@ -138,21 +177,21 @@
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Nationality *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter nationality">
+                                        type="text" placeholder="Enter nationality" name="nationality">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Religion</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter religion">
+                                        type="text" placeholder="Enter religion" name="religion">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Mother Tongue</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter mother tongue">
+                                        type="text" placeholder="Enter mother tongue" name="mother_tongue">
                                 </div>
                             </div>
 
@@ -163,7 +202,7 @@
                                     <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                     <p class="text-gray-600 mb-2">Click to upload or drag and drop</p>
                                     <p class="text-sm text-gray-500">PNG, JPG (MAX. 2MB)</p>
-                                    <input class="hidden" type="file" accept="image/*">
+                                    <input class="hidden" type="file" name="student_photo" accept="image/*">
                                 </div>
                             </div>
                         </div>
@@ -181,8 +220,7 @@
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Applying for Grade
                                         *</label>
                                     <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        required>
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition">
                                         <option value="">Select grade</option>
                                         <option value="nursery">Nursery</option>
                                         <option value="lkg">LKG</option>
@@ -205,8 +243,7 @@
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Academic Year *</label>
                                     <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        required>
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition">
                                         <option value="">Select academic year</option>
                                         <option value="2024-2025">2024-2025</option>
                                         <option value="2025-2026">2025-2026</option>
@@ -248,14 +285,14 @@
                                             *</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" required placeholder="Enter father's name">
+                                            type="text" name="father_name" placeholder="Enter father's name">
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Occupation</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" placeholder="Enter occupation">
+                                            type="text" name="father_occupation" placeholder="Enter occupation">
                                     </div>
 
                                     <div>
@@ -263,7 +300,7 @@
                                             *</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="tel" required placeholder="+1 (234) 567-890">
+                                            type="tel" name="father_phone"placeholder="+1 (234) 567-890">
                                     </div>
 
                                     <div>
@@ -271,7 +308,7 @@
                                             *</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="email" required placeholder="father@example.com">
+                                            type="email" name="father_email" placeholder="father@example.com">
                                     </div>
                                 </div>
                             </div>
@@ -284,14 +321,14 @@
                                             *</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" required placeholder="Enter mother's name">
+                                            type="text" name="mother_name" placeholder="Enter mother's name">
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Occupation</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" placeholder="Enter occupation">
+                                            type="text" name="mother_occupation" placeholder="Enter occupation">
                                     </div>
 
                                     <div>
@@ -299,7 +336,7 @@
                                             *</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="tel" required placeholder="+1 (234) 567-890">
+                                            type="tel" name="mother_phone" placeholder="+1 (234) 567-890">
                                     </div>
 
                                     <div>
@@ -307,7 +344,7 @@
                                             *</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="email" required placeholder="mother@example.com">
+                                            type="email" name="mother_email" placeholder="mother@example.com">
                                     </div>
                                 </div>
                             </div>
@@ -321,28 +358,28 @@
                                             Name</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" placeholder="Enter guardian's name">
+                                            type="text" name="guardian_name" placeholder="Enter guardian's name">
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Relationship</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" placeholder="Enter relationship">
+                                            type="text" name="guardian_relationship" placeholder="Enter relationship">
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="tel" placeholder="+1 (234) 567-890">
+                                            type="tel" name="guardian_phone" placeholder="+1 (234) 567-890">
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="email" placeholder="guardian@example.com">
+                                            type="email" name="guardian_email" placeholder="guardian@example.com">
                                     </div>
                                 </div>
                             </div>
@@ -362,42 +399,42 @@
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Current Address *</label>
                                     <textarea
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        required rows="3" placeholder="Enter complete address"></textarea>
+                                        rows="3" name="current_address" placeholder="Enter complete address"></textarea>
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter city">
+                                        type="text" name="city" placeholder="Enter city">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">State/Province *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter state/province">
+                                        type="text" name="state" placeholder="Enter state/province">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">ZIP/Postal Code *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter ZIP code">
+                                        type="text" name="postal_code" placeholder="Enter ZIP code">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Country *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter country">
+                                        type="text" name="country" placeholder="Enter country">
                                 </div>
                             </div>
 
                             <div class="mt-6">
                                 <label class="flex items-center cursor-pointer">
                                     <input class="w-5 h-5 text-primary border-2 border-gray-300 rounded focus:ring-primary"
-                                        type="checkbox">
+                                        name="same_as_permanent" type="checkbox">
                                     <span class="ml-3 text-gray-700">Permanent address is same as current address</span>
                                 </label>
                             </div>
@@ -418,7 +455,8 @@
                                         Allergies?</label>
                                     <textarea
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        rows="3" placeholder="Please mention any medical conditions, allergies, or special needs"></textarea>
+                                        rows="3" name="medical_conditions"
+                                        placeholder="Please mention any medical conditions, allergies, or special needs"></textarea>
                                 </div>
 
                                 <div>
@@ -426,7 +464,8 @@
                                         *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" required placeholder="Enter emergency contact name">
+                                        type="text" name="emergency_contact_name"
+                                        placeholder="Enter emergency contact name">
                                 </div>
 
                                 <div>
@@ -434,7 +473,7 @@
                                         *</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="tel" required placeholder="+1 (234) 567-890">
+                                        type="tel" name="emergency_contact_number" placeholder="+1 (234) 567-890">
                                 </div>
                             </div>
                         </div>
@@ -456,7 +495,8 @@
                                         <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
                                         <p class="text-gray-600 text-sm">Click to upload birth certificate (PDF, JPG, PNG -
                                             MAX. 5MB)</p>
-                                        <input class="hidden" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                                        <input class="hidden" type="file" name="birth_certificate"
+                                            accept=".pdf,.jpg,.jpeg,.png">
                                     </div>
                                 </div>
 
@@ -468,7 +508,8 @@
                                         <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
                                         <p class="text-gray-600 text-sm">Click to upload transfer certificate (PDF, JPG,
                                             PNG - MAX. 5MB)</p>
-                                        <input class="hidden" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                                        <input class="hidden" type="file" name="transfer_certificate"
+                                            accept=".pdf,.jpg,.jpeg,.png">
                                     </div>
                                 </div>
 
@@ -480,7 +521,8 @@
                                         <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
                                         <p class="text-gray-600 text-sm">Click to upload academic records (PDF, JPG, PNG -
                                             MAX. 5MB)</p>
-                                        <input class="hidden" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                                        <input class="hidden" type="file" name="academic_records"
+                                            accept=".pdf,.jpg,.jpeg,.png">
                                     </div>
                                 </div>
 
@@ -492,7 +534,8 @@
                                         <i class="fa-solid fa-images text-3xl text-gray-400 mb-2"></i>
                                         <p class="text-gray-600 text-sm">Click to upload photos (JPG, PNG - MAX. 2MB each)
                                         </p>
-                                        <input class="hidden" type="file" accept="image/*" multiple>
+                                        <input class="hidden" type="file" name="passport_photos[]" accept="image/*"
+                                            multiple>
                                     </div>
                                 </div>
                             </div>
@@ -513,7 +556,7 @@
                                         our school? *</label>
                                     <select
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        required>
+                                        name="heard_about_school">
                                         <option value="">Select an option</option>
                                         <option value="website">School Website</option>
                                         <option value="social-media">Social Media</option>
@@ -529,7 +572,7 @@
                                         Excellence Academy?</label>
                                     <textarea
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        rows="4" placeholder="Tell us why you're interested in our school..."></textarea>
+                                        name="why_join_school" rows="4" placeholder="Tell us why you're interested in our school..."></textarea>
                                 </div>
 
                                 <div>
@@ -537,12 +580,12 @@
                                         Interests</label>
                                     <textarea
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        rows="3" placeholder="Please mention any hobbies, interests, or special talents"></textarea>
+                                        rows="3" name="student_hobbies" placeholder="Please mention any hobbies, interests, or special talents"></textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mb-10" id="declaration">
+                        {{-- <div class="mb-10" id="declaration">
                             <div class="bg-gray-100 rounded-2xl p-6 md:p-8">
                                 <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-4">Declaration</h3>
                                 <p class="text-gray-700 mb-6 text-sm md:text-base leading-relaxed">
@@ -579,14 +622,9 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button
-                                class="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition font-semibold text-lg"
-                                type="button">
-                                <i class="fa-solid fa-floppy-disk mr-2"></i> Save as Draft
-                            </button>
                             <button
                                 class="px-8 py-4 bg-gradient-to-r from-primary to-blue-600 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-semibold text-lg shadow-lg"
                                 type="submit">
@@ -758,4 +796,96 @@
             </div>
         </div>
     </section>
+@endsection
+@section('scripts')
+    <script>
+        /* ============================
+                       CLEAR ERROR WHILE TYPING
+                       ============================ */
+        document.querySelectorAll('[data-field]').forEach(field => {
+
+            const clearError = () => {
+                const errorBox = document.getElementById(`error-${field.name}`);
+
+                if (errorBox) {
+                    errorBox.classList.add('hidden');
+                    errorBox.innerText = '';
+                }
+
+                field.classList.remove('border-red-500');
+                field.classList.add('border-gray-200');
+            };
+
+            field.addEventListener('input', clearError);
+            field.addEventListener('change', clearError);
+        });
+
+        /* ============================
+           FORM SUBMIT HANDLER
+           ============================ */
+        document.getElementById('admission-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = this;
+            const formData = new FormData(form);
+
+            // Clear old errors
+            document.querySelectorAll('[id^="error-"]').forEach(el => {
+                el.classList.add('hidden');
+                el.innerText = '';
+            });
+
+            document.querySelectorAll('[data-field]').forEach(input => {
+                input.classList.remove('border-red-500');
+                input.classList.add('border-gray-200');
+            });
+
+            fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                })
+                .then(async res => {
+                    const data = await res.json();
+
+                    // Validation error (422)
+                    if (res.status === 422) {
+                        const firstField = Object.keys(data.errors)[0];
+                        const firstMessage = data.errors[firstField][0];
+
+                        // Show inline error
+                        const errorBox = document.getElementById(`error-${firstField}`);
+                        if (errorBox) {
+                            errorBox.innerText = firstMessage;
+                            errorBox.classList.remove('hidden');
+                        }
+
+                        // Highlight field
+                        const input = document.querySelector(`[data-field="${firstField}"]`);
+                        if (input) {
+                            input.classList.remove('border-gray-200');
+                            input.classList.add('border-red-500');
+                            input.focus();
+                        }
+
+                        toastr.error(firstMessage);
+                        throw new Error('Validation failed');
+                    }
+
+                    if (!res.ok) {
+                        throw new Error(data.message || 'Something went wrong');
+                    }
+
+                    return data;
+                })
+                .then(data => {
+                    toastr.success(data.message);
+                    form.reset();
+                })
+                .catch(() => {});
+        });
+    </script>
 @endsection

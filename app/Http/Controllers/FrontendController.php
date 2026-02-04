@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudentsRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Download;
 use App\Models\DownloadCategory;
+use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
+
 
 class FrontendController extends Controller
 {
@@ -77,8 +81,55 @@ class FrontendController extends Controller
 
     public function admission()
     {
+
         return view('frontend.admission.index');
     }
+    public function studentStore(StoreStudentsRequest $request)
+    {
+        try {
+            $data = $request->validated();
+
+            // Single file uploads (safe)
+            if ($request->hasFile('birth_certificate')) {
+                $data['birth_certificate'] = fileUpload($request, 'birth_certificate', 'birth_certificates');
+            }
+
+            if ($request->hasFile('transfer_certificate')) {
+                $data['transfer_certificate'] = fileUpload($request, 'transfer_certificate', 'transfer_certificates');
+            }
+
+            if ($request->hasFile('academic_records')) {
+                $data['academic_records'] = fileUpload($request, 'academic_records', 'academic_records');
+            }
+
+            // Multiple files upload
+            if ($request->hasFile('passport_photos')) {
+                $data['passport_photos'] = json_encode(
+                    multiFileUpload($request, 'passport_photos', 'passport_photos')
+                );
+            }
+
+            // JSON field
+            $data['source'] = json_encode($data['source'] ?? []);
+
+            Student::create($data);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Student saved successfully!'
+            ]);
+        } catch (\Exception $e) {
+            // optional: log error for debugging
+            // \Log::error($e);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong. Please try again.'
+            ], 500);
+        }
+    }
+
+
     public function downloads()
     {
         $downloads = Download::with('category')->where('status', 1)->get();

@@ -108,7 +108,7 @@
                 </a>
 
                 <a class="bg-secondary text-white px-6 py-2 rounded-full hover:bg-red-700 transition font-semibold"
-                    href="{{ route('admission') }}">
+                    href="{{ route('frontend.admission') }}">
                     Admissions
                 </a>
             </nav>
