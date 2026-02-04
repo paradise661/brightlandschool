@@ -21,95 +21,88 @@ class StoreStudentsRequest extends FormRequest
      */
     public function rules(): array
     {
-        $isDraft = $this->input('status') === 'draft';
         return [
             /* =========================
-             * STUDENT INFORMATION
-             * ========================= */
-            'first_name'      => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
-            'last_name'       => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
-            'date_of_birth'   => $isDraft ? 'nullable|date' : 'required|date',
-            'gender'          => $isDraft ? 'nullable|in:male,female,other' : 'required|in:male,female,other',
+         * STUDENT INFORMATION
+         * ========================= */
+            'first_name'      => 'required|string|max:255',
+            'last_name'       => 'required|string|max:255',
+            'date_of_birth'   => 'required|date',
+            'gender'          => 'required|in:male,female,other',
             'blood_group'     => 'nullable|string|max:10',
-            'nationality'     => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
+            'nationality'     => 'required|string|max:255',
             'religion'        => 'nullable|string|max:255',
             'mother_tongue'   => 'nullable|string|max:255',
-            'student_photo'   => $isDraft ? 'nullable|image|max:2048' : 'required|image|max:2048',
+            'student_photo'   => 'required|image|max:2048',
 
             /* =========================
-             * ADMISSION DETAILS
-             * ========================= */
-            'applying_grade'       => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
-            'academic_year'        => $isDraft ? 'nullable|string|max:50' : 'required|string|max:50',
+         * ADMISSION DETAILS
+         * ========================= */
+            'applying_grade'       => 'required|string|max:255',
+            'academic_year'        => 'required|string|max:50',
             'previous_school_name' => 'nullable|string|max:255',
             'previous_grade'       => 'nullable|string|max:255',
 
             /* =========================
-             * FATHER DETAILS
-             * ========================= */
-            'father_name'       => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
+         * FATHER DETAILS
+         * ========================= */
+            'father_name'       => 'required|string|max:255',
             'father_occupation' => 'nullable|string|max:255',
-            'father_phone'      => $isDraft ? 'nullable|string|max:20' : 'required|string|max:20',
-            'father_email'      => $isDraft ? 'nullable|email|max:255' : 'required|email|max:255',
+            'father_phone'      => 'required|string|max:20',
+            'father_email'      => 'required|email|max:255',
 
             /* =========================
-             * MOTHER DETAILS
-             * ========================= */
-            'mother_name'       => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
+         * MOTHER DETAILS
+         * ========================= */
+            'mother_name'       => 'required|string|max:255',
             'mother_occupation' => 'nullable|string|max:255',
-            'mother_phone'      => $isDraft ? 'nullable|string|max:20' : 'required|string|max:20',
-            'mother_email'      => $isDraft ? 'nullable|email|max:255' : 'required|email|max:255',
+            'mother_phone'      => 'required|string|max:20',
+            'mother_email'      => 'nullable|email|max:255',
 
             /* =========================
-             * GUARDIAN DETAILS
-             * ========================= */
+         * GUARDIAN DETAILS
+         * ========================= */
             'guardian_name'         => 'nullable|string|max:255',
             'guardian_relationship' => 'nullable|string|max:255',
             'guardian_phone'        => 'nullable|string|max:20',
             'guardian_email'        => 'nullable|email|max:255',
 
             /* =========================
-             * ADDRESS INFORMATION
-             * ========================= */
-            'current_address' => $isDraft ? 'nullable|string' : 'required|string',
-            'city'            => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
-            'state'           => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
-            'postal_code'     => $isDraft ? 'nullable|string|max:20' : 'required|string|max:20',
-            'country'         => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
+         * ADDRESS INFORMATION
+         * ========================= */
+            'current_address'  => 'required|string',
+            'city'             => 'required|string|max:255',
+            'state'            => 'required|string|max:255',
+            'postal_code'      => 'nullable|string|max:20',
+            'country'          => 'required|string|max:255',
             'same_as_permanent' => 'nullable|boolean',
 
             /* =========================
-             * MEDICAL INFORMATION
-             * ========================= */
-            'medical_conditions'        => 'nullable|string',
-            'emergency_contact_name'    => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
-            'emergency_contact_number'  => $isDraft ? 'nullable|string|max:20' : 'required|string|max:20',
+         * MEDICAL INFORMATION
+         * ========================= */
+            'medical_conditions'       => 'nullable|string',
+            'emergency_contact_name'   => 'required|string|max:255',
+            'emergency_contact_number' => 'required|string|max:20',
 
             /* =========================
-             * DOCUMENT UPLOADS
-             * ========================= */
-            'birth_certificate'      => $isDraft ? 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096' : 'required|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'transfer_certificate'   => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'academic_records'       => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'passport_photos'        => 'nullable|array',
-            'passport_photos.*'      => 'image|max:2048',
+         * DOCUMENT UPLOADS
+         * ========================= */
+            'birth_certificate'    => 'required|file|mimes:pdf,jpg,jpeg,png|max:4096',
+            'transfer_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
+            'academic_records'     => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
+            'passport_photos'      => 'nullable|array',
+            'passport_photos.*'    => 'image|max:2048',
 
             /* =========================
-             * ADDITIONAL INFORMATION
-             * ========================= */
-            'heard_about_school' => $isDraft ? 'nullable|string|max:255' : 'required|string|max:255',
+         * ADDITIONAL INFORMATION
+         * ========================= */
+            'heard_about_school' => 'required|string|max:255',
             'why_join_school'    => 'nullable|string',
             'student_hobbies'   => 'nullable|string',
 
-            /* =========================
-             * DECLARATION & STATUS
-             * ========================= */
-            'agree_terms'    => $isDraft ? 'nullable|boolean' : 'required|accepted',
-            'consent_contact' => $isDraft ? 'nullable|boolean' : 'required|accepted',
-            'receive_updates' => 'nullable|boolean',
-            'status'         => 'required|in:draft,submitted',
         ];
     }
+
     public function messages(): array
     {
         return [

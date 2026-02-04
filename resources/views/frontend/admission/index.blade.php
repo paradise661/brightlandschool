@@ -134,26 +134,33 @@
                                             class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" name="last_name" placeholder="Enter last name">
+                                        data-field="last_name" type="text" name="last_name"
+                                        placeholder="Enter last name">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-last_name"></p>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth <span
+                                            class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="date" name="date_of_birth">
+                                        data-field="date_of_birth" type="date" name="date_of_birth">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-date_of_birth"></p>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Gender *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Gender <span
+                                            class="text-red-500">*</span></label>
                                     <select
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        name="gender">
+                                        data-field="gender" name="gender">
                                         <option value="">Select gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="other">Other</option>
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-gender"></p>
                                     </select>
+
                                 </div>
 
                                 <div>
@@ -174,10 +181,13 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nationality *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nationality <span
+                                            class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter nationality" name="nationality">
+                                        data-field="nationality" type="text" placeholder="Enter nationality"
+                                        name="nationality">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-nationality"></p>
                                 </div>
 
                                 <div>
@@ -196,15 +206,25 @@
                             </div>
 
                             <div class="mt-6">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Student Photo *</label>
-                                <div
-                                    class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Student Photo <span class="text-red-500">*</span>
+                                </label>
+
+                                <div class="upload-box border-2 border-dashed border-gray-300 rounded-lg p-6
+                                         text-center hover:border-primary transition cursor-pointer"
+                                    data-upload="student_photo">
+
                                     <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                     <p class="text-gray-600 mb-2">Click to upload or drag and drop</p>
                                     <p class="text-sm text-gray-500">PNG, JPG (MAX. 2MB)</p>
-                                    <input class="hidden" type="file" name="student_photo" accept="image/*">
+                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
+                                    <input class="hidden" data-field="student_photo" type="file" name="student_photo"
+                                        accept="image/*">
+
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-student_photo"></p>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="mb-10" id="admission-details">
@@ -218,9 +238,10 @@
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Applying for Grade
-                                        *</label>
+                                        <span class="text-red-500">*</span></label>
                                     <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition">
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
+                                        data-field="applying_grade" name="applying_grade">
                                         <option value="">Select grade</option>
                                         <option value="nursery">Nursery</option>
                                         <option value="lkg">LKG</option>
@@ -237,16 +258,20 @@
                                         <option value="10">Grade 10</option>
                                         <option value="11">Grade 11</option>
                                         <option value="12">Grade 12</option>
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-applying_grade"></p>
                                     </select>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Academic Year *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Academic Year <span
+                                            class="text-red-500">*</span></label>
                                     <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition">
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
+                                        data-field="academic_year" name="academic_year">
                                         <option value="">Select academic year</option>
                                         <option value="2024-2025">2024-2025</option>
                                         <option value="2025-2026">2025-2026</option>
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-academic_year"></p>
                                     </select>
                                 </div>
 
@@ -255,7 +280,8 @@
                                         Name</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter previous school name">
+                                        type="text" placeholder="Enter previous school name"
+                                        name="previous_school_name">
                                 </div>
 
                                 <div>
@@ -263,7 +289,7 @@
                                         Grade/Class</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter previous grade">
+                                        type="text" placeholder="Enter previous grade" name="previous_grade">
                                 </div>
                             </div>
                         </div>
@@ -282,10 +308,12 @@
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Father's Name
-                                            *</label>
+                                            <span class="text-red-500">*</span></label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" name="father_name" placeholder="Enter father's name">
+                                            data-field="father_name" type="text" name="father_name"
+                                            placeholder="Enter father's name">
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-father_name"></p>
                                     </div>
 
                                     <div>
@@ -297,18 +325,22 @@
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number
-                                            *</label>
+                                            <span class="text-red-500">*</span></label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="tel" name="father_phone"placeholder="+1 (234) 567-890">
+                                            data-field="father_phone" type="tel"
+                                            name="father_phone"placeholder="+1 (234) 567-890">
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-father_phone"></p>
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address
-                                            *</label>
+                                            <span class="text-red-500">*</span></label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="email" name="father_email" placeholder="father@example.com">
+                                            data-field="father_email" type="email" name="father_email"
+                                            placeholder="father@example.com">
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-father_email"></p>
                                     </div>
                                 </div>
                             </div>
@@ -318,10 +350,12 @@
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Mother's Name
-                                            *</label>
+                                            <span class="text-red-500"></span>*</span></label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" name="mother_name" placeholder="Enter mother's name">
+                                            data-field="mother_name" type="text" name="mother_name"
+                                            placeholder="Enter mother's name">
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-mother_name"></p>
                                     </div>
 
                                     <div>
@@ -333,15 +367,17 @@
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number
-                                            *</label>
+                                            <span class="text-red-500">*</span></label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="tel" name="mother_phone" placeholder="+1 (234) 567-890">
+                                            data-field="mother_phone" type="tel" name="mother_phone"
+                                            placeholder="+1 (234) 567-890">
+                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-mother_phone"></p>
                                     </div>
 
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address
-                                            *</label>
+                                        </label>
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
                                             type="email" name="mother_email" placeholder="mother@example.com">
@@ -396,48 +432,50 @@
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div class="md:col-span-2">
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Current Address *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Current Address <span
+                                            class="text-red-500">*</span></label>
                                     <textarea
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        rows="3" name="current_address" placeholder="Enter complete address"></textarea>
+                                        data-field="current_address" rows="3" name="current_address" placeholder="Enter complete address"></textarea>
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-current_address"></p>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">City <span
+                                            class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" name="city" placeholder="Enter city">
+                                        data-field="city" type="text" name="city" placeholder="Enter city">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-city"></p>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">State/Province *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">State/Province <span
+                                            class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" name="state" placeholder="Enter state/province">
+                                        data-field="state" type="text" name="state"
+                                        placeholder="Enter state/province">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-state"></p>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">ZIP/Postal Code *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">ZIP/Postal Code</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
                                         type="text" name="postal_code" placeholder="Enter ZIP code">
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Country *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Country <span
+                                            class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" name="country" placeholder="Enter country">
+                                        data-field="country" type="text" name="country" placeholder="Enter country">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-country"></p>
                                 </div>
                             </div>
 
-                            <div class="mt-6">
-                                <label class="flex items-center cursor-pointer">
-                                    <input class="w-5 h-5 text-primary border-2 border-gray-300 rounded focus:ring-primary"
-                                        name="same_as_permanent" type="checkbox">
-                                    <span class="ml-3 text-gray-700">Permanent address is same as current address</span>
-                                </label>
-                            </div>
                         </div>
 
                         <div class="mb-10" id="medical-information">
@@ -461,19 +499,22 @@
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Emergency Contact Name
-                                        *</label>
+                                        <span class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" name="emergency_contact_name"
+                                        data-field="emergency_contact_name" type="text" name="emergency_contact_name"
                                         placeholder="Enter emergency contact name">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-emergency_contact_name"></p>
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Emergency Contact Number
-                                        *</label>
+                                        <span class="text-red-500">*</span></label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="tel" name="emergency_contact_number" placeholder="+1 (234) 567-890">
+                                        data-field="emergency_contact_number" type="tel"
+                                        name="emergency_contact_number" placeholder="+1 (234) 567-890">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-emergency_contact_number"></p>
                                 </div>
                             </div>
                         </div>
@@ -487,56 +528,60 @@
                             </div>
 
                             <div class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Birth Certificate
-                                        *</label>
-                                    <div
-                                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
-                                        <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
-                                        <p class="text-gray-600 text-sm">Click to upload birth certificate (PDF, JPG, PNG -
-                                            MAX. 5MB)</p>
-                                        <input class="hidden" type="file" name="birth_certificate"
-                                            accept=".pdf,.jpg,.jpeg,.png">
-                                    </div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Birth Certificate
+                                    <span class="text-red-500">*</span></label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
+                                    data-upload>
+                                    <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-600 text-sm">Click to upload birth certificate (PDF, JPG, PNG -
+                                        MAX. 5MB)</p>
+                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
+                                    <input class="hidden" data-field="birth_certificate" type="file"
+                                        name="birth_certificate" accept=".pdf,.jpg,.jpeg,.png">
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-birth_certificate"></p>
                                 </div>
+                            </div>
 
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Previous School Transfer
-                                        Certificate</label>
-                                    <div
-                                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
-                                        <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
-                                        <p class="text-gray-600 text-sm">Click to upload transfer certificate (PDF, JPG,
-                                            PNG - MAX. 5MB)</p>
-                                        <input class="hidden" type="file" name="transfer_certificate"
-                                            accept=".pdf,.jpg,.jpeg,.png">
-                                    </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Previous School Transfer
+                                    Certificate</label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
+                                    data-upload>
+                                    <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-600 text-sm">Click to upload transfer certificate (PDF, JPG,
+                                        PNG - MAX. 5MB)</p>
+                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
+                                    <input class="hidden" type="file" name="transfer_certificate"
+                                        accept=".pdf,.jpg,.jpeg,.png">
                                 </div>
+                            </div>
 
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Previous Academic
-                                        Records/Report Card</label>
-                                    <div
-                                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
-                                        <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
-                                        <p class="text-gray-600 text-sm">Click to upload academic records (PDF, JPG, PNG -
-                                            MAX. 5MB)</p>
-                                        <input class="hidden" type="file" name="academic_records"
-                                            accept=".pdf,.jpg,.jpeg,.png">
-                                    </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Previous Academic
+                                    Records/Report Card</label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
+                                    data-upload>
+                                    <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-600 text-sm">Click to upload academic records (PDF, JPG, PNG -
+                                        MAX. 5MB)</p>
+                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
+                                    <input class="hidden" type="file" name="academic_records"
+                                        accept=".pdf,.jpg,.jpeg,.png">
                                 </div>
+                            </div>
 
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Passport Size Photos (2
-                                        copies) *</label>
-                                    <div
-                                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
-                                        <i class="fa-solid fa-images text-3xl text-gray-400 mb-2"></i>
-                                        <p class="text-gray-600 text-sm">Click to upload photos (JPG, PNG - MAX. 2MB each)
-                                        </p>
-                                        <input class="hidden" type="file" name="passport_photos[]" accept="image/*"
-                                            multiple>
-                                    </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Passport Size Photos (2
+                                    copies) <span class="text-red-500">*</span></label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
+                                    data-upload>
+                                    <i class="fa-solid fa-images text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-600 text-sm">Click to upload photos (JPG, PNG - MAX. 2MB each)
+                                    </p>
+                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
+                                    <input class="hidden" data-field="passport_photos" type="file"
+                                        name="passport_photos[]" accept="image/*" multiple>
+                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-passport_photos"></p>
                                 </div>
                             </div>
                         </div>
@@ -553,7 +598,7 @@
                             <div class="space-y-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">How did you hear about
-                                        our school? *</label>
+                                        our school? <span class="text-red-500">*</span></label>
                                     <select
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
                                         name="heard_about_school">
@@ -584,45 +629,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- <div class="mb-10" id="declaration">
-                            <div class="bg-gray-100 rounded-2xl p-6 md:p-8">
-                                <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-4">Declaration</h3>
-                                <p class="text-gray-700 mb-6 text-sm md:text-base leading-relaxed">
-                                    I hereby declare that all the information provided in this application form is true,
-                                    complete, and accurate to the best of my knowledge. I understand that any false or
-                                    misleading information may result in the rejection of this application or cancellation
-                                    of admission if already granted. I agree to abide by all the rules and regulations of
-                                    Excellence Academy.
-                                </p>
-
-                                <div class="space-y-4">
-                                    <label class="flex items-start cursor-pointer">
-                                        <input
-                                            class="w-5 h-5 text-primary border-2 border-gray-300 rounded focus:ring-primary mt-1 flex-shrink-0"
-                                            type="checkbox" required>
-                                        <span class="ml-3 text-gray-700 text-sm md:text-base">I agree to the terms and
-                                            conditions and privacy policy of Excellence Academy *</span>
-                                    </label>
-
-                                    <label class="flex items-start cursor-pointer">
-                                        <input
-                                            class="w-5 h-5 text-primary border-2 border-gray-300 rounded focus:ring-primary mt-1 flex-shrink-0"
-                                            type="checkbox" required>
-                                        <span class="ml-3 text-gray-700 text-sm md:text-base">I consent to the school
-                                            contacting me via email, phone, or SMS regarding this application *</span>
-                                    </label>
-
-                                    <label class="flex items-start cursor-pointer">
-                                        <input
-                                            class="w-5 h-5 text-primary border-2 border-gray-300 rounded focus:ring-primary mt-1 flex-shrink-0"
-                                            type="checkbox">
-                                        <span class="ml-3 text-gray-700 text-sm md:text-base">I would like to receive
-                                            updates about school events, news, and announcements</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div> --}}
 
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
@@ -711,7 +717,7 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="admission-faq">
+    {{-- <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="admission-faq">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-12">
@@ -795,36 +801,67 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 @section('scripts')
     <script>
-        /* ============================
-                       CLEAR ERROR WHILE TYPING
-                       ============================ */
+        /* ======================================================
+                                   CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
+                                   ====================================================== */
+        document.querySelectorAll('[data-upload]').forEach(box => {
+            const input = box.querySelector('input[type="file"]');
+            const fileNameBox = box.querySelector('[data-filename]');
+
+            if (!input) return;
+
+            // Click anywhere on box opens file picker
+            box.addEventListener('click', () => input.click());
+
+            // Show selected file name
+            input.addEventListener('change', () => {
+                if (input.files.length > 0 && fileNameBox) {
+                    fileNameBox.innerText = `Selected: ${input.files[0].name}`;
+                    fileNameBox.classList.remove('hidden');
+
+                    box.classList.remove('border-red-500');
+                    box.classList.add('border-green-500');
+                }
+            });
+        });
+
+        /* ======================================================
+           CLEAR ERROR WHILE TYPING / CHANGING
+           ====================================================== */
         document.querySelectorAll('[data-field]').forEach(field => {
 
             const clearError = () => {
                 const errorBox = document.getElementById(`error-${field.name}`);
-
                 if (errorBox) {
                     errorBox.classList.add('hidden');
                     errorBox.innerText = '';
                 }
 
+                // Normal inputs
                 field.classList.remove('border-red-500');
                 field.classList.add('border-gray-200');
+
+                // File upload box
+                if (field.type === 'file') {
+                    const uploadBox = field.closest('[data-upload]');
+                    uploadBox?.classList.remove('border-red-500');
+                }
             };
 
             field.addEventListener('input', clearError);
             field.addEventListener('change', clearError);
         });
 
-        /* ============================
+        /* ======================================================
            FORM SUBMIT HANDLER
-           ============================ */
+           ====================================================== */
         document.getElementById('admission-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('FORM SUBMIT TRIGGERED');
 
             const form = this;
             const formData = new FormData(form);
@@ -840,6 +877,10 @@
                 input.classList.add('border-gray-200');
             });
 
+            document.querySelectorAll('[data-upload]').forEach(box => {
+                box.classList.remove('border-red-500', 'border-green-500');
+            });
+
             fetch(form.action, {
                     method: 'POST',
                     headers: {
@@ -851,24 +892,37 @@
                 .then(async res => {
                     const data = await res.json();
 
-                    // Validation error (422)
+                    /* ---------- VALIDATION ERROR (422) ---------- */
                     if (res.status === 422) {
                         const firstField = Object.keys(data.errors)[0];
                         const firstMessage = data.errors[firstField][0];
 
-                        // Show inline error
+                        // Show error text
                         const errorBox = document.getElementById(`error-${firstField}`);
                         if (errorBox) {
                             errorBox.innerText = firstMessage;
                             errorBox.classList.remove('hidden');
                         }
 
-                        // Highlight field
                         const input = document.querySelector(`[data-field="${firstField}"]`);
+
                         if (input) {
-                            input.classList.remove('border-gray-200');
-                            input.classList.add('border-red-500');
-                            input.focus();
+                            // FILE INPUT
+                            if (input.type === 'file') {
+                                const uploadBox = input.closest('[data-upload]');
+                                if (uploadBox) {
+                                    uploadBox.classList.add('border-red-500');
+                                    uploadBox.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'center'
+                                    });
+                                }
+                            }
+                            // NORMAL INPUT
+                            else {
+                                input.classList.add('border-red-500');
+                                input.focus();
+                            }
                         }
 
                         toastr.error(firstMessage);
@@ -884,6 +938,12 @@
                 .then(data => {
                     toastr.success(data.message);
                     form.reset();
+
+                    // Hide file names after reset
+                    document.querySelectorAll('[data-filename]').forEach(el => {
+                        el.innerText = '';
+                        el.classList.add('hidden');
+                    });
                 })
                 .catch(() => {});
         });

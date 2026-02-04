@@ -71,28 +71,4 @@ class Student extends Model
         'consent_contact'   => 'boolean',
         'receive_updates'   => 'boolean',
     ];
-
-    /**
-     * Accessor: Full name
-     */
-    public function getFullNameAttribute(): string
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
-
-    /**
-     * Scope: Submitted admissions
-     */
-    public function scopeSubmitted($query)
-    {
-        return $query->where('status', 'submitted');
-    }
-
-    /**
-     * Scope: Draft admissions
-     */
-    public function scopeDraft($query)
-    {
-        return $query->where('status', 'draft');
-    }
 }

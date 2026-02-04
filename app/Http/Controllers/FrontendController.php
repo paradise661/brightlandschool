@@ -94,6 +94,10 @@ class FrontendController extends Controller
                 $data['birth_certificate'] = fileUpload($request, 'birth_certificate', 'birth_certificates');
             }
 
+            if ($request->hasFile('student_photo')) {
+                $data['student_photo'] = fileUpload($request, 'student_photo', 'student_photos');
+            }
+
             if ($request->hasFile('transfer_certificate')) {
                 $data['transfer_certificate'] = fileUpload($request, 'transfer_certificate', 'transfer_certificates');
             }
