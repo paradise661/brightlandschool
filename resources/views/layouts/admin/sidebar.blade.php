@@ -97,6 +97,47 @@
             </ul>
         </li>
 
+        <!-- General Settings  -->
+        <li class="menu-item @if (in_array(Request::segment(2), ['setting', 'slider', 'social', 'page', 'popup', 'partner'])) active open @endif">
+            <a class="menu-link menu-toggle text-decoration-none" href="javascript:void(0)">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="General Setting">Global Settings</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::segment(2) == 'setting' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('admin.setting.index') }}">
+                        <div data-i18n="Accordion">Setting</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::segment(2) == 'slider' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="#">
+                        <div data-i18n="General Setting">Sliders</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::segment(2) == 'social' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="#">
+                        <div data-i18n="General Setting">Social</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::segment(2) == 'page' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="#">
+                        <div data-i18n="General Setting">Pages</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::segment(2) == 'popup' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="#">
+                        <div data-i18n="General Setting">PopUps</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::segment(2) == 'partner' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="#">
+                        <div data-i18n="General Setting">Partners</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
     </ul>
 </aside>
 

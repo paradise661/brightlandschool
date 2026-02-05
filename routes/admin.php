@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ContactsController;
 use App\Http\Controllers\Admin\DownloadCategoryController;
 use App\Http\Controllers\Admin\DownloadsController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SettingController;
 
 Auth::routes(['register' => false]);
 
@@ -22,6 +23,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::get('change-password', [AuthController::class, 'index'])->name('profile');
     Route::post('change-password', [AuthController::class, 'store'])->name('change.password');
+
+    //setting
+    Route::get('setting', [SettingController::class, 'edit'])->name('admin.setting.index');
+    Route::post('setting', [SettingController::class, 'update'])->name('admin.setting.update');
 
     Route::resource('contacts', ContactsController::class);
 
