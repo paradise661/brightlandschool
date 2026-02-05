@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\StudentsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AuthController;
@@ -29,4 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::resource('downloads', DownloadsController::class);
     Route::resource('downloads-category', DownloadCategoryController::class);
+
+    Route::resource('student', StudentsController::class);
+    Route::get('student/{student}/download', [StudentsController::class, 'download'])->name('student.download');
 });

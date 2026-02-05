@@ -108,11 +108,8 @@ class FrontendController extends Controller
 
             // Multiple files upload
             if ($request->hasFile('passport_photos')) {
-                $data['passport_photos'] = json_encode(
-                    multiFileUpload($request, 'passport_photos', 'passport_photos')
-                );
+                $data['passport_photos'] = multiFileUpload($request, 'passport_photos', 'passport_photos');
             }
-
             // JSON field
             $data['source'] = json_encode($data['source'] ?? []);
 
@@ -123,8 +120,6 @@ class FrontendController extends Controller
                 'message' => 'Student saved successfully!'
             ]);
         } catch (\Exception $e) {
-            // optional: log error for debugging
-            // \Log::error($e);
 
             return response()->json([
                 'success' => false,

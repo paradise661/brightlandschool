@@ -66,9 +66,5 @@ class Student extends Model
     protected $casts = [
         'date_of_birth'     => 'date',
         'passport_photos'   => 'array',
-        'same_as_permanent' => 'boolean',
-        'agree_terms'       => 'boolean',
-        'consent_contact'   => 'boolean',
-        'receive_updates'   => 'boolean',
     ];
 }

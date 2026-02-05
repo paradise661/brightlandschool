@@ -24,6 +24,7 @@
         <div class="col-md-8">
             <div class="card">
                 <h5 class="card-header">General Information</h5>
+
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
                         <table class="table table-bordered table-striped">
@@ -33,108 +34,275 @@
                                     <th>Information</th>
                                 </tr>
                             </thead>
+
                             <tbody class="table-border-bottom-0">
 
-                                <!-- Basic Info -->
                                 <tr>
                                     <td>Full Name</td>
-                                    <td>{{ ${$name}->full_name ?? '-' }}</td>
-                                </tr>
-
-                                {{-- <tr>
-                                    <td>Branch</td>
-                                    <td>{{ ${$name}->branch ?? '-' }}</td>
-                                </tr> --}}
-
-                                <!-- Additional Info -->
-                                <tr>
-                                    <td>Marital Status</td>
-                                    <td>{{ ${$name}->marital_status ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Address</td>
-                                    <td>{{ ${$name}->address ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Mobile</td>
                                     <td>
-                                        @if (${$name}->mobile)
-                                            <a href="tel:{{ ${$name}->mobile }}">{{ ${$name}->mobile }}</a>
-                                        @else
-                                            -
-                                        @endif
+                                        {{ $student->first_name ?? '-' }}
+                                        {{ $student->last_name ?? '-' }}
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Email</td>
+                                    <td>Date of Birth</td>
+                                    <td>{{ $student->date_of_birth?->format('d M Y') ?? '-' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Gender</td>
+                                    <td class="text-capitalize">{{ $student->gender ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nationality</td>
+                                    <td>{{ $student->nationality ?? '-' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Religion</td>
+                                    <td>{{ $student->religion ?? '-' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Mother Tongue</td>
+                                    <td>{{ $student->mother_tongue ?? '-' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Current Address</td>
                                     <td>
-                                        @if (${$name}->email)
-                                            <a href="mailto:{{ ${$name}->email }}">{{ ${$name}->email }}</a>
-                                        @else
-                                            -
-                                        @endif
+                                        {{ $student->current_address ?? '-' }},
+                                        {{ $student->city ?? '-' }},
+                                        {{ $student->state ?? '-' }},
+                                        {{ $student->country ?? '-' }}
                                     </td>
                                 </tr>
-
                                 <tr>
-                                    <td>Phone 2</td>
-                                    <td>
-                                        @if (${$name}->phone2)
-                                            <a href="tel:{{ ${$name}->phone2 }}">{{ ${$name}->phone2 }}</a>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                </tr>
-
-                                <!-- Academic Qualification -->
-                                <tr>
-                                    <td>Qualification</td>
-                                    <td>{{ ${$name}->qualification ?? '-' }}</td>
-                                </tr>
-
-                                <!-- Other Details -->
-                                <tr>
-                                    <td>Preferred Country</td>
-                                    <td>{{ ${$name}->preferred_country ?? '-' }}</td>
+                                    <td>Applying Grade</td>
+                                    <td>{{ $student->applying_grade ?? '-' }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Language Test</td>
-                                    <td>{{ ${$name}->language_test ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Previous Educational Institution</td>
-                                    <td>{{ ${$name}->previous_institution_name ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Source</td>
-                                    <td>
-                                        @if (!empty(${$name}->source) && is_array(${$name}->source))
-                                            <ul class="mb-0">
-                                                @foreach (${$name}->source as $src)
-                                                    <li class="text-capitalize">{{ str_replace('_', ' ', $src) }}</li>
-                                                @endforeach
-                                            </ul>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Message</td>
-                                    <td>{{ ${$name}->message ?? '-' }}</td>
+                                    <td>Academic Year</td>
+                                    <td>{{ $student->academic_year ?? '-' }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <h5 class="card-header">Address Information</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>Current Address</td>
+                                    <td>
+                                        {{ $student->current_address ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>City</td>
+                                    <td>
+                                        {{ $student->city ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>State</td>
+                                    <td>
+                                        {{ $student->state ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Postal Code</td>
+                                    <td>
+                                        {{ $student->postal_code ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Country</td>
+                                    <td>
+                                        {{ $student->country ?? '-' }}
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h5 class="card-header">Father Information</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>Full Name</td>
+                                    <td>
+                                        {{ $student->father_name ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Occupation</td>
+                                    <td>
+                                        {{ $student->father_occupation ?? '-' }}
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mobile</td>
+                                    <td>
+                                        @if ($student->father_phone)
+                                            <a
+                                                href="tel:{{ $student->father_phone }}">{{ $student->father_phone ?? '-' }}</a>
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>
+                                        @if ($student->father_email)
+                                            <a
+                                                href="mailto:{{ $student->father_email }}">{{ $student->father_email ?? '-' }}</a>
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h5 class="card-header">Mother Information</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>Full Name</td>
+                                    <td>
+                                        {{ $student->mother_name ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Occupation</td>
+                                    <td>
+                                        {{ $student->mother_occupation ?? '-' }}
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mobile</td>
+                                    <td>
+                                        @if ($student->mother_phone)
+                                            <a
+                                                href="tel:{{ $student->mother_phone }}">{{ $student->mother_phone ?? '-' }}</a>
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>
+                                        @if ($student->mother_email)
+                                            <a
+                                                href="mailto:{{ $student->mother_email }}">{{ $student->mother_email ?? '-' }}</a>
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h5 class="card-header">Additional Information</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>How Did You Hear About School</td>
+                                    <td>
+                                        {{ $student->heard_about_school ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Why Join This School</td>
+                                    <td>
+                                        {{ $student->why_join_school ?? '-' }}
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Hobbies and Interests</td>
+                                    <td>
+                                        {{ $student->student_hobbies ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
 
         <div class="col-md-4">
@@ -203,6 +371,126 @@
                     </form>
                 </div>
             </div>
+            <div class="card mt-4">
+                <h5 class="card-header">Students Documents</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                <tr>
+                                    <td>Student Photo</td>
+                                    <td>
+                                        @if ($student->student_photo)
+                                            <a class="fancybox btn btn-sm btn-primary" data-fancybox
+                                                data-type="{{ Str::endsWith($student->student_photo, '.pdf') ? 'iframe' : 'image' }}"
+                                                href="{{ asset('storage/' . $student->student_photo) }}">
+                                                View
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Not uploaded</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Birth Certificate</td>
+                                    <td>
+                                        @if ($student->birth_certificate)
+                                            <a class="fancybox btn btn-sm btn-primary" data-fancybox
+                                                data-type="{{ Str::endsWith($student->birth_certificate, '.pdf') ? 'iframe' : 'image' }}"
+                                                href="{{ asset('storage/' . $student->birth_certificate) }}">
+                                                View
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Not uploaded</span>
+                                        @endif
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Transfer Certificate</td>
+                                    <td>
+                                        @if ($student->transfer_certificate)
+                                            <a class="fancybox btn btn-sm btn-primary" data-fancybox
+                                                data-type="{{ Str::endsWith($student->transfer_certificate, '.pdf') ? 'iframe' : 'image' }}"
+                                                href="{{ asset('storage/' . $student->transfer_certificate) }}">
+                                                View
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Not uploaded</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Passport Size Photos</td>
+                                    <td>
+                                        @if (!empty($student->passport_photos) && is_array($student->passport_photos))
+                                            @foreach ($student->passport_photos as $index => $photo)
+                                                <a class="fancybox btn btn-sm btn-primary mb-1"
+                                                    data-fancybox="passport-photos" data-type="image"
+                                                    href="{{ asset('storage/' . $photo) }}">
+                                                    View {{ $index + 1 }}
+                                                </a>
+                                            @endforeach
+                                        @else
+                                            <span class="text-muted">Not uploaded</span>
+                                        @endif
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <h5 class="card-header">Medical Information</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>Medical Conditions</td>
+                                    <td>{{ $student->medical_conditions ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Blood Group</td>
+                                    <td>{{ $student->blood_group ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Emergency Contact Name</td>
+                                    <td>{{ $student->emergency_contact_name ?? '-' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Emergency Contact Number</td>
+                                    <td>
+                                        @if ($student->emergency_contact_number)
+                                            <a
+                                                href="tel:{{ $student->emergency_contact_number }}">{{ $student->emergency_contact_number }}</a>
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
             <div class="card mt-4">
                 <h5 class="card-header">Guardian Information</h5>
@@ -219,19 +507,20 @@
                                 <!-- Guardian Info -->
                                 <tr>
                                     <td>Name</td>
-                                    <td>{{ ${$name}->parents_name ?? '-' }}</td>
+                                    <td>{{ $student->guardian_name ?? '-' }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Address</td>
-                                    <td>{{ ${$name}->g_address ?? '-' }}</td>
+                                    <td>Relationship</td>
+                                    <td>{{ $student->guardian_relationship ?? '-' }}</td>
                                 </tr>
 
                                 <tr>
                                     <td>Mobile</td>
                                     <td>
-                                        @if (${$name}->g_mobile)
-                                            <a href="tel:{{ ${$name}->g_mobile }}">{{ ${$name}->g_mobile }}</a>
+                                        @if ($student->guardian_phone)
+                                            <a
+                                                href="tel:{{ $student->guardian_phone }}">{{ $student->guardian_phone }}</a>
                                         @else
                                             -
                                         @endif
@@ -241,8 +530,9 @@
                                 <tr>
                                     <td>Email</td>
                                     <td>
-                                        @if (${$name}->g_email)
-                                            <a href="mailto:{{ ${$name}->g_email }}">{{ ${$name}->g_email }}</a>
+                                        @if ($student->guardian_email)
+                                            <a
+                                                href="mailto:{{ $student->guardian_email }}">{{ $student->guardian_email }}</a>
                                         @else
                                             -
                                         @endif
@@ -255,66 +545,5 @@
             </div>
         </div>
 
-        <div class="card mt-4">
-            <h5 class="card-header">Academic Qualification</h5>
-            <div class="card-body">
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Degree</th>
-                                <th>School / Collage Name</th>
-                                <th>GPA Obtained</th>
-                                <th>Passed Year</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0">
-                            <!-- Academic Qualification -->
-                            {{-- <tr>
-                                    <td>Qualification</td>
-                                    <td>{{ ${$name}->qualification ?? '-' }}</td>
-                                </tr> --}}
-
-                            @if (!empty(${$name}->see_school_name) || !empty(${$name}->see_gpa) || !empty(${$name}->see_passed_year))
-                                <tr>
-                                    <td>SEE</td>
-                                    <td>{{ ${$name}->see_school_name ?? '-' }}</td>
-                                    <td>{{ ${$name}->see_gpa ?? '-' }}</td>
-                                    <td>{{ ${$name}->see_passed_year ?? '-' }}</td>
-                                </tr>
-                            @endif
-
-                            @if (!empty(${$name}->plus_two_college_name) || !empty(${$name}->plus_two_gpa) || !empty(${$name}->plus_two_passed_year))
-                                <tr>
-                                    <td>+2</td>
-                                    <td>{{ ${$name}->plus_two_college_name ?? '-' }}</td>
-                                    <td>{{ ${$name}->plus_two_gpa ?? '-' }}</td>
-                                    <td>{{ ${$name}->plus_two_passed_year ?? '-' }}</td>
-                                </tr>
-                            @endif
-
-                            @if (!empty(${$name}->bachelor_college_name) || !empty(${$name}->bachelor_gpa) || !empty(${$name}->bachelor_passed_year))
-                                <tr>
-                                    <td>Bachelor's Degree</td>
-                                    <td>{{ ${$name}->bachelor_college_name ?? '-' }}</td>
-                                    <td>{{ ${$name}->bachelor_gpa ?? '-' }}</td>
-                                    <td>{{ ${$name}->bachelor_passed_year ?? '-' }}</td>
-                                </tr>
-                            @endif
-
-                            @if (!empty(${$name}->master_college_name) || !empty(${$name}->master_gpa) || !empty(${$name}->master_passed_year))
-                                <tr>
-                                    <td>Master's Degree</td>
-                                    <td>{{ ${$name}->master_college_name ?? '-' }}</td>
-                                    <td>{{ ${$name}->master_gpa ?? '-' }}</td>
-                                    <td>{{ ${$name}->master_passed_year ?? '-' }}</td>
-                                </tr>
-                            @endif
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection

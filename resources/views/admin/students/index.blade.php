@@ -26,9 +26,9 @@
                         @foreach ($student as $key => $blog)
                             <tr>
                                 <td><strong>{{ $key + $student->firstItem() }}</strong></td>
-                                <td><strong>{{ $blog->full_name }}</strong></td>
-                                <td><strong>{{ $blog->email }}</strong></td>
-                                <td><strong>{{ $blog->mobile }}</strong></td>
+                                <td><strong>{{ $blog->first_name }} {{ $blog->last_name }}</strong></td>
+                                <td><strong>{{ $blog->father_email }}</strong></td>
+                                <td><strong>{{ $blog->father_phone }}</strong></td>
                                 <td><span
                                         class="badge rounded-pill bg-label-{{ $blog->status == 1 ? 'success' : 'danger' }}">{{ $blog->status == 1 ? 'Publish' : 'Draft' }}</span>
                                 </td>

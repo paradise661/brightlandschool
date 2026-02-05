@@ -31,7 +31,7 @@
             </a>
         </li>
         <li class="menu-item {{ Request::segment(2) == 'student' ? 'active' : '' }}">
-            <a class="menu-link text-decoration-none" href="#">
+            <a class="menu-link text-decoration-none" href="{{ route('student.index') }}">
                 <i class="menu-icon tf-icons bx bxs-id-card"></i>
                 <div data-i18n="Accordion">Students</div>
             </a>
