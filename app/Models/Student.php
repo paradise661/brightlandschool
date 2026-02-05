@@ -58,6 +58,9 @@ class Student extends Model
         'consent_contact',
         'receive_updates',
         'status',
+        'source',
+        'priority',
+        'note',
     ];
 
     /**

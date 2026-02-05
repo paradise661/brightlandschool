@@ -351,14 +351,6 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="mb-4">
-                            <label for="consultant" class="form-label">Consultant</label>
-                            <textarea class="form-control" id="consultant" name="consultant" placeholder="Consultant" rows="4">{{ old('consultant', ${$name}->consultant) }}</textarea>
-                            @error('consultant')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div> --}}
-
                         <button class="btn btn-sm btn-primary mt-4" type="submit">
                             <i class='bx bx-refresh'></i>
                             Update

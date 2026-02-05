@@ -91,6 +91,10 @@ return new class extends Migration
             $table->text('why_join_school')->nullable();
             $table->text('student_hobbies')->nullable();
 
+            $table->string('priority')->nullable();
+            $table->string('note')->nullable();
+            $table->text('status')->nullable();
+
             $table->timestamps();
         });
     }

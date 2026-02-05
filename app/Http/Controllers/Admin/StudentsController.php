@@ -9,6 +9,7 @@ use App\Http\Requests\StoreStudentsRequest;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class StudentsController extends Controller
 {
@@ -30,10 +31,6 @@ class StudentsController extends Controller
     public function store(StoreStudentsRequest $request)
     {
         $input = $request->validated();
-
-        if (isset($input['dob'])) {
-            $input['dob'] = Carbon::createFromFormat('d-m-Y', $input['dob'])->format('Y-m-d');
-        }
 
         if (isset($input['source']) && is_array($input['source'])) {
             $input['source'] = json_encode($input['source']);
@@ -68,7 +65,7 @@ class StudentsController extends Controller
         $input = $request->all();
         $student->update($input);
 
-        return redirect()->back()->with("success", "Student student Updated successfully.");
+        return redirect()->route('student.index')->with("success", "Student student Updated successfully.");
     }
 
     public function destroy(Student $student)
@@ -78,14 +75,6 @@ class StudentsController extends Controller
         return redirect()->route('student.index')->with('success', 'Student student Delete Successfully');
     }
 
-    public function update_admin(Request $request, Student $student)
-    {
-
-        $input = $request->all();
-        $student->update($input);
-
-        return redirect()->back()->with("success", value: "Student student Updated successfully.");
-    }
     public function download(Student $student)
     {
         if ($student->source) {
@@ -95,6 +84,9 @@ class StudentsController extends Controller
         }
 
         $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
-        return $pdf->download('student-' . $student->id . '.pdf');
+        $studentName = trim($student->first_name . ' ' . $student->last_name);
+        $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
+
+        return $pdf->download($fileName);
     }
 }
