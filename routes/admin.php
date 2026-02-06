@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\NoticeCategoryController;
 use App\Http\Controllers\Admin\StudentsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\UserRegisterController;
 use App\Http\Controllers\Admin\ContactsController;
 use App\Http\Controllers\Admin\DownloadCategoryController;
 use App\Http\Controllers\Admin\DownloadsController;
+use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SettingController;
 
@@ -38,4 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::resource('student', StudentsController::class);
     Route::get('student/{student}/download', [StudentsController::class, 'download'])->name('student.download');
+
+    Route::resource('notices', NoticeController::class);
+    Route::resource('notices-category', NoticeCategoryController::class);
 });
