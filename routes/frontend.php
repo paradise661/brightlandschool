@@ -13,6 +13,7 @@ Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [FrontendController::class, 'showBlog'])->name('frontend.blog.show');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::post('/contact', [FrontendController::class, 'contactStore'])->name('frontend.contacts.store');
 Route::get('/admission', [FrontendController::class, 'admission'])->name('frontend.admission');
 Route::post('/admission', [FrontendController::class, 'studentStore'])->name('frontend.admission.store');
 Route::get('/downloads', [FrontendController::class, 'downloads'])->name('downloads');

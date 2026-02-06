@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactsRequest;
 use App\Http\Requests\StoreStudentsRequest;
+use App\Models\Contacts;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Download;
@@ -77,6 +79,15 @@ class FrontendController extends Controller
     public function contact()
     {
         return view('frontend.contact.index');
+    }
+    public function contactStore(StoreContactsRequest $request)
+    {
+        Contacts::create($request->validated());
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Your message has been sent successfully!',
+        ]);
     }
 
     public function admission()

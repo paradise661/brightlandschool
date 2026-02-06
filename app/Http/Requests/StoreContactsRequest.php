@@ -16,19 +16,20 @@ class StoreContactsRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'number' => 'required|digits_between:7,15',
-            'course' => 'nullable|string|max:255',
-            'message' => 'nullable|string|max:1000'
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'number'  => 'required',
+            'course'  => 'nullable|string|max:255',
+            'subject' => 'required|string',
+            'message' => 'required|string|max:1000'
         ];
+    }
+
+    public function wantsJson()
+    {
+        return true;
     }
 }
