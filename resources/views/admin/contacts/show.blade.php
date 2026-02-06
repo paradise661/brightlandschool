@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Inquiry')
+@section('title', 'Contacts')
 
 @section('content')
     @include('admin.includes.message')
@@ -7,7 +7,7 @@
     <div class="content">
         <div class="card container-fluid mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Inquiry</h5>
+                <h5 class="mb-0">Contacts</h5>
                 <small class="text-muted float-end">
                     <a class="btn btn-sm btn-primary" href="{{ route('contacts.index') }}"><i
                             class="fa-solid fa-arrow-left"></i>

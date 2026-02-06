@@ -18,3 +18,5 @@ Route::get('/admission', [FrontendController::class, 'admission'])->name('fronte
 Route::post('/admission', [FrontendController::class, 'studentStore'])->name('frontend.admission.store');
 Route::get('/downloads', [FrontendController::class, 'downloads'])->name('downloads');
 Route::get('/downloads/{slug}/file', [FrontendController::class, 'downloadFile'])->name('downloads.file');
+Route::get('/notice', [FrontendController::class, 'notice'])->name('notice');
+ 

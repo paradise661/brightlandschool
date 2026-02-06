@@ -175,4 +175,9 @@ class FrontendController extends Controller
             $download->name . '.pdf'
         );
     }
+
+    public function notice()
+    {
+        return view('frontend.notice.index');
+    }
 }

@@ -96,7 +96,7 @@
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
                     <div class="absolute left-0 mt-3 w-56 bg-white shadow-lg rounded-lg py-2 hidden group-hover:block">
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="#">Notices</a>
+                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('notice') }}">Notices</a>
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('blog') }}">Blogs</a>
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('downloads') }}">Downloads</a>
                     </div>
