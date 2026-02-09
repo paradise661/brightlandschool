@@ -11,6 +11,7 @@ use App\Models\Download;
 use App\Models\DownloadCategory;
 use App\Models\Notice;
 use App\Models\NoticeCategory;
+use App\Models\Slider;
 use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
@@ -20,7 +21,8 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        return view('frontend.home.index');
+        $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
+        return view('frontend.home.index', compact('sliders'));
     }
 
     public function about()
@@ -188,7 +190,7 @@ class FrontendController extends Controller
         $category = NoticeCategory::where('status', 1)
             ->withCount([
                 'notices' => function ($q) {
-                    $q->where('status', 1); 
+                    $q->where('status', 1);
                 }
             ])
             ->orderBy('order', 'asc')

@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\DownloadsController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SliderController;
 
 Auth::routes(['register' => false]);
 
@@ -43,4 +44,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::resource('notices', NoticeController::class);
     Route::resource('notices-category', NoticeCategoryController::class);
+
+    Route::resource('slider', SliderController::class);
 });

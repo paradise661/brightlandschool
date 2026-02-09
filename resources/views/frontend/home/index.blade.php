@@ -1,34 +1,56 @@
 @extends('layouts.frontend.master')
 @section('content')
     <section class="relative h-[700px] overflow-hidden" id="hero-slider">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7f8819edd0-96e4a22c0038392548a9.png"
-            alt="modern school building with students walking in courtyard, bright sunny day, professional photography" />
-        <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
-            <div class="max-w-3xl text-white">
-                <h1 class="text-6xl font-heading font-bold mb-6 leading-tight">Shaping Future Leaders Through Excellence in
-                    Education</h1>
-                <p class="text-xl mb-8 text-gray-200">Discover a world-class learning environment where innovation meets
-                    tradition, and every student's potential is realized.</p>
-                <div class="flex space-x-4">
-                    <a class="bg-secondary text-white px-8 py-4 rounded-full hover:bg-red-700 transition font-semibold text-lg inline-flex items-center"
-                        href="#">
-                        Apply Now <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
-                    <a class="bg-white text-primary px-8 py-4 rounded-full hover:bg-gray-100 transition font-semibold text-lg inline-flex items-center"
-                        href="#">
-                        Take a Tour <i class="fa-solid fa-play ml-2"></i>
-                    </a>
+
+        @foreach ($sliders as $index => $slider)
+            <div
+                class="hero-slide absolute inset-0 transition-opacity duration-1000
+            {{ $index === 0 ? 'opacity-100 z-20' : 'opacity-0 z-10' }}">
+
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
+
+                <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('storage/' . $slider->image) }}"
+                    alt="{{ $slider->name ?? '' }}" />
+
+                <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
+                    <div class="max-w-3xl text-white">
+                        <h1 class="text-6xl font-heading font-bold mb-6 leading-tight">
+                            {{ $slider->name ?? '' }}
+                        </h1>
+
+                        <p class="text-xl mb-8 text-gray-200">
+                            {{ strip_tags($slider->description ?? '') }}
+                        </p>
+
+                        <div class="flex space-x-4">
+                            <a class="bg-primary text-white px-8 py-4 rounded-full hover:bg-red-700 transition font-semibold text-lg inline-flex items-center"
+                                href="#">
+                                Apply Now
+                                <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                            {{--
+                            <a class="bg-white text-primary px-8 py-4 rounded-full hover:bg-gray-100 transition font-semibold text-lg inline-flex items-center"
+                                href="#">
+                                Take a Tour
+                                <i class="fa-solid fa-play ml-2"></i>
+                            </a> --}}
+                        </div>
+
+                    </div>
                 </div>
             </div>
+        @endforeach
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+            @foreach ($sliders as $index => $slider)
+                <button class="slider-dot w-3 h-3 rounded-full {{ $index === 0 ? 'bg-white' : 'bg-white/50' }}"
+                    data-index="{{ $index }}">
+                </button>
+            @endforeach
         </div>
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
-            <button class="w-3 h-3 rounded-full bg-white"></button>
-            <button class="w-3 h-3 rounded-full bg-white/50"></button>
-            <button class="w-3 h-3 rounded-full bg-white/50"></button>
-        </div>
+
     </section>
+
     <section class="py-20 bg-white" id="welcome-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -391,63 +413,7 @@
                             class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl shadow-xl p-8">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <div class="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center">
-                            <i class="fa-solid fa-file-alt text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Curriculum & Syllabus</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Our curriculum follows national and international
-                        standards, incorporating the best practices from various educational boards. We focus on conceptual
-                        understanding rather than rote learning.</p>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-gray-50 rounded-lg p-4">
-                            <i class="fa-solid fa-check-double text-blue-600 mb-2 text-xl"></i>
-                            <div class="font-semibold text-gray-800">CBSE Affiliated</div>
-                            <div class="text-sm text-gray-600 mt-1">National curriculum</div>
-                        </div>
-                        <div class="bg-gray-50 rounded-lg p-4">
-                            <i class="fa-solid fa-globe text-blue-600 mb-2 text-xl"></i>
-                            <div class="font-semibold text-gray-800">International Board</div>
-                            <div class="text-sm text-gray-600 mt-1">Global standards</div>
-                        </div>
-                    </div>
-                    <button
-                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition w-full">Download
-                        Curriculum</button>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <div class="bg-green-100 w-14 h-14 rounded-lg flex items-center justify-center">
-                            <i class="fa-solid fa-calendar-alt text-green-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Academic Calendar</h3>
-                    </div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Stay updated with important dates, holidays, examination
-                        schedules, and school events throughout the academic year.</p>
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                            <div class="flex items-center space-x-3">
-                                <i class="fa-solid fa-calendar-check text-green-600"></i>
-                                <span class="font-semibold text-gray-800">Session Starts</span>
-                            </div>
-                            <span class="text-gray-600">April 1, 2024</span>
-                        </div>
-                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                            <div class="flex items-center space-x-3">
-                                <i class="fa-solid fa-file-invoice text-green-600"></i>
-                                <span class="font-semibold text-gray-800">Mid-Term Exams</span>
-                            </div>
-                            <span class="text-gray-600">Sep 15-25, 2024</span>
-                        </div>
-                    </div>
-                    <button
-                        class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition w-full">View
-                        Full Calendar</button>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -744,48 +710,6 @@
                             with 20+ participating schools.</p>
                         <a class="text-blue-600 font-semibold hover:text-blue-700 transition" href="#">Read More <i
                                 class="fa-solid fa-arrow-right ml-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h3 class="text-3xl font-bold text-white mb-4">Upcoming Events Calendar</h3>
-                        <p class="text-blue-100 mb-6 text-lg">Stay updated with all our upcoming events, workshops, and
-                            important dates throughout the academic year.</p>
-                        <button
-                            class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition shadow-lg">View
-                            Full Calendar</button>
-                    </div>
-                    <div class="space-y-4">
-                        <div
-                            class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-white w-14 h-14 rounded-lg flex flex-col items-center justify-center">
-                                    <div class="text-2xl font-bold text-blue-600">20</div>
-                                    <div class="text-xs text-gray-600">MAR</div>
-                                </div>
-                                <div>
-                                    <div class="text-white font-bold">Parent-Teacher Meeting</div>
-                                    <div class="text-blue-200 text-sm">9:00 AM - 2:00 PM</div>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-white"></i>
-                        </div>
-                        <div
-                            class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-white w-14 h-14 rounded-lg flex flex-col items-center justify-center">
-                                    <div class="text-2xl font-bold text-blue-600">25</div>
-                                    <div class="text-xs text-gray-600">MAR</div>
-                                </div>
-                                <div>
-                                    <div class="text-white font-bold">Workshop on AI & Robotics</div>
-                                    <div class="text-blue-200 text-sm">10:00 AM - 4:00 PM</div>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-white"></i>
-                        </div>
                     </div>
                 </div>
             </div>

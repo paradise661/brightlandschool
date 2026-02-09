@@ -132,7 +132,7 @@
                     </a>
                 </li>
                 <li class="menu-item {{ Request::segment(2) == 'slider' ? 'active' : '' }}">
-                    <a class="menu-link text-decoration-none" href="#">
+                    <a class="menu-link text-decoration-none" href="{{ route('slider.index') }}">
                         <div data-i18n="General Setting">Sliders</div>
                     </a>
                 </li>
