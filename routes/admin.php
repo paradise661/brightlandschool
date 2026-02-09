@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\NoticeCategoryController;
 use App\Http\Controllers\Admin\StudentsController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\UserRegisterController;
 use App\Http\Controllers\Admin\ContactsController;
 use App\Http\Controllers\Admin\DownloadCategoryController;
 use App\Http\Controllers\Admin\DownloadsController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SettingController;
@@ -46,4 +48,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('notices-category', NoticeCategoryController::class);
 
     Route::resource('slider', SliderController::class);
+
+    Route::resource('album', AlbumController::class);
+    Route::prefix('album/{album}/gallery')->name('album.gallery.')->group(function () {
+        Route::get('/', [GalleryController::class, 'index'])->name('index');
+        Route::get('/create', [GalleryController::class, 'create'])->name('create');
+        Route::post('/', [GalleryController::class, 'store'])->name('store');
+        Route::delete('/{gallery}/delete-file', [GalleryController::class, 'documentDelete'])->name('delete-file');
+    });
 });

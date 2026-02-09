@@ -115,8 +115,13 @@
                         <div>Create Blog</div>
                     </a>
                 </li>
-
             </ul>
+
+        <li class="menu-item {{ Request::segment(2) == 'album' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('album.index') }}">
+                <i class="menu-icon tf-icons bx bx-images"></i>
+                <div data-i18n="Basic">Albums</div>
+            </a>
         </li>
 
         <!-- General Settings  -->
