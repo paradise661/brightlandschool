@@ -3,13 +3,11 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
             <div>
                 <div class="flex items-center space-x-3 mb-4 md:mb-6">
-                    <div
-                        class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center">
-                        <i class="fa-solid fa-graduation-cap text-white text-lg md:text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-lg md:text-xl font-heading font-bold">Excellence Academy</h3>
-                    </div>
+                    <!-- LOGO -->
+                    <a class="flex items-center" href="{{ url('/') }}">
+                        <img class="h-12 md:h-14 w-auto object-contain" src="{{ asset('frontend/images/logo.jpg') }}"
+                            alt="Logo">
+                    </a>
                 </div>
                 <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">Nurturing tomorrow's leaders through
                     excellence in education since 1990.</p>
@@ -64,23 +62,23 @@
                 <ul class="space-y-3 text-sm md:text-base">
                     <li class="flex items-start">
                         <i class="fa-solid fa-location-dot text-primary mt-1 mr-3"></i>
-                        <span class="text-gray-400">123 Education Street, Learning City, ED 12345</span>
+                        <span class="text-gray-400">Nepalganj, Nepal</span>
                     </li>
                     <li class="flex items-center">
                         <i class="fa-solid fa-phone text-primary mr-3"></i>
-                        <a class="text-gray-400 hover:text-white transition" href="tel:+1234567890">+1 (234) 567-890</a>
+                        <a class="text-gray-400 hover:text-white transition" href="tel:+021-1234567">021-1234567</a>
                     </li>
                     <li class="flex items-center">
                         <i class="fa-solid fa-envelope text-primary mr-3"></i>
                         <a class="text-gray-400 hover:text-white transition"
-                            href="mailto:info@school.edu">info@school.edu</a>
+                            href="mailto:info@brightland.edu.np">info@brightland.edu.np</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="border-t border-gray-800 pt-6 md:pt-8">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p class="text-gray-400 text-xs md:text-sm text-center md:text-left">&copy; 2024 Excellence Academy. All
+                <p class="text-gray-400 text-xs md:text-sm text-center md:text-left">&copy; 2026 Brightland School. All
                     rights reserved.</p>
                 <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-center">
                     <a class="text-gray-400 hover:text-white text-xs md:text-sm transition" href="#">Privacy

@@ -968,7 +968,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-gray-50" id="contact-section">
+    {{-- <section class="py-20 bg-gray-50" id="contact-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
@@ -1010,5 +1010,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
