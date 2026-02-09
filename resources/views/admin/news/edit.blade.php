@@ -119,9 +119,24 @@
                                 <label for="image">Featured Image</label>
                                 <div class="custom-file">
                                     <input class="dropify @error('image') is-invalid @enderror" id="image"
-                                        data-show-remove="false" data-default-file="{{ asset('storage/' . $blog->image) }}"
-                                        type="file" name="image">
+                                        data-show-remove="false" data-default-file="{{ $blog->image }}" type="file"
+                                        name="image">
                                     @error('image')
+                                        <div class="invalid-feedback" role="alert" style="display: block;">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Banner Image Upload -->
+                            <div class="form-group mb-3 mt-2">
+                                <label for="banner_image">Banner Image</label>
+                                <div class="custom-file">
+                                    <input class="dropify @error('banner_image') is-invalid @enderror" id="banner_image"
+                                        data-show-remove="false" data-default-file="{{ $blog->banner_image }}"
+                                        type="file" name="banner_image">
+                                    @error('banner_image')
                                         <div class="invalid-feedback" role="alert" style="display: block;">
                                             {{ $message }}
                                         </div>

@@ -9,7 +9,7 @@
 
                 <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
 
-                <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('storage/' . $slider->image) }}"
+                <img class="absolute inset-0 w-full h-full object-cover" src="{{ $slider->image }}"
                     alt="{{ $slider->name ?? '' }}" />
 
                 <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
@@ -24,7 +24,7 @@
 
                         <div class="flex space-x-4">
                             <a class="bg-primary text-white px-8 py-4 rounded-full hover:bg-red-700 transition font-semibold text-lg inline-flex items-center"
-                                href="#">
+                                href="{{ route('frontend.admission') }}">
                                 Apply Now
                                 <i class="fa-solid fa-arrow-right ml-2"></i>
                             </a>

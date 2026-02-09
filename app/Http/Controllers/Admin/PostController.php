@@ -37,6 +37,7 @@ class PostController extends Controller
     {
         $input = $request->all();
         $input['image'] = fileUpload($request, 'image', 'blog');
+        $input['banner_image'] = fileUpload($request, 'banner_image', 'banner_blog');
         $input['slug'] = Str::slug($request->name);
         Post::create($input);
         return redirect()->route('blog.index')->with('message', 'Created Successfully');
@@ -61,12 +62,21 @@ class PostController extends Controller
         $input = $request->all();
         $old_image = $blog->image;
         $image = fileUpload($request, 'image', 'blog');
+        $old_banner_image = $blog->banner_image;
+        $banner_image = fileUpload($request, 'banner_image', 'banner_blog');
 
         if ($image) {
             removeFile($old_image);
             $input['image'] = $image;
         } else {
             unset($input['image']);
+        }
+
+        if ($banner_image) {
+            removeFile($old_banner_image);
+            $input['banner_image'] = $banner_image;
+        } else {
+            unset($input['banner_image']);
         }
 
         $input['slug'] = Str::slug($request->name);
@@ -78,6 +88,7 @@ class PostController extends Controller
     public function destroy(Post $blog)
     {
         removeFile($blog->image);
+        removeFile($blog->banner_image);
         $blog->delete();
         return redirect()->route('blog.index')->with('message', 'Delete Successfully');
     }

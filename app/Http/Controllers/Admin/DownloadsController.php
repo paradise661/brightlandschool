@@ -88,6 +88,7 @@ class DownloadsController extends Controller
     public function destroy(Download $download)
     {
         removeFile($download->image);
+        removeFile($download->file);
         $download->delete();
         return redirect()->route('downloads.index')->with('message', 'Delete Successfully');
     }

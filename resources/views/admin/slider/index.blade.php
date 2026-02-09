@@ -30,10 +30,8 @@
                             <tr>
                                 <td><strong>{{ $key + $slider->firstItem() }}</strong></td>
                                 <td class="">
-                                    <a class="fancybox" data-fancybox="demo"
-                                        href="{{ asset('storage/' . $sliders->image) }}">
-                                        <img src="{{ asset('storage/' . $sliders->image) }}" alt="{{ $sliders->name }}"
-                                            width="80px">
+                                    <a class="fancybox" data-fancybox="demo" href="{{ $sliders->image }}">
+                                        <img src="{{ $sliders->image }}" alt="{{ $sliders->name }}" width="80px">
                                     </a>
                                 </td>
                                 <td><strong>{{ $sliders->name ?? '' }}</strong></td>

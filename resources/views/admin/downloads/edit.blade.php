@@ -95,8 +95,8 @@
                                 <label for="file">File</label>
 
                                 <input class="dropify @error('file') is-invalid @enderror" id="file"
-                                    data-default-file="{{ $download->file ? asset('storage/' . $download->file) : '' }}"
-                                    type="file" name="file" accept=".pdf">
+                                    data-default-file="{{ $download->file ? $download->file : '' }}" type="file"
+                                    name="file" accept=".pdf">
 
                                 @error('file')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>

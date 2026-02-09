@@ -31,9 +31,8 @@
                             <tr>
                                 <td><strong>{{ $key + $blogs->firstItem() }}</strong></td>
                                 <td>
-                                    <a class="fancybox" data-fancybox="demo" href="{{ asset('storage/' . $blg->image) }}">
-                                        <img src="{{ asset('storage/' . $blg->image) }}" alt="{{ $blg->name }}"
-                                            width="80px">
+                                    <a class="fancybox" data-fancybox="demo" href="{{ $blg->image }}">
+                                        <img src="{{ $blg->image }}" alt="{{ $blg->name }}" width="80px">
                                     </a>
                                 </td>
                                 <td><strong>{{ $blg->name ?? '' }}</strong></td>
