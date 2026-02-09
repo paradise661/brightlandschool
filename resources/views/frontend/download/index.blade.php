@@ -34,7 +34,7 @@
     </style>
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-blue-600/50 z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
 
         <!-- Background image -->
         <img class="absolute inset-0 w-full h-full object-cover"
@@ -53,7 +53,11 @@
                 <!-- Breadcrumb -->
                 <nav>
                     <ol
-                        class="flex items-center justify-center space-x-2 text-sm bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+                        class="inline-flex items-center space-x-2 text-sm
+                        bg-white/15 backdrop-blur-md
+                        px-5 py-2 rounded-full
+                        border border-white/20
+                        shadow-lg">
                         <li>
                             <a class="text-blue-100 hover:text-white transition" href="/">
                                 Home

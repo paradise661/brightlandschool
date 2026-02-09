@@ -2,8 +2,7 @@
 @section('content')
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-blue-600/50 z-10"></div>
-
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
         <!-- Background image -->
         <img class="absolute inset-0 w-full h-full object-cover"
             src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
@@ -806,8 +805,8 @@
 @section('scripts')
     <script>
         /* ======================================================
-                                   CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
-                                   ====================================================== */
+                                       CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
+                                       ====================================================== */
         document.querySelectorAll('[data-upload]').forEach(box => {
             const input = box.querySelector('input[type="file"]');
             const fileNameBox = box.querySelector('[data-filename]');
