@@ -1,59 +1,60 @@
 @extends('layouts.admin.master')
-
-@section('title', 'Create New Downloads')
+@section('title', 'Create New Notice')
 
 @section('content')
     @include('admin.includes.message')
 
     <div class="content">
-        <div class="card container-fluid mb-4 p-6">
+        <div class="card container-fluid mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Create Download</h3>
+                <h5 class="mb-0">Create Notice</h5>
                 <small class="text-muted float-end">
-                    <a class="btn btn-sm btn-primary" href="{{ route('downloads.index') }}"><i
+                    <a class="btn btn-sm btn-primary" href="{{ route('notices.index') }}"><i
                             class="fa-solid fa-arrow-left"></i>
                         Back</a>
                 </small>
             </div>
-
             <div class="card-body p-0">
-                <form class="row" method="POST" action="{{ route('downloads.store') }}" enctype="multipart/form-data">
+                <form class="row" method="POST" action="{{ route('notices.store') }}" enctype="multipart/form-data">
                     @csrf
-
-                    @php
-                        $fields = [
-                            'name' => 'Name',
-                            'description' => 'Description',
-                        ];
-
-                    @endphp
-
-                    <!-- Blog Fields -->
-                    <div class="col-md-8">
-                        <div class="card-body card font-weight-bold br-8 mb-3">
-                            @foreach ($fields as $name => $label)
-                                <div class="form-group font-weight-bold mb-3">
-                                    <label for="{{ $name }}">{{ $label }}</label>
-                                    @if ($name == 'description')
-                                        <textarea class="form-control ckeditor br-8 @error($name) is-invalid @enderror" id="{{ $name }}"
-                                            name="{{ $name }}" rows="10" placeholder="Enter {{ strtolower($label) }}">{{ old($name) }}</textarea>
-                                    @else
-                                        <input class="form-control br-8 @error($name) is-invalid @enderror" type="text"
-                                            name="{{ $name }}" value="{{ old($name) }}"
-                                            placeholder="Enter {{ strtolower($label) }}">
-                                    @endif
-                                    @error($name)
+                    <div class="col-md-9">
+                        <div class="card card-body main-description shadow br-8 p-4 mb-3">
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-9">
+                                    <label for="name">Name</label>
+                                    <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
+                                        name="name" value="{{ old('name') }}" placeholder="Enter Name">
+                                    @error('name')
                                         <div class="invalid-feedback" style="display: block;">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                            @endforeach
+                                <div class="form-group mb-3 col-md-3">
+                                    <label for="icon">Icon</label>
+                                    <input class="form-control br-8 @error('icon') is-invalid @enderror" type="text"
+                                        name="icon" value="{{ old('icon') }}" placeholder="Enter Icon">
+                                    @error('icon')
+                                        <div class="invalid-feedback" style="display: block;">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="description">Description</label>
+                                <textarea class="form-control ckeditor1 br-8 @error('description') is-invalid @enderror" id="description"
+                                    name="description" rows="10" placeholder="Enter description">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <div class="invalid-feedback" style="display: block;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
-
                     </div>
-
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card-body card shadow br-8">
                             <div class="form-group mb-3 d-flex align-items-center">
                                 <label class="m-0 p-0">Status</label>
@@ -79,7 +80,7 @@
                             <div class="form-group mb-3 d-flex align-items-center">
                                 <label class="m-0 p-0">Category</label>
 
-                                <select class="form-select ms-5" name="download_categories_id" required>
+                                <select class="form-select ms-5" name="notice_categories_id" required>
                                     <option value="">Select Category</option>
 
                                     @foreach ($categories as $category)
@@ -91,37 +92,14 @@
                             </div>
                             <hr class="shadow-sm">
 
-                            <div class="form-group mb-3">
-                                <label for="file">File</label>
-                                <input class="dropify @error('file') is-invalid @enderror" id="file" type="file"
-                                    name="file" accept=".pdf">
-                                @error('file')
-                                    <div class="invalid-feedback d-block">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="card-footers d-flex justify-content-center">
-                                <button class="btn btn-sm btn-primary w-full" type="submit"><i
-                                        class="fa-solid fa-plus"></i>
+                            <div class="card-footers">
+                                <button class="btn btn-sm btn-primary" type="submit"><i class="fa-solid fa-plus"></i>
                                     Publish</button>
                             </div>
-
                         </div>
                     </div>
-
                 </form>
             </div>
-
         </div>
     </div>
 @endsection
-
-<!-- Style -->
-<style>
-    label {
-        font-weight: 500 !important;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-        line-height: 200%;
-    }
-</style>

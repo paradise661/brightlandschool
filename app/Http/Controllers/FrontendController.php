@@ -9,6 +9,8 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Download;
 use App\Models\DownloadCategory;
+use App\Models\Notice;
+use App\Models\NoticeCategory;
 use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
@@ -178,6 +180,33 @@ class FrontendController extends Controller
 
     public function notice()
     {
-        return view('frontend.notice.index');
+        $notices = Notice::with('category')
+            ->where('status', 1)
+            ->orderBy('order', 'asc')
+            ->get();
+
+        $category = NoticeCategory::where('status', 1)
+            ->withCount([
+                'notices' => function ($q) {
+                    $q->where('status', 1); 
+                }
+            ])
+            ->orderBy('order', 'asc')
+            ->get();
+
+        return view('frontend.notice.index', compact('notices', 'category'));
+    }
+    public function incrementNoticeView(Notice $notice)
+    {
+        $sessionKey = 'notice_viewed_' . $notice->id;
+
+        if (!session()->has($sessionKey)) {
+            $notice->increment('views');
+            session()->put($sessionKey, true);
+        }
+
+        return response()->json([
+            'views' => $notice->views
+        ]);
     }
 }

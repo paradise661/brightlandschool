@@ -28,21 +28,21 @@ class NoticeCategoryController extends Controller
         NoticeCategory::create($input);
         return redirect()->route('notices-category.index')->with('message', 'Created Successfully');
     }
-    public function edit(NoticeCategory $notice_category)
+    public function edit(NoticeCategory $notices_category)
     {
-        return view('admin.notices.category.edit', compact('notice_category'));
+        return view('admin.notices.category.edit', compact('notices_category'));
     }
-    public function update(UpdateNoticeRequest $request, NoticeCategory $notice_category)
+    public function update(UpdateNoticeRequest $request, NoticeCategory $notices_category)
     {
         $input = $request->all();
         $input['slug'] = Str::slug($request->name);
-        $notice_category->update($input);
+        $notices_category->update($input);
         return redirect()->route('notices-category.index')->with('message', 'Updated Successfully');
     }
 
-    public function destroy(NoticeCategory $notice_category)
+    public function destroy(NoticeCategory $notices_category)
     {
-        $notice_category->delete();
+        $notices_category->delete();
         return redirect()->route('notices-category.index')->with('message', 'Deleted Successfully');
     }
 }

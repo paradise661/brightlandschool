@@ -9,7 +9,7 @@ class Notice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['notice_categories_id', 'name', 'description', 'image', 'order', 'status', 'slug', 'seo_title', 'seo_description', 'seo_keywords', 'seo_schema', 'views'];
+    protected $fillable = ['notice_categories_id', 'name', 'description', 'image', 'order', 'status', 'slug', 'seo_title', 'seo_description', 'seo_keywords', 'seo_schema', 'views', 'icon'];
 
     protected $casts = [
         'created_at' => 'datetime',
