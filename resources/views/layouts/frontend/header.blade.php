@@ -84,7 +84,7 @@
                 </a>
 
                 <a class="h-10 flex items-center text-gray-700 hover:text-primary transition font-medium"
-                    href="{{ route('gallery') }}">
+                    href="{{ route('frontend.gallery') }}">
                     Gallery
                 </a>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactsRequest;
 use App\Http\Requests\StoreStudentsRequest;
+use App\Models\Album;
 use App\Models\Contacts;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -52,7 +53,24 @@ class FrontendController extends Controller
 
     public function gallery()
     {
-        return view('frontend.gallery.index');
+        $albums = Album::where('status', 1)
+            ->orderBy('order', 'asc')
+            ->withCount('galleries')
+            ->with(['galleries' => function ($query) {
+                $query->latest()->take(4);
+            }])
+            ->get();
+
+        return view('frontend.gallery.index', compact('albums'));
+    }
+
+
+
+
+    public function albumShow($slug)
+    {
+        $album = Album::where('slug', $slug)->with('galleries')->firstOrFail();
+        return view('frontend.gallery.show', compact('album'));
     }
 
     public function blog()
