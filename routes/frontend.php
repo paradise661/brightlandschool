@@ -4,7 +4,7 @@ use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
-Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/message', [FrontendController::class, 'message'])->name('message');
 Route::get('/curriculum', [FrontendController::class, 'curriculum'])->name('curriculum');
 Route::get('/event', [FrontendController::class, 'event'])->name('event');
@@ -22,3 +22,5 @@ Route::get('/downloads/{slug}/file', [FrontendController::class, 'downloadFile']
 
 Route::get('/notice', [FrontendController::class, 'notice'])->name('notice');
 Route::post('/notice/{notice}/view', [FrontendController::class, 'incrementNoticeView'])->name('notice.view');
+
+Route::get('/event', [FrontendController::class, 'event'])->name('frontend.events');

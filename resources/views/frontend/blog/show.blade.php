@@ -74,10 +74,8 @@
                     </div>
                 </div>
 
-                <div class="mb-8 md:mb-10 rounded-2xl overflow-hidden shadow-xl">
-                    <img class="w-full h-auto max-h-[600px] object-cover" src="{{ asset('storage/' . $post->image) }}"
-                        alt="students participating in science fair, innovative projects, colorful displays, excited children, modern school environment" />
-                </div>
+                <img class="w-full rounded-2xl shadow-xl mb-8 md:mb-10" src="{{ $post->image }}"
+                    alt="students participating in science fair, innovative projects, colorful displays, excited children">
 
                 <div class="prose prose-lg max-w-none" id="article-content">
                     {!! $post->description ?? '' !!}

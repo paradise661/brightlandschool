@@ -116,6 +116,37 @@
                     </a>
                 </li>
             </ul>
+        </li>
+
+        <li
+            class="menu-item {{ Request::segment(2) == 'event' || Request::segment(2) == 'event-category' ? 'active open' : '' }}">
+            <a class="menu-link text-decoration-none menu-toggle" href="#">
+                <i class="menu-icon tf-icons bx bx-calendar-event"></i>
+                <div data-i18n="General Setting">Events</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::segment(2) == 'event-category' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('event-category.index') }}">
+                        <i class="menu-icon tf-icons bx bx-category"></i>
+                        <div>Category</div>
+                    </a>
+                </li>
+                <li
+                    class="menu-item {{ Request::segment(2) == 'event' && Request::segment(3) == null ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('event.index') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
+                        <div>All Events</div>
+                    </a>
+                </li>
+                <li
+                    class="menu-item {{ Request::segment(2) == 'event' && Request::segment(3) == 'create' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('event.create') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
+                        <div>Create Event</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         <li class="menu-item {{ Request::segment(2) == 'album' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('album.index') }}">

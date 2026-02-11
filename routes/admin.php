@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\EventCategoryController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\NoticeCategoryController;
 use App\Http\Controllers\Admin\StudentsController;
 use Illuminate\Support\Facades\Route;
@@ -56,4 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('/', [GalleryController::class, 'store'])->name('store');
         Route::delete('/{gallery}/delete-file', [GalleryController::class, 'documentDelete'])->name('delete-file');
     });
+
+    Route::resource('event-category', EventCategoryController::class);
+    Route::resource('event', EventController::class);
 });

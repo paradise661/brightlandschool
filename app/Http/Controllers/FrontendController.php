@@ -43,6 +43,7 @@ class FrontendController extends Controller
 
     public function event()
     {
+        
         return view('frontend.event.index');
     }
 

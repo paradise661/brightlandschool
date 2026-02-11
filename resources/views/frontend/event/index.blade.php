@@ -14,21 +14,44 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
     </style>
-    <section class="bg-gradient-to-r from-primary to-blue-600 py-16 md:py-20" id="page-hero">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <div
-                    class="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fa-solid fa-calendar-days text-white text-3xl md:text-4xl"></i>
-                </div>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">School Events & Calendar</h1>
-                <p class="text-lg md:text-xl text-blue-100 mb-6">Stay updated with our upcoming events, celebrations, and
-                    important dates</p>
-                <div class="flex items-center justify-center space-x-2 text-sm md:text-base">
-                    <a class="hover:text-blue-200 transition" href="#">Home</a>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                    <span>Events</span>
-                </div>
+    <section class="relative h-[400px] overflow-hidden" id="blog-hero">
+        <!-- Softer Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
+
+        <!-- Background image -->
+        <img class="absolute inset-0 w-full h-full object-cover"
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
+            alt="students reading books in modern library" />
+
+        <!-- Content -->
+        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
+            <div class="text-center text-white">
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
+                    Event
+                </h1>
+
+                <!-- Breadcrumb -->
+                <nav>
+                    <ol
+                        class="inline-flex items-center space-x-2 text-sm
+                        bg-white/15 backdrop-blur-md
+                        px-5 py-2 rounded-full
+                        border border-white/20
+                        shadow-lg">
+                        <li>
+                            <a class="text-blue-100 hover:text-white transition" href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li class="text-blue-200">›</li>
+                        <li class="text-white font-medium">
+                            Event
+                        </li>
+                    </ol>
+                </nav>
+
             </div>
         </div>
     </section>
@@ -76,6 +99,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
                 <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-1">
                     <div class="relative h-48 overflow-hidden">
                         <img class="w-full h-full object-cover"
@@ -91,6 +115,7 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Annual Science Fair 2024</h3>
+
                         <div class="space-y-2 mb-4">
                             <div class="flex items-center text-gray-600 text-sm">
                                 <i class="fa-solid fa-clock text-primary mr-3 w-4"></i>
@@ -103,195 +128,21 @@
                         </div>
                         <p class="text-gray-600 text-sm mb-4">Students showcase innovative science projects and experiments.
                             Open to all grades with special awards for outstanding presentations.</p>
-                        <a class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition"
-                            href="#">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
+                        <div class="flex items-center justify-between mt-4">
+                            <a class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition"
+                                href="#">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa-solid fa-eye mr-2"></i>
+                                <span>1,245 Views</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-2">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8309668ce7-7922787fc06441ba1fd8.png"
-                            alt="children playing basketball in indoor sports tournament with energetic atmosphere" />
-                        <div class="absolute top-4 left-4 bg-secondary text-white px-4 py-2 rounded-full font-bold text-sm">
-                            <i class="fa-solid fa-basketball mr-2"></i>Sports
-                        </div>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
-                            <div class="text-2xl font-bold text-secondary">28</div>
-                            <div class="text-xs text-gray-600">JAN</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Inter-House Basketball Championship
-                        </h3>
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-clock text-secondary mr-3 w-4"></i>
-                                <span>2:00 PM - 6:00 PM</span>
-                            </div>
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-location-dot text-secondary mr-3 w-4"></i>
-                                <span>Sports Complex</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Annual basketball tournament featuring all four houses
-                            competing for the championship trophy. Exciting matches guaranteed!</p>
-                        <a class="inline-flex items-center text-secondary font-semibold hover:text-red-700 transition"
-                            href="#">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-3">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ef915e1900-80288f183d1a48aa911f.png"
-                            alt="students performing traditional cultural dance on stage with colorful costumes" />
-                        <div class="absolute top-4 left-4 bg-accent text-white px-4 py-2 rounded-full font-bold text-sm">
-                            <i class="fa-solid fa-masks-theater mr-2"></i>Cultural
-                        </div>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
-                            <div class="text-2xl font-bold text-accent">02</div>
-                            <div class="text-xs text-gray-600">FEB</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Cultural Diversity Week</h3>
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-clock text-accent mr-3 w-4"></i>
-                                <span>All Day Event</span>
-                            </div>
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-location-dot text-accent mr-3 w-4"></i>
-                                <span>Main Campus</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Celebrate diversity with traditional performances, food
-                            stalls, art exhibitions, and cultural workshops from around the world.</p>
-                        <a class="inline-flex items-center text-accent font-semibold hover:text-yellow-700 transition"
-                            href="#">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-4">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7f89ab15a2-67b934bc39b77eea1acb.png"
-                            alt="professional workshop with students learning coding and robotics with laptops and robots" />
-                        <div
-                            class="absolute top-4 left-4 bg-purple-600 text-white px-4 py-2 rounded-full font-bold text-sm">
-                            <i class="fa-solid fa-laptop-code mr-2"></i>Workshop
-                        </div>
-                        <div
-                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
-                            <div class="text-2xl font-bold text-purple-600">08</div>
-                            <div class="text-xs text-gray-600">FEB</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Coding & Robotics Workshop</h3>
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-clock text-purple-600 mr-3 w-4"></i>
-                                <span>10:00 AM - 3:00 PM</span>
-                            </div>
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-location-dot text-purple-600 mr-3 w-4"></i>
-                                <span>Computer Lab</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Hands-on workshop introducing students to programming basics
-                            and robotics. Expert instructors will guide participants.</p>
-                        <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition"
-                            href="#">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-5">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b32131ddfc-cd22c93ff3bdb719b48d.png"
-                            alt="parent teacher meeting in modern classroom with discussion and collaboration" />
-                        <div
-                            class="absolute top-4 left-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm">
-                            <i class="fa-solid fa-users mr-2"></i>Meeting
-                        </div>
-                        <div
-                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
-                            <div class="text-2xl font-bold text-green-600">12</div>
-                            <div class="text-xs text-gray-600">FEB</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Parent-Teacher Conference</h3>
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-clock text-green-600 mr-3 w-4"></i>
-                                <span>8:00 AM - 5:00 PM</span>
-                            </div>
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-location-dot text-green-600 mr-3 w-4"></i>
-                                <span>Respective Classrooms</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Discuss student progress, academic performance, and
-                            development goals. Pre-registration required for time slots.</p>
-                        <a class="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition"
-                            href="#">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-6">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/489015025f-b383d97a5006a5f70324.png"
-                            alt="students on educational field trip visiting museum with guide and exhibits" />
-                        <div
-                            class="absolute top-4 left-4 bg-indigo-600 text-white px-4 py-2 rounded-full font-bold text-sm">
-                            <i class="fa-solid fa-bus mr-2"></i>Field Trip
-                        </div>
-                        <div
-                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
-                            <div class="text-2xl font-bold text-indigo-600">15</div>
-                            <div class="text-xs text-gray-600">FEB</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Educational Museum Visit</h3>
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-clock text-indigo-600 mr-3 w-4"></i>
-                                <span>7:00 AM - 5:00 PM</span>
-                            </div>
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-location-dot text-indigo-600 mr-3 w-4"></i>
-                                <span>National Science Museum</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Educational trip to the National Science Museum for grades
-                            6-8. Transportation and lunch provided. Parental consent required.</p>
-                        <a class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700 transition"
-                            href="#">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
