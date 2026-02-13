@@ -43,7 +43,7 @@ class FrontendController extends Controller
 
     public function event()
     {
-        
+
         return view('frontend.event.index');
     }
 
@@ -81,7 +81,13 @@ class FrontendController extends Controller
             ->orderBy('order', 'asc')
             ->get();
 
-        return view('frontend.blog.index', compact('blogs'));
+        $popular_blogs = Post::with('category')
+            ->where('status', 1)
+            ->orderByDesc('views')
+            ->take(4)
+            ->get();
+
+        return view('frontend.blog.index', compact('blogs', 'popular_blogs'));
     }
     public function showblog($slug)
     {

@@ -101,136 +101,49 @@
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="flex items-center mb-10">
-                    <div class="w-1 h-8 bg-secondary mr-4"></div>
+                    <div class="w-1 h-8 bg-primary mr-4"></div>
                     <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">Most Popular</h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <article class="flex gap-4 bg-gray-50 rounded-xl p-4 hover:shadow-lg transition group cursor-pointer"
-                        id="popular-1">
-                        <div class="flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/cdb8578c91-63b570119f09c21e8d29.png"
-                                alt="robotics competition, students with robots, STEM education" />
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <span
-                                    class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold">Technology</span>
-                                <span class="text-gray-400 text-xs flex items-center"><i class="fa-solid fa-eye mr-1"></i>
-                                    2.4k views</span>
-                            </div>
-                            <h3
-                                class="text-lg font-heading font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition">
-                                Robotics Team Wins Regional Championship</h3>
-                            <div class="flex items-center text-xs text-gray-500">
-                                <span>Nov 28, 2024</span>
-                                <span class="mx-2">•</span>
-                                <span>3 min read</span>
-                            </div>
-                        </div>
-                    </article>
+                    @foreach ($popular_blogs as $popular_blog)
+                        <article class="relative flex gap-4 bg-gray-50 rounded-xl p-4 hover:shadow-lg transition group">
 
-                    <article class="flex gap-4 bg-gray-50 rounded-xl p-4 hover:shadow-lg transition group cursor-pointer"
-                        id="popular-2">
-                        <div class="flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/4ac5c58ad6-90c33a2ffbb69ceb2aba.png"
-                                alt="debate competition, students speaking confidently, public speaking" />
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <span
-                                    class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-semibold">Academics</span>
-                                <span class="text-gray-400 text-xs flex items-center"><i class="fa-solid fa-eye mr-1"></i>
-                                    2.1k views</span>
-                            </div>
-                            <h3
-                                class="text-lg font-heading font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition">
-                                Excellence in Debate: National Competition Success</h3>
-                            <div class="flex items-center text-xs text-gray-500">
-                                <span>Nov 25, 2024</span>
-                                <span class="mx-2">•</span>
-                                <span>4 min read</span>
-                            </div>
-                        </div>
-                    </article>
+                            <!-- clickable overlay -->
+                            <a class="absolute inset-0 z-10"
+                                href="{{ route('frontend.blog.show', $popular_blog->slug) }}"></a>
 
-                    <article class="flex gap-4 bg-gray-50 rounded-xl p-4 hover:shadow-lg transition group cursor-pointer"
-                        id="popular-3">
-                        <div class="flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a7789a84c2-b9da9909dbd433bec910.png"
-                                alt="music concert performance, students playing instruments, orchestra" />
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <span class="px-2 py-1 bg-pink-100 text-pink-700 rounded text-xs font-semibold">Arts &
-                                    Culture</span>
-                                <span class="text-gray-400 text-xs flex items-center"><i class="fa-solid fa-eye mr-1"></i>
-                                    1.9k views</span>
+                            <div class="flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                    src="{{ $popular_blog->image }}" alt="{{ $popular_blog->name ?? '' }}" />
                             </div>
-                            <h3
-                                class="text-lg font-heading font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition">
-                                Annual Music Concert: A Symphony of Talent</h3>
-                            <div class="flex items-center text-xs text-gray-500">
-                                <span>Nov 22, 2024</span>
-                                <span class="mx-2">•</span>
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </article>
 
-                    <article class="flex gap-4 bg-gray-50 rounded-xl p-4 hover:shadow-lg transition group cursor-pointer"
-                        id="popular-4">
-                        <div class="flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
-                            <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/507200942b-fa99742ba3ece764ba06.png"
-                                alt="community service, students volunteering, helping elderly people, social responsibility" />
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <span
-                                    class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">Events</span>
-                                <span class="text-gray-400 text-xs flex items-center"><i class="fa-solid fa-eye mr-1"></i>
-                                    1.7k views</span>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold">
+                                        {{ $popular_blog->category->name ?? 'Technology' }}
+                                    </span>
+
+                                    <span class="text-gray-400 text-xs flex items-center">
+                                        <i class="fa-solid fa-eye mr-1"></i>
+                                        {{ number_format($popular_blog->views ?? 0) }} views
+                                    </span>
+                                </div>
+
+                                <h3
+                                    class="text-lg font-heading font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition">
+                                    {{ $popular_blog->name }}
+                                </h3>
+
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <span>{{ $popular_blog->created_at->format('M d, Y') }}</span>
+                                </div>
                             </div>
-                            <h3
-                                class="text-lg font-heading font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition">
-                                Community Outreach: Making a Difference Together</h3>
-                            <div class="flex items-center text-xs text-gray-500">
-                                <span>Nov 20, 2024</span>
-                                <span class="mx-2">•</span>
-                                <span>4 min read</span>
-                            </div>
-                        </div>
-                    </article>
+
+                        </article>
+                    @endforeach
+
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 md:py-20 bg-gradient-to-r from-primary to-blue-600" id="newsletter-cta">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <div
-                    class="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fa-solid fa-envelope-open-text text-white text-2xl md:text-3xl"></i>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Stay Updated with Our Latest Stories</h2>
-                <p class="text-lg md:text-xl text-blue-100 mb-8">Subscribe to our newsletter and get the latest articles,
-                    news, and updates delivered straight to your inbox</p>
-                <form class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-                    <input
-                        class="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/30"
-                        type="email" placeholder="Enter your email address">
-                    <button
-                        class="px-8 py-4 bg-secondary text-white rounded-full hover:bg-red-700 transition font-semibold whitespace-nowrap"
-                        type="submit">
-                        Subscribe Now
-                    </button>
-                </form>
-                <p class="text-sm text-blue-200 mt-4">Join 5,000+ parents and educators already subscribed</p>
             </div>
         </div>
     </section>
