@@ -56,47 +56,8 @@
         </div>
     </section>
 
-    <section class="py-8 bg-white sticky top-[72px] z-40 shadow-md" id="event-filters">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                    <button
-                        class="filter-btn px-6 py-2 bg-primary text-white rounded-full font-semibold text-sm hover:bg-blue-700 transition">All
-                        Events</button>
-                    <button
-                        class="filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Academic</button>
-                    <button
-                        class="filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Sports</button>
-                    <button
-                        class="filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Cultural</button>
-                    <button
-                        class="filter-btn px-6 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold text-sm hover:bg-gray-300 transition">Workshops</button>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <select
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm">
-                        <option>All Months</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="py-12 md:py-16 bg-gray-50" id="upcoming-events">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="flex items-center mb-8 md:mb-10">
-                <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
-                <div>
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Upcoming Events</h2>
-                    <p class="text-gray-600 text-sm md:text-base mt-2">Don't miss these exciting upcoming activities</p>
-                </div>
-            </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
@@ -147,7 +108,7 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 bg-white" id="event-calendar-section">
+    {{-- <section class="py-12 md:py-16 bg-white" id="event-calendar-section">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex items-center mb-8 md:mb-10">
                 <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
@@ -353,7 +314,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="py-12 md:py-16 bg-gray-50" id="past-events">
         <div class="container mx-auto px-4 md:px-6">

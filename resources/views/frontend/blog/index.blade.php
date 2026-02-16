@@ -138,6 +138,11 @@
                                 <div class="flex items-center text-xs text-gray-500">
                                     <span>{{ $popular_blog->created_at->format('M d, Y') }}</span>
                                 </div>
+                                <a class="inline-flex items-center mt-3 text-blue-600 font-semibold hover:text-blue-700 transition"
+                                    href="{{ route('frontend.blog.show', ['slug' => $popular_blog->slug]) }}">
+                                    Read More <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+
                             </div>
 
                         </article>
