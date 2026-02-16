@@ -98,7 +98,7 @@
                             id="post-1">
                             <div class="h-56 overflow-hidden">
                                 <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                                    src="{{ asset('storage/' . $popular_posts->image) }}"
+                                    src="{{ $popular_posts->image }}"
                                     alt="students using tablets and laptops in modern classroom, digital learning, interactive education" />
                             </div>
                             <div class="p-6">
