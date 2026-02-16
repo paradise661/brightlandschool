@@ -42,19 +42,9 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="latest-posts">
+    <section class="py-16 md:py-16 lg:py-20 bg-gray-50" id="latest-posts">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-6xl mx-auto">
-                <div class="flex items-center justify-between mb-10">
-                    <div class="flex items-center">
-                        <div class="w-1 h-8 bg-primary mr-4"></div>
-                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">Latest Articles</h2>
-                    </div>
-                    <a class="hidden md:flex items-center text-primary font-semibold hover:text-blue-700 transition"
-                        href="#">
-                        View All <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     @foreach ($blogs as $blog)
