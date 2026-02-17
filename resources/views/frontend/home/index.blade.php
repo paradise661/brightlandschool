@@ -56,50 +56,51 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                        Welcome to Excellence Academy
+                        {{ $setting['homepage_about_title'] ?? '' }}
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">Where Education Meets Excellence</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">For over 25 years, Excellence Academy has been at
-                        the forefront of educational innovation, providing students with a comprehensive learning experience
-                        that combines academic rigor with character development.</p>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">Our state-of-the-art facilities, experienced
-                        faculty, and holistic approach to education ensure that every student reaches their full potential
-                        and becomes a responsible global citizen.</p>
+                    <h2 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                        {{ $setting['homepage_about_title1'] ?? '' }}</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        {!! $setting['homepage_about_description'] ?? '' !!}</p>
                     <div class="grid grid-cols-2 gap-6 mb-8">
-                        <div class="flex items-start space-x-3">
+                        <div class="flex items-center space-x-3">
                             <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-check text-blue-600 text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800 mb-1">World-Class Faculty</h4>
-                                <p class="text-sm text-gray-600">Experienced educators dedicated to excellence</p>
+                                <h4 class="font-bold text-gray-800 mb-0">{{ $setting['homepage_about_feature'] ?? '' }}
+                                </h4>
+                                {{-- <p class="text-sm text-gray-600">Experienced educators dedicated to excellence</p> --}}
                             </div>
                         </div>
-                        <div class="flex items-start space-x-3">
+                        <div class="flex items-center space-x-3">
                             <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-check text-blue-600 text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800 mb-1">Modern Infrastructure</h4>
-                                <p class="text-sm text-gray-600">State-of-the-art facilities and resources</p>
+                                <h4 class="font-bold text-gray-800 mb-0">{{ $setting['homepage_about_feature1'] ?? '' }}
+                                </h4>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-3">
+
+                        <div class="flex items-center space-x-3">
                             <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-check text-blue-600 text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800 mb-1">Holistic Development</h4>
-                                <p class="text-sm text-gray-600">Focus on academics, sports, and arts</p>
+                                <h4 class="font-bold text-gray-800 mb-0">{{ $setting['homepage_about_feature2'] ?? '' }}
+                                </h4>
+
                             </div>
                         </div>
-                        <div class="flex items-start space-x-3">
+                        <div class="flex items-center space-x-3">
                             <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-check text-blue-600 text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800 mb-1">Global Perspective</h4>
-                                <p class="text-sm text-gray-600">Preparing students for the world stage</p>
+                                <h4 class="font-bold text-gray-800 mb-0">{{ $setting['homepage_about_feature3'] ?? '' }}
+                                </h4>
+
                             </div>
                         </div>
                     </div>
@@ -112,26 +113,101 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-4">
                             <img class="w-full h-64 object-cover rounded-2xl shadow-lg"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/91b4b5d01b-bcc91fa6775f6b8e4e9e.png"
-                                alt="happy school students in classroom learning, modern education environment" />
+                                src="{{ $setting['homepage_about_image'] }}" alt="image" />
                             <img class="w-full h-48 object-cover rounded-2xl shadow-lg"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1c838c7d5a-93c0a83f38bceb376681.png"
-                                alt="school science laboratory with students conducting experiments" />
+                                src="{{ $setting['homepage_about_image1'] }}" alt="image" />
                         </div>
                         <div class="space-y-4 mt-8">
                             <img class="w-full h-48 object-cover rounded-2xl shadow-lg"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/acf0771ffd-358f97fb311d1fb3d1cf.png"
-                                alt="school sports facilities with students playing, outdoor activities" />
+                                src="{{ $setting['homepage_about_image2'] }}" alt="image" />
                             <img class="w-full h-64 object-cover rounded-2xl shadow-lg"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2594bea980-abf55d3ccb2ef5d67410.png"
-                                alt="modern school library with students reading books" />
+                                src="{{ $setting['homepage_about_image3'] }}" alt="image" />
                         </div>
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-yellow-400 rounded-2xl p-6 shadow-xl">
-                        <div class="text-3xl font-bold text-gray-900">25+</div>
-                        <div class="text-sm font-semibold text-gray-700">Years of Excellence</div>
+                        <div class="text-3xl font-bold text-gray-900">{{ $setting['homepage_about_years'] ?? '25+' }}+
+                        </div>
+                        <div class="text-sm font-semibold text-gray-700">
+                            {{ $setting['homepage_about_years_text'] ?? 'Years of Excellence' }}</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-16 bg-gray-50" id="important-notices">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex items-center mb-8 md:mb-10">
+                <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Important Notices
+                    </h2>
+                    {{-- <p class="text-gray-600 text-sm md:text-base mt-2">Stay updated with latest announcements and
+                            circulars</p> --}}
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                @foreach ($notices as $notice)
+                    @php
+                        $plainText = strip_tags($notice->description ?? '');
+                        $isLong = strlen($plainText) > 190;
+                    @endphp
+
+                    <div class="notice-card bg-gradient-to-r from-blue-50 to-white rounded-2xl p-6 shadow-lg border-l-4 border-primary"
+                        id="notice-{{ $notice->id }}" data-notice-id="{{ $notice->id }}"
+                        data-full-text="{{ e($plainText) }}" data-short-text="{{ e(Str::limit($plainText, 190)) }}">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid {{ $notice->icon ?? 'fa-bell' }} text-white text-xl"></i>
+                                </div>
+
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-3 mb-2">
+                                        <h3 class="text-xl font-heading font-bold text-gray-900">
+                                            {{ $notice->name ?? '' }}
+                                        </h3>
+                                        <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                            {{ $notice->category->name ?? '' }}
+                                        </span>
+                                    </div>
+
+                                    <p class="text-gray-600 text-sm mb-2 notice-text">
+                                        {{ Str::limit($plainText, 320) }}
+                                    </p>
+
+                                    @if ($isLong)
+                                        <button class="read-more-btn text-primary text-sm font-semibold"
+                                            data-expanded="false">
+                                            Read more
+                                        </button>
+                                    @endif
+
+                                    <div class="flex items-center space-x-6 text-sm text-gray-500 mt-3">
+                                        <span>
+                                            <i class="fa-solid fa-calendar mr-2"></i>
+                                            {{ $notice->created_at->format('M d, Y') }}
+                                        </span>
+
+                                        <span class="view-count">
+                                            <i class="fa-solid fa-eye mr-2"></i>
+                                            {{ $notice->views ?? 0 }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <a class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-secondary transition"
+                    href="{{ route('notice') }}">
+                    View More
+                </a>
             </div>
         </div>
     </section>

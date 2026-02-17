@@ -23,8 +23,10 @@ class FrontendController extends Controller
 {
     public function home()
     {
+
+        $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
-        return view('frontend.home.index', compact('sliders'));
+        return view('frontend.home.index', compact('sliders', 'notices'));
     }
 
     public function about()
