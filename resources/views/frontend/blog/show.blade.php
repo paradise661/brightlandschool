@@ -4,9 +4,8 @@
         <!-- Softer Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
         <!-- Background image -->
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
-            alt="students reading books in modern library" />
+        <img class="absolute inset-0 w-full h-full object-cover" src="{{ $post->banner_image }}"
+            alt="{{ $post->name ?? 'Blog Post Image' }}" />
 
         <!-- Content -->
         <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
