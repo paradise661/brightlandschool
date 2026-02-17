@@ -24,3 +24,4 @@ Route::get('/notice', [FrontendController::class, 'notice'])->name('notice');
 Route::post('/notice/{notice}/view', [FrontendController::class, 'incrementNoticeView'])->name('notice.view');
 
 Route::get('/event', [FrontendController::class, 'event'])->name('frontend.events');
+Route::get('/event/{slug}', [FrontendController::class, 'eventShow'])->name('frontend.events.show');

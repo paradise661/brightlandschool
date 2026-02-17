@@ -42,7 +42,7 @@
                                 </td>
                                 <td>{{ $blg->updated_at->diffForHumans() }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-success" href="/blog/{{ $blg['slug'] }}"
+                                    <a class="btn btn-sm btn-success" href="/event/{{ $blg['slug'] }}"
                                         style="float: left;margin-right: 5px;" target="_blank"><i
                                             class="fa-solid fa-eye"></i> View</a>
                                     <a class="btn btn-sm btn-primary" href="{{ route('event.edit', $blg->id) }}"

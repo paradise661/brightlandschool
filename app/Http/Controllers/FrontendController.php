@@ -10,6 +10,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Download;
 use App\Models\DownloadCategory;
+use App\Models\Event;
 use App\Models\Notice;
 use App\Models\NoticeCategory;
 use App\Models\Slider;
@@ -44,7 +45,26 @@ class FrontendController extends Controller
     public function event()
     {
 
-        return view('frontend.event.index');
+        $events = Event::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
+        $popular_events = Event::with('category')->where('status', 1)->orderByDesc('views')->take(4)->get();
+
+
+        return view('frontend.event.index', compact('events', 'popular_events'));
+    }
+    public function eventShow($slug)
+    {
+        $event = Event::where('slug', $slug)->firstOrFail();
+        $viewKey = 'event_viewed_' . $event->id;
+        if (!session()->has($viewKey)) {
+            $event->increment('views');
+            session()->put($viewKey, true);
+        }
+        $popular_events = Event::where('status', 1)
+            ->orderByDesc('views')
+            ->take(4)
+            ->get();
+
+        return view('frontend.event.show', compact('event', 'popular_events'));
     }
 
     public function facilities()

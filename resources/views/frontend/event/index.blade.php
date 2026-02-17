@@ -60,50 +60,62 @@
         <div class="container mx-auto px-4 md:px-6">
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                @foreach ($events as $event)
+                    <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-1">
+                        <div class="relative h-48 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="{{ $event->image }}"
+                                alt="{{ $event->name ?? '' }}" />
+                            <div
+                                class="absolute top-4 left-4 bg-primary text-white px-4 py-2 rounded-full font-bold text-sm">
+                                <i class="fa-solid {{ $event->icon ?? 'fa-calendar' }} mr-2"></i>
+                                {{ $event->category->name ?? '' }}
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
+                                <div class="text-2xl font-bold text-primary">
+                                    {{ $event->event_date ? \Carbon\Carbon::parse($event->event_date)->format('d') : '25' }}
+                                </div>
+                                <div class="text-xs text-gray-600">
+                                    {{ $event->event_date ? \Carbon\Carbon::parse($event->event_date)->format('M') : 'JAN' }}
+                                </div>
+                            </div>
 
-                <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-1">
-                    <div class="relative h-48 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c5ed10fb5a-d25dc4bf2787bfd75d78.png"
-                            alt="students participating in annual science fair exhibition with colorful project displays and experiments" />
-                        <div class="absolute top-4 left-4 bg-primary text-white px-4 py-2 rounded-full font-bold text-sm">
-                            <i class="fa-solid fa-flask mr-2"></i>Academic
                         </div>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
-                            <div class="text-2xl font-bold text-primary">25</div>
-                            <div class="text-xs text-gray-600">JAN</div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">{{ $event->name ?? '' }}</h3>
+
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-gray-600 text-sm">
+                                    <i class="fa-solid fa-clock text-primary mr-3 w-4"></i>
+                                    <span>
+                                        {{ $event->start_time ? \Carbon\Carbon::parse($event->start_time)->format('h:i A') : '--' }}
+                                        -
+                                        {{ $event->end_time ? \Carbon\Carbon::parse($event->end_time)->format('h:i A') : '--' }}
+                                    </span>
+                                </div>
+
+                                <div class="flex items-center text-gray-600 text-sm">
+                                    <i class="fa-solid fa-location-dot text-primary mr-3 w-4"></i>
+                                    <span>{{ $event->location ?? 'School Auditorium' }}</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">
+                                {{ Str::limit(strip_tags($event->description ?? ''), 135) }}</p>
+                            <div class="flex items-center justify-between mt-4">
+                                <a class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition"
+                                    href="{{ route('frontend.events.show', ['slug' => $event->slug]) }}">
+                                    <span>Learn More</span>
+                                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+                                <div class="flex items-center text-gray-500 text-sm">
+                                    <i class="fa-solid fa-eye mr-2"></i>
+                                    <span>{{ $event->views ?? 0 }} Views</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Annual Science Fair 2024</h3>
-
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-clock text-primary mr-3 w-4"></i>
-                                <span>9:00 AM - 4:00 PM</span>
-                            </div>
-                            <div class="flex items-center text-gray-600 text-sm">
-                                <i class="fa-solid fa-location-dot text-primary mr-3 w-4"></i>
-                                <span>School Auditorium</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Students showcase innovative science projects and experiments.
-                            Open to all grades with special awards for outstanding presentations.</p>
-                        <div class="flex items-center justify-between mt-4">
-                            <a class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition"
-                                href="#">
-                                <span>Learn More</span>
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
-                            <div class="flex items-center text-gray-500 text-sm">
-                                <i class="fa-solid fa-eye mr-2"></i>
-                                <span>1,245 Views</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>
@@ -319,125 +331,59 @@
     <section class="py-12 md:py-16 bg-gray-50" id="past-events">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex items-center mb-8 md:mb-10">
-                <div class="w-1 h-10 md:h-12 bg-accent mr-4"></div>
+                <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                 <div>
                     <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Past Events
                         Highlights</h2>
-                    <p class="text-gray-600 text-sm md:text-base mt-2">Memorable moments from our recent events</p>
+                    {{-- <p class="text-gray-600 text-sm md:text-base mt-2">Memorable moments from our recent events</p> --}}
                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-6 md:gap-8">
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition" id="past-event-1">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8db426c710-e63997c431ee5391016a.png"
-                                alt="students celebrating annual day performance on stage with lights and decorations" />
-                        </div>
-                        <div class="p-6">
-                            <div
-                                class="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                                December 2023</div>
-                            <h3 class="text-lg font-heading font-bold text-gray-900 mb-3">Annual Day Celebration</h3>
-                            <p class="text-gray-600 text-sm mb-4">A spectacular evening of performances, awards, and
-                                celebrations marking another successful year.</p>
-                            <a class="inline-flex items-center text-accent font-semibold text-sm hover:text-yellow-700 transition"
-                                href="#">
-                                <span>View Gallery</span>
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
+
+                @foreach ($popular_events as $popular_event)
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition"
+                        id="past-event-1">
+                        <div class="grid md:grid-cols-2">
+                            <div class="h-64 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="{{ $popular_event->image }}"
+                                    alt="{{ $popular_event->name ?? 'Event Image' }}" />
+                            </div>
+                            <div class="p-6">
+
+                                <!-- Date + Views -->
+                                <div class="flex items-center justify-between mb-3">
+                                    <div
+                                        class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                                        {{ $popular_event->event_date ? \Carbon\Carbon::parse($popular_event->event_date)->format('M d, Y') : 'Jan 25, 2024' }}
+                                    </div>
+
+                                    <div class="flex items-center text-gray-500 text-xs">
+                                        <i class="fa-solid fa-eye mr-1"></i>
+                                        <span>{{ $popular_event->views ?? 120 }}</span>
+                                    </div>
+                                </div>
+
+                                <h3 class="text-lg font-heading font-bold text-gray-900 mb-3">
+                                    {{ $popular_event->name ?? 'Annual Day Celebration' }}
+                                </h3>
+
+                                <p class="text-gray-600 text-sm mb-4 ">
+                                    {{ Str::limit(strip_tags($popular_event->description ?? ''), 135) }}
+                                </p>
+
+                                <a class="inline-flex items-center text-primary font-semibold text-sm hover:text-red-600 transition duration-200"
+                                    href="{{ route('frontend.events.show', ['slug' => $popular_event->slug]) }}">
+                                    <span>View Events</span>
+                                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+
+                            </div>
+
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition" id="past-event-2">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/dda9da5df3-86044a12080ebcf43b41.png"
-                                alt="students winning medals at inter-school sports competition with trophy" />
-                        </div>
-                        <div class="p-6">
-                            <div
-                                class="inline-block bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                                November 2023</div>
-                            <h3 class="text-lg font-heading font-bold text-gray-900 mb-3">Sports Day Championship</h3>
-                            <p class="text-gray-600 text-sm mb-4">Students showcased exceptional athletic skills across
-                                various sporting events and competitions.</p>
-                            <a class="inline-flex items-center text-secondary font-semibold text-sm hover:text-red-700 transition"
-                                href="#">
-                                <span>View Gallery</span>
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition" id="past-event-3">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/93b59b7bde-9f4c7c8a1b4dcd58b622.png"
-                                alt="halloween celebration with students in creative costumes and decorations" />
-                        </div>
-                        <div class="p-6">
-                            <div
-                                class="inline-block bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                                October 2023</div>
-                            <h3 class="text-lg font-heading font-bold text-gray-900 mb-3">Halloween Carnival</h3>
-                            <p class="text-gray-600 text-sm mb-4">A fun-filled day with creative costumes, games, and
-                                activities celebrating Halloween traditions.</p>
-                            <a class="inline-flex items-center text-purple-600 font-semibold text-sm hover:text-purple-700 transition"
-                                href="#">
-                                <span>View Gallery</span>
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition" id="past-event-4">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/61c2687597-a406a9e06f09a3072926.png"
-                                alt="environmental awareness campaign with students planting trees and cleaning" />
-                        </div>
-                        <div class="p-6">
-                            <div
-                                class="inline-block bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                                September 2023</div>
-                            <h3 class="text-lg font-heading font-bold text-gray-900 mb-3">Green Earth Initiative</h3>
-                            <p class="text-gray-600 text-sm mb-4">Students participated in tree plantation and
-                                environmental awareness activities for a greener future.</p>
-                            <a class="inline-flex items-center text-green-600 font-semibold text-sm hover:text-green-700 transition"
-                                href="#">
-                                <span>View Gallery</span>
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 md:py-16 bg-gradient-to-r from-primary to-blue-600" id="cta-section">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold mb-4 md:mb-6">Never Miss An Event</h2>
-                <p class="text-base md:text-lg lg:text-xl text-blue-100 mb-6 md:mb-8">Subscribe to our newsletter to
-                    receive event updates and important announcements</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto">
-                    <input
-                        class="w-full px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                        type="email" placeholder="Enter your email address">
-                    <button
-                        class="w-full sm:w-auto bg-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-red-700 transition whitespace-nowrap">
-                        Subscribe Now
-                    </button>
-                </div>
             </div>
         </div>
     </section>

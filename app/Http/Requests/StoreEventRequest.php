@@ -22,7 +22,15 @@ class StoreEventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required|string|max:255',
+            'event_categories_id' => 'required|exists:event_categories,id',
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'event_categories_id.required' => 'Please select a category.',
+            'event_categories_id.exists' => 'Selected category is invalid.',
         ];
     }
 }

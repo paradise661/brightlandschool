@@ -18,11 +18,13 @@ return new class extends Migration
             $table->boolean('status')->default(0);
             $table->unsignedBigInteger('views')->default(0);
             $table->string('name')->nullable();
+            $table->string('icon')->nullable();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->string('banner_image')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
+            $table->date('event_date')->nullable();
             $table->string('location')->nullable();
             $table->string('slug')->nullable();
             $table->string('seo_title')->nullable();
