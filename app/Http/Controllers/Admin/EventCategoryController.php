@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\UpdateEventRequest;
+use App\Http\Requests\StoreEventCategoryRequest;
+use App\Http\Requests\UpdateEventCategoryRequest;
 use App\Models\EventCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,7 +21,7 @@ class EventCategoryController extends Controller
     {
         return view('admin.events.category.create');
     }
-    public function store(StoreEventRequest $request)
+    public function store(StoreEventCategoryRequest $request)
     {
         $input = $request->all();
         $input['slug'] = Str::slug($request->name);
@@ -33,7 +33,7 @@ class EventCategoryController extends Controller
     {
         return view('admin.events.category.edit', compact('event_category'));
     }
-    public function update(UpdateEventRequest $request, EventCategory $event_category)
+    public function update(UpdateEventCategoryRequest $request, EventCategory $event_category)
     {
         $input = $request->all();
         $input['slug'] = Str::slug($request->name);
