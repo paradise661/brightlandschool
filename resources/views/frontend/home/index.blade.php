@@ -1088,3 +1088,59 @@
         </div>
     </section> --}}
 @endsection
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            /* ============================
+               NOTICE: Read more / less
+               + View count
+            ============================ */
+            document.querySelectorAll('.read-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+
+                    const card = this.closest('.notice-card');
+                    const textEl = card.querySelector('.notice-text');
+                    const noticeId = card.dataset.noticeId;
+
+                    const isExpanded = this.dataset.expanded === "true";
+
+                    if (!isExpanded) {
+                        textEl.textContent = card.dataset.fullText;
+                        this.textContent = "Read less";
+                        this.dataset.expanded = "true";
+
+                        if (!card.dataset.viewed) {
+                            incrementNoticeView(noticeId, card);
+                            card.dataset.viewed = "true";
+                        }
+
+                    } else {
+                        // Collapse notice
+                        textEl.textContent = card.dataset.shortText;
+                        this.textContent = "Read more";
+                        this.dataset.expanded = "false";
+                    }
+                });
+            });
+
+            function incrementNoticeView(noticeId, card) {
+                fetch(`/notice/${noticeId}/view`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.views !== undefined) {
+                            card.querySelector('.view-count').innerHTML =
+                                `<i class="fa-solid fa-eye mr-2"></i>${data.views}`;
+                        }
+                    })
+                    .catch(err => console.error(err));
+            }
+        });
+    </script>
+@endsection
