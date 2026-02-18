@@ -155,6 +155,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ Request::segment(2) == 'pages' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('pages.index') }}">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Basic">Pages</div>
+            </a>
+        </li>
+
         <!-- General Settings  -->
         <li class="menu-item @if (in_array(Request::segment(2), ['setting', 'slider', 'social', 'page', 'popup', 'partner'])) active open @endif">
             <a class="menu-link menu-toggle text-decoration-none" href="javascript:void(0)">
