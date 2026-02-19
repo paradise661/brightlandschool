@@ -49,7 +49,7 @@ class PageController extends Controller
     public function update(UpdatePageRequest $request, Page $page)
     {
         $input = $request->all();
-        $input['slug'] = Str::slug($request->name);
+        // $input['slug'] = Str::slug($request->name);
         $page->update($input);
 
         return redirect()->route('pages.index')->with('success', 'Page updated successfully');

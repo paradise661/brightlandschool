@@ -76,9 +76,16 @@ class FrontendController extends Controller
 
     public function facilities()
     {
-        $vmvPage = Page::where('slug', 'academic-facilities')->first(); 
-        $vmvItems = $vmvPage ? $vmvPage->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
-        return view('frontend.facilities.index', compact('vmvItems', 'vmvPage'));
+        $pageFacilities = Page::where('slug', 'academic-facilities')->first();
+        $facilitiesItems = $pageFacilities ? $pageFacilities->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+
+        $sportFacilities = Page::where('slug', 'sports-recreation-facilities')->first();
+        $sportFacilitiesItems = $sportFacilities ? $sportFacilities->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+
+        $supportFacilities = Page::where('slug', 'support-wellness-facilities')->first();
+        $supportFacilitiesItems = $supportFacilities ? $supportFacilities->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+
+        return view('frontend.facilities.index', compact('facilitiesItems', 'pageFacilities', 'sportFacilitiesItems', 'sportFacilities', 'supportFacilitiesItems', 'supportFacilities'));
     }
 
     public function gallery()

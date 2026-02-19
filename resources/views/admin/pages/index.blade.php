@@ -37,21 +37,21 @@
                                 <td>{{ $page->updated_at->diffForHumans() }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-dark" href="{{ route('pages.items.index', $page->id) }}"
-                                        style="float: left; margin-right: 5px; font-size:15px">
+                                        style="float: left; margin-right: 5px; ">
                                         <i class="fa fa-align-justify"></i> Pages
                                     </a>
                                     <a class="btn btn-sm btn-primary" href="{{ route('pages.edit', $page->id) }}"
                                         style="float: left;margin-right: 5px;"><i class="fa-solid fa-pen-to-square"></i>
                                         Edit</a>
 
-                                    <form class="delete-form" action="{{ route('pages.destroy', $page->id) }}"
+                                    {{-- <form class="delete-form" action="{{ route('pages.destroy', $page->id) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger delete_pages mr-2" id=""
                                             data-type="confirm" type="submit" title="Delete"><i class="fa fa-trash"></i>
                                             Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

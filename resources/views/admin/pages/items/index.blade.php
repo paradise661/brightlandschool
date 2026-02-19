@@ -5,7 +5,7 @@
     @include('admin.includes.message')
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Pages ({{ $pagesItem->total() }})</h5>
+            <h5 class="mb-0">{{ $page->name ?? '' }} ({{ $pagesItem->total() }})</h5>
             <div class="d-flex justify-content-end align-items-center gap-2">
                 <a class="btn btn-secondary" href="{{ route('pages.index') }}">
                     <i class="fa-solid fa-arrow-left"></i> Back
