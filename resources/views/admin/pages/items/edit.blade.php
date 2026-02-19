@@ -171,8 +171,9 @@
                                 <label for="image">Featured Image</label>
                                 <div class="custom-file">
                                     <input class="dropify @error('image') is-invalid @enderror" id="image"
-                                        data-show-remove="false" type="file" name="image"
-                                        value="{{ old('image', $item->image) }}">
+                                        data-show-remove="false" data-default-file="{{ $item->image }}" type="file"
+                                        name="image">
+
                                     @error('image')
                                         <div class="invalid-feedback" style="display: block;">
                                             {{ $message }}
@@ -184,8 +185,8 @@
                                 <label for="image">Banner Image</label>
                                 <div class="custom-file">
                                     <input class="dropify @error('banner_image') is-invalid @enderror" id="banner_image"
-                                        data-show-remove="false" type="file" name="banner_image"
-                                        value="{{ old('banner_image', $item->banner_image) }}">
+                                        data-show-remove="false" data-default-file="{{ $item->banner_image }}"
+                                        type="file" name="banner_image">
                                     @error('banner_image')
                                         <div class="invalid-feedback" style="display: block;">
                                             {{ $message }}

@@ -76,7 +76,9 @@ class FrontendController extends Controller
 
     public function facilities()
     {
-        return view('frontend.facilities.index');
+        $vmvPage = Page::where('slug', 'academic-facilities')->first(); 
+        $vmvItems = $vmvPage ? $vmvPage->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+        return view('frontend.facilities.index', compact('vmvItems', 'vmvPage'));
     }
 
     public function gallery()

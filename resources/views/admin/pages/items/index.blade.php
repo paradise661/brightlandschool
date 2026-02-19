@@ -35,8 +35,8 @@
                             <tr>
                                 <td><strong>{{ $key + $pagesItem->firstItem() }}</strong></td>
                                 <td class="">
-                                    <a class="fancybox" data-fancybox="demo" href="{{ asset($item->image) }}">
-                                        <img src="{{ asset($item->image) }}" alt="{{ $item->name ?? '' }}" width="80px">
+                                    <a class="fancybox" data-fancybox="demo" href="{{ $item->image }}">
+                                        <img src="{{ $item->image }}" alt="{{ $item->name ?? '' }}" width="80px">
                                     </a>
                                 </td>
                                 <td><strong>{{ $item->name ?? '' }}</strong></td>

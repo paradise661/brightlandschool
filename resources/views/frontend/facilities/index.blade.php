@@ -42,64 +42,8 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 lg:py-20 bg-white" id="facilities-overview">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Excellence in
-                    Infrastructure</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Facilities That Inspire
-                    Learning</h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Our campus is equipped with modern facilities
-                    designed to provide students with the best learning environment and opportunities for growth</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16">
-                <div
-                    class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 md:p-8 text-center border-2 border-blue-100 hover:border-primary hover:shadow-xl transition">
-                    <div
-                        class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-                        <i class="fa-solid fa-building text-primary text-2xl md:text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-2">50+</h3>
-                    <p class="text-gray-600 font-semibold">Smart Classrooms</p>
-                </div>
-                <div
-                    class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 md:p-8 text-center border-2 border-green-100 hover:border-green-600 hover:shadow-xl transition">
-                    <div
-                        class="w-16 h-16 md:w-20 md:h-20 bg-green-600/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-                        <i class="fa-solid fa-flask text-green-600 text-2xl md:text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-2">12</h3>
-                    <p class="text-gray-600 font-semibold">Advanced Laboratories</p>
-                </div>
-                <div
-                    class="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 md:p-8 text-center border-2 border-purple-100 hover:border-purple-600 hover:shadow-xl transition">
-                    <div
-                        class="w-16 h-16 md:w-20 md:h-20 bg-purple-600/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-                        <i class="fa-solid fa-book text-purple-600 text-2xl md:text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-2">50,000+</h3>
-                    <p class="text-gray-600 font-semibold">Library Books</p>
-                </div>
-                <div
-                    class="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 md:p-8 text-center border-2 border-orange-100 hover:border-accent hover:shadow-xl transition">
-                    <div
-                        class="w-16 h-16 md:w-20 md:h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-                        <i class="fa-solid fa-trophy text-accent text-2xl md:text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900 mb-2">15+</h3>
-                    <p class="text-gray-600 font-semibold">Sports Facilities</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="academic-facilities">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Academic Excellence</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Academic Facilities</h2>
-            </div>
 
             <div class="grid lg:grid-cols-2 gap-8 md:gap-12 mb-8 md:mb-12">
                 <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition"
@@ -254,6 +198,7 @@
                         </ul>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
