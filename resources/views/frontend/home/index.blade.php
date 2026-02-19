@@ -672,73 +672,40 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex items-center justify-between mb-12">
                 <div>
-                    <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                        Latest Updates
+                    <div class="inline-block bg-blue-100 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        Blogs
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-900">News & Events</h2>
+                    <h2 class="text-5xl font-bold text-gray-900">Latest Blogs</h2>
                 </div>
                 <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View
                     All</button>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-56 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/dd60417cbe-a56fddeef853bd5916bf.png"
-                            alt="school annual day celebration with students performing on stage" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span
-                                class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Event</span>
-                            <span class="text-gray-500 text-sm"><i class="fa-solid fa-calendar mr-2"></i>March 15,
-                                2024</span>
+                @foreach ($blogs as $blog)
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+                        <div class="h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="{{ $blog->image }}"
+                                alt="{{ $blog->name ?? '' }}" />
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Annual Day Celebration 2024</h3>
-                        <p class="text-gray-600 mb-4">Join us for our grand annual day celebration featuring cultural
-                            performances, awards ceremony, and more.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-56 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3526bbb3e7-95ea1211e62bf92a598a.png"
-                            alt="school science fair with student projects and experiments display" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span
-                                class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">News</span>
-                            <span class="text-gray-500 text-sm"><i class="fa-solid fa-calendar mr-2"></i>March 10,
-                                2024</span>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <span
+                                    class="bg-blue-100 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">{{ $blog->category->name ?? 'Uncategorized' }}
+                                </span>
+                                <span class="text-gray-500 text-sm"><i
+                                        class="fa-solid fa-calendar mr-2 text-primary"></i>{{ $blog->created_at->format('F d, Y') }}</span>
+                                <span class="text-gray-500 text-xs"><i
+                                        class="fa-solid fa-eye mr-2 text-primary"></i>{{ $blog->views ?? 0 }}
+                                    Views</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">{{ $blog->name ?? '' }}</h3>
+                            <p class="text-gray-600 mb-4">{{ Str::limit(strip_tags($blog->description ?? ''), 150) }}</p>
+                            <a class="text-blue-600 font-semibold hover:text-blue-700 transition"
+                                href="{{ route('frontend.blog.show', ['slug' => $blog->slug]) }}">Read More
+                                <i class="fa-solid fa-arrow-right ml-2"></i></a>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Students Win National Science Fair</h3>
-                        <p class="text-gray-600 mb-4">Our students secured first place in the National Science Fair with
-                            their innovative project on renewable energy.</p>
-                        <a class="text-blue-600 font-semibold hover:text-blue-700 transition" href="#">Read More <i
-                                class="fa-solid fa-arrow-right ml-2"></i></a>
                     </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-56 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/60f93587df-76899c7f5b141a53e0da.png"
-                            alt="school sports day with students running track and field events" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span
-                                class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">Event</span>
-                            <span class="text-gray-500 text-sm"><i class="fa-solid fa-calendar mr-2"></i>March 5,
-                                2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">Inter-School Sports Championship</h3>
-                        <p class="text-gray-600 mb-4">Excellence Academy hosts the annual inter-school sports championship
-                            with 20+ participating schools.</p>
-                        <a class="text-blue-600 font-semibold hover:text-blue-700 transition" href="#">Read More <i
-                                class="fa-solid fa-arrow-right ml-2"></i></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -833,61 +800,26 @@
     <section class="py-20 bg-white" id="gallery-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <div class="inline-block bg-blue-100 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
                     Photo Gallery
                 </div>
                 <h2 class="text-5xl font-bold text-gray-900 mb-4">Campus Life in Pictures</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore the vibrant life at Excellence Academy through
-                    our photo gallery</p>
+
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/59426f2591-cc308d28c4705bfea729.png"
-                        alt="school students in classroom engaged in group learning activity" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/93bd6c267d-8b1fcfb080794b16ccfe.png"
-                        alt="school cultural event with students performing traditional dance" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/93a8843424-6bd12afbceea89dec5fb.png"
-                        alt="school science exhibition with student project displays" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/f843cf4b1e-2a0e2287baee97a753fe.png"
-                        alt="school sports team celebrating victory with trophy" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/84164dc0c7-e0a9bfc98b0ffd082994.png"
-                        alt="school art class with students painting and drawing" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/5561881610-c956f40ef0fbbb1eda41.png"
-                        alt="school music class with students playing instruments" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/96c43237a6-2ebff35f86dc0bd9ca45.png"
-                        alt="school outdoor activity with students on field trip" />
-                </div>
-                <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
-                    <img class="w-full h-full object-cover"
-                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/12db7b6181-25df8963583b660de805.png"
-                        alt="school graduation ceremony with students in caps and gowns" />
-                </div>
+                @foreach ($albums as $album)
+                    <div class="h-64 overflow-hidden rounded-xl shadow-lg card-hover">
+                        <img class="w-full h-full object-cover" src="{{ $album->image }}" alt="{{ $album->title }}" />
+                    </div>
+                @endforeach
             </div>
             <div class="text-center mt-12">
-                <button
-                    class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-lg">
+                <a class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-lg"
+                    href="{{ route('frontend.gallery') }}">
                     <i class="fa-solid fa-images mr-2"></i>View Complete Gallery
-                </button>
+                </a>
             </div>
+
         </div>
     </section>
 

@@ -69,7 +69,7 @@
                                     class="text-xl font-heading font-bold text-gray-900 mb-3 leading-tight group-hover:text-primary transition">
                                     {{ $blog->name ?? '' }}</h3>
                                 <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                                    {{ strip_tags($blog->description ?? '') }}</p>
+                                    {{ Str::limit(strip_tags($blog->description ?? ''), 150) }}</p>
                                 <a class="text-blue-600 font-semibold hover:text-blue-700 transition"
                                     href="{{ route('frontend.blog.show', ['slug' => $blog->slug]) }}">Read
                                     More <i class="fa-solid fa-arrow-right ml-2"></i></a>
