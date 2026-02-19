@@ -6,10 +6,15 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Pages ({{ $pagesItem->total() }})</h5>
-            <small class="text-muted float-end">
-                <a class="btn btn-primary" href="{{ route('pages.items.create', $page) }}"><i class="fa-solid fa-plus"></i>
-                    Create</a>
-            </small>
+            <div class="d-flex justify-content-end align-items-center gap-2">
+                <a class="btn btn-secondary" href="{{ route('pages.index') }}">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+                <a class="btn btn-primary" href="{{ route('pages.items.create', $page) }}">
+                    <i class="fa-solid fa-plus"></i> Create
+                </a>
+            </div>
+
         </div>
 
         <div class="table-responsive text-nowrap">
@@ -26,20 +31,22 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($pagesItem as $key => $pagesItems)
+                        @foreach ($pagesItem as $key => $item)
                             <tr>
                                 <td><strong>{{ $key + $pagesItem->firstItem() }}</strong></td>
                                 <td class="">
-                                    <a class="fancybox" data-fancybox="demo" href="{{ asset($pagesItems->image) }}">
-                                        <img src="{{ asset($pagesItems->image) }}" alt="{{ $pagesItems->title ?? '' }}"
-                                            width="80px">
+                                    <a class="fancybox" data-fancybox="demo" href="{{ asset($item->image) }}">
+                                        <img src="{{ asset($item->image) }}" alt="{{ $item->name ?? '' }}" width="80px">
                                     </a>
                                 </td>
-                                <td><strong>{{ $pagesItems->title ?? '' }}</strong></td>
-                                <td><span
-                                        class="badge rounded-pill bg-label-{{ $pagesItems->status == 1 ? 'success' : 'danger' }}">{{ $pagesItems->status == 1 ? 'Publish' : 'Draft' }}</span>
+                                <td><strong>{{ $item->name ?? '' }}</strong></td>
+                                <td>
+                                    <span
+                                        class="badge rounded-pill bg-label-{{ $item->status == 1 ? 'success' : 'danger' }}">
+                                        {{ $item->status == 1 ? 'Publish' : 'Draft' }}
+                                    </span>
                                 </td>
-                                <td>{{ $pagesItems->updated_at->diffForHumans() }}</td>
+                                <td>{{ $item->updated_at->diffForHumans() }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-primary"
                                         href="{{ route('pages.items.edit', [$page, $item->id]) }}"
@@ -57,9 +64,9 @@
                                         </button>
                                     </form>
                                 </td>
-
                             </tr>
                         @endforeach
+
                     </tbody>
                 </table>
                 {{ $pagesItem->links() }}

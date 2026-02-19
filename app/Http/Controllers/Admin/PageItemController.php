@@ -54,36 +54,46 @@ class PageItemController extends Controller
     }
 
 
-    public function edit(PageItem $pageItem)
+    public function edit(Page $page, PageItem $item)
     {
-        return view('admin.pages.items.edit', compact('pageItem'));
+        return view('admin.pages.items.edit', compact('page', 'item'));
     }
 
 
-    public function update(UpdatePageItemRequest $request, PageItem $pageItem)
+
+    public function update(UpdatePageItemRequest $request, Page $page, PageItem $item)
     {
-        $input = $request->all();
+        $data = $request->all();
+
+        $data['points'] = array_values(array_filter($request->points ?? []));
 
         if ($request->hasFile('image')) {
-            removeFile($pageItem->image);
-            $input['image'] = fileUpload($request, 'image', 'page_item');
+            removeFile($item->image);
+            $data['image'] = fileUpload($request, 'image', 'page_item');
         }
         if ($request->hasFile('banner_image')) {
-            removeFile($pageItem->banner_image);
-            $input['banner_image'] = fileUpload($request, 'banner_image', 'page_item');
+            removeFile($item->banner_image);
+            $data['banner_image'] = fileUpload($request, 'banner_image', 'page_item');
         }
-        $input['slug'] = Str::slug($request->name);
-        $pageItem->update($input);
 
-        return redirect()->route('pages.items.index')->with('success', 'Page Item updated successfully');
+        $data['slug'] = Str::slug($request->name);
+
+        $item->update($data);
+
+        return redirect()
+            ->route('pages.items.index', $page)
+            ->with('success', 'Page Item updated successfully');
     }
 
 
-    public function destroy(PageItem $pageItem)
+    public function destroy(Page $page, PageItem $item)
     {
-        removeFile($pageItem->image);
-        removeFile($pageItem->banner_image);
-        $pageItem->delete();
-        return redirect()->route('pages.items.index')->with('success', 'Page Item deleted successfully');
+        removeFile($item->image);
+        removeFile($item->banner_image);
+        $item->delete();
+
+        return redirect()
+            ->route('pages.items.index', $page)
+            ->with('success', 'Page Item deleted successfully');
     }
 }

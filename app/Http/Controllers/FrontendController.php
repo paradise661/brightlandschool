@@ -13,6 +13,7 @@ use App\Models\DownloadCategory;
 use App\Models\Event;
 use App\Models\Notice;
 use App\Models\NoticeCategory;
+use App\Models\Page;
 use App\Models\Slider;
 use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
@@ -23,10 +24,14 @@ class FrontendController extends Controller
 {
     public function home()
     {
+        // Fetch the Vision, Mission & Values section
+        $vmvPage = Page::where('slug', 'vision-mission-values')->first();
+        $vmvItems = $vmvPage ? $vmvPage->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
 
         $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
-        return view('frontend.home.index', compact('sliders', 'notices'));
+
+        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage'));
     }
 
     public function about()
@@ -257,5 +262,15 @@ class FrontendController extends Controller
         return response()->json([
             'views' => $notice->views
         ]);
+    }
+
+
+    public function showPageSection($slug)
+    {
+        $page = Page::where('slug', $slug)->firstOrFail();
+
+        $items = $page->items()->where('status', 1)->orderBy('order', 'asc')->get();
+
+        return view('frontend.pages.index', compact('page', 'items'));
     }
 }

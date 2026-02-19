@@ -25,3 +25,5 @@ Route::post('/notice/{notice}/view', [FrontendController::class, 'incrementNotic
 
 Route::get('/event', [FrontendController::class, 'event'])->name('frontend.events');
 Route::get('/event/{slug}', [FrontendController::class, 'eventShow'])->name('frontend.events.show');
+
+Route::get('/section/{slug}', [FrontendController::class, 'showPageSection'])->name('frontend.page.section');

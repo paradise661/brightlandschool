@@ -215,93 +215,44 @@
     <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50" id="vision-mission">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <div class="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
                     Our Foundation
                 </div>
                 <h2 class="text-5xl font-bold text-gray-900 mb-4">Vision, Mission & Values</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">The guiding principles that shape our educational
                     philosophy and drive our commitment to excellence</p>
             </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
-                    <div
-                        class="bg-gradient-to-br from-blue-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fa-solid fa-eye text-white text-3xl"></i>
+                @foreach ($vmvItems as $item)
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
+                        <div
+                            class="bg-primary from-blue-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fa-solid {{ $item->icon ?? 'fa-circle' }} text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $item->name }}</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6 ">
+
+                            {!! \Illuminate\Support\Str::words($item->description, 130, '...') !!}
+
+                        </p>
+
+                        @if ($item->points)
+                            <div class="border-t border-gray-200 pt-6">
+                                <ul class="space-y-3">
+                                    @foreach ($item->points as $point)
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-check-circle text-primary mr-3 mt-1"></i>
+                                            <span class="text-gray-700">{{ $point }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6">To be a globally recognized institution that nurtures
-                        creative, innovative, and compassionate leaders who contribute positively to society and drive
-                        positive change in the world.</p>
-                    <div class="border-t border-gray-200 pt-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-blue-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Global excellence in education</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-blue-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Innovative learning approaches</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-blue-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Character-driven leadership</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
-                    <div
-                        class="bg-gradient-to-br from-green-500 to-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fa-solid fa-bullseye text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6">To provide a holistic, student-centered education that
-                        empowers learners with knowledge, skills, and values necessary to excel academically and become
-                        responsible global citizens.</p>
-                    <div class="border-t border-gray-200 pt-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Quality education for all</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Holistic development focus</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Community engagement</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
-                    <div
-                        class="bg-gradient-to-br from-purple-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fa-solid fa-heart text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6">We uphold the highest standards of integrity, respect,
-                        and excellence in everything we do, fostering an environment where every individual is valued and
-                        empowered to succeed.</p>
-                    <div class="border-t border-gray-200 pt-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-purple-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Integrity & honesty</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-purple-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Respect & inclusivity</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-purple-600 mr-3 mt-1"></i>
-                                <span class="text-gray-700">Excellence & innovation</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
         </div>
     </section>
 
