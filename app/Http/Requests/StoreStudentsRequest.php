@@ -29,19 +29,13 @@ class StoreStudentsRequest extends FormRequest
             'last_name'       => 'required|string|max:255',
             'date_of_birth'   => 'required|date',
             'gender'          => 'required|in:male,female,other',
-            'blood_group'     => 'nullable|string|max:10',
-            'nationality'     => 'required|string|max:255',
-            'religion'        => 'nullable|string|max:255',
-            'mother_tongue'   => 'nullable|string|max:255',
             'student_photo'   => 'required|image|max:2048',
 
             /* =========================
          * ADMISSION DETAILS
          * ========================= */
             'applying_grade'       => 'required|string|max:255',
-            'academic_year'        => 'required|string|max:50',
             'previous_school_name' => 'nullable|string|max:255',
-            'previous_grade'       => 'nullable|string|max:255',
 
             /* =========================
          * FATHER DETAILS
@@ -51,13 +45,6 @@ class StoreStudentsRequest extends FormRequest
             'father_phone'      => 'required|string|max:20',
             'father_email'      => 'required|email|max:255',
 
-            /* =========================
-         * MOTHER DETAILS
-         * ========================= */
-            'mother_name'       => 'required|string|max:255',
-            'mother_occupation' => 'nullable|string|max:255',
-            'mother_phone'      => 'required|string|max:20',
-            'mother_email'      => 'nullable|email|max:255',
 
             /* =========================
          * GUARDIAN DETAILS
@@ -71,18 +58,8 @@ class StoreStudentsRequest extends FormRequest
          * ADDRESS INFORMATION
          * ========================= */
             'current_address'  => 'required|string',
-            'city'             => 'required|string|max:255',
-            'state'            => 'required|string|max:255',
-            'postal_code'      => 'nullable|string|max:20',
-            'country'          => 'required|string|max:255',
-            'same_as_permanent' => 'nullable|boolean',
 
-            /* =========================
-         * MEDICAL INFORMATION
-         * ========================= */
-            'medical_conditions'       => 'nullable|string',
-            'emergency_contact_name'   => 'required|string|max:255',
-            'emergency_contact_number' => 'required|string|max:20',
+
 
             /* =========================
          * DOCUMENT UPLOADS

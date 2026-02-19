@@ -24,6 +24,10 @@ class FrontendController extends Controller
 {
     public function home()
     {
+
+        $pageFacilities = Page::where('slug', 'academic-facilities')->first();
+        $facilitiesItems = $pageFacilities ? $pageFacilities->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+
         $albums = Album::where('status', 1)->orderBy('order', 'asc')->take(8)->get();
         $blogs = Post::with('category')
             ->where('status', 1)
@@ -36,7 +40,7 @@ class FrontendController extends Controller
         $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
 
-        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums'));
+        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities'));
     }
 
     public function about()

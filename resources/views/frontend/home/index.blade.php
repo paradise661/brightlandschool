@@ -238,7 +238,7 @@
                         </p>
 
                         @if ($item->points)
-                            <div class="border-t border-gray-200 pt-6">
+                            <div class="border-t border-gray-200 pt-6 mt-3">
                                 <ul class="space-y-3">
                                     @foreach ($item->points as $point)
                                         <li class="flex items-start">
@@ -532,138 +532,41 @@
     <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50" id="facilities-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <div class="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    World-Class Infrastructure
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                    Facilities
                 </div>
                 <h2 class="text-5xl font-bold text-gray-900 mb-4">State-of-the-Art Facilities</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Modern infrastructure designed to provide the best
-                    learning environment for our students</p>
+
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/aa06d079e3-ef45dbd5010f58522f55.png"
-                            alt="modern school science laboratory with advanced equipment and students" />
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center">
-                                <i class="fa-solid fa-flask text-blue-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900">Science Laboratories</h3>
+                @foreach ($facilitiesItems as $facilities)
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+                        <div class="h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="{{ $facilities->image }}"
+                                alt="{{ $facilities->name ?? 'Facility Image' }}" />
                         </div>
-                        <p class="text-gray-600 mb-4 leading-relaxed">Fully equipped physics, chemistry, and biology labs
-                            with modern instruments and safety equipment for hands-on learning experiences.</p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-blue-600 mr-3"></i>
-                                <span>Advanced equipment & instruments</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-blue-600 mr-3"></i>
-                                <span>Safety protocols & training</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-blue-600 mr-3"></i>
-                                <span>Expert lab assistants</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/643cbe04f0-d437fd9fd949874885e6.png"
-                            alt="modern school computer lab with latest computers and students learning" />
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center">
-                                <i class="fa-solid fa-desktop text-green-600 text-xl"></i>
+                        <div class="p-8">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid {{ $facilities->icon ?? 'fa-flask' }} text-blue-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900">{{ $facilities->name ?? 'Facility Name' }}
+                                </h3>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-900">Computer Labs</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed"> {!! \Illuminate\Support\Str::words(strip_tags($facilities->description), 130, '...') !!}</p>
+                            <ul class="space-y-2">
+                                @if ($facilities->points)
+                                    @foreach ($facilities->points as $point)
+                                        <li class="flex items-center text-gray-700">
+                                            <i class="fa-solid fa-check text-blue-600 mr-3"></i>
+                                            <span>{{ $point }}</span>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </div>
-                        <p class="text-gray-600 mb-4 leading-relaxed">High-speed internet connectivity with latest
-                            computers and software for coding, programming, and digital literacy education.</p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-green-600 mr-3"></i>
-                                <span>Latest hardware & software</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-green-600 mr-3"></i>
-                                <span>High-speed internet</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-green-600 mr-3"></i>
-                                <span>Coding & robotics programs</span>
-                            </li>
-                        </ul>
                     </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/552c9ef3cd-694df008507bd04421d8.png"
-                            alt="spacious school library with books and students reading" />
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center">
-                                <i class="fa-solid fa-book text-purple-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900">Digital Library</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4 leading-relaxed">Extensive collection of books, journals, and digital
-                            resources with comfortable reading spaces and online access.</p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-purple-600 mr-3"></i>
-                                <span>50,000+ books & journals</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-purple-600 mr-3"></i>
-                                <span>Digital resources & e-books</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-purple-600 mr-3"></i>
-                                <span>Quiet study areas</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ee74e6457e-a1383616882fb23e9d51.png"
-                            alt="school sports complex with basketball court and students playing" />
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="bg-orange-100 w-12 h-12 rounded-lg flex items-center justify-center">
-                                <i class="fa-solid fa-dumbbell text-orange-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900">Sports Complex</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4 leading-relaxed">Multi-purpose indoor and outdoor sports facilities
-                            including basketball, volleyball, cricket, and athletics tracks.</p>
-                        <ul class="space-y-2">
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-orange-600 mr-3"></i>
-                                <span>Indoor & outdoor courts</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-orange-600 mr-3"></i>
-                                <span>Professional coaching</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fa-solid fa-check text-orange-600 mr-3"></i>
-                                <span>Swimming pool & gym</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -871,10 +774,10 @@
                             class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-xl">
                             <i class="fa-solid fa-file-alt mr-2"></i>Apply Now
                         </button>
-                        <button
+                        {{-- <button
                             class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition">
                             <i class="fa-solid fa-download mr-2"></i>Download Brochure
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-2xl p-8">

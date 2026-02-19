@@ -41,56 +41,6 @@
         </div>
     </section>
 
-    {{-- <section class="py-12 md:py-16 bg-white" id="admission-process">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Simple Process</span>
-                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Admission Process</h2>
-                    <p class="text-lg text-gray-600">Follow these simple steps to complete your admission</p>
-                </div>
-
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <div class="text-center" id="step-1">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl md:text-3xl font-bold text-primary">1</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Fill Form</h3>
-                        <p class="text-sm text-gray-600">Complete the online admission form with accurate details</p>
-                    </div>
-
-                    <div class="text-center" id="step-2">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl md:text-3xl font-bold text-primary">2</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Submit Documents</h3>
-                        <p class="text-sm text-gray-600">Upload required documents and photographs</p>
-                    </div>
-
-                    <div class="text-center" id="step-3">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl md:text-3xl font-bold text-primary">3</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Assessment</h3>
-                        <p class="text-sm text-gray-600">Attend entrance test and interview</p>
-                    </div>
-
-                    <div class="text-center" id="step-4">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl md:text-3xl font-bold text-primary">4</span>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Confirmation</h3>
-                        <p class="text-sm text-gray-600">Receive admission confirmation and complete enrollment</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
     <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="admission-form-section">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-5xl mx-auto">
@@ -161,47 +111,6 @@
                                     </select>
 
                                 </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Blood Group</label>
-                                    <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        name="blood_group">
-                                        <option value="">Select blood group</option>
-                                        <option value="A+">A+</option>
-                                        <option value="A-">A-</option>
-                                        <option value="B+">B+</option>
-                                        <option value="B-">B-</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="AB-">AB-</option>
-                                        <option value="O+">O+</option>
-                                        <option value="O-">O-</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nationality <span
-                                            class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="nationality" type="text" placeholder="Enter nationality"
-                                        name="nationality">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-nationality"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Religion</label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter religion" name="religion">
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Mother Tongue</label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter mother tongue" name="mother_tongue">
-                                </div>
                             </div>
 
                             <div class="mt-6">
@@ -262,34 +171,14 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Academic Year <span
-                                            class="text-red-500">*</span></label>
-                                    <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="academic_year" name="academic_year">
-                                        <option value="">Select academic year</option>
-                                        <option value="2024-2025">2024-2025</option>
-                                        <option value="2025-2026">2025-2026</option>
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-academic_year"></p>
-                                    </select>
-                                </div>
-
-                                <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-2">Previous School
                                         Name</label>
                                     <input
                                         class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter previous school name"
+                                        type="text" placeholder="Enter previous school name if any"
                                         name="previous_school_name">
                                 </div>
 
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Previous
-                                        Grade/Class</label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter previous grade" name="previous_grade">
-                                </div>
                             </div>
                         </div>
 
@@ -328,7 +217,7 @@
                                         <input
                                             class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
                                             data-field="father_phone" type="tel"
-                                            name="father_phone"placeholder="+1 (234) 567-890">
+                                            name="father_phone"placeholder="021-1234567">
                                         <p class="mt-1 text-sm text-red-500 hidden" id="error-father_phone"></p>
                                     </div>
 
@@ -340,46 +229,6 @@
                                             data-field="father_email" type="email" name="father_email"
                                             placeholder="father@example.com">
                                         <p class="mt-1 text-sm text-red-500 hidden" id="error-father_email"></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-pink-50 rounded-2xl p-6 mb-6">
-                                <h4 class="text-lg font-heading font-bold text-gray-900 mb-4">Mother's Details</h4>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Mother's Name
-                                            <span class="text-red-500"></span>*</span></label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            data-field="mother_name" type="text" name="mother_name"
-                                            placeholder="Enter mother's name">
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-mother_name"></p>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Occupation</label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" name="mother_occupation" placeholder="Enter occupation">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number
-                                            <span class="text-red-500">*</span></label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            data-field="mother_phone" type="tel" name="mother_phone"
-                                            placeholder="+1 (234) 567-890">
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-mother_phone"></p>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address
-                                        </label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="email" name="mother_email" placeholder="mother@example.com">
                                     </div>
                                 </div>
                             </div>
@@ -438,84 +287,8 @@
                                         data-field="current_address" rows="3" name="current_address" placeholder="Enter complete address"></textarea>
                                     <p class="mt-1 text-sm text-red-500 hidden" id="error-current_address"></p>
                                 </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">City <span
-                                            class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="city" type="text" name="city" placeholder="Enter city">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-city"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">State/Province <span
-                                            class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="state" type="text" name="state"
-                                        placeholder="Enter state/province">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-state"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">ZIP/Postal Code</label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" name="postal_code" placeholder="Enter ZIP code">
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Country <span
-                                            class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="country" type="text" name="country" placeholder="Enter country">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-country"></p>
-                                </div>
                             </div>
 
-                        </div>
-
-                        <div class="mb-10" id="medical-information">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-red-600/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-heart-pulse text-red-600"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Medical Information
-                                </h3>
-                            </div>
-
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="md:col-span-2">
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Any Medical Conditions or
-                                        Allergies?</label>
-                                    <textarea
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        rows="3" name="medical_conditions"
-                                        placeholder="Please mention any medical conditions, allergies, or special needs"></textarea>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Emergency Contact Name
-                                        <span class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="emergency_contact_name" type="text" name="emergency_contact_name"
-                                        placeholder="Enter emergency contact name">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-emergency_contact_name"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Emergency Contact Number
-                                        <span class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="emergency_contact_number" type="tel"
-                                        name="emergency_contact_number" placeholder="+1 (234) 567-890">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-emergency_contact_number"></p>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="mb-10" id="document-upload">
@@ -715,98 +488,12 @@
             </div>
         </div>
     </section>
-
-    {{-- <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="admission-faq">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Have Questions?</span>
-                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Frequently Asked
-                        Questions</h2>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden" id="faq-1">
-                        <button
-                            class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition">
-                            <span class="font-heading font-bold text-gray-900 text-lg">When does the admission process
-                                start?</span>
-                            <i class="fa-solid fa-chevron-down text-primary"></i>
-                        </button>
-                        <div class="px-6 pb-5 text-gray-600">
-                            <p>The admission process typically starts in January for the upcoming academic year. However, we
-                                accept applications throughout the year subject to seat availability.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden" id="faq-2">
-                        <button
-                            class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition">
-                            <span class="font-heading font-bold text-gray-900 text-lg">Is there an entrance exam?</span>
-                            <i class="fa-solid fa-chevron-down text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden" id="faq-3">
-                        <button
-                            class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition">
-                            <span class="font-heading font-bold text-gray-900 text-lg">What is the age criteria for
-                                admission?</span>
-                            <i class="fa-solid fa-chevron-down text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden" id="faq-4">
-                        <button
-                            class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition">
-                            <span class="font-heading font-bold text-gray-900 text-lg">How long does the admission process
-                                take?</span>
-                            <i class="fa-solid fa-chevron-down text-primary"></i>
-                        </button>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden" id="faq-5">
-                        <button
-                            class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition">
-                            <span class="font-heading font-bold text-gray-900 text-lg">Can I visit the campus before
-                                applying?</span>
-                            <i class="fa-solid fa-chevron-down text-primary"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 md:py-20 bg-gradient-to-r from-primary to-blue-600 text-white" id="contact-cta">
-        <div class="container mx-auto px-4 md:px-6 text-center">
-            <div class="max-w-3xl mx-auto">
-                <div
-                    class="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fa-solid fa-headset text-white text-2xl md:text-3xl"></i>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Need Assistance?</h2>
-                <p class="text-lg md:text-xl text-blue-100 mb-8">Our admissions team is here to help you through every step
-                    of the process</p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a class="w-full sm:w-auto bg-white text-primary px-8 py-4 rounded-full hover:bg-gray-100 transition font-semibold text-lg inline-flex items-center justify-center"
-                        href="tel:+1234567890">
-                        <i class="fa-solid fa-phone mr-2"></i> Call Us Now
-                    </a>
-                    <a class="w-full sm:w-auto bg-transparent border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-primary transition font-semibold text-lg inline-flex items-center justify-center"
-                        href="mailto:admissions@school.edu">
-                        <i class="fa-solid fa-envelope mr-2"></i> Email Us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 @endsection
 @section('scripts')
     <script>
         /* ======================================================
-                                       CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
-                                       ====================================================== */
+                                                       CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
+                                                       ====================================================== */
         document.querySelectorAll('[data-upload]').forEach(box => {
             const input = box.querySelector('input[type="file"]');
             const fileNameBox = box.querySelector('[data-filename]');
