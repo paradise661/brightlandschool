@@ -1,20 +1,46 @@
 @extends('layouts.frontend.master')
 @section('content')
-    <section class="relative h-[400px] overflow-hidden" id="messages-hero">
+    <section class="relative h-[400px] overflow-hidden" id="blog-hero">
+        <!-- Softer Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
+
+        <!-- Background image -->
         <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7c13df7a6a-bc5f72234a06e12659ca.png"
-            alt="professional leadership team in modern school office, bright and inspiring" />
-        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center">
-            <div class="max-w-3xl text-white">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 md:mb-6 leading-tight">Leadership
-                    Messages</h1>
-                <p class="text-lg md:text-xl text-gray-200">Words of wisdom and vision from our esteemed leaders</p>
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
+            alt="students reading books in modern library" />
+
+        <!-- Content -->
+        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
+            <div class="text-center text-white">
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
+                    Gallery
+                </h1>
+
+                <!-- Breadcrumb -->
+                <nav>
+                    <ol
+                        class="inline-flex items-center space-x-2 text-sm
+                        bg-white/15 backdrop-blur-md
+                        px-5 py-2 rounded-full
+                        border border-white/20
+                        shadow-lg">
+                        <li>
+                            <a class="text-blue-100 hover:text-white transition" href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li class="text-blue-200">›</li>
+                        <li class="text-white font-medium">
+                            Gallery
+                        </li>
+                    </ol>
+                </nav>
+
             </div>
         </div>
     </section>
-
-
 
     <section class="py-16 md:py-20 lg:py-24 bg-gray-50" id="chairman-full-message">
         <div class="container mx-auto px-4 md:px-6">

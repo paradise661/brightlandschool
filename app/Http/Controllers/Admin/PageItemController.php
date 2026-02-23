@@ -40,6 +40,21 @@ class PageItemController extends Controller
         $input['page_id'] = $page->id;
         $input['points'] = $request->points ?? [];
 
+        // Combine message_points[] and message_icons[] into bullet_points JSON
+        $messagePoints = $request->input('message_points', []);
+        $messageIcons  = $request->input('message_icons', []);
+
+        $bulletPoints = [];
+        foreach ($messagePoints as $index => $point) {
+            if (!empty($point)) {
+                $bulletPoints[] = [
+                    'point' => $point,
+                    'icon'  => $messageIcons[$index] ?? null
+                ];
+            }
+        }
+        $input['bullet_points'] = $bulletPoints;
+
         PageItem::create($input);
 
         return redirect()->route('pages.items.index', $page)
@@ -77,6 +92,23 @@ class PageItemController extends Controller
         }
 
         $data['slug'] = Str::slug($request->name);
+
+
+        // Combine message_points[] and message_icons[] into bullet_points JSON
+        $messagePoints = $request->input('message_points', []);
+        $messageIcons  = $request->input('message_icons', []);
+
+        $bulletPoints = [];
+        foreach ($messagePoints as $index => $point) {
+            $icon = $messageIcons[$index] ?? null;
+            if (!empty($point) || !empty($icon)) {
+                $bulletPoints[] = [
+                    'point' => $point,
+                    'icon'  => $icon
+                ];
+            }
+        }
+        $data['bullet_points'] = $bulletPoints;
 
         $item->update($data);
 

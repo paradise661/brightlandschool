@@ -15,6 +15,9 @@ class PageItem extends Model
         'description',
         'short_description',
         'points',
+        'bullet_points',
+        'message_name',
+        'message_post',
         'image',
         'banner_image',
         'seo_title',
@@ -27,6 +30,7 @@ class PageItem extends Model
 
     protected $casts = [
         'points' => 'array',
+        'bullet_points' => 'array',
     ];
 
     public function page()

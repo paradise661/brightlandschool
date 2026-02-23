@@ -21,6 +21,11 @@ return new class extends Migration
             $table->json('points')->nullable(); // bullet list
             $table->string('image')->nullable();
             $table->string('banner_image')->nullable();
+
+            $table->json('bullet_points')->nullable();
+            $table->string('message_name')->nullable();
+            $table->string('message_post')->nullable();
+
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->text('seo_schema')->nullable();

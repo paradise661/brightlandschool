@@ -3,7 +3,22 @@
 
 @section('content')
     @include('admin.includes.message')
+    <style>
+        label {
+            font-weight: 500 !important;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            line-height: 200%;
+        }
 
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-link.active:hover,
+        .nav-tabs .nav-link.active:focus {
+            background: #e7e7ff;
+            background-color: #7174fe;
+            color: white;
+        }
+    </style>
     <div class="content">
         <div class="card container-fluid mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -88,54 +103,148 @@
                         </div>
                         <div class="card-body card shadow br-8">
 
-                            <div class="form-group mb-3">
-                                <label for="seo_title">SEO Title</label>
-                                <input class="form-control br-8 @error('seo_title') is-invalid @enderror" type="text"
-                                    name="seo_title" value="{{ old('seo_title', $item->seo_title) }}"
-                                    placeholder="Enter seo title">
-                                @error('seo_title')
-                                    <div class="invalid-feedback" style="display: block;">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                            <!-- Nav Tabs -->
+                            <ul class="nav nav-tabs" id="customTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="message-tab" data-bs-toggle="tab"
+                                        data-bs-target="#message" type="button" role="tab">
+                                        Message
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="seo-tab" data-bs-toggle="tab" data-bs-target="#seo"
+                                        type="button" role="tab">
+                                        SEO
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="other-tab" data-bs-toggle="tab" data-bs-target="#other"
+                                        type="button" role="tab">
+                                        Other
+                                    </button>
+                                </li>
+                            </ul>
 
-                            <div class="form-group mb-3">
-                                <label for="seo_keywords">SEO Keywords</label>
-                                <input class="form-control br-8 @error('seo_keywords') is-invalid @enderror" type="text"
-                                    name="seo_keywords" value="{{ old('seo_keywords', $item->seo_keywords) }}"
-                                    placeholder="Enter seo keywords">
-                                @error('seo_keywords')
-                                    <div class="invalid-feedback" style="display: block;">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                            <!-- Tab Content -->
+                            <div class="tab-content p-4 border border-top-0" id="customTabContent">
 
-                            <div class="form-group mb-3">
-                                <label for="seo_description">SEO Description</label>
-                                <textarea class="form-control br-8 @error('seo_description') is-invalid @enderror" id="seo_description"
-                                    name="seo_description" rows="3" placeholder="Enter seo description">{{ old('seo_description', $item->seo_description) }}</textarea>
-                                @error('seo_description')
-                                    <div class="invalid-feedback" style="display: block;">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                <!-- Message Tab -->
+                                <div class="tab-pane fade show active" id="message" role="tabpanel">
+                                    <h4>Message Section</h4>
 
-                            <!-- SEO Schema -->
-                            <div class="form-group mb-3">
-                                <label for="seo_schema">SEO Schema </label>
-                                <textarea class="form-control br-8 @error('seo_schema') is-invalid @enderror" name="seo_schema" rows="5"
-                                    placeholder="Enter schema in JSON format">
-                                {{ old('seo_schema', $item->seo_schema) }}
-                                </textarea>
-
-                                @error('seo_schema')
-                                    <div class="invalid-feedback" style="display: block;">
-                                        {{ $message }}
+                                    <div class="row">
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label">Name</label>
+                                            <input class="form-control" type="text" name="message_name"
+                                                value="{{ old('message_name', $item->message_name ?? '') }}"
+                                                placeholder="Enter message title">
+                                        </div>
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label">Post</label>
+                                            <input class="form-control" type="text" name="message_post"
+                                                value="{{ old('message_post', $item->message_post ?? '') }}"
+                                                placeholder="Enter message post">
+                                        </div>
                                     </div>
-                                @enderror
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold mb-2">Bullet Points</label>
+
+                                        <!-- Dynamic Fields Wrapper -->
+                                        <div id="pointsWrapper">
+
+                                            @if (old('message_points') || !empty($item->bullet_points))
+                                                @php
+                                                    $bulletPoints = old('message_points')
+                                                        ? array_map(
+                                                            function ($p, $i) {
+                                                                return ['point' => $p, 'icon' => $i];
+                                                            },
+                                                            old('message_points'),
+                                                            old('message_icons'),
+                                                        )
+                                                        : $item->bullet_points;
+                                                @endphp
+
+                                                @foreach ($bulletPoints as $bp)
+                                                    <div class="row g-2 align-items-center mb-2 pointItem">
+                                                        <div class="col-md-5">
+                                                            <input class="form-control" type="text"
+                                                                name="message_points[]" value="{{ $bp['point'] ?? '' }}"
+                                                                placeholder="Enter point">
+                                                        </div>
+
+                                                        <div class="col-md-5">
+                                                            <input class="form-control" type="text"
+                                                                name="message_icons[]" value="{{ $bp['icon'] ?? '' }}"
+                                                                placeholder="fa-solid fa-star">
+                                                        </div>
+
+                                                        <div class="col-md-2 d-flex gap-1">
+                                                            <button class="btn btn-danger btn-sm w-50 remove-point"
+                                                                type="button">Remove</button>
+                                                            <button class="btn btn-success btn-sm w-50 add-point"
+                                                                type="button">Add</button>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <!-- Initial empty row -->
+                                                <div class="row g-2 align-items-center mb-2 pointItem">
+                                                    <div class="col-md-5">
+                                                        <input class="form-control" type="text"
+                                                            name="message_points[]" placeholder="Enter point">
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <input class="form-control" type="text" name="message_icons[]"
+                                                            placeholder="fa-solid fa-star">
+                                                    </div>
+                                                    <div class="col-md-2 d-flex gap-1">
+                                                        <button class="btn btn-danger btn-sm w-50 remove-point"
+                                                            type="button">Remove</button>
+                                                        <button class="btn btn-success btn-sm w-50 add-point"
+                                                            type="button">Add</button>
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- SEO Tab -->
+                                <div class="tab-pane fade" id="seo" role="tabpanel">
+                                    <h4>SEO Settings</h4>
+                                    <div class="mb-3">
+                                        <label class="form-label">Meta Title</label>
+                                        <input class="form-control" type="text" name="seo_title"
+                                            value="{{ old('seo_title', $item->seo_title ?? '') }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Meta Description</label>
+                                        <textarea class="form-control" rows="3" name="seo_description">{{ old('seo_description', $item->seo_description ?? '') }}</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Keywords</label>
+                                        <input class="form-control" type="text" name="seo_keywords"
+                                            value="{{ old('seo_keywords', $item->seo_keywords ?? '') }}"
+                                            placeholder="keyword1, keyword2">
+                                    </div>
+                                </div>
+
+                                <!-- Other Tab -->
+                                <div class="tab-pane fade" id="other" role="tabpanel">
+                                    <h4>Other Settings</h4>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="status" type="checkbox" name="status"
+                                            value="1" {{ old('status', $item->status ?? 0) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status">
+                                            Active Status
+                                        </label>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
