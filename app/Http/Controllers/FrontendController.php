@@ -15,6 +15,7 @@ use App\Models\Notice;
 use App\Models\NoticeCategory;
 use App\Models\Page;
 use App\Models\PageItem;
+use App\Models\Review;
 use App\Models\Slider;
 use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
@@ -298,5 +299,12 @@ class FrontendController extends Controller
             ->firstOrFail();
 
         return view('frontend.pages.show', compact('item'));
+    }
+
+    public function reviews()
+    {
+        $reviews = Review::where('status', 1)->orderBy('order', 'asc')->get();
+
+        return view('frontend.reviews.index', compact('reviews'));
     }
 }

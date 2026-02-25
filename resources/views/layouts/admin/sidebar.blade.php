@@ -155,6 +155,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ Request::segment(2) == 'review' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('review.index') }}">
+                <i class="menu-icon tf-icons bx bx-check-square"></i>
+                <div data-i18n="Basic">Reviews</div>
+            </a>
+        </li>
+
         <li class="menu-item {{ Request::segment(2) == 'pages' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('pages.index') }}">
                 <i class="menu-icon tf-icons bx bx-file"></i>
