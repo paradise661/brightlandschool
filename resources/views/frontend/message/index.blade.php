@@ -56,9 +56,8 @@
                         <div class="sticky top-24">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl overflow-hidden shadow-2xl">
                                 <div class="h-80 md:h-96 overflow-hidden">
-                                    <img class="w-full h-full object-cover"
-                                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b6fada0172-b75f2340b45ba7c9b5aa.png"
-                                        alt="professional male chairman in business suit, distinguished and confident, portrait without background" />
+                                    <img class="w-full h-full object-cover" src="{{ $item->image }}"
+                                        alt="{{ $item->message_name ?? '' }}" />
                                 </div>
                                 <div class="p-8 text-white">
                                     <h3 class="text-2xl md:text-3xl font-heading font-bold mb-2">

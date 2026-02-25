@@ -53,10 +53,12 @@
 
                         <a class="block px-4 py-2 hover:bg-gray-100"
                             href="{{ route('frontend.about') }}">Introduction</a>
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="#">Principal's
-                            Message</a>
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="#">Chairman's
-                            Message</a>
+                        @foreach ($messageItems as $message)
+                            <a class="block px-4 py-2 hover:bg-gray-100"
+                                href="{{ route('frontend.message.show', $message->slug) }}">
+                                {{ $message->name ?? '' }}
+                            </a>
+                        @endforeach
                     </div>
                 </div>
 
