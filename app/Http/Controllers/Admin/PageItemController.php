@@ -91,7 +91,7 @@ class PageItemController extends Controller
             $data['banner_image'] = fileUpload($request, 'banner_image', 'page_item');
         }
 
-        $data['slug'] = Str::slug($request->name);
+        // $data['slug'] = Str::slug($request->name);
 
 
         // Combine message_points[] and message_icons[] into bullet_points JSON

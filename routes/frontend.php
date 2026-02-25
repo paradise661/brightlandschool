@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
-Route::get('/message', [FrontendController::class, 'message'])->name('message');
+
+
+Route::get('/message/{itemSlug}', [FrontendController::class, 'message'])->name('frontend.message.show');
+
 Route::get('/curriculum', [FrontendController::class, 'curriculum'])->name('curriculum');
 Route::get('/event', [FrontendController::class, 'event'])->name('event');
 Route::get('/facilities', [FrontendController::class, 'facilities'])->name('facilities');
@@ -26,4 +29,4 @@ Route::post('/notice/{notice}/view', [FrontendController::class, 'incrementNotic
 Route::get('/event', [FrontendController::class, 'event'])->name('frontend.events');
 Route::get('/event/{slug}', [FrontendController::class, 'eventShow'])->name('frontend.events.show');
 
-Route::get('/section/{slug}', [FrontendController::class, 'showPageSection'])->name('frontend.page.section');
+Route::get('/page/{slug}', [FrontendController::class, 'showPageSection'])->name('frontend.page.section');

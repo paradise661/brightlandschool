@@ -267,91 +267,90 @@
                     institution</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl overflow-hidden">
-                    <div class="p-8">
-                        <div class="flex items-center space-x-6 mb-6">
-                            <img class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fab574ae43-ca705b7303453d0d7b49.png"
-                                alt="professional male school principal portrait in formal attire" />
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900">Dr. Robert Anderson</h3>
-                                <p class="text-blue-600 font-semibold">Principal</p>
-                                <div class="flex items-center mt-2 space-x-2">
-                                    <i class="fa-solid fa-award text-yellow-500"></i>
-                                    <span class="text-sm text-gray-600">Ph.D. in Education</span>
+
+                @foreach ($chairmanItems as $index => $item)
+                    @php
+                        $isFirst = $index == 0;
+                        $gradient = $isFirst ? 'from-blue-50 to-indigo-50' : 'from-purple-50 to-pink-50';
+
+                        $titleColor = $isFirst ? 'text-blue-600' : 'text-purple-600';
+                        $quoteColor = $isFirst ? 'text-blue-600' : 'text-purple-600';
+                    @endphp
+
+                    <div class="bg-gradient-to-br {{ $gradient }} rounded-2xl shadow-xl overflow-hidden">
+                        <div class="p-8">
+
+                            {{-- Profile Section --}}
+                            <div class="flex items-center space-x-6 mb-6">
+                                <img class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
+                                    src="{{ $item->image }}" alt="{{ $item->message_name }}">
+
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900">
+                                        {{ $item->message_name ?? '' }}
+                                    </h3>
+
+                                    <p class="{{ $titleColor }} font-semibold">
+                                        {{ $item->message_post ?? 'School Authority' }}
+                                    </p>
+
+                                    @if ($item->extra_info)
+                                        <div class="flex items-center mt-2 space-x-2">
+                                            <i class="fa-solid fa-award text-yellow-500"></i>
+                                            <span class="text-sm text-gray-600">
+                                                {{ $item->extra_info }}
+                                            </span>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 shadow-md">
-                            <div class="flex mb-4">
-                                <i class="fa-solid fa-quote-left text-blue-600 text-3xl opacity-50"></i>
-                            </div>
-                            <p class="text-gray-700 leading-relaxed mb-4">Dear Students and Parents, it is my privilege to
-                                lead Excellence Academy, an institution dedicated to academic excellence and character
-                                development. Our commitment is to provide a nurturing environment where every student can
-                                discover their potential and develop the skills needed for success in the 21st century.</p>
-                            <p class="text-gray-700 leading-relaxed mb-4">We believe in fostering critical thinking,
-                                creativity, and a love for lifelong learning. Our dedicated faculty works tirelessly to
-                                ensure that each student receives personalized attention and support to achieve their
-                                academic and personal goals.</p>
-                            <p class="text-gray-700 leading-relaxed">Together, let us continue building a community of
-                                learners who are prepared to make a positive impact on the world.</p>
-                            <div class="mt-6 pt-6 border-t border-gray-200">
-                                <div class="flex items-center justify-between">
-                                    <a class="text-blue-600 font-semibold hover:text-blue-700 transition"
-                                        href="#">Read Full Message <i class="fa-solid fa-arrow-right ml-2"></i></a>
-                                    <div class="flex items-center space-x-2 text-gray-500">
-                                        <i class="fa-solid fa-envelope"></i>
-                                        <span class="text-sm">principal@school.edu</span>
+
+                            {{-- Message --}}
+                            <div class="bg-white rounded-xl p-6 shadow-md">
+                                <div class="flex mb-4">
+                                    <i class="fa-solid fa-quote-left {{ $quoteColor }} text-3xl opacity-50"></i>
+                                </div>
+
+                                <p class="text-gray-700 leading-relaxed">
+                                    {!! $item->short_description !!}
+                                </p>
+
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <div class="flex items-center justify-between">
+
+                                        <a class="{{ $titleColor }} font-semibold hover:opacity-80 transition"
+                                            href="{{ route('frontend.message.show', $item->slug) }}">
+                                            Read Full Message
+                                            <i class="fa-solid fa-arrow-right ml-2"></i>
+                                        </a>
+
+                                        @php
+                                            $email = null;
+
+                                            if (!empty($item->bullet_points)) {
+                                                foreach ($item->bullet_points as $bp) {
+                                                    if (($bp['icon'] ?? '') === 'fa-envelope') {
+                                                        $email = $bp['point'];
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        @endphp
+                                        @if ($email)
+                                            <div class="flex items-center space-x-2 text-gray-500">
+                                                <i class="fa-solid fa-envelope"></i>
+                                                <span class="text-sm">{{ $email }}</span>
+                                            </div>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
-                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-xl overflow-hidden">
-                    <div class="p-8">
-                        <div class="flex items-center space-x-6 mb-6">
-                            <img class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
-                                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/53ba3ddcc1-11c4c8462ba89a5db4bc.png"
-                                alt="professional male chairman portrait in business suit" />
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900">Mr. James Mitchell</h3>
-                                <p class="text-purple-600 font-semibold">Chairman</p>
-                                <div class="flex items-center mt-2 space-x-2">
-                                    <i class="fa-solid fa-building text-yellow-500"></i>
-                                    <span class="text-sm text-gray-600">Board of Directors</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 shadow-md">
-                            <div class="flex mb-4">
-                                <i class="fa-solid fa-quote-left text-purple-600 text-3xl opacity-50"></i>
-                            </div>
-                            <p class="text-gray-700 leading-relaxed mb-4">Welcome to Excellence Academy! As Chairman, I am
-                                proud of our institution's legacy of excellence spanning over two decades. Our vision has
-                                always been to create an educational environment that prepares students not just for exams,
-                                but for life.</p>
-                            <p class="text-gray-700 leading-relaxed mb-4">We have invested significantly in infrastructure,
-                                technology, and faculty development to ensure that our students receive a world-class
-                                education. Our state-of-the-art facilities and innovative teaching methods set us apart as
-                                leaders in education.</p>
-                            <p class="text-gray-700 leading-relaxed">I invite you to join our community and experience the
-                                difference that quality education makes in shaping young minds and building successful
-                                futures.</p>
-                            <div class="mt-6 pt-6 border-t border-gray-200">
-                                <div class="flex items-center justify-between">
-                                    <a class="text-purple-600 font-semibold hover:text-purple-700 transition"
-                                        href="#">Read Full Message <i class="fa-solid fa-arrow-right ml-2"></i></a>
-                                    <div class="flex items-center space-x-2 text-gray-500">
-                                        <i class="fa-solid fa-envelope"></i>
-                                        <span class="text-sm">chairman@school.edu</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>

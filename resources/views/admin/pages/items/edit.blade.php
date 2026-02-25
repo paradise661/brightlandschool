@@ -146,6 +146,16 @@
                                                 placeholder="Enter message post">
                                         </div>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control ckeditor br-8 @error('short_description') is-invalid @enderror" id="short_description"
+                                            name="short_description" rows="10" placeholder="Enter short_description">{{ old('short_description', $item->short_description) }}</textarea>
+                                        @error('short_description')
+                                            <div class="invalid-feedback" style="display: block;">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
 
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold mb-2">Bullet Points</label>

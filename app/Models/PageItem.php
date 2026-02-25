@@ -26,6 +26,7 @@ class PageItem extends Model
         'seo_keywords',
         'order',
         'status',
+        'slug',
     ];
 
     protected $casts = [

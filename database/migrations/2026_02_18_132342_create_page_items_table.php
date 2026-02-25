@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('page_id')->constrained()->cascadeOnDelete();
             $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->string('icon')->nullable();
             $table->longText('description')->nullable();
             $table->longText('short_description')->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->json('bullet_points')->nullable();
             $table->string('message_name')->nullable();
             $table->string('message_post')->nullable();
+            $table->longText('message_description')->nullable();
 
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();

@@ -14,6 +14,7 @@ use App\Models\Event;
 use App\Models\Notice;
 use App\Models\NoticeCategory;
 use App\Models\Page;
+use App\Models\PageItem;
 use App\Models\Slider;
 use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
@@ -24,6 +25,8 @@ class FrontendController extends Controller
 {
     public function home()
     {
+        $pageChairman = Page::where('slug', 'message-from-teachers')->first();
+        $chairmanItems = $pageChairman ? $pageChairman->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
 
         $pageFacilities = Page::where('slug', 'academic-facilities')->first();
         $facilitiesItems = $pageFacilities ? $pageFacilities->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
@@ -40,7 +43,7 @@ class FrontendController extends Controller
         $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
 
-        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities'));
+        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems'));
     }
 
     public function about()
@@ -48,9 +51,14 @@ class FrontendController extends Controller
         return view('frontend.about.index');
     }
 
-    public function message()
+    public function message($itemSlug)
     {
-        return view('frontend.message.index');
+        // Fetch the message by its slug
+        $item = PageItem::where('slug', $itemSlug)
+            ->where('status', 1)
+            ->firstOrFail();
+
+        return view('frontend.message.index', compact('item'));
     }
 
     public function curriculum()
@@ -285,10 +293,10 @@ class FrontendController extends Controller
 
     public function showPageSection($slug)
     {
-        $page = Page::where('slug', $slug)->firstOrFail();
+        $item = PageItem::where('slug', $slug)
+            ->where('status', 1)
+            ->firstOrFail();
 
-        $items = $page->items()->where('status', 1)->orderBy('order', 'asc')->get();
-
-        return view('frontend.pages.index', compact('page', 'items'));
+        return view('frontend.pages.show', compact('item'));
     }
 }
