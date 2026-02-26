@@ -30,19 +30,19 @@ class TeamController extends Controller
     }
 
 
-    public function show(Team $teams)
+    public function show(Team $team)
     {
         //
     }
 
-    public function edit(Team $teams)
+    public function edit(Team $team)
     {
-        return view('admin.teams.edit', compact('teams'));
+        return view('admin.teams.edit', compact('team'));
     }
 
-    public function update(UpdateTeamRequest $request, Team $teams)
+    public function update(UpdateTeamRequest $request, Team $team)
     {
-        $old_image = $teams->image;
+        $old_image = $team->image;
         $input = $request->all();
         $image = fileUpload($request, 'image', 'teams');
 
@@ -52,13 +52,16 @@ class TeamController extends Controller
         } else {
             unset($input['image']);
         }
-        $teams->update($input);
-        return redirect()->route('teams.index')->with('message', 'Update Successfully');
+
+        $team->update($input);
+
+        return redirect()->route('teams.index')
+            ->with('message', 'Update Successfully');
     }
-    public function destroy(Team $teams)
+    public function destroy(Team $team)
     {
-        removeFile($teams->image);
-        $teams->delete();
+        removeFile($team->image);
+        $team->delete();
         return redirect()->route('teams.index')->with('message', 'Delete Successfully');
     }
 }

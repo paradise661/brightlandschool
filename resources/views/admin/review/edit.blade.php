@@ -80,12 +80,11 @@
 
                             <hr class="shadow-sm">
 
-                            <div class="form-group mb-3 mt-2">
+                            <div class="form-group mb-3">
                                 <label for="image">Featured Image</label>
                                 <div class="custom-file">
                                     <input class="dropify @error('image') is-invalid @enderror" id="image"
-                                        data-show-remove="false"
-                                        data-default-file="{{ asset( $review->image) }}" type="file"
+                                        data-show-remove="false" data-default-file="{{ $review->image }}" type="file"
                                         name="image">
                                     @error('image')
                                         <div class="invalid-feedback" style="display: block;">
