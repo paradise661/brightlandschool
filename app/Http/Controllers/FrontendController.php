@@ -26,6 +26,8 @@ class FrontendController extends Controller
 {
     public function home()
     {
+        $reviews = Review::where('status', 1)->orderBy('order', 'asc')->get();
+
         $pageChairman = Page::where('slug', 'message-from-teachers')->first();
         $chairmanItems = $pageChairman ? $pageChairman->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
 
@@ -44,7 +46,7 @@ class FrontendController extends Controller
         $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
 
-        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems'));
+        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems', 'reviews'));
     }
 
     public function about()

@@ -614,88 +614,69 @@
 
     <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-50" id="testimonials-section">
         <div class="max-w-7xl mx-auto px-6">
+
             <div class="text-center mb-16">
                 <div class="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
                     Testimonials
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">What Our Community Says</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from parents, students, and alumni about their
-                    experience at Excellence Academy</p>
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">
+                    What Our Community Says
+                </h2>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <img class="w-16 h-16 rounded-full object-cover border-4 border-purple-100"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg"
-                            alt="Parent" />
-                        <div>
-                            <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
-                            <p class="text-sm text-gray-600">Parent</p>
-                            <div class="flex mt-1">
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+
+            @if ($reviews->count() > 3)
+                <!-- Swiper Slider -->
+                <div class="swiper reviewSwiper">
+                    <div class="swiper-wrapper">
+
+                        @foreach ($reviews as $review)
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover h-full">
+
+                                    <div class="flex items-center space-x-4 mb-6">
+                                        <img class="w-16 h-16 rounded-full object-cover border-4 border-purple-100"
+                                            src="{{ $review->image }}" alt="{{ $review->name ?? '' }}" />
+                                        <div>
+                                            <h4 class="font-bold text-gray-900">{{ $review->name ?? '' }}</h4>
+                                            <p class="text-sm text-gray-600">{{ $review->postion ?? '' }}</p>
+                                            <div class="flex mt-1">
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <i class="fa-solid fa-quote-left text-purple-600 text-3xl opacity-30"></i>
+                                    </div>
+
+                                    <p class="text-gray-700 leading-relaxed italic">
+                                        {!! $review->description ?? '' !!}
+                                    </p>
+
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
+
                     </div>
-                    <div class="mb-4">
-                        <i class="fa-solid fa-quote-left text-purple-600 text-3xl opacity-30"></i>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed italic">"Excellence Academy has been a blessing for our family.
-                        The teachers are incredibly dedicated, and the facilities are world-class. My daughter has grown so
-                        much academically and personally. I couldn't be happier with our choice."</p>
+
+                    <!-- dots -->
+                    <div class="swiper-pagination mt-10"></div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <img class="w-16 h-16 rounded-full object-cover border-4 border-purple-100"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg"
-                            alt="Student" />
-                        <div>
-                            <h4 class="font-bold text-gray-900">Michael Chen</h4>
-                            <p class="text-sm text-gray-600">Grade 11 Student</p>
-                            <div class="flex mt-1">
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                            </div>
+            @else
+                <!-- Grid when 3 or fewer -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($reviews as $review)
+                        <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
+                            {!! $review->description !!}
                         </div>
-                    </div>
-                    <div class="mb-4">
-                        <i class="fa-solid fa-quote-left text-purple-600 text-3xl opacity-30"></i>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed italic">"The learning environment here is amazing! Teachers
-                        explain concepts clearly and are always available to help. The sports facilities are top-notch, and
-                        I've had the opportunity to represent the school in national competitions."</p>
+                    @endforeach
                 </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <img class="w-16 h-16 rounded-full object-cover border-4 border-purple-100"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg"
-                            alt="Alumni" />
-                        <div>
-                            <h4 class="font-bold text-gray-900">David Williams</h4>
-                            <p class="text-sm text-gray-600">Alumni (2018)</p>
-                            <div class="flex mt-1">
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <i class="fa-solid fa-quote-left text-purple-600 text-3xl opacity-30"></i>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed italic">"Excellence Academy prepared me well for university and
-                        beyond. The foundation I received here helped me excel at MIT. The values, discipline, and critical
-                        thinking skills I learned continue to guide me in my career."</p>
-                </div>
-            </div>
+            @endif
+
         </div>
     </section>
 
@@ -925,6 +906,45 @@
                         }
                     })
                     .catch(err => console.error(err));
+            }
+        });
+
+        //swiper for reviews
+        document.addEventListener("DOMContentLoaded", function() {
+
+            if (document.querySelector('.reviewSwiper')) {
+
+                new Swiper(".reviewSwiper", {
+                    loop: true,
+                    spaceBetween: 30,
+                    speed: 450, // slide animation speed
+
+                    autoplay: {
+                        delay: 2000, // time between slides
+                        disableOnInteraction: false,
+                    },
+
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1
+                        },
+                        640: {
+                            slidesPerView: 1
+                        },
+                        768: {
+                            slidesPerView: 2
+                        },
+                        1024: {
+                            slidesPerView: 3
+                        }
+                    }
+                });
+
             }
         });
     </script>
