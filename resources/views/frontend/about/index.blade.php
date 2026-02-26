@@ -145,7 +145,7 @@
     <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="leadership-team">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Leadership</span>
+                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Teachers</span>
                 <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Meet Our Leadership Team
                 </h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Experienced educators and administrators
@@ -153,54 +153,26 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg"
-                            alt="Vice Principal" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">Dr. Sarah Williams</h3>
-                        <p class="text-primary font-semibold text-sm mb-3">Vice Principal - Academics</p>
+                @foreach ($teams as $team)
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
+                        <div class="h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="{{ $team->image }}"
+                                alt="{{ $team->name ?? '' }}" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">{{ $team->name ?? '' }}
+                            </h3>
+                            <p class="text-primary font-semibold text-sm mb-3">{{ $team->position ?? '' }}</p>
 
+                        </div>
                     </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg"
-                            alt="Dean" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">Mr. David Thompson</h3>
-                        <p class="text-primary font-semibold text-sm mb-3">Dean of Students</p>
-
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg"
-                            alt="Academic Coordinator" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">Ms. Emily Brown</h3>
-                        <p class="text-primary font-semibold text-sm mb-3">Academic Coordinator</p>
-
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
-                    <div class="h-64 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg"
-                            alt="Activities Director" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">Ms. Jennifer Lee</h3>
-                        <p class="text-primary font-semibold text-sm mb-3">Director - Extracurricular</p>
-
-                    </div>
-                </div>
+                @endforeach
+            </div>
+            <div class="mt-8 flex justify-center">
+                <a class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-secondary transition"
+                    href="{{ route('frontend.teachers') }}">
+                    View More
+                </a>
             </div>
         </div>
     </section>

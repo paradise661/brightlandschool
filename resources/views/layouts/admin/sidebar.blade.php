@@ -147,6 +147,28 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item {{ Request::segment(2) == 'teams' ? 'active open' : '' }}">
+            <a class="menu-link menu-toggle text-decoration-none" href="javascript:void(0)">
+                <i class="menu-icon tf-icons bx bx-user-pin"></i>
+                <div data-i18n="General Setting">Teams</div>
+            </a>
+            <ul class="menu-sub">
+                <li
+                    class="menu-item {{ Request::segment(2) == 'teams' && Request::segment(3) == null ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('teams.index') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
+                        <div data-i18n="Accordion">All Teams</div>
+                    </a>
+                </li>
+                <li
+                    class="menu-item {{ Request::segment(2) == 'teams' && Request::segment(3) == 'create' ? 'active' : '' }}">
+                    <a class="menu-link text-decoration-none" href="{{ route('teams.create') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
+                        <div data-i18n="Accordion">Create Team</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         <li class="menu-item {{ Request::segment(2) == 'album' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('album.index') }}">

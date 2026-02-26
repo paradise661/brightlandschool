@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\TeamController;
 
 Auth::routes(['register' => false]);
 
@@ -69,4 +70,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('pages.items', PageItemController::class);
 
     Route::resource('review', ReviewController::class);
+    Route::resource('teams', TeamController::class);
 });

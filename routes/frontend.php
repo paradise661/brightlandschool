@@ -32,3 +32,4 @@ Route::get('/event/{slug}', [FrontendController::class, 'eventShow'])->name('fro
 Route::get('/page/{slug}', [FrontendController::class, 'showPageSection'])->name('frontend.page.section');
 
 Route::get('/reviews', [FrontendController::class, 'reviews'])->name('frontend.reviews');
+Route::get('/teachers', [FrontendController::class, 'teachers'])->name('frontend.teachers');

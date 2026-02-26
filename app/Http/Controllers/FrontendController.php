@@ -18,9 +18,10 @@ use App\Models\PageItem;
 use App\Models\Review;
 use App\Models\Slider;
 use App\Models\Student;
+use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
-
+use Illuminate\View\View;
 
 class FrontendController extends Controller
 {
@@ -51,7 +52,9 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('frontend.about.index');
+        $teams = Team::where('status', 1)->orderBy('order', 'asc')->take(4)->get();
+
+        return view('frontend.about.index', compact('teams'));
     }
 
     public function message($itemSlug)
@@ -308,5 +311,12 @@ class FrontendController extends Controller
         $reviews = Review::where('status', 1)->orderBy('order', 'asc')->get();
 
         return view('frontend.reviews.index', compact('reviews'));
+    }
+
+    public function teachers()
+    {
+        $teams = Team::where('status', 1)->orderBy('order', 'asc')->get();
+
+        return view('frontend.teams.index', compact('teams'));
     }
 }
