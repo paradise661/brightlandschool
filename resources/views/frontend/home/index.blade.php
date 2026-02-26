@@ -638,7 +638,7 @@
                                             src="{{ $review->image }}" alt="{{ $review->name ?? '' }}" />
                                         <div>
                                             <h4 class="font-bold text-gray-900">{{ $review->name ?? '' }}</h4>
-                                            <p class="text-sm text-gray-600">{{ $review->postion ?? '' }}</p>
+                                            <p class="text-sm text-gray-600">{{ $review->position ?? '' }}</p>
                                             <div class="flex mt-1">
                                                 <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
                                                 <i class="fa-solid fa-star text-yellow-400 text-sm"></i>

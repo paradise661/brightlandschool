@@ -59,8 +59,8 @@
                                 {{ $message->name ?? '' }}
                             </a>
                         @endforeach
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('frontend.reviews') }}">Our
-                            Teachers</a>
+                        <a class="block px-4 py-2 hover:bg-gray-100"
+                            href="{{ route('frontend.reviews') }}">Testimonial</a>
                     </div>
                 </div>
 
