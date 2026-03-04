@@ -200,31 +200,32 @@
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::segment(2) == 'setting' ? 'active' : '' }}">
                     <a class="menu-link text-decoration-none" href="{{ route('admin.setting.index') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="Accordion">Setting</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::segment(2) == 'slider' ? 'active' : '' }}">
                     <a class="menu-link text-decoration-none" href="{{ route('slider.index') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="General Setting">Sliders</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::segment(2) == 'social' ? 'active' : '' }}">
                     <a class="menu-link text-decoration-none" href="#">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="General Setting">Social</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::segment(2) == 'page' ? 'active' : '' }}">
-                    <a class="menu-link text-decoration-none" href="#">
-                        <div data-i18n="General Setting">Pages</div>
-                    </a>
-                </li>
+
                 <li class="menu-item {{ Request::segment(2) == 'popup' ? 'active' : '' }}">
-                    <a class="menu-link text-decoration-none" href="#">
+                    <a class="menu-link text-decoration-none" href="{{ route('popup.index') }}">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="General Setting">PopUps</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::segment(2) == 'partner' ? 'active' : '' }}">
                     <a class="menu-link text-decoration-none" href="#">
+                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="General Setting">Partners</div>
                     </a>
                 </li>

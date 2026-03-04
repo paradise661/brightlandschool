@@ -15,6 +15,7 @@ use App\Models\Notice;
 use App\Models\NoticeCategory;
 use App\Models\Page;
 use App\Models\PageItem;
+use App\Models\PopUp;
 use App\Models\Review;
 use App\Models\Slider;
 use App\Models\Student;
@@ -27,6 +28,8 @@ class FrontendController extends Controller
 {
     public function home()
     {
+        $popups = PopUp::where('status', 1)->orderBy('order', 'asc')->get();
+
         $reviews = Review::where('status', 1)->orderBy('order', 'asc')->get();
 
         $pageChairman = Page::where('slug', 'message-from-teachers')->first();
@@ -47,7 +50,7 @@ class FrontendController extends Controller
         $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
 
-        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems', 'reviews'));
+        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems', 'reviews', 'popups'));
     }
 
     public function about()

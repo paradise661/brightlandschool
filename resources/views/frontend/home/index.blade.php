@@ -1,5 +1,38 @@
 @extends('layouts.frontend.master')
 @section('content')
+    {{-- Popup Section --}}
+    @if (isset($popups) && $popups->count() > 0)
+        <section id="popupSection">
+
+            @foreach ($popups as $popup)
+                <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+                    x-data="{ open: true }" x-show="open" x-transition.opacity>
+
+                    {{-- Popup Wrapper --}}
+                    <div class="relative max-w-3xl w-full flex justify-center">
+
+                        {{-- Close Button (Outside Image) --}}
+                        <button
+                            class="absolute -top-6 -right-6 bg-white text-gray-700 w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition duration-300"
+                            @click="open = false">
+                            ✕
+                        </button>
+
+                        {{-- Image Content --}}
+                        @if ($popup->image)
+                            <a class="block w-full" href="{{ $popup->button_link ?? '#' }}">
+                                <img class="w-full rounded-2xl shadow-2xl object-cover" src="{{ asset($popup->image) }}"
+                                    alt="Popup Image">
+                            </a>
+                        @endif
+
+                    </div>
+
+                </div>
+            @endforeach
+
+        </section>
+    @endif
     <section class="relative h-[700px] overflow-hidden" id="hero-slider">
 
         @foreach ($sliders as $index => $slider)
@@ -62,7 +95,7 @@
                         {{ $setting['homepage_about_title1'] ?? '' }}</h2>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
                         {!! $setting['homepage_about_description'] ?? '' !!}</p>
-                    <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="grid grid-cols-2 gap-6 mb-8 mt-3">
                         <div class="flex items-center space-x-3">
                             <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-check text-blue-600 text-xl"></i>

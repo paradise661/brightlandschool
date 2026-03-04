@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\DownloadsController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PopUpController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
@@ -71,4 +72,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::resource('review', ReviewController::class);
     Route::resource('teams', TeamController::class);
+    Route::resource('popup', PopUpController::class);
 });
