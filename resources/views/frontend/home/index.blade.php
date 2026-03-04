@@ -5,26 +5,40 @@
         <section id="popupSection">
 
             @foreach ($popups as $popup)
-                <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+                <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
                     x-data="{ open: true }" x-show="open" x-transition.opacity>
 
-                    {{-- Popup Wrapper --}}
-                    <div class="relative max-w-3xl w-full flex justify-center">
+                    <!-- Center Wrapper -->
+                    <div class="relative w-full flex items-center justify-center">
 
-                        {{-- Close Button (Outside Image) --}}
-                        <button
-                            class="absolute -top-6 -right-6 bg-white text-gray-700 w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition duration-300"
-                            @click="open = false">
-                            ✕
-                        </button>
+                        <!-- Image + Button Wrapper (Important: inline-block) -->
+                        <div class="relative inline-block">
 
-                        {{-- Image Content --}}
-                        @if ($popup->image)
-                            <a class="block w-full" href="{{ $popup->button_link ?? '#' }}">
-                                <img class="w-full rounded-2xl shadow-2xl object-cover" src="{{ asset($popup->image) }}"
-                                    alt="Popup Image">
-                            </a>
-                        @endif
+                            <!-- Close Button -->
+                            <button
+                                class="absolute
+                               -top-4 -right-4
+                               md:-top-6 md:-right-6
+                               bg-white/95 backdrop-blur-md
+                               text-gray-800
+                               w-9 h-9 md:w-10 md:h-10
+                               rounded-full shadow-xl
+                               flex items-center justify-center
+                               hover:bg-red-500 hover:text-white
+                               transition-all duration-300 z-20"
+                                @click="open = false">
+                                ✕
+                            </button>
+
+                            <!-- Full Image (No Crop) -->
+                            @if ($popup->image)
+                                <a class="block" href="{{ $popup->button_link ?? '#' }}">
+                                    <img class="max-h-[90vh] max-w-full object-contain rounded-xl shadow-2xl"
+                                        src="{{ asset($popup->image) }}" alt="Popup Image">
+                                </a>
+                            @endif
+
+                        </div>
 
                     </div>
 

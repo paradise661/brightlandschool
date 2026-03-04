@@ -63,11 +63,11 @@
                                 <span class="app-brand-logo demo">
                                 </span>
                                 <img style="max-width: 250px;height:100px"
-                                    src="{{ asset('admin/assets/images/logo.png') }}" alt="logo">
+                                    src="{{ asset('admin/assets/images/logo.jpg') }}" alt="logo">
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to GyanMarga!</h4>
+                        <h4 class="mb-2">Welcome to Brightland!</h4>
                         <p class="mb-4">Please sign-in to your account</p>
 
                         <form class="mb-3" id="formAuthentication" action="{{ route('login') }}" method="POST">

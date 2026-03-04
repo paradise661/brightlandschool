@@ -7,7 +7,7 @@
     <div class="app-brand demo p-0">
         <a class="app-brand-link mx-auto my-0" href="{{ route('dashboard') }}" target="_blank">
             {{-- @if ($setting['site_main_logo']) --}}
-            <img style="max-width: 210px;" src="{{ asset('admin/assets/images/logo.png') }}" alt="logo">
+            <img style="max-width: 210px;" src="{{ asset('admin/assets/images/logo.jpg') }}" alt="logo">
             {{-- @else --}}
             {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">ParadiseCourse</span> --}}
             {{-- @endif --}}
@@ -181,6 +181,13 @@
             <a class="menu-link" href="{{ route('review.index') }}">
                 <i class="menu-icon tf-icons bx bx-check-square"></i>
                 <div data-i18n="Basic">Reviews</div>
+            </a>
+        </li>
+
+        <li class="menu-item {{ Request::segment(2) == 'academy' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('academy.index') }}">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Basic">Academy</div>
             </a>
         </li>
 

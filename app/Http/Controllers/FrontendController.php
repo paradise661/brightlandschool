@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactsRequest;
 use App\Http\Requests\StoreStudentsRequest;
+use App\Models\Academy;
 use App\Models\Album;
 use App\Models\Contacts;
 use App\Models\Post;
@@ -70,9 +71,15 @@ class FrontendController extends Controller
         return view('frontend.message.index', compact('item'));
     }
 
-    public function academics()
+    public function academics($slug)
     {
-        return view('frontend.academics.index');
+        $academy = Academy::where('slug', $slug)
+            ->where('status', 1)
+            ->firstOrFail();
+
+        $popular_academy = Academy::where('status', 1)->orderBy('order', 'asc')->take(5)->get();
+
+        return view('frontend.academics.index', compact('academy', 'popular_academy'));
     }
 
     public function event()

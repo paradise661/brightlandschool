@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Academy;
 use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
@@ -26,8 +27,9 @@ class AppServiceProvider extends ServiceProvider
         $setting = Setting::pluck('value', 'key');
         $pagemessage = Page::where('slug', 'message-from-teachers')->first();
         $messageItems = $pagemessage ? $pagemessage->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+        $hacademy = Academy::where('status', 1)->orderBy('order', 'asc')->get();
 
-
+        View::share('hacademy', $hacademy);
         View::share('messageItems', $messageItems);
         View::share('setting', $setting);
 

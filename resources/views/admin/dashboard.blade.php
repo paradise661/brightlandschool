@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary fw-bold">Hello Admin!</h5>
                             <p class="mb-4">
-                                Welcome to <span class="fw-bold">ParadiseCourse</span> Admin Panel.
+                                Welcome to <span class="fw-bold">Brightland</span> Admin Panel.
                             </p>
                         </div>
                     </div>

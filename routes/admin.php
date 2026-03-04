@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AcademyController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\EventCategoryController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TeamController;
+
 
 Auth::routes(['register' => false]);
 
@@ -73,4 +75,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('review', ReviewController::class);
     Route::resource('teams', TeamController::class);
     Route::resource('popup', PopUpController::class);
+    Route::resource('academy', AcademyController::class);
 });
