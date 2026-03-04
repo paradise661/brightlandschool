@@ -70,9 +70,9 @@ class FrontendController extends Controller
         return view('frontend.message.index', compact('item'));
     }
 
-    public function curriculum()
+    public function academics()
     {
-        return view('frontend.curriculum.index');
+        return view('frontend.academics.index');
     }
 
     public function event()

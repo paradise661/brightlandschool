@@ -9,7 +9,7 @@ Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about
 
 Route::get('/message/{itemSlug}', [FrontendController::class, 'message'])->name('frontend.message.show');
 
-Route::get('/curriculum', [FrontendController::class, 'curriculum'])->name('curriculum');
+Route::get('/academics', [FrontendController::class, 'academics'])->name('frontend.academics');
 Route::get('/event', [FrontendController::class, 'event'])->name('event');
 Route::get('/facilities', [FrontendController::class, 'facilities'])->name('facilities');
 Route::get('/gallery', [FrontendController::class, 'gallery'])->name('frontend.gallery');

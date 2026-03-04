@@ -1,37 +1,43 @@
 @extends('layouts.frontend.master')
 @section('content')
-    <section class="bg-gradient-to-r from-primary to-blue-600 py-16 md:py-20" id="page-hero">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <div
-                    class="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fa-solid fa-book-open text-white text-3xl md:text-4xl"></i>
-                </div>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">Curriculum & Examination</h1>
-                <p class="text-lg md:text-xl text-blue-100 mb-6">Comprehensive academic programs designed for excellence and
-                    holistic development</p>
-                <div class="flex items-center justify-center space-x-2 text-sm md:text-base">
-                    <a class="hover:text-blue-200 transition" href="#">Home</a>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                    <a class="hover:text-blue-200 transition" href="#">Academics</a>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                    <span>Curriculum & Examination</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="relative h-[400px] overflow-hidden" id="blog-hero">
+        <!-- Softer Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
 
-    <section class="bg-white sticky top-[72px] z-40 shadow-md" id="tab-navigation">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="flex justify-center space-x-8 md:space-x-16">
-                <button class="tab-btn active py-4 px-6 text-base md:text-lg font-semibold transition"
-                    data-tab="curriculum">
-                    <i class="fa-solid fa-book mr-2"></i>Curriculum & Syllabus
-                </button>
-                <button class="tab-btn py-4 px-6 text-base md:text-lg font-semibold text-gray-600 transition"
-                    data-tab="examination">
-                    <i class="fa-solid fa-clipboard-list mr-2"></i>Examination & Results
-                </button>
+        <!-- Background image -->
+        <img class="absolute inset-0 w-full h-full object-cover"
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
+            alt="students reading books in modern library" />
+
+        <!-- Content -->
+        <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
+            <div class="text-center text-white">
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
+                    Academics
+                </h1>
+
+                <!-- Breadcrumb -->
+                <nav>
+                    <ol
+                        class="inline-flex items-center space-x-2 text-sm
+                        bg-white/15 backdrop-blur-md
+                        px-5 py-2 rounded-full
+                        border border-white/20
+                        shadow-lg">
+                        <li>
+                            <a class="text-blue-100 hover:text-white transition" href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li class="text-blue-200">›</li>
+                        <li class="text-white font-medium">
+                            Academics
+                        </li>
+                    </ol>
+                </nav>
+
             </div>
         </div>
     </section>
@@ -1242,25 +1248,4 @@
             </div>
         </section>
     </div>
-
-    <section class="py-12 md:py-16 bg-gradient-to-r from-primary to-blue-600" id="cta-section">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold mb-4 md:mb-6">Need Academic Assistance?
-                </h2>
-                <p class="text-base md:text-lg lg:text-xl text-blue-100 mb-6 md:mb-8">Our academic counselors are here to
-                    help you with curriculum queries and examination guidance</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button
-                        class="w-full sm:w-auto bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
-                        <i class="fa-solid fa-phone mr-2"></i>Contact Academic Office
-                    </button>
-                    <button
-                        class="w-full sm:w-auto bg-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-red-700 transition">
-                        <i class="fa-solid fa-download mr-2"></i>Download Curriculum Guide
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection
