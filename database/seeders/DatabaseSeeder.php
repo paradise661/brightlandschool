@@ -49,6 +49,20 @@ class DatabaseSeeder extends Seeder
             ['homepage_about_years', '25'],
             ['homepage_about_years_text', 'Years of Excellence'],
 
+            ['aboutpage_about_title', 'Welcome to Brightland Academy'],
+            ['aboutpage_about_title1', 'Where Education Meets Excellence'],
+            ['aboutpage_about_description', 'At Brightland Academy, we are dedicated to providing a nurturing and inspiring learning environment for students of all ages. Our mission is to empower our students with knowledge, skills, and values that will enable them to thrive in an ever-changing world. We believe in fostering creativity, critical thinking, and a love for learning, while also promoting character development and social responsibility. Join us on this educational journey as we strive to shape the leaders of tomorrow.'],
+            ['aboutpage_about_feature', 'World-Class Faculty'],
+            ['aboutpage_about_feature1', 'Modern Infrastructure'],
+            ['aboutpage_about_feature2', 'Holistic Development'],
+            ['aboutpage_about_feature3', 'Global Perspective'],
+            ['aboutpage_about_image', null],
+            ['aboutpage_about_image1', null],
+            ['aboutpage_about_image2', null],
+            ['aboutpage_about_image3', null],
+            ['aboutpage_about_years', '25'],
+            ['aboutpage_about_years_text', 'Years of Excellence'],
+
 
 
         ];

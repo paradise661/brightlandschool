@@ -38,6 +38,11 @@ class SettingController extends Controller
         $homepage_about_image2 = updatesettingmedia($request, 'homepage_about_image2', 'homepage_about_image2');
         $homepage_about_image3 = updatesettingmedia($request, 'homepage_about_image3', 'homepage_about_image3');
 
+        $aboutpage_about_image = updatesettingmedia($request, 'aboutpage_about_image', 'setting');
+        $aboutpage_about_image1 = updatesettingmedia($request, 'aboutpage_about_image1', 'setting');
+        $aboutpage_about_image2 = updatesettingmedia($request, 'aboutpage_about_image2', 'setting');
+        $aboutpage_about_image3 = updatesettingmedia($request, 'aboutpage_about_image3', 'setting');
+
         // end of added new files
 
         $siteSetting['site_main_logo'] = deletesettingmedia($site_main_logo, $siteSettings['site_main_logo'], 'site_main_logo', $siteSetting, $siteSettings);
@@ -50,7 +55,10 @@ class SettingController extends Controller
         $siteSetting['homepage_about_image2'] = deletesettingmedia($homepage_about_image2, $siteSettings['homepage_about_image2'], 'homepage_about_image2', $siteSetting, $siteSettings);
         $siteSetting['homepage_about_image3'] = deletesettingmedia($homepage_about_image3, $siteSettings['homepage_about_image3'], 'homepage_about_image3', $siteSetting, $siteSettings);
 
-
+        $siteSetting['aboutpage_about_image'] = deletesettingmedia($aboutpage_about_image, $siteSettings['aboutpage_about_image'], 'aboutpage_about_image', $siteSetting, $siteSettings);
+        $siteSetting['aboutpage_about_image1'] = deletesettingmedia($aboutpage_about_image1, $siteSettings['aboutpage_about_image1'], 'aboutpage_about_image1', $siteSetting, $siteSettings);
+        $siteSetting['aboutpage_about_image2'] = deletesettingmedia($aboutpage_about_image2, $siteSettings['aboutpage_about_image2'], 'aboutpage_about_image2', $siteSetting, $siteSettings);
+        $siteSetting['aboutpage_about_image3'] = deletesettingmedia($aboutpage_about_image3, $siteSettings['aboutpage_about_image3'], 'aboutpage_about_image3', $siteSetting, $siteSettings);
         // end of new added files
 
 

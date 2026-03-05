@@ -61,9 +61,16 @@ class FrontendController extends Controller
 
     public function about()
     {
+        $pageWhyChooseUs = Page::where('slug', 'why-choose-us')->first();
+        $whyChooseUsItems = $pageWhyChooseUs ? $pageWhyChooseUs->items()->where('status', 1)->orderBy('order', 'asc')->take(6)->get() : collect();
+
+        // Fetch the Vision, Mission & Values section
+        $vmvPage = Page::where('slug', 'vision-mission-values')->first();
+        $vmvItems = $vmvPage ? $vmvPage->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+
         $teams = Team::where('status', 1)->orderBy('order', 'asc')->take(4)->get();
 
-        return view('frontend.about.index', compact('teams'));
+        return view('frontend.about.index', compact('teams', 'vmvPage', 'vmvItems', 'pageWhyChooseUs', 'whyChooseUsItems'));
     }
 
     public function message($itemSlug)

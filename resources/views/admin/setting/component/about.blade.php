@@ -8,78 +8,107 @@
                 <!-- About Title -->
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_title_2">Enter About Title</label>
-                        <input class="form-control br-8" type="text" name="about_title_2"
-                            value="{{ $setting['about_title_2'] ?? '' }}" placeholder="Enter About Title">
+                        <label class="pb-2" for="aboutpage_about_title">Enter About Title</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_title"
+                            value="{{ $setting['aboutpage_about_title'] ?? '' }}" placeholder="Enter About Title">
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-group mb-3" for="about_image_3">Enter About Banner1</label>
-                    <div class="custom-file">
-                        <input class="mainlogo" id="about_image_3" data-show-remove="false"
-                            data-default-file="{{ $setting['about_image_3'] ?? '' }}" type="file"
-                            name="about_image_3">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="aboutpage_about_title1">Enter Sub Title</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_title1"
+                            value="{{ $setting['aboutpage_about_title1'] ?? '' }}" placeholder="Enter Sub Title">
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-group mb-3" for="about_image_4">Enter About Banner2</label>
+                    <label class="form-group mb-3" for="aboutpage_about_image">Enter About Banner1</label>
                     <div class="custom-file">
-                        <input class="mainlogo" id="about_image_4" data-show-remove="false"
-                            data-default-file="{{ $setting['about_image_4'] ?? '' }}" type="file"
-                            name="about_image_4">
+                        <input class="mainlogo" id="aboutpage_about_image" data-show-remove="false"
+                            data-default-file="{{ $setting['aboutpage_about_image'] ?? '' }}" type="file"
+                            name="aboutpage_about_image">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="aboutpage_about_image_1">Enter About Banner2</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="aboutpage_about_image1" data-show-remove="false"
+                            data-default-file="{{ $setting['aboutpage_about_image1'] ?? '' }}" type="file"
+                            name="aboutpage_about_image1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="aboutpage_about_image2">Enter About Banner3</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="aboutpage_about_image2" data-show-remove="false"
+                            data-default-file="{{ $setting['aboutpage_about_image2'] ?? '' }}" type="file"
+                            name="aboutpage_about_image2">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="aboutpage_about_image3">Enter About Banner4</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="aboutpage_about_image3" data-show-remove="false"
+                            data-default-file="{{ $setting['aboutpage_about_image3'] ?? '' }}" type="file"
+                            name="aboutpage_about_image3">
                     </div>
                 </div>
                 <!-- About Description -->
-                <div class="col-md-12">
+                <div class="col-md-12 mt-3">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_description_2">Enter About Description</label>
-                        <textarea class="form-control br-8 ckeditor" name="about_description_2" rows="4">{{ $setting['about_description_2'] ?? '' }}</textarea>
+                        <label class="pb-2" for="aboutpage_about_description">Enter About
+                            Description</label>
+                        <textarea class="form-control br-8 ckeditor2" name="aboutpage_about_description" rows="4">{{ $setting['aboutpage_about_description'] ?? '' }}</textarea>
                     </div>
                 </div>
 
                 <!-- About Features -->
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_feature_1_text_2">Enter About Feature 1 Text</label>
-                        <input class="form-control br-8" type="text" name="about_feature_1_text_2"
-                            value="{{ $setting['about_feature_1_text_2'] ?? '' }}"
+                        <label class="pb-2" for="aboutpage_about_feature">Enter About Feature 1
+                            Text</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_feature"
+                            value="{{ $setting['aboutpage_about_feature'] ?? '' }}"
                             placeholder="Enter About Feature 1 Text">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_feature_1_icon_2">Enter About Feature 1 Icon</label>
-                        <input class="form-control br-8" type="text" name="about_feature_1_icon_2"
-                            value="{{ $setting['about_feature_1_icon_2'] ?? '' }}"
-                            placeholder="Enter About Feature 1 Icon">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="about_feature_2_text_2">Enter About Feature 2 Text</label>
-                        <input class="form-control br-8" type="text" name="about_feature_2_text_2"
-                            value="{{ $setting['about_feature_2_text_2'] ?? '' }}"
+                        <label class="pb-2" for="aboutpage_about_feature1">Enter About Feature 2
+                            Text</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_feature1"
+                            value="{{ $setting['aboutpage_about_feature1'] ?? '' }}"
                             placeholder="Enter About Feature 2 Text">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_feature_2_icon_2">Enter About Feature 2 Icon</label>
-                        <input class="form-control br-8" type="text" name="about_feature_2_icon_2"
-                            value="{{ $setting['about_feature_2_icon_2'] ?? '' }}"
-                            placeholder="Enter About Feature 2 Icon">
+                        <label class="pb-2" for="aboutpage_about_feature2">Enter About Feature 3
+                            Text</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_feature2"
+                            value="{{ $setting['aboutpage_about_feature2'] ?? '' }}"
+                            placeholder="Enter About Feature 3 Text">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="aboutpage_about_feature3">Enter About Feature 4
+                            Text</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_feature3"
+                            value="{{ $setting['aboutpage_about_feature3'] ?? '' }}"
+                            placeholder="Enter About Feature 4 Text">
                     </div>
                 </div>
 
                 <!-- Years of Experience -->
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_years_of_experience_2">Enter Years of Experience</label>
-                        <input class="form-control br-8" type="text" name="about_years_of_experience_2"
-                            value="{{ $setting['about_years_of_experience_2'] ?? '' }}"
+                        <label class="pb-2" for="aboutpage_about_years">Enter Years of
+                            Experience</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_years"
+                            value="{{ $setting['aboutpage_about_years'] ?? '' }}"
                             placeholder="Enter Years of Experience">
                     </div>
                 </div>
@@ -87,53 +116,11 @@
                 <!-- About Stat Description -->
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="about_stat_description_2">Enter Stat Description</label>
-                        <input class="form-control br-8" type="text" name="about_stat_description_2"
-                            value="{{ $setting['about_stat_description_2'] ?? '' }}"
-                            placeholder="Enter Stat Description">
-                    </div>
-                </div>
-
-                <!-- About Highlights -->
-                <div class="col-md-12">
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="about_highlights_2">Enter About Highlights</label>
-                        @php
-                            $highlights = isset($setting['about_highlights_2']) ? $setting['about_highlights_2'] : '';
-                            if (is_string($highlights)) {
-                                $highlights = explode(',', $highlights); // Convert comma-separated string into an array
-                            }
-                        @endphp
-
-                        <textarea class="form-control br-8 video-desc" name="about_highlights_2" rows="3">
-                        {{ isset($highlights) ? implode(', ', $highlights) : '' }}
-                        </textarea>
-
-                    </div>
-                </div>
-
-                <!-- About Phone Icon and Number -->
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="about_phone_icon_2">Enter Phone Icon</label>
-                        <input class="form-control br-8" type="text" name="about_phone_icon_2"
-                            value="{{ $setting['about_phone_icon_2'] ?? '' }}" placeholder="Enter Phone Icon">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="about_phone_label_2">Enter Phone Label</label>
-                        <input class="form-control br-8" type="text" name="about_phone_label_2"
-                            value="{{ $setting['about_phone_label_2'] ?? '' }}" placeholder="Enter Phone Label">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="about_phone_number_2">Enter Phone Number</label>
-                        <input class="form-control br-8" type="text" name="about_phone_number_2"
-                            value="{{ $setting['about_phone_number_2'] ?? '' }}" placeholder="Enter Phone Number">
+                        <label class="pb-2" for="aboutpage_about_years_text">Enter Years
+                            Description</label>
+                        <input class="form-control br-8" type="text" name="aboutpage_about_years_text"
+                            value="{{ $setting['aboutpage_about_years_text'] ?? '' }}"
+                            placeholder="Enter Years Description">
                     </div>
                 </div>
             </div>

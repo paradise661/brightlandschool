@@ -46,6 +46,8 @@ class SettingController extends Controller
         $approved_footer_banner = updatesettingmedia($request, 'approved_footer_banner', 'setting');
         $proud_member_footer_banner = updatesettingmedia($request, 'proud_member_footer_banner', 'setting');
 
+
+
         // end of added new files
         $contact_image = updatesettingmedia($request, 'contact_image', 'contact');
         $blog_image = updatesettingmedia($request, 'blogs_image', 'blog');
@@ -82,6 +84,8 @@ class SettingController extends Controller
         $siteSetting['site_breadcrumb_banner'] = deletesettingmedia($site_breadcrumb_banner, $siteSettings['site_breadcrumb_banner'], 'site_breadcrumb_banner', $siteSetting, $siteSettings);
         $siteSetting['approved_footer_banner'] = deletesettingmedia($approved_footer_banner, $siteSettings['approved_footer_banner'], 'approved_footer_banner', $siteSetting, $siteSettings);
         $siteSetting['proud_member_footer_banner'] = deletesettingmedia($proud_member_footer_banner, $siteSettings['proud_member_footer_banner'], 'proud_member_footer_banner', $siteSetting, $siteSettings);
+
+        
 
 
         // end of new added files
