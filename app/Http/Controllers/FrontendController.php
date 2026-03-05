@@ -29,6 +29,11 @@ class FrontendController extends Controller
 {
     public function home()
     {
+        $pageWhyChooseUs = Page::where('slug', 'why-choose-us')->first();
+        $whyChooseUsItems = $pageWhyChooseUs ? $pageWhyChooseUs->items()->where('status', 1)->orderBy('order', 'asc')->get() : collect();
+
+        $academy = Academy::where('status', 1)->orderBy('order', 'asc')->take(3)->get();
+
         $popups = PopUp::where('status', 1)->orderBy('order', 'asc')->get();
 
         $reviews = Review::where('status', 1)->orderBy('order', 'asc')->get();
@@ -51,7 +56,7 @@ class FrontendController extends Controller
         $notices = Notice::with('category')->where('status', 1)->orderBy('order', 'asc')->get();
         $sliders = Slider::where('status', 1)->orderBy('order', 'asc')->get();
 
-        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems', 'reviews', 'popups'));
+        return view('frontend.home.index', compact('sliders', 'notices', 'vmvItems', 'vmvPage', 'blogs', 'albums', 'facilitiesItems', 'pageFacilities', 'pageChairman', 'chairmanItems', 'reviews', 'popups', 'academy', 'pageWhyChooseUs', 'whyChooseUsItems'));
     }
 
     public function about()

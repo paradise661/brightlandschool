@@ -404,87 +404,82 @@
 
     <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50" id="academics-section">
         <div class="max-w-7xl mx-auto px-6">
+
             <div class="text-center mb-16">
                 <div class="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
                     Academics
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">World-Class Academic Programs</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive curriculum designed to nurture
-                    intellectual growth and prepare students for future success</p>
+
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">
+                    World-Class Academic Programs
+                </h2>
+
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive curriculum designed to nurture intellectual growth
+                    and prepare students for future success
+                </p>
             </div>
+
+            @php
+                $colors = [
+                    [
+                        'border' => 'border-blue-600',
+                        'bg' => 'bg-blue-100',
+                        'text' => 'text-blue-600',
+                    ],
+                    [
+                        'border' => 'border-green-600',
+                        'bg' => 'bg-green-100',
+                        'text' => 'text-green-600',
+                    ],
+                    [
+                        'border' => 'border-yellow-500',
+                        'bg' => 'bg-yellow-100',
+                        'text' => 'text-yellow-600',
+                    ],
+                ];
+            @endphp
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border-t-4 border-blue-600">
-                    <div class="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-school text-blue-600 text-3xl"></i>
+
+                @foreach ($academy as $acd)
+                    @php
+                        $color = $colors[$loop->index % 3];
+                        $points = $acd->points ?? [];
+                    @endphp
+
+                    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border-t-4 {{ $color['border'] }}">
+
+                        <div class="{{ $color['bg'] }} w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa-solid {{ $acd->icon ?? 'fa-school' }} {{ $color['text'] }} text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                            {{ $acd->name }}
+                        </h3>
+
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            {{ \Illuminate\Support\Str::limit(strip_tags($acd->description), 120) }}
+                        </p>
+
+                        <ul class="space-y-3 mb-6">
+                            @foreach ($points as $point)
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fa-solid fa-check-circle {{ $color['text'] }} mr-3"></i>
+                                    <span>{{ $point }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+
+                        <a class="{{ $color['text'] }} font-semibold hover:opacity-80 transition inline-flex items-center"
+                            href="{{ route('frontend.academics', $acd->slug) }}">
+                            Learn More
+                            <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Primary Education</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Foundation years focused on building core competencies in
-                        language, mathematics, science, and social skills through interactive learning.</p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-blue-600 mr-3"></i>
-                            <span>Grades 1-5</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-blue-600 mr-3"></i>
-                            <span>Activity-based learning</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-blue-600 mr-3"></i>
-                            <span>Smart classrooms</span>
-                        </li>
-                    </ul>
-                    <button class="text-blue-600 font-semibold hover:text-blue-700 transition">Learn More <i
-                            class="fa-solid fa-arrow-right ml-2"></i></button>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border-t-4 border-green-600">
-                    <div class="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-book-open text-green-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Secondary Education</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Advanced curriculum preparing students for higher
-                        education with emphasis on critical thinking and problem-solving skills.</p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-green-600 mr-3"></i>
-                            <span>Grades 6-10</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-green-600 mr-3"></i>
-                            <span>STEM focus</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-green-600 mr-3"></i>
-                            <span>Project-based learning</span>
-                        </li>
-                    </ul>
-                    <button class="text-green-600 font-semibold hover:text-green-700 transition">Learn More <i
-                            class="fa-solid fa-arrow-right ml-2"></i></button>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl p-8 card-hover border-t-4 border-purple-600">
-                    <div class="bg-purple-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-graduation-cap text-purple-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Higher Secondary</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Specialized streams preparing students for competitive
-                        exams and university admissions with comprehensive support.</p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-purple-600 mr-3"></i>
-                            <span>Grades 11-12</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-purple-600 mr-3"></i>
-                            <span>Science, Commerce, Arts</span>
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fa-solid fa-check-circle text-purple-600 mr-3"></i>
-                            <span>Career counseling</span>
-                        </li>
-                    </ul>
-                    <button class="text-purple-600 font-semibold hover:text-purple-700 transition">Learn More <i
-                            class="fa-solid fa-arrow-right ml-2"></i></button>
-                </div>
+                @endforeach
+
             </div>
 
         </div>
@@ -492,86 +487,61 @@
 
     <section class="py-20 bg-white" id="why-choose-us">
         <div class="max-w-7xl mx-auto px-6">
+
             <div class="text-center mb-16">
                 <div class="inline-block bg-yellow-100 text-yellow-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
                     Why Choose Us
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">Excellence in Every Aspect</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Discover what makes Excellence Academy the preferred
-                    choice for thousands of families</p>
+
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">
+                    Excellence in Every Aspect
+                </h2>
+
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover what makes Excellence Academy the preferred choice for thousands of families
+                </p>
             </div>
+
+            @php
+                $colors = [
+                    ['from' => 'from-blue-500', 'to' => 'to-blue-600'],
+                    ['from' => 'from-green-500', 'to' => 'to-green-600'],
+                    ['from' => 'from-purple-500', 'to' => 'to-purple-600'],
+                    ['from' => 'from-orange-500', 'to' => 'to-orange-600'],
+                    ['from' => 'from-red-500', 'to' => 'to-red-600'],
+                    ['from' => 'from-teal-500', 'to' => 'to-teal-600'],
+                    ['from' => 'from-pink-500', 'to' => 'to-pink-600'],
+                    ['from' => 'from-indigo-500', 'to' => 'to-indigo-600'],
+                ];
+            @endphp
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-blue-500 to-blue-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-chalkboard-teacher text-white text-4xl"></i>
+
+                @foreach ($whyChooseUsItems as $item)
+                    @php
+                        $color = $colors[$loop->index % 8];
+                    @endphp
+
+                    <div class="text-center card-hover">
+
+                        <div
+                            class="bg-gradient-to-br {{ $color['from'] }} {{ $color['to'] }} w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                            <i class="fa-solid {{ $item->icon ?? 'fa-star' }} text-white text-4xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            {{ $item->name }}
+                        </h3>
+
+                        <p class="text-gray-600 leading-relaxed">
+                            {{ Str::words(strip_tags($item->description), 18) }}
+                        </p>
+
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Expert Faculty</h3>
-                    <p class="text-gray-600 leading-relaxed">Highly qualified and experienced teachers committed to student
-                        success</p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-green-500 to-green-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-laptop-code text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Learning</h3>
-                    <p class="text-gray-600 leading-relaxed">Technology-integrated classrooms with digital learning
-                        resources</p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-purple-500 to-purple-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-medal text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Proven Results</h3>
-                    <p class="text-gray-600 leading-relaxed">98% success rate in board examinations and competitive tests
-                    </p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-orange-500 to-orange-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-users text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Small Class Size</h3>
-                    <p class="text-gray-600 leading-relaxed">Personalized attention with optimal student-teacher ratio</p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-red-500 to-red-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-shield-alt text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Safe Environment</h3>
-                    <p class="text-gray-600 leading-relaxed">24/7 security with CCTV surveillance and safety protocols</p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-teal-500 to-teal-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-futbol text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sports Excellence</h3>
-                    <p class="text-gray-600 leading-relaxed">State-of-the-art sports facilities and professional coaching
-                    </p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-pink-500 to-pink-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-palette text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Arts & Culture</h3>
-                    <p class="text-gray-600 leading-relaxed">Comprehensive programs in music, dance, drama, and fine arts
-                    </p>
-                </div>
-                <div class="text-center card-hover">
-                    <div
-                        class="bg-gradient-to-br from-indigo-500 to-indigo-600 w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <i class="fa-solid fa-bus text-white text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Transport Facility</h3>
-                    <p class="text-gray-600 leading-relaxed">GPS-enabled buses covering all major routes across the city
-                    </p>
-                </div>
+                @endforeach
+
             </div>
+
         </div>
     </section>
 

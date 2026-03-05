@@ -23,15 +23,27 @@
                     <div class="col-md-9">
                         <div class="card card-body main-description shadow br-8 p-4">
                             <!-- Name Field -->
-                            <div class="form-group mb-3">
-                                <label for="name">Name</label>
-                                <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
-                                    name="name" value="{{ old('name', $academy->name) }}" placeholder="Enter Name">
-                                @error('name')
-                                    <div class="invalid-feedback" role="alert" style="display: block;">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-9">
+                                    <label for="name">Name</label>
+                                    <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
+                                        name="name" value="{{ old('name', $academy->name) }}" placeholder="Enter Name">
+                                    @error('name')
+                                        <div class="invalid-feedback" style="display: block;">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3 col-md-3">
+                                    <label for="icon">Icon</label>
+                                    <input class="form-control br-8 @error('icon') is-invalid @enderror" type="text"
+                                        name="icon" value="{{ old('icon', $academy->icon) }}" placeholder="Enter Icon">
+                                    @error('icon')
+                                        <div class="invalid-feedback" style="display: block;">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
 
                             <!-- Description Field -->
@@ -43,6 +55,34 @@
                                     <div class="invalid-feedback" role="alert" style="display: block;">
                                         {{ $message }}
                                     </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Bullet Points</label>
+
+                                <div id="points-wrapper">
+
+                                    @php
+                                        $points = old('points', $academy->points ?? ['']);
+                                    @endphp
+
+                                    @foreach ($points as $point)
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <input class="form-control br-8 flex-1" type="text" name="points[]"
+                                                value="{{ $point }}" placeholder="Enter a point">
+
+                                            <div class="flex gap-2 mt-2">
+                                                <button class="btn btn-danger remove-point" type="button">Remove</button>
+                                                <button class="btn btn-success add-point" type="button">Add</button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                </div>
+
+                                @error('points')
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -90,7 +130,8 @@
                             <div class="form-group mb-3 d-flex align-items-center">
                                 <label for="order">Order</label>
                                 <input class="form-control ms-5 @error('order') is-invalid @enderror" type="number"
-                                    name="order" value="{{ old('order', $academy->order) }}" placeholder="Enter Order">
+                                    name="order" value="{{ old('order', $academy->order) }}"
+                                    placeholder="Enter Order">
                                 @error('order')
                                     <div class="invalid-feedback" style="display: block;">
                                         {{ $message }}
@@ -104,8 +145,8 @@
                                 <label for="image">Featured Image</label>
                                 <div class="custom-file">
                                     <input class="dropify @error('image') is-invalid @enderror" id="image"
-                                        data-show-remove="false" data-default-file="{{ $academy->image }}" type="file"
-                                        name="image">
+                                        data-show-remove="false" data-default-file="{{ $academy->image }}"
+                                        type="file" name="image">
                                     @error('image')
                                         <div class="invalid-feedback" role="alert" style="display: block;">
                                             {{ $message }}
@@ -142,4 +183,36 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('points-wrapper');
+
+            wrapper.addEventListener('click', function(e) {
+
+                // ADD
+                if (e.target.classList.contains('add-point')) {
+                    const div = document.createElement('div');
+                    div.className = 'flex items-center gap-2 mb-2';
+                    div.innerHTML = `
+                <input class="form-control br-8 flex-1" type="text" name="points[]" placeholder="Enter a point">
+                <div class="flex gap-2 mt-2">
+                    <button class="btn btn-danger remove-point" type="button">Remove</button>
+                    <button class="btn btn-success add-point" type="button">Add</button>
+                </div>
+            `;
+                    wrapper.appendChild(div);
+                }
+
+                // REMOVE
+                if (e.target.classList.contains('remove-point')) {
+                    const rows = wrapper.querySelectorAll('.flex.items-center');
+                    if (rows.length > 1) {
+                        e.target.closest('.flex.items-center').remove();
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

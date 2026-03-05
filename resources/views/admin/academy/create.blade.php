@@ -20,15 +20,27 @@
                     <div class="col-md-9">
                         <div class="card card-body main-description shadow br-8 p-4 mb-3">
 
-                            <div class="form-group mb-3 ">
-                                <label for="name">Name</label>
-                                <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
-                                    name="name" value="{{ old('name') }}" placeholder="Enter Name">
-                                @error('name')
-                                    <div class="invalid-feedback" style="display: block;">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-9">
+                                    <label for="name">Name</label>
+                                    <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
+                                        name="name" value="{{ old('name') }}" placeholder="Enter Name">
+                                    @error('name')
+                                        <div class="invalid-feedback" style="display: block;">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3 col-md-3">
+                                    <label for="icon">Icon</label>
+                                    <input class="form-control br-8 @error('icon') is-invalid @enderror" type="text"
+                                        name="icon" value="{{ old('icon') }}" placeholder="Enter Icon">
+                                    @error('icon')
+                                        <div class="invalid-feedback" style="display: block;">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="form-group mb-3">
@@ -39,6 +51,26 @@
                                     <div class="invalid-feedback" style="display: block;">
                                         {{ $message }}
                                     </div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Bullet Points</label>
+
+                                <div id="points-wrapper">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <input class="form-control br-8 flex-1" type="text" name="points[]"
+                                            placeholder="Enter a point">
+
+                                        <!-- Buttons side by side -->
+                                        <div class="flex gap-2 mt-2">
+                                            <button class="btn btn-danger remove-point" type="button">Remove</button>
+                                            <button class="btn btn-success add-point" type="button">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @error('points')
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -154,4 +186,32 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('points-wrapper');
+
+            // Add a new row
+            wrapper.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-point')) {
+                    const div = document.createElement('div');
+                    div.classList.add('flex', 'items-center', 'gap-2', 'mb-2');
+                    div.innerHTML = `
+                <input class="form-control br-8 flex-1" type="text" name="points[]" placeholder="Enter a point">
+                <div class="flex gap-2 mt-2">
+                    <button class="btn btn-danger remove-point" type="button">Remove</button>
+                    <button class="btn btn-success add-point" type="button">Add</button>
+                </div>
+            `;
+                    wrapper.appendChild(div);
+                }
+
+                // Remove a row
+                if (e.target.classList.contains('remove-point')) {
+                    e.target.closest('div.flex.items-center').remove();
+                }
+            });
+        });
+    </script>
 @endsection

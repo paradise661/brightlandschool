@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Academy extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'image', 'banner_image', 'order', 'status', 'slug', 'seo_title', 'seo_description', 'seo_keywords', 'seo_schema'];
+    protected $fillable = ['name', 'description', 'image', 'banner_image', 'order', 'status', 'slug', 'seo_title', 'seo_description', 'seo_keywords', 'seo_schema', 'points', 'icon'];
+
+    protected $casts = [
+        'points' => 'array',
+    ];
 }

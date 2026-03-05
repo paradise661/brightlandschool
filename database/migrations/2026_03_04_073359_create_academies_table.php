@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('slug')->nullable();
+            $table->json('points')->nullable();
+            $table->string('icon')->nullable();
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->text('seo_schema')->nullable();
