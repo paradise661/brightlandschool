@@ -1,5 +1,6 @@
 @extends('layouts.frontend.master')
 @section('content')
+
     {{-- Popup Section --}}
     @if (isset($popups) && $popups->count() > 0)
         <section id="popupSection">
@@ -47,7 +48,7 @@
 
         </section>
     @endif
-    <section class="relative h-[700px] overflow-hidden" id="hero-slider">
+    <section class="relative h-[400px] sm:h-[500px] md:h-[700px] overflow-hidden" id="hero-slider">
 
         @foreach ($sliders as $index => $slider)
             <div
@@ -60,29 +61,23 @@
                     alt="{{ $slider->name ?? '' }}" />
 
                 <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
-                    <div class="max-w-3xl text-white">
-                        <h1 class="text-6xl font-heading font-bold mb-6 leading-tight">
+                    <div class="max-w-full sm:max-w-xl md:max-w-3xl text-white">
+                        <h1
+                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-snug sm:leading-tight">
                             {{ $slider->name ?? '' }}
                         </h1>
 
-                        <p class="text-xl mb-8 text-gray-200">
+                        <p class="text-base sm:text-lg md:text-xl mb-6 text-gray-200">
                             {{ strip_tags($slider->description ?? '') }}
                         </p>
 
-                        <div class="flex space-x-4">
-                            <a class="bg-primary text-white px-8 py-4 rounded-full hover:bg-red-700 transition font-semibold text-lg inline-flex items-center"
+                        <div class="flex space-x-2 sm:space-x-4 flex-wrap">
+                            <a class="bg-primary text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-red-700 transition font-semibold text-sm sm:text-lg inline-flex items-center"
                                 href="{{ route('frontend.admission') }}">
                                 Apply Now
                                 <i class="fa-solid fa-arrow-right ml-2"></i>
                             </a>
-                            {{--
-                            <a class="bg-white text-primary px-8 py-4 rounded-full hover:bg-gray-100 transition font-semibold text-lg inline-flex items-center"
-                                href="#">
-                                Take a Tour
-                                <i class="fa-solid fa-play ml-2"></i>
-                            </a> --}}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -105,8 +100,10 @@
                     <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
                         {{ $setting['homepage_about_title'] ?? '' }}
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                        {{ $setting['homepage_about_title1'] ?? '' }}</h2>
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-snug sm:leading-tight">
+                        {{ $setting['homepage_about_title1'] ?? '' }}
+                    </h2>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
                         {!! $setting['homepage_about_description'] ?? '' !!}</p>
                     <div class="grid grid-cols-2 gap-6 mb-8 mt-3">
@@ -187,10 +184,10 @@
             <div class="flex items-center mb-8 md:mb-10">
                 <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
                 <div>
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Important Notices
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
+                        {{ $setting['homepage_notices_title'] ?? '' }}
                     </h2>
-                    {{-- <p class="text-gray-600 text-sm md:text-base mt-2">Stay updated with latest announcements and
-                            circulars</p> --}}
+
                 </div>
             </div>
 
@@ -263,11 +260,13 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Our Foundation
+                    {{ $setting['homepage_mission_title'] ?? '' }}
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">Vision, Mission & Values</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">The guiding principles that shape our educational
-                    philosophy and drive our commitment to excellence</p>
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-snug sm:leading-tight">
+                    {{ $setting['homepage_mission_title1'] ?? '' }}
+                </h2>
+
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -307,11 +306,13 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Leadership
+                    {{ $setting['homepage_message_title'] ?? '' }}
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">Messages from Our Leaders</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Words of wisdom and guidance from those who lead our
-                    institution</p>
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-1 leading-snug sm:leading-tight">
+                    {{ $setting['homepage_message_title1'] ?? '' }}
+                </h2>
+
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
@@ -363,9 +364,11 @@
                                 </p>
 
                                 <div class="mt-6 pt-6 border-t border-gray-200">
-                                    <div class="flex items-center justify-between">
+                                    <div
+                                        class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
 
-                                        <a class="{{ $titleColor }} font-semibold hover:opacity-80 transition"
+                                        <!-- Read Full Message -->
+                                        <a class="{{ $titleColor }} font-semibold hover:opacity-80 transition flex items-center justify-center sm:justify-start"
                                             href="{{ route('frontend.message.show', $item->slug) }}">
                                             Read Full Message
                                             <i class="fa-solid fa-arrow-right ml-2"></i>
@@ -383,8 +386,10 @@
                                                 }
                                             }
                                         @endphp
+
                                         @if ($email)
-                                            <div class="flex items-center space-x-2 text-gray-500">
+                                            <div
+                                                class="flex items-center justify-center sm:justify-end space-x-2 text-gray-500">
                                                 <i class="fa-solid fa-envelope"></i>
                                                 <span class="text-sm">{{ $email }}</span>
                                             </div>
@@ -407,17 +412,14 @@
 
             <div class="text-center mb-16">
                 <div class="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Academics
+                    {{ $setting['homepage_academics_title'] ?? '' }}
                 </div>
 
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">
-                    World-Class Academic Programs
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-snug sm:leading-tight">
+                    {{ $setting['homepage_academics_title1'] ?? '' }}
                 </h2>
 
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Comprehensive curriculum designed to nurture intellectual growth
-                    and prepare students for future success
-                </p>
             </div>
 
             @php
@@ -490,16 +492,14 @@
 
             <div class="text-center mb-16">
                 <div class="inline-block bg-yellow-100 text-yellow-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Why Choose Us
+                    {{ $setting['homepage_whychoose_title'] ?? '' }}
                 </div>
 
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">
-                    Excellence in Every Aspect
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-snug sm:leading-tight">
+                    {{ $setting['homepage_whychoose_title1'] ?? '' }}
                 </h2>
 
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Discover what makes Excellence Academy the preferred choice for thousands of families
-                </p>
             </div>
 
             @php
@@ -549,9 +549,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Facilities
+                    {{ $setting['homepage_facilities_title'] ?? '' }}
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">State-of-the-Art Facilities</h2>
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-snug sm:leading-tight">
+                    {{ $setting['homepage_facilities_title1'] ?? '' }}</h2>
 
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -592,9 +594,11 @@
             <div class="flex items-center justify-between mb-12">
                 <div>
                     <div class="inline-block bg-blue-100 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                        Blogs
+                        {{ $setting['homepage_blog_title'] ?? '' }}
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-900">Latest Blogs</h2>
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-snug sm:leading-tight">
+                        {{ $setting['homepage_blog_title1'] ?? '' }}</h2>
                 </div>
                 <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View
                     All</button>
@@ -634,10 +638,11 @@
 
             <div class="text-center mb-16">
                 <div class="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Testimonials
+                    {{ $setting['homepage_testimonials_title'] ?? '' }}
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">
-                    What Our Community Says
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-snug sm:leading-tight mb-4">
+                    {{ $setting['homepage_testimonials_title1'] ?? '' }}
                 </h2>
             </div>
 
@@ -701,9 +706,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="inline-block bg-blue-100 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    Photo Gallery
+                    {{ $setting['homepage_gallery_title'] ?? '' }}
                 </div>
-                <h2 class="text-5xl font-bold text-gray-900 mb-4">Campus Life in Pictures</h2>
+                <h2
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-snug sm:leading-tight mb-4">
+                    {{ $setting['homepage_gallery_title1'] ?? '' }}</h2>
 
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -729,11 +736,12 @@
                 <div>
                     <div
                         class="inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white text-sm font-semibold mb-6">
-                        Admissions Open 2024-25
+                        {{ $setting['homepage_contact_title'] ?? '' }}
                     </div>
-                    <h2 class="text-5xl font-bold text-white mb-6 leading-tight">Join Our Community of Excellence</h2>
-                    <p class="text-xl text-blue-100 mb-8 leading-relaxed">Begin your child's journey towards academic
-                        excellence and holistic development. Limited seats available for all grades.</p>
+                    <h2 class="text-5xl font-bold text-white mb-6 leading-tight">
+                        {{ $setting['homepage_contact_title1'] ?? '' }}</h2>
+                    <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                        {{ $setting['homepage_contact_description'] ?? '' }}</p>
                     <div class="space-y-4 mb-8">
                         <div class="flex items-center space-x-4">
                             <div
@@ -741,8 +749,9 @@
                                 <i class="fa-solid fa-check text-white text-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-white font-bold text-lg">Easy Online Application</div>
-                                <div class="text-blue-200">Complete the form in minutes</div>
+                                <div class="text-white font-bold text-lg">
+                                    {{ $setting['homepage_contact_features'] ?? '' }}</div>
+
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
@@ -751,8 +760,9 @@
                                 <i class="fa-solid fa-check text-white text-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-white font-bold text-lg">Entrance Assessment</div>
-                                <div class="text-blue-200">Simple evaluation process</div>
+                                <div class="text-white font-bold text-lg">
+                                    {{ $setting['homepage_contact_features1'] ?? '' }}</div>
+
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
@@ -761,8 +771,9 @@
                                 <i class="fa-solid fa-check text-white text-2xl"></i>
                             </div>
                             <div>
-                                <div class="text-white font-bold text-lg">Personal Interview</div>
-                                <div class="text-blue-200">Get to know our faculty</div>
+                                <div class="text-white font-bold text-lg">
+                                    {{ $setting['homepage_contact_features2'] ?? '' }}</div>
+
                             </div>
                         </div>
                     </div>

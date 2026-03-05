@@ -120,37 +120,146 @@
 
         {{-- title --}}
         <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Services,Abroad & Blogs Title Settings</legend>
+            <legend class="float-none w-auto legend-title">Homepage Title Settings</legend>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="service_title">Enter Services Title</label>
-                        <input class="form-control br-8" type="text" name="service_title"
-                            value="{{ $setting['service_title'] }}" placeholder="Enter service_title Title">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="abroads_title">Enter Abroad Title</label>
-                        <input class="form-control br-8" type="text" name="abroads_title"
-                            value="{{ $setting['abroads_title'] }}" placeholder="Enter abroads_title Title">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="testimonial_title">Enter Testimonial Title</label>
-                        <input class="form-control br-8" type="text" name="testimonial_title"
-                            value="{{ $setting['testimonial_title'] }}" placeholder="Enter abroads_title Title">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="course_title">Enter Course Title</label>
-                        <input class="form-control br-8" type="text" name="course_title"
-                            value="{{ $setting['course_title'] }}" placeholder="Enter abroads_title Title">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="pb-2" for="blogs_title">Enter Blogs Title</label>
-                        <input class="form-control br-8" type="text" name="blogs_title"
-                            value="{{ $setting['blogs_title'] }}" placeholder="Enter blogs_title Title">
-                    </div>
+
+                <div class="form-group mb-3 col-md-12">
+                    <label class="pb-2" for="homepage_notices_title">Enter Notices Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_notices_title"
+                        value="{{ $setting['homepage_notices_title'] }}" placeholder="Enter Notices Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_mission_title">Enter Mission Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_mission_title"
+                        value="{{ $setting['homepage_mission_title'] }}" placeholder="Enter Mission Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_mission_title1">Enter Mission Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_mission_title1"
+                        value="{{ $setting['homepage_mission_title1'] }}" placeholder="Enter Mission Sub Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_message_title">Enter Message Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_message_title"
+                        value="{{ $setting['homepage_message_title'] }}" placeholder="Enter Message Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_message_title1">Enter Message Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_message_title1"
+                        value="{{ $setting['homepage_message_title1'] }}" placeholder="Enter Message Sub Title">
                 </div>
 
-                <div class="col-md-12">
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_academics_title">Enter Academy Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_academics_title"
+                        value="{{ $setting['homepage_academics_title'] }}" placeholder="Enter Academy Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_academics_title1">Enter Academy Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_academics_title1"
+                        value="{{ $setting['homepage_academics_title1'] }}" placeholder="Enter Academy Sub Title">
+                </div>
+
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_whychoose_title">Enter WhyChooseUs Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_whychoose_title"
+                        value="{{ $setting['homepage_whychoose_title'] }}" placeholder="Enter WhyChooseUs Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_whychoose_title1">Enter WhyChooseUs Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_whychoose_title1"
+                        value="{{ $setting['homepage_whychoose_title1'] }}"
+                        placeholder="Enter WhyChooseUs Sub Title">
+                </div>
+
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_facilities_title">Enter Facilities Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_facilities_title"
+                        value="{{ $setting['homepage_facilities_title'] }}" placeholder="Enter Facilities Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_facilities_title1">Enter Facilities Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_facilities_title1"
+                        value="{{ $setting['homepage_facilities_title1'] }}"
+                        placeholder="Enter Facilities Sub Title">
+                </div>
+
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_blog_title">Enter Blogs Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_blog_title"
+                        value="{{ $setting['homepage_blog_title'] }}" placeholder="Enter Blogs Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_blog_title1">Enter Blogs Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_blog_title1"
+                        value="{{ $setting['homepage_blog_title1'] }}" placeholder="Enter Blogs Sub Title">
+                </div>
+
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_testimonials_title">Enter Testimonials Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_testimonials_title"
+                        value="{{ $setting['homepage_testimonials_title'] }}" placeholder="Enter Testimonials Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_testimonials_title1">Enter Testimonilas Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_testimonials_title1"
+                        value="{{ $setting['homepage_testimonials_title1'] }}"
+                        placeholder="Enter Testimonilas Sub Title">
+                </div>
+
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_gallery_title">Enter Gallery Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_gallery_title"
+                        value="{{ $setting['homepage_gallery_title'] }}" placeholder="Enter Gallery Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_gallery_title1">Enter Gallery Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_gallery_title1"
+                        value="{{ $setting['homepage_gallery_title1'] }}" placeholder="Enter Gallery Sub Title">
+                </div>
+
+            </div>
+        </fieldset>
+
+        <fieldset class="border p-3">
+            <legend class="float-none w-auto legend-title">Homepage Contact Form</legend>
+            <div class="row">
+
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_contact_title">Enter Contact Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_contact_title"
+                        value="{{ $setting['homepage_contact_title'] }}" placeholder="Enter Contact Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_contact_title1">Enter Contact Sub Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_contact_title1"
+                        value="{{ $setting['homepage_contact_title1'] }}" placeholder="Enter Mission Title">
+                </div>
+                <div class="col-md-12 mt-3 col-md-12">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="homepage_contact_description">Enter About Description</label>
+                        <textarea class="form-control br-8 " name="homepage_contact_description" rows="4">{{ $setting['homepage_contact_description'] ?? '' }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_contact_features">Enter Features Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_contact_features"
+                        value="{{ $setting['homepage_contact_features'] }}" placeholder="Enter Features Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_contact_features1">Enter Features Title 1</label>
+                    <input class="form-control br-8" type="text" name="homepage_contact_features1"
+                        value="{{ $setting['homepage_contact_features1'] }}" placeholder="Enter Features Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_contact_features2">Enter Features Title 2</label>
+                    <input class="form-control br-8" type="text" name="homepage_contact_features2"
+                        value="{{ $setting['homepage_contact_features2'] }}" placeholder="Enter Features Title">
+                </div>
+                <div class="form-group mb-3 col-md-6">
+                    <label class="pb-2" for="homepage_contact_formname">Enter contact Form Title</label>
+                    <input class="form-control br-8" type="text" name="homepage_contact_formname"
+                        value="{{ $setting['homepage_contact_formname'] }}" placeholder="Enter Contact Form Title">
                 </div>
             </div>
         </fieldset>

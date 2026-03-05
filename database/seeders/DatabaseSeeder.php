@@ -48,6 +48,31 @@ class DatabaseSeeder extends Seeder
             ['homepage_about_image3', null],
             ['homepage_about_years', '25'],
             ['homepage_about_years_text', 'Years of Excellence'],
+            ['homepage_notices_title', 'Important Notices'],
+            ['homepage_mission_title', 'Our Foundation'],
+            ['homepage_mission_title1', 'Vision, Mission & Values'],
+            ['homepage_message_title', 'Leadership'],
+            ['homepage_message_title1', 'Messages from Our Leaders'],
+            ['homepage_academics_title', 'Academics'],
+            ['homepage_academics_title1', 'World-Class Academic Programs'],
+            ['homepage_whychoose_title', 'Why Choose Us'],
+            ['homepage_whychoose_title1', 'Excellence in Every Aspect'],
+            ['homepage_facilities_title', 'Facilities'],
+            ['homepage_facilities_title1', 'State-of-the-Art Facilities'],
+            ['homepage_blog_title', 'blog'],
+            ['homepage_blog_title1', 'Latest Blogs'],
+            ['homepage_testimonials_title', 'Testimonials'],
+            ['homepage_testimonials_title1', 'What Our Community Says'],
+            ['homepage_gallery_title', 'Photo Gallery'],
+            ['homepage_gallery_title1', 'Campus Life in Pictures'],
+            ['homepage_contact_title', 'Admissions Open 2024-25'],
+            ['homepage_contact_title1', 'Join Our Community of Excellence'],
+            ['homepage_contact_description', 'Begin your child journey towards academic excellence and holistic development. Limited seats available for all grades.'],
+            ['homepage_contact_features', 'Easy Online Application'],
+            ['homepage_contact_features1', 'Entrance Assessment'],
+            ['homepage_contact_features2', 'Personal Interview'],
+            ['homepage_contact_formname', 'Quick Inquiry Form'],
+
 
             ['aboutpage_about_title', 'Welcome to Brightland Academy'],
             ['aboutpage_about_title1', 'Where Education Meets Excellence'],
@@ -62,6 +87,9 @@ class DatabaseSeeder extends Seeder
             ['aboutpage_about_image3', null],
             ['aboutpage_about_years', '25'],
             ['aboutpage_about_years_text', 'Years of Excellence'],
+
+
+
 
 
 
