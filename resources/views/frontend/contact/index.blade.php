@@ -208,6 +208,7 @@
 
     <section class="py-12 md:py-16 bg-white" id="map-section">
         <div class="container mx-auto px-4 md:px-6">
+            <!-- Section Title -->
             <div class="flex items-center mb-6 md:mb-8">
                 <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                 <div>
@@ -216,138 +217,18 @@
                     </p>
                 </div>
             </div>
-            <div
-                class="bg-gray-200 rounded-2xl overflow-hidden shadow-xl h-96 md:h-[500px] flex items-center justify-center">
-                <div class="text-center">
-                    <div
-                        class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fa-solid fa-map-location-dot text-primary text-2xl md:text-3xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-2">Interactive Map</h3>
-                    <p class="text-gray-600 text-sm md:text-base max-w-md mx-auto px-4">Google Maps integration would be
-                        embedded here showing the exact location of Excellence Academy</p>
-                </div>
+
+            <!-- Map Container -->
+            <div class="bg-gray-200 rounded-2xl overflow-hidden shadow-xl h-96 md:h-[500px]">
+                <iframe class="w-full h-full border-0"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3823.6322681547326!2d81.616644!3d28.0537219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399867452d912529%3A0x7dfb4c0cd844f293!2sBrightland%20Secondary%20School!5e1!3m2!1sen!2snp!4v1772742226198!5m2!1sen!2snp"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
 
-    <section class="py-12 md:py-16 bg-gray-50" id="department-contacts">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="flex items-center mb-8 md:mb-10">
-                <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
-                <div>
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Department Contacts
-                    </h2>
-                    <p class="text-gray-600 text-sm md:text-base mt-2">Reach out to specific departments for specialized
-                        assistance</p>
-                </div>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition" id="dept-1">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                        <i class="fa-solid fa-user-graduate text-primary text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-3">Admissions Office</h3>
-                    <div class="space-y-2 text-sm md:text-base">
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-phone text-primary mr-3 w-4"></i>
-                            <span>+1 (234) 567-892</span>
-                        </p>
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-envelope text-primary mr-3 w-4"></i>
-                            <span>admissions@school.edu</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition" id="dept-2">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                        <i class="fa-solid fa-book text-secondary text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-3">Academic Office</h3>
-                    <div class="space-y-2 text-sm md:text-base">
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-phone text-secondary mr-3 w-4"></i>
-                            <span>+1 (234) 567-893</span>
-                        </p>
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-envelope text-secondary mr-3 w-4"></i>
-                            <span>academics@school.edu</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition" id="dept-3">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                        <i class="fa-solid fa-dollar-sign text-accent text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-3">Finance Office</h3>
-                    <div class="space-y-2 text-sm md:text-base">
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-phone text-accent mr-3 w-4"></i>
-                            <span>+1 (234) 567-894</span>
-                        </p>
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-envelope text-accent mr-3 w-4"></i>
-                            <span>finance@school.edu</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition" id="dept-4">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                        <i class="fa-solid fa-futbol text-green-600 text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-3">Sports Department</h3>
-                    <div class="space-y-2 text-sm md:text-base">
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-phone text-green-600 mr-3 w-4"></i>
-                            <span>+1 (234) 567-895</span>
-                        </p>
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-envelope text-green-600 mr-3 w-4"></i>
-                            <span>sports@school.edu</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition" id="dept-5">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                        <i class="fa-solid fa-briefcase text-purple-600 text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-3">HR Department</h3>
-                    <div class="space-y-2 text-sm md:text-base">
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-phone text-purple-600 mr-3 w-4"></i>
-                            <span>+1 (234) 567-896</span>
-                        </p>
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-envelope text-purple-600 mr-3 w-4"></i>
-                            <span>hr@school.edu</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition" id="dept-6">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                        <i class="fa-solid fa-headset text-indigo-600 text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-3">IT Support</h3>
-                    <div class="space-y-2 text-sm md:text-base">
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-phone text-indigo-600 mr-3 w-4"></i>
-                            <span>+1 (234) 567-897</span>
-                        </p>
-                        <p class="flex items-center text-gray-600">
-                            <i class="fa-solid fa-envelope text-indigo-600 mr-3 w-4"></i>
-                            <span>itsupport@school.edu</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 @endsection
 @section('scripts')
     <script>
