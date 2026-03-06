@@ -30,13 +30,11 @@
 
         <div class="col-md-6">
             <div class="form-group mb-3">
-                <label for="site_breadcrumb_banner">Site Breadcrumb Banner</label>
+                <label for="site_breadcrumb_banner">Site Breadcrum Banner</label>
                 <div class="custom-file">
-                    <input type="hidden" name="site_breadcrumb_banner_removed" value="0">
-                    <input class="mainlogo1" id="site_breadcrumb_banner"
-                        data-default-file="{{ asset($settings['site_breadcrumb_banner']) }}" data-show-remove="true"
-                        type="file" name="site_breadcrumb_banner">
-
+                    <input class="mainlogo" id="site_breadcrumb_banner" data-show-remove="false"
+                        data-default-file="{{ $settings['site_breadcrumb_banner'] }}" type="file"
+                        name="site_breadcrumb_banner">
                 </div>
             </div>
         </div>

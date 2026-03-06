@@ -127,7 +127,7 @@
         </fieldset>
         {{-- title --}}
         <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Services,Abroad & Blogs Title Settings</legend>
+            <legend class="float-none w-auto legend-title">Title Settings</legend>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group mb-3">

@@ -18,9 +18,8 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
 
         <!-- Background image -->
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
-            alt="students reading books in modern library" />
+        <img class="absolute inset-0 w-full h-full object-cover" src="{{ $setting['contact_breadcrum_image'] ?? '' }}"
+            alt="Contacts " />
 
         <!-- Content -->
         <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
@@ -62,10 +61,9 @@
                     <div class="flex items-center mb-6 md:mb-8">
                         <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                         <div>
-                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Send Us A
-                                Message</h2>
-                            <p class="text-gray-600 text-sm md:text-base mt-2">Fill out the form below and we'll get back to
-                                you shortly</p>
+                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
+                                {{ $setting['contact_form_title'] ?? '' }}</h2>
+
                         </div>
                     </div>
                     <form class="bg-white rounded-2xl shadow-xl p-6 md:p-8 lg:p-10" id="contactForm"
@@ -146,60 +144,43 @@
                     <div class="flex items-center mb-6 md:mb-8">
                         <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
                         <div>
-                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Why Choose Us?
+                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
+                                {{ $setting['contact_why_title'] ?? '' }}
                             </h2>
-                            <p class="text-gray-600 text-sm md:text-base mt-2">Excellence in education for over 30 years</p>
+
                         </div>
                     </div>
                     <div class="space-y-4 md:space-y-6 mb-8 md:mb-10">
-                        <div class="bg-white rounded-xl p-5 md:p-6 shadow-lg flex items-start" id="why-choose-1">
-                            <div
-                                class="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa-solid fa-award text-primary text-xl md:text-2xl"></i>
+                        @foreach ($whyChooseUsItems as $choose)
+                            @php
+                                // Define colors for each index
+                                $colors = [
+                                    ['bg' => 'bg-primary/10', 'text' => 'text-primary'],
+                                    ['bg' => 'bg-secondary/10', 'text' => 'text-secondary'],
+                                    ['bg' => 'bg-accent/10', 'text' => 'text-accent'],
+                                    ['bg' => 'bg-green-100', 'text' => 'text-green-600'],
+                                ];
+
+                                // Use index or default to first color if more items
+                                $color = $colors[$loop->index] ?? $colors[0];
+                            @endphp
+
+                            <div class="bg-white rounded-xl p-5 md:p-6 shadow-lg flex items-start">
+                                <div
+                                    class="w-12 h-12 md:w-14 md:h-14 {{ $color['bg'] }} rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i
+                                        class="fa-solid {{ $choose->icon ?? '' }} {{ $color['text'] }} text-xl md:text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-gray-900 mb-2 text-base md:text-lg">
+                                        {{ $choose->name ?? '' }}
+                                    </h3>
+                                    <p class="text-gray-600 text-sm md:text-base">
+                                        {{ strip_tags($choose->description ?? '') }}
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="font-heading font-bold text-gray-900 mb-2 text-base md:text-lg">Award-Winning
-                                    Institution</h3>
-                                <p class="text-gray-600 text-sm md:text-base">Recognized nationally for academic excellence
-                                    and innovation in education</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-5 md:p-6 shadow-lg flex items-start" id="why-choose-2">
-                            <div
-                                class="w-12 h-12 md:w-14 md:h-14 bg-secondary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa-solid fa-users text-secondary text-xl md:text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-heading font-bold text-gray-900 mb-2 text-base md:text-lg">Expert Faculty
-                                </h3>
-                                <p class="text-gray-600 text-sm md:text-base">Highly qualified and experienced teachers
-                                    dedicated to student success</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-5 md:p-6 shadow-lg flex items-start" id="why-choose-3">
-                            <div
-                                class="w-12 h-12 md:w-14 md:h-14 bg-accent/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa-solid fa-building text-accent text-xl md:text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-heading font-bold text-gray-900 mb-2 text-base md:text-lg">Modern
-                                    Facilities</h3>
-                                <p class="text-gray-600 text-sm md:text-base">State-of-the-art classrooms, labs, library,
-                                    and sports infrastructure</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-5 md:p-6 shadow-lg flex items-start" id="why-choose-4">
-                            <div
-                                class="w-12 h-12 md:w-14 md:h-14 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa-solid fa-chart-line text-green-600 text-xl md:text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-heading font-bold text-gray-900 mb-2 text-base md:text-lg">Proven Track
-                                    Record</h3>
-                                <p class="text-gray-600 text-sm md:text-base">Consistent 100% pass rate with excellent
-                                    university placements</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -212,9 +193,9 @@
             <div class="flex items-center mb-6 md:mb-8">
                 <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                 <div>
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Find Us On Map</h2>
-                    <p class="text-gray-600 text-sm md:text-base mt-2">Visit our campus and experience excellence firsthand
-                    </p>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
+                        {{ $setting['contact_map_title'] ?? '' }}</h2>
+
                 </div>
             </div>
 

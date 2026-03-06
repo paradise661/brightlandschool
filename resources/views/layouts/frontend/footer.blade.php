@@ -9,8 +9,7 @@
                             alt="Logo">
                     </a>
                 </div>
-                <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">Nurturing tomorrow's leaders through
-                    excellence in education since 1990.</p>
+                <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">{{ $setting['site_information'] ?? '' }}</p>
                 <div class="flex space-x-4">
                     @foreach ($social as $socials)
                         <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
@@ -58,16 +57,17 @@
                 <ul class="space-y-3 text-sm md:text-base">
                     <li class="flex items-start">
                         <i class="fa-solid fa-location-dot text-primary mt-1 mr-3"></i>
-                        <span class="text-gray-400">Nepalganj, Nepal</span>
+                        <span class="text-gray-400">{{ $setting['site_location'] }}</span>
                     </li>
                     <li class="flex items-center">
                         <i class="fa-solid fa-phone text-primary mr-3"></i>
-                        <a class="text-gray-400 hover:text-white transition" href="tel:+021-1234567">021-1234567</a>
+                        <a class="text-gray-400 hover:text-white transition"
+                            href="tel:{{ $setting['site_phone'] ?? '' }}">{{ $setting['site_phone'] ?? '' }}</a>
                     </li>
                     <li class="flex items-center">
                         <i class="fa-solid fa-envelope text-primary mr-3"></i>
                         <a class="text-gray-400 hover:text-white transition"
-                            href="mailto:info@brightland.edu.np">info@brightland.edu.np</a>
+                            href="mailto:{{ $setting['site_email'] ?? '' }}">{{ $setting['site_email'] ?? '' }}</a>
                     </li>
                 </ul>
             </div>

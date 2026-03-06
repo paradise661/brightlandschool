@@ -19,12 +19,14 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'test@example.com',
+            'email' => 'info@brightland.com',
             'password' => Hash::make('Nepal@123'),
         ]);
         // Define settings data
         $settings = [
             ['site_main_logo', null],
+            ['site_footer_logo', null],
+            ['site_breadcrumb_banner', null],
             ['site_fav_icon', null],
             ['site_information', 'Empowering students with expert guidance for academic success. Your trusted partner in achieving educational goals.'],
             ['site_phone', '021-1234567'],
@@ -87,6 +89,27 @@ class DatabaseSeeder extends Seeder
             ['aboutpage_about_image3', null],
             ['aboutpage_about_years', '25'],
             ['aboutpage_about_years_text', 'Years of Excellence'],
+
+
+            ['facilitiespage_sport_title', 'Physical Excellence'],
+            ['facilitiespage_sport_title1', 'Sports & Recreation Facilities'],
+            ['facilitiespage_support_title', 'Student Support'],
+            ['facilitiespage_support_title1', 'Support & Wellness Facilities'],
+            ['facilitiespage_breadcrum_image', null],
+            ['gallery_breadcrum_image', null],
+            ['gallery_breadcrum_image1', null],
+            ['notices_title', 'Notice Categories'],
+            ['notices_breadcrum_image', null],
+            ['events_title', 'events Categories'],
+            ['events_breadcrum_image', null],
+            ['blogs_title', 'blogs Categories'],
+            ['blogs_breadcrum_image', null],
+            ['downloads_title', 'Downloads Categories'],
+            ['downloads_breadcrum_image', null],
+            ['contact_form_title', 'Send Us A Message'],
+            ['contact_breadcrum_image', null],
+            ['contact_map_title', 'Find Us On Map'],
+            ['contact_why_title', 'Why Choose Us?'],
 
 
 

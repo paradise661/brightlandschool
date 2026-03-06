@@ -5,9 +5,8 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
 
         <!-- Background image -->
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
-            alt="students reading books in modern library" />
+        <img class="absolute inset-0 w-full h-full object-cover" src="{{ $setting['blogs_breadcrum_image'] ?? '' }}"
+            alt="Blogs Image" />
 
         <!-- Content -->
         <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
@@ -92,7 +91,8 @@
             <div class="max-w-6xl mx-auto">
                 <div class="flex items-center mb-10">
                     <div class="w-1 h-8 bg-primary mr-4"></div>
-                    <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">Most Popular</h2>
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">{{ $setting['blogs_title'] ?? '' }}
+                    </h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6">

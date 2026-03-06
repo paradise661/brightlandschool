@@ -188,7 +188,9 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        return view('frontend.contact.index');
+        $pageWhyChooseUs = Page::where('slug', 'why-choose-us')->first();
+        $whyChooseUsItems = $pageWhyChooseUs ? $pageWhyChooseUs->items()->where('status', 1)->orderBy('order', 'asc')->take(5)->get() : collect();
+        return view('frontend.contact.index', compact('pageWhyChooseUs', 'whyChooseUsItems'));
     }
     public function contactStore(StoreContactsRequest $request)
     {

@@ -5,9 +5,8 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
 
         <!-- Background image -->
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
-            alt="students reading books in modern library" />
+        <img class="absolute inset-0 w-full h-full object-cover" src="{{ $setting['facilitiespage_breadcrum_image'] ?? '' }}"
+            alt="Brightland Image" />
 
         <!-- Content -->
         <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
@@ -83,9 +82,10 @@
     <section class="py-12 md:py-16 lg:py-20 bg-white" id="sports-facilities">
         <div class="container mx-auto px-4 md:px-6">
             <div class="mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Physical Excellence</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Sports & Recreation
-                    Facilities
+                <span
+                    class="text-secondary font-semibold text-sm uppercase tracking-wider">{{ $setting['facilitiespage_sport_title'] ?? '' }}</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">
+                    {{ $setting['facilitiespage_sport_title1'] ?? '' }}
                 </h2>
             </div>
 
@@ -114,9 +114,10 @@
     <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="support-facilities">
         <div class="container mx-auto px-4 md:px-6">
             <div class="mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Student Support</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Support & Wellness
-                    Facilities</h2>
+                <span
+                    class="text-secondary font-semibold text-sm uppercase tracking-wider">{{ $setting['facilitiespage_support_title'] ?? '' }}</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">
+                    {{ $setting['facilitiespage_support_title1'] ?? '' }}</h2>
 
             </div>
 

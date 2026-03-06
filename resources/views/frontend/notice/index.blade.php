@@ -4,9 +4,8 @@
         <!-- Softer Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
         <!-- Background image -->
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/88ea40e48f-8d0182e2f55282f6b671.png"
-            alt="students reading books in modern library" />
+        <img class="absolute inset-0 w-full h-full object-cover" src="{{ $setting['notices_breadcrum_image'] ?? '' }}"
+            alt="students Notices" />
 
         <!-- Content -->
         <div class="relative z-20 container mx-auto px-4 md:px-6 h-full flex items-center justify-center">
@@ -43,15 +42,6 @@
     <div class="tab-content " id="notices-tab">
         <section class="py-12 md:py-16 bg-white" id="important-notices">
             <div class="container mx-auto px-4 md:px-6">
-                <div class="flex items-center mb-8 md:mb-10">
-                    <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
-                    <div>
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Important Notices
-                        </h2>
-                        {{-- <p class="text-gray-600 text-sm md:text-base mt-2">Stay updated with latest announcements and
-                            circulars</p> --}}
-                    </div>
-                </div>
 
                 <div class="space-y-6">
                     @foreach ($notices as $notice)
@@ -127,8 +117,9 @@
             <div class="container mx-auto px-4 md:px-6">
                 <div class="flex items-center mb-8 md:mb-10">
                     <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
-                    <div>,
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Notice Categories
+                    <div>
+                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
+                            {{ $setting['notices_title'] ?? '' }}
                         </h2>
                         {{-- <p class="text-gray-600 text-sm md:text-base mt-2">Browse notices by category</p> --}}
                     </div>
