@@ -790,42 +790,82 @@
                 </div>
                 <div class="bg-white rounded-2xl shadow-2xl p-8">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Quick Inquiry Form</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Parent's Name *</label>
-                            <input
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                type="text" placeholder="Enter your name" />
+                    <form class="space-y-4" id="contactForm" action="{{ route('contacts.store') }}" method="POST"
+                        novalidate>
+                        @csrf
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Full Name <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    id="name" data-error="error-name" type="text" name="name"
+                                    placeholder="Enter your name" required />
+                                <p class="mt-1 text-sm text-red-500 hidden" id="error-name"></p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Email Address <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    id="email" data-error="error-email" type="email"
+                                    placeholder="john@example.com" name="email" required />
+                                <p class="mt-1 text-sm text-red-500 hidden" id="error-email"></p>
+                            </div>
+
                         </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                            <input
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                type="email" placeholder="your@email.com" />
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Phone Number <span class="text-red-500">*</span>
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    id="number" data-error="error-number" type="tel"
+                                    placeholder="+977 9876543210" name="number" required />
+                                <p class="mt-1 text-sm text-red-500 hidden" id="error-number"></p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Grade Applying For
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    id="course" type="text" placeholder="Grade Level (e.g., 10th)"
+                                    name="course" />
+                            </div>
+
                         </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
-                            <input
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                type="tel" placeholder="+1 (234) 567-890" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Grade Applying For *</label>
+                        <div class="mb-4 md:mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2 text-sm md:text-base">Subject <span
+                                    class="text-red-500">*</span></label>
                             <select
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option>Select Grade</option>
-                                <option>Nursery</option>
-                                <option>KG</option>
-                                <option>Grade 1-5</option>
-                                <option>Grade 6-10</option>
-                                <option>Grade 11-12</option>
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                                id="subject" data-error="error-subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="admission">Admission Inquiry</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="academic">Academic Information</option>
+                                <option value="facilities">Facilities & Infrastructure</option>
+                                <option value="career">Career Opportunities</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="other">Other</option>
+                                <p class="mt-1 text-sm text-red-500 hidden" id="error-subject"></p>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
                             <textarea
                                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                rows="3" placeholder="Any specific questions?"></textarea>
+                                id="message" data-error="error-message" rows="6" placeholder="Write your message here..."
+                                name="message"></textarea>
+                            <p class="mt-1 text-sm text-red-500 hidden" id="error-message"></p>
                         </div>
                         <button
                             class="w-full bg-blue-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-lg"
@@ -974,6 +1014,125 @@
                 });
 
             }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            function clearErrors() {
+                form.querySelectorAll('[data-error]').forEach(input => {
+                    input.classList.remove('border-red-500');
+                    const errorBox = document.getElementById(input.dataset.error);
+                    if (errorBox) {
+                        errorBox.textContent = '';
+                        errorBox.classList.add('hidden');
+                    }
+                });
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                clearErrors();
+                for (const input of form.querySelectorAll('[data-error]')) {
+
+                    if (!input.checkValidity()) {
+
+                        let message = 'This field is required';
+
+                        if (input.type === 'email')
+                            message = 'Please enter a valid email address';
+
+                        if (input.type === 'tel')
+                            message = 'Please enter a valid phone number';
+
+                        if (input.tagName === 'SELECT')
+                            message = 'Please select a subject';
+
+                        const errorBox = document.getElementById(input.dataset.error);
+
+                        input.classList.add('border-red-500');
+                        errorBox.textContent = message;
+                        errorBox.classList.remove('hidden');
+
+                        input.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        input.focus();
+
+                        toastr.error(message);
+                        return;
+                    }
+                }
+
+                /* =============================
+                   AJAX SUBMIT (FormData)
+                ============================== */
+                fetch("{{ route('frontend.contacts.store') }}", {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            'Accept': 'application/json'
+                        },
+                        body: new FormData(form)
+                    })
+                    .then(async response => {
+
+                        if (response.status === 422) {
+
+                            const result = await response.json();
+                            const field = Object.keys(result.errors)[0];
+                            const message = result.errors[field][0];
+
+                            const input = form.querySelector(`[name="${field}"]`);
+                            const errorBox = document.getElementById(`error-${field}`);
+
+                            if (input && errorBox) {
+                                input.classList.add('border-red-500');
+                                errorBox.textContent = message;
+                                errorBox.classList.remove('hidden');
+
+                                input.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                });
+                                input.focus();
+                            }
+
+                            toastr.error(message);
+                            throw new Error('Validation error');
+                        }
+
+                        return response.json();
+                    })
+                    .then(result => {
+                        toastr.success(result.message || 'Message sent successfully!');
+                        form.reset();
+                    })
+                    .catch(error => {
+                        if (error.message !== 'Validation error') {
+                            toastr.error('Unexpected error occurred. Please try again.');
+                        }
+                    });
+            });
+
+            /* =============================
+               CLEAR ERROR ON TYPE
+            ============================== */
+            form.querySelectorAll('[data-error]').forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('border-red-500');
+                    const errorBox = document.getElementById(input.dataset.error);
+                    if (errorBox) {
+                        errorBox.textContent = '';
+                        errorBox.classList.add('hidden');
+                    }
+                });
+            });
+
         });
     </script>
 @endsection

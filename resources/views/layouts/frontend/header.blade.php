@@ -24,11 +24,10 @@
 
             <!-- Social icons center -->
             <div class="flex space-x-4">
-                <a class="hover:text-gray-200 transition" href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a class="hover:text-gray-200 transition" href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a class="hover:text-gray-200 transition" href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a class="hover:text-gray-200 transition" href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a class="hover:text-gray-200 transition" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                @foreach ($social as $socials)
+                    <a class="hover:text-gray-200 transition" href="{{ $socials->link ?? '#' }}"><i
+                            class="fa-brands {{ $socials->icon ?? '' }}"></i></a>
+                @endforeach
             </div>
 
             <!-- Phone right -->
@@ -229,21 +228,13 @@
                         href="{{ route('frontend.admission') }}">Admissions</a>
                     <!-- Social icons at the bottom -->
                     <div class="flex justify-center space-x-4 mt-6 px-4">
-                        <a class="text-gray-700 hover:text-primary transition" href="#">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a class="text-gray-700 hover:text-primary transition" href="#">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                        <a class="text-gray-700 hover:text-primary transition" href="#">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a class="text-gray-700 hover:text-primary transition" href="#">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                        <a class="text-gray-700 hover:text-primary transition" href="#">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
+                        @foreach ($social as $socials)
+                            <a class="text-gray-700 hover:text-primary transition"
+                                href="{{ $socials->link ?? '#' }}">
+                                <i class="fa-brands {{ $socials->icon ?? '' }}"></i>
+                            </a>
+                        @endforeach
+
                     </div>
                 </nav>
             </div>

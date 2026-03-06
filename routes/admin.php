@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\TeamController;
 
 
@@ -76,4 +77,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('teams', TeamController::class);
     Route::resource('popup', PopUpController::class);
     Route::resource('academy', AcademyController::class);
+    Route::resource('social', SocialController::class);
 });

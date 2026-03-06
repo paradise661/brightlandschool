@@ -12,48 +12,44 @@
                 <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">Nurturing tomorrow's leaders through
                     excellence in education since 1990.</p>
                 <div class="flex space-x-4">
-                    <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
-                        href="#">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
-                        href="#">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
-                        href="#">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
-                        href="#">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                    <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
-                        href="#">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
+                    @foreach ($social as $socials)
+                        <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition"
+                            href="{{ $socials->link ?? '#' }}">
+                            <i class="fa-brands {{ $socials->icon ?? '' }}"></i>
+                        </a>
+                    @endforeach
                 </div>
             </div>
             <div>
                 <h3 class="text-base md:text-lg font-heading font-bold mb-4 md:mb-6">Quick Links</h3>
                 <ul class="space-y-2 md:space-y-3 text-sm md:text-base">
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">About Us</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Academics</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Admissions</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Facilities</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Gallery</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Contact</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition" href="{{ route('frontend.about') }}">About
+                            Us</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition"
+                            href="{{ route('frontend.admission') }}">Admissions</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition"
+                            href="{{ route('facilities') }}">Facilities</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition"
+                            href="{{ route('frontend.gallery') }}">Gallery</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition"
+                            href="{{ route('frontend.reviews') }}">Testimonials</a>
+                    </li>
+                    <li><a class="text-gray-400 hover:text-white transition" href="{{ route('contact') }}">Contact</a>
+                    </li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-base md:text-lg font-heading font-bold mb-4 md:mb-6">Resources</h3>
                 <ul class="space-y-2 md:space-y-3 text-sm md:text-base">
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Academic Calendar</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Examination Schedule</a>
+
+                    <li><a class="text-gray-400 hover:text-white transition" href="{{ route('notice') }}">Notices</a>
                     </li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Downloads</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">e-Library</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition" href="#">Career</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition"
+                            href="{{ route('downloads') }}">Downloads</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition" href="{{ route('blog') }}">Blogs</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition"
+                            href="{{ route('frontend.events') }}">Events</a>
+                    </li>
                     <li><a class="text-gray-400 hover:text-white transition" href="#">FAQs</a></li>
                 </ul>
             </div>

@@ -218,7 +218,7 @@
                     </a>
                 </li>
                 <li class="menu-item {{ Request::segment(2) == 'social' ? 'active' : '' }}">
-                    <a class="menu-link text-decoration-none" href="#">
+                    <a class="menu-link text-decoration-none" href="{{ route('social.index') }}">
                         <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="General Setting">Social</div>
                     </a>
