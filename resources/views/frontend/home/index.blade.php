@@ -778,14 +778,11 @@
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <button
-                            class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-xl">
-                            <i class="fa-solid fa-file-alt mr-2"></i>Apply Now
-                        </button>
-                        {{-- <button
-                            class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition">
-                            <i class="fa-solid fa-download mr-2"></i>Download Brochure
-                        </button> --}}
+                        <a class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-xl inline-flex items-center"
+                            href="{{ route('frontend.admission') }}">
+                            <i class="fa-solid fa-file-alt mr-2"></i> Apply Now
+                        </a>
+
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-2xl p-8">

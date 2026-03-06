@@ -412,78 +412,11 @@
 
                         <p class="text-center text-sm text-gray-600 mt-6">
                             Need help? Contact our admissions office at <a class="text-primary hover:underline"
-                                href="tel:+1234567890">+1 (234) 567-890</a> or <a class="text-primary hover:underline"
-                                href="mailto:admissions@school.edu">admissions@school.edu</a>
+                                href="tel:{{ $setting['site_phone'] ?? '' }}">{{ $setting['site_phone'] ?? '' }}</a> or <a
+                                class="text-primary hover:underline"
+                                href="mailto:{{ $setting['site_email'] ?? '' }}">{{ $setting['site_email'] ?? '' }}</a>
                         </p>
                     </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 md:py-16 bg-white" id="admission-requirements">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Requirements</span>
-                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Documents Required</h2>
-                    <p class="text-lg text-gray-600">Please keep these documents ready before filling the form</p>
-                </div>
-
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border-2 border-blue-100"
-                        id="req-1">
-                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-id-card text-primary text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Birth Certificate</h3>
-                        <p class="text-sm text-gray-600">Original birth certificate or government-issued proof of age</p>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-green-50 to-white rounded-xl p-6 border-2 border-green-100"
-                        id="req-2">
-                        <div class="w-12 h-12 bg-green-600/10 rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-certificate text-green-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Transfer Certificate</h3>
-                        <p class="text-sm text-gray-600">TC from previous school (if applicable)</p>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 border-2 border-purple-100"
-                        id="req-3">
-                        <div class="w-12 h-12 bg-purple-600/10 rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-file-lines text-purple-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Academic Records</h3>
-                        <p class="text-sm text-gray-600">Previous year's report card or mark sheet</p>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-orange-50 to-white rounded-xl p-6 border-2 border-orange-100"
-                        id="req-4">
-                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-image text-accent text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Photographs</h3>
-                        <p class="text-sm text-gray-600">Recent passport-size photographs (2 copies)</p>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-red-50 to-white rounded-xl p-6 border-2 border-red-100"
-                        id="req-5">
-                        <div class="w-12 h-12 bg-red-600/10 rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-location-dot text-red-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Address Proof</h3>
-                        <p class="text-sm text-gray-600">Utility bill, rental agreement, or similar document</p>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-teal-50 to-white rounded-xl p-6 border-2 border-teal-100"
-                        id="req-6">
-                        <div class="w-12 h-12 bg-teal-600/10 rounded-full flex items-center justify-center mb-4">
-                            <i class="fa-solid fa-notes-medical text-teal-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-lg font-heading font-bold text-gray-900 mb-2">Medical Records</h3>
-                        <p class="text-sm text-gray-600">Immunization records and health certificate</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -492,8 +425,8 @@
 @section('scripts')
     <script>
         /* ======================================================
-                                                       CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
-                                                       ====================================================== */
+                                                                       CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
+                                                                       ====================================================== */
         document.querySelectorAll('[data-upload]').forEach(box => {
             const input = box.querySelector('input[type="file"]');
             const fileNameBox = box.querySelector('[data-filename]');
