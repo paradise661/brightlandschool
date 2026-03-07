@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $setting['event_seo_title'] ?? '',
+        'title' => $setting['event_seo_title'] ?? '',
+        'description' => $setting['event_seo_description'] ?? '',
+        'keyword' => $setting['event_seo_keywords'] ?? '',
+        'schema' => $setting['event_seo_schema'] ?? '',
+    ])
+@endsection
 @section('content')
     <style>
         ::-webkit-scrollbar {
@@ -126,7 +135,7 @@
                 <div>
                     <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
                         {{ $setting['events_title'] ?? '' }}</h2>
-                    
+
                 </div>
             </div>
 

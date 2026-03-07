@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $setting['blogs_seo_title'] ?? '',
+        'title' => $setting['blogs_seo_title'] ?? '',
+        'description' => $setting['blogs_seo_description'] ?? '',
+        'keyword' => $setting['blogs_seo_keywords'] ?? '',
+        'schema' => $setting['blogs_seo_schema'] ?? '',
+    ])
+@endsection
 @section('content')
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
@@ -91,7 +100,8 @@
             <div class="max-w-6xl mx-auto">
                 <div class="flex items-center mb-10">
                     <div class="w-1 h-8 bg-primary mr-4"></div>
-                    <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">{{ $setting['blogs_title'] ?? '' }}
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900">
+                        {{ $setting['blogs_title'] ?? '' }}
                     </h2>
                 </div>
 

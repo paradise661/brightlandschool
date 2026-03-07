@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $academy->name,
+        'title' => $academy->seo_title ?? $academy->name,
+        'description' => $academy->seo_description ?? '',
+        'keyword' => $academy->seo_description ?? '',
+        'schema' => $academy->seo_schema ?? '',
+    ])
+@endsection
 @section('content')
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
@@ -83,7 +92,7 @@
                             <div class="space-y-5">
                                 @foreach ($popular_academy as $popular)
                                     <a class="flex items-center gap-4 group"
-                                        href="{{ route('frontend.academics', $academy->slug) }}">
+                                        href="{{ route('frontend.academics', $popular->slug) }}">
                                         <img class="w-16 h-16 object-cover rounded-lg shadow-md group-hover:scale-105 transition"
                                             src="{{ $popular->image }}" alt="{{ $popular->name ?? '' }}">
                                         <div>

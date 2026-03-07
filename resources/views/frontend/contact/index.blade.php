@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $setting['contact_seo_title'] ?? '',
+        'title' => $setting['contact_seo_title'] ?? '',
+        'description' => $setting['contact_seo_description'] ?? '',
+        'keyword' => $setting['contact_seo_keywords'] ?? '',
+        'schema' => $setting['contact_seo_schema'] ?? '',
+    ])
+@endsection
 @section('content')
     <style>
         ::-webkit-scrollbar {

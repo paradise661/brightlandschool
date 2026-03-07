@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $setting['homepage_seo_title'] ?? '',
+        'title' => $setting['homepage_seo_title'] ?? '',
+        'description' => $setting['homepage_seo_description'] ?? '',
+        'keyword' => $setting['homepage_seo_keywords'] ?? '',
+        'schema' => $setting['homepage_seo_schema'] ?? '',
+    ])
+@endsection
 @section('content')
 
     {{-- Popup Section --}}

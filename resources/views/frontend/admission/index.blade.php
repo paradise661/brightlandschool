@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $setting['admission_seo_title'] ?? '',
+        'title' => $setting['admission_seo_title'] ?? '',
+        'description' => $setting['admission_seo_description'] ?? '',
+        'keyword' => $setting['admission_seo_keywords'] ?? '',
+        'schema' => $setting['admission_seo_schema'] ?? '',
+    ])
+@endsection
 @section('content')
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
@@ -425,8 +434,8 @@
 @section('scripts')
     <script>
         /* ======================================================
-                                                                       CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
-                                                                       ====================================================== */
+                                                                                   CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
+                                                                                   ====================================================== */
         document.querySelectorAll('[data-upload]').forEach(box => {
             const input = box.querySelector('input[type="file"]');
             const fileNameBox = box.querySelector('[data-filename]');

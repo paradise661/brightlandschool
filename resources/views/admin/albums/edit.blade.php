@@ -49,6 +49,29 @@
                                 @enderror
                             </div>
                         </div>
+                        <!-- SEO Section -->
+                        <div class="card card-body seo my-5 shadow br-8 p-4">
+                            <fieldset class="border p-3">
+                                <legend class="float-none w-auto legend-title">SEO</legend>
+                                <div class="form-group mb-3">
+                                    <label for="seo_title">SEO Title</label>
+                                    <input class="form-control br-8" type="text" name="seo_title"
+                                        value="{{ old('seo_title', $album->seo_title) }}" placeholder="Enter SEO Title">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="seo_description">SEO Description</label>
+                                    <textarea class="form-control br-8" name="seo_description" rows="4" placeholder="Enter SEO Description">{{ old('seo_description', $album->seo_description) }}</textarea>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="seo_schema">SEO Schema</label>
+                                    <textarea class="form-control br-8" name="seo_schema" rows="4" placeholder="Enter SEO Schema">{{ old('seo_schema', $album->seo_schema) }}</textarea>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="seo_keywords">SEO Keywords</label>
+                                    <textarea class="form-control br-8" name="seo_keywords" rows="4" placeholder="Enter SEO Keywords">{{ old('seo_keywords', $album->seo_keywords) }}</textarea>
+                                </div>
+                            </fieldset>
+                        </div>
                     </div>
 
                     <div class="col-md-3">

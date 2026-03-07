@@ -38,6 +38,56 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="card-body card shadow br-8">
+
+                            <div class="form-group mb-3">
+                                <label for="seo_title">SEO Title</label>
+                                <input class="form-control br-8 @error('seo_title') is-invalid @enderror" type="text"
+                                    name="seo_title" value="{{ old('seo_title') }}" placeholder="Enter seo title">
+                                @error('seo_title')
+                                    <div class="invalid-feedback" style="display: block;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="seo_keywords">SEO Keywords</label>
+                                <input class="form-control br-8 @error('seo_keywords') is-invalid @enderror" type="text"
+                                    name="seo_keywords" value="{{ old('seo_keywords') }}" placeholder="Enter seo keywords">
+                                @error('seo_keywords')
+                                    <div class="invalid-feedback" style="display: block;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="seo_description">SEO Description</label>
+                                <textarea class="form-control br-8 @error('seo_description') is-invalid @enderror" id="seo_description"
+                                    name="seo_description" rows="3" placeholder="Enter seo description">{{ old('seo_description') }}</textarea>
+                                @error('seo_description')
+                                    <div class="invalid-feedback" style="display: block;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <!-- SEO Schema -->
+                            <div class="form-group mb-3">
+                                <label for="seo_schema">SEO Schema </label>
+                                <textarea class="form-control br-8 @error('seo_schema') is-invalid @enderror" name="seo_schema" rows="5"
+                                    placeholder="Enter schema in JSON format">
+                                {{ old('seo_schema') }}
+                                </textarea>
+
+                                @error('seo_schema')
+                                    <div class="invalid-feedback" style="display: block;">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div class="card-body card shadow br-8">

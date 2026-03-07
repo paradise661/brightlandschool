@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $setting['download_seo_title'] ?? '',
+        'title' => $setting['download_seo_title'] ?? '',
+        'description' => $setting['download_seo_description'] ?? '',
+        'keyword' => $setting['download_seo_keywords'] ?? '',
+        'schema' => $setting['download_seo_schema'] ?? '',
+    ])
+@endsection
 @section('content')
     <style>
         .swiper-slide {
@@ -64,7 +73,7 @@
                         </li>
                         <li class="text-blue-200">›</li>
                         <li class="text-white font-medium">
-                            downloads
+                            Downloads
                         </li>
                     </ol>
                 </nav>

@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $item->name,
+        'title' => $item->seo_title ?? $item->name,
+        'description' => $item->seo_description ?? '',
+        'keyword' => $item->seo_description ?? '',
+        'schema' => $item->seo_schema ?? '',
+    ])
+@endsection
 @section('content')
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->

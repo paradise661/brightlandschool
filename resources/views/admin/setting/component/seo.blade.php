@@ -154,14 +154,14 @@
             </div>
         </fieldset>
 
-        {{-- Register --}}
+        {{-- Facilities --}}
         <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title"> Register Seo Settings</legend>
+            <legend class="float-none w-auto legend-title"> Facilities Seo Settings</legend>
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="features_seo_title">Enter Register Seo
+                        <label for="features_seo_title">Enter Facilities Seo
                             Title</label>
                         <input class="form-control br-8" type="text" name="features_seo_title"
                             value="{{ $settings['features_seo_title'] }}" placeholder="Enter About Title">
@@ -170,7 +170,7 @@
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="features_seo_keywords">Enter Register Seo Keywords</label>
+                        <label for="features_seo_keywords">Enter Facilities Seo Keywords</label>
                         <input class="form-control br-8" type="text" name="features_seo_keywords"
                             value="{{ $settings['features_seo_keywords'] }}" placeholder="Enter About Seo Keywords">
                     </div>
@@ -178,7 +178,7 @@
 
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <label for="features_seo_description">Enter Register Description</label>
+                        <label for="features_seo_description">Enter Facilities Description</label>
                         <textarea class="form-control br-8" name="features_seo_description" rows="4">{{ $settings['features_seo_description'] }}</textarea>
                     </div>
                 </div>
@@ -192,153 +192,116 @@
             </div>
         </fieldset>
 
-        {{-- privacy --}}
+        {{-- Gallery --}}
         <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Privacy Seo Settings</legend>
+            <legend class="float-none w-auto legend-title">Gallery Seo Settings</legend>
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="quote_seo_title">Privacy Seo
+                        <label for="gallery_seo_title">Gallery Seo
                             Title</label>
-                        <input class="form-control br-8" type="text" name="quote_seo_title"
-                            value="{{ $settings['quote_seo_title'] }}" placeholder="Enter About Title">
+                        <input class="form-control br-8" type="text" name="gallery_seo_title"
+                            value="{{ $settings['gallery_seo_title'] }}" placeholder="Enter About Title">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="quote_seo_keywords">Enter Privacy Seo Keywords</label>
-                        <input class="form-control br-8" type="text" name="quote_seo_keywords"
-                            value="{{ $settings['quote_seo_keywords'] }}" placeholder="Enter About Seo Keywords">
+                        <label for="gallery_seo_keywords">Enter Privacy Seo Keywords</label>
+                        <input class="form-control br-8" type="text" name="gallery_seo_keywords"
+                            value="{{ $settings['gallery_seo_keywords'] }}" placeholder="Enter About Seo Keywords">
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <label for="quote_seo_description">Enter Privacy Description</label>
-                        <textarea class="form-control br-8" name="quote_seo_description" rows="4">{{ $settings['quote_seo_description'] }}</textarea>
+                        <label for="gallery_seo_description">Enter Privacy Description</label>
+                        <textarea class="form-control br-8" name="gallery_seo_description" rows="4">{{ $settings['gallery_seo_description'] }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <label for="quote_seo_schema">Enter Seo Schema</label>
-                        <textarea class="form-control br-8" name="quote_seo_schema" rows="4">{{ $settings['quote_seo_schema'] }}</textarea>
+                        <label for="gallery_seo_schema">Enter Seo Schema</label>
+                        <textarea class="form-control br-8" name="gallery_seo_schema" rows="4">{{ $settings['gallery_seo_schema'] }}</textarea>
                     </div>
                 </div>
 
             </div>
         </fieldset>
 
-        {{-- abroad Sections --}}
+        {{-- Notices Sections --}}
         <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Abroad Seo Settings</legend>
+            <legend class="float-none w-auto legend-title">Notices Seo Settings</legend>
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="abroads_seo_title">Enter Abroad Seo
+                        <label for="notice_seo_title">Enter Notices Seo
                             Title</label>
-                        <input class="form-control br-8" type="text" name="abroads_seo_title"
-                            value="{{ $settings['abroads_seo_title'] }}" placeholder="Enter About Title">
+                        <input class="form-control br-8" type="text" name="notice_seo_title"
+                            value="{{ $settings['notice_seo_title'] }}" placeholder="Enter Notice Title">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="homepage_description">Enter Abroad Seo Keywords</label>
-                        <input class="form-control br-8" type="text" name="abroads_seo_keywords"
-                            value="{{ $settings['abroads_seo_keywords'] }}" placeholder="Enter About Seo Keywords">
+                        <label for="homepage_description">Enter Notices Seo Keywords</label>
+                        <input class="form-control br-8" type="text" name="notice_seo_keywords"
+                            value="{{ $settings['notice_seo_keywords'] }}" placeholder="Enter Notice Seo Keywords">
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group mb-3">
                         <label for="homepage_seo_keywords">Enter About Description</label>
-                        <textarea class="form-control br-8" name="abroads_seo_description" rows="4">{{ $settings['abroads_seo_description'] }}</textarea>
+                        <textarea class="form-control br-8" name="notice_seo_description" rows="4">{{ $settings['notice_seo_description'] }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <label for="abroads_seo_schema">Enter Seo Schema</label>
-                        <textarea class="form-control br-8" name="abroads_seo_schema" rows="4">{{ $settings['abroads_seo_schema'] }}</textarea>
+                        <label for="notice_seo_schema">Enter Seo Schema</label>
+                        <textarea class="form-control br-8" name="notice_seo_schema" rows="4">{{ $settings['notice_seo_schema'] }}</textarea>
                     </div>
                 </div>
 
             </div>
         </fieldset>
 
-        {{-- Services --}}
         <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Services Seo Settings</legend>
+            <legend class="float-none w-auto legend-title">Events SEO</legend>
             <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="service_seo_title">Enter Services Seo
-                            Title</label>
-                        <input class="form-control br-8" type="text" name="service_seo_title"
-                            value="{{ $settings['service_seo_title'] }}" placeholder="Enter Homepage Title">
+                        <label for="event_seo_title">Enter Events SEO Title</label>
+                        <input class="form-control br-8" type="text" name="event_seo_title"
+                            value="{{ $settings['event_seo_title'] ?? '' }}" placeholder="Enter SEO Title">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label for="homepage_description">Enter Services
-                            Seo Keywords</label>
-                        <input class="form-control br-8" type="text" name="service_seo_keywords"
-                            value="{{ $settings['service_seo_keywords'] }}" placeholder="Enter service Seo Keywords">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group mb-3">
-                        <label for="service_seo_description">Enter Services Seo
-                            Description</label>
-                        <textarea class="form-control br-8" name="service_seo_description" rows="4">{{ $settings['service_seo_description'] }}</textarea>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group mb-3">
-                        <label for="service_seo_schema">Enter Seo Schema</label>
-                        <textarea class="form-control br-8" name="service_seo_schema" rows="4">{{ $settings['service_seo_schema'] }}</textarea>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
-
-        {{-- course --}}
-        <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Course Seo Settings</legend>
-            <div class="row">
 
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="course_seo_title">Enter Course Seo
-                            Title</label>
-                        <input class="form-control br-8" type="text" name="course_seo_title"
-                            value="{{ $settings['course_seo_title'] }}" placeholder="Enter Course Title">
+                        <label for="event_seo_keywords">Enter Events SEO Keywords</label>
+                        <input class="form-control br-8" type="text" name="event_seo_keywords"
+                            value="{{ $settings['event_seo_keywords'] ?? '' }}" placeholder="Enter SEO Keywords">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label for="course_seo_keywords">Enter Course
-                            Seo Keywords</label>
-                        <input class="form-control br-8" type="text" name="course_seo_keywords"
-                            value="{{ $settings['course_seo_keywords'] }}" placeholder="Enter Course Seo Keywords">
-                    </div>
-                </div>
+
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <label for="course_seo_description">Enter Course Seo
-                            Description</label>
-                        <textarea class="form-control br-8" name="course_seo_description" rows="4">{{ $settings['course_seo_description'] }}</textarea>
+                        <label for="event_seo_description">Enter Events SEO Description</label>
+                        <textarea class="form-control br-8" name="event_seo_description" rows="4">{{ $settings['event_seo_description'] ?? '' }}</textarea>
                     </div>
                 </div>
+
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <label for="course_seo_schema">Enter Seo Schema</label>
-                        <textarea class="form-control br-8" name="course_seo_schema" rows="4">{{ $settings['course_seo_schema'] }}</textarea>
+                        <label for="event_seo_schema">Enter SEO Schema</label>
+                        <textarea class="form-control br-8" name="event_seo_schema" rows="4">{{ $settings['event_seo_schema'] ?? '' }}</textarea>
                     </div>
                 </div>
+
             </div>
         </fieldset>
 
@@ -382,6 +345,44 @@
             </div>
         </fieldset>
 
+        {{-- Downloads --}}
+        <fieldset class="border p-3">
+            <legend class="float-none w-auto legend-title">Download Seo Settings</legend>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label for="download_seo_title">Enter Download Seo
+                            Title</label>
+                        <input class="form-control br-8" type="text" name="download_seo_title"
+                            value="{{ $settings['download_seo_title'] }}" placeholder="Enter Homepage Title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label for="homepage_description">Enter Download
+                            Seo Keywords</label>
+                        <input class="form-control br-8" type="text" name="download_seo_keywords"
+                            value="{{ $settings['download_seo_keywords'] }}"
+                            placeholder="Enter download Seo Keywords">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label for="download_seo_description">Enter Download Seo
+                            Description</label>
+                        <textarea class="form-control br-8" name="download_seo_description" rows="4">{{ $settings['download_seo_description'] }}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label for="download_seo_schema">Enter Seo Schema</label>
+                        <textarea class="form-control br-8" name="download_seo_schema" rows="4">{{ $settings['download_seo_schema'] }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
         {{-- contact us --}}
         <fieldset class="border p-3">
             <legend class="float-none w-auto legend-title">Contact Seo</legend>
@@ -420,6 +421,46 @@
 
             </div>
         </fieldset>
+
+        {{-- Admission --}}
+        <fieldset class="border p-3">
+            <legend class="float-none w-auto legend-title">Admission Seo</legend>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label for="admission_seo_title">Enter Admission Seo
+                            Title</label>
+                        <input class="form-control br-8" type="text" name="admission_seo_title"
+                            value="{{ $settings['admission_seo_title'] }}" placeholder="Enter  Seo Title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label for="admission_seo_keywords">Enter Admission
+                            Seo Keywords</label>
+                        <input class="form-control br-8" type="text" name="admission_seo_keywords"
+                            value="{{ $settings['admission_seo_keywords'] }}" placeholder="Enter  Seo Keywords">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label for="admission_seo_description">Enter Admission Seo
+                            Description</label>
+                        <textarea class="form-control br-8" name="admission_seo_description" rows="4">{{ $settings['admission_seo_description'] }}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label for="admission_seo_schema">Enter Seo Schema
+                        </label>
+                        <textarea class="form-control br-8" name="admission_seo_schema" rows="4">{{ $settings['admission_seo_schema'] }}</textarea>
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+
         {{-- faq --}}
         <fieldset class="border p-3">
             <legend class="float-none w-auto legend-title">Faq Seo</legend>
@@ -491,42 +532,6 @@
                         <textarea class="form-control br-8" name="branch_seo_schema" rows="4">{{ $settings['branch_seo_schema'] ?? '' }}</textarea>
                     </div>
                 </div>
-            </div>
-        </fieldset>
-        <fieldset class="border p-3">
-            <legend class="float-none w-auto legend-title">Events SEO</legend>
-            <div class="row">
-
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label for="events_seo_title">Enter Events SEO Title</label>
-                        <input class="form-control br-8" type="text" name="events_seo_title"
-                            value="{{ $settings['events_seo_title'] ?? '' }}" placeholder="Enter SEO Title">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label for="events_seo_keywords">Enter Events SEO Keywords</label>
-                        <input class="form-control br-8" type="text" name="events_seo_keywords"
-                            value="{{ $settings['events_seo_keywords'] ?? '' }}" placeholder="Enter SEO Keywords">
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-group mb-3">
-                        <label for="events_seo_description">Enter Events SEO Description</label>
-                        <textarea class="form-control br-8" name="events_seo_description" rows="4">{{ $settings['events_seo_description'] ?? '' }}</textarea>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-group mb-3">
-                        <label for="events_seo_schema">Enter SEO Schema</label>
-                        <textarea class="form-control br-8" name="events_seo_schema" rows="4">{{ $settings['events_seo_schema'] ?? '' }}</textarea>
-                    </div>
-                </div>
-
             </div>
         </fieldset>
 

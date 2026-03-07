@@ -1,4 +1,13 @@
 @extends('layouts.frontend.master')
+@section('seo')
+    @include('frontend.seo.seo', [
+        'name' => $album->name,
+        'title' => $album->seo_title ?? $album->name,
+        'description' => $album->seo_description ?? '',
+        'keyword' => $album->seo_description ?? '',
+        'schema' => $album->seo_schema ?? '',
+    ])
+@endsection
 @section('content')
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
@@ -14,7 +23,7 @@
 
                 <!-- Title -->
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
-                    Gallery
+                    {{ $album->name ?? '' }}
                 </h1>
 
                 <!-- Breadcrumb -->
