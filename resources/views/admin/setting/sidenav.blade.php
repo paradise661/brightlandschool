@@ -21,8 +21,8 @@
         type="button" role="tab" aria-controls="v-pills-banner" aria-selected="false">Banner & Title</button>
 
     {{-- Side Nav --}}
-    <button class="nav-link text-start" id="v-pills-contact-tab" data-bs-toggle="pill" data-bs-target="#v-pills-contact"
-        type="button" role="tab" aria-controls="v-pills-contact" aria-selected="false">Contact</button>
+    {{-- <button class="nav-link text-start" id="v-pills-contact-tab" data-bs-toggle="pill" data-bs-target="#v-pills-contact"
+        type="button" role="tab" aria-controls="v-pills-contact" aria-selected="false">Contact</button> --}}
 
     {{-- ********************************* BackUp ***************************************************************
         ********************************** Files  ************************************************************** --}}

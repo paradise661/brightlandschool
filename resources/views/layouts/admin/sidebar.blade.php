@@ -199,7 +199,7 @@
         </li>
 
         <!-- General Settings  -->
-        <li class="menu-item @if (in_array(Request::segment(2), ['setting', 'slider', 'social', 'page', 'popup', 'partner'])) active open @endif">
+        <li class="menu-item @if (in_array(Request::segment(2), ['setting', 'slider', 'social', 'page', 'popup'])) active open @endif">
             <a class="menu-link menu-toggle text-decoration-none" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="General Setting">Global Settings</div>
@@ -228,12 +228,6 @@
                     <a class="menu-link text-decoration-none" href="{{ route('popup.index') }}">
                         <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
                         <div data-i18n="General Setting">PopUps</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ Request::segment(2) == 'partner' ? 'active' : '' }}">
-                    <a class="menu-link text-decoration-none" href="#">
-                        <i class="menu-icon tf-icons bx bxs-circle dot-icon"></i>
-                        <div data-i18n="General Setting">Partners</div>
                     </a>
                 </li>
 
