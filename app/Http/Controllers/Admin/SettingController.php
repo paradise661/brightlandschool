@@ -53,6 +53,10 @@ class SettingController extends Controller
         $blogs_breadcrum_image = updatesettingmedia($request, 'blogs_breadcrum_image', 'setting');
         $downloads_breadcrum_image = updatesettingmedia($request, 'downloads_breadcrum_image', 'setting');
         $contact_breadcrum_image = updatesettingmedia($request, 'contact_breadcrum_image', 'setting');
+        $about_breadcrum_image = updatesettingmedia($request, 'about_breadcrum_image', 'setting');
+        $teacher_breadcrum_image = updatesettingmedia($request, 'teacher_breadcrum_image', 'setting');
+        $testimonial_breadcrum_image = updatesettingmedia($request, 'testimonial_breadcrum_image', 'setting');
+        $admission_breadcrum_image = updatesettingmedia($request, 'admission_breadcrum_image', 'setting');
 
         // end of added new files
 
@@ -82,6 +86,10 @@ class SettingController extends Controller
         $siteSetting['blogs_breadcrum_image'] = deletesettingmedia($blogs_breadcrum_image, $siteSettings['blogs_breadcrum_image'], 'blogs_breadcrum_image', $siteSetting, $siteSettings);
         $siteSetting['downloads_breadcrum_image'] = deletesettingmedia($downloads_breadcrum_image, $siteSettings['downloads_breadcrum_image'], 'downloads_breadcrum_image', $siteSetting, $siteSettings);
         $siteSetting['contact_breadcrum_image'] = deletesettingmedia($contact_breadcrum_image, $siteSettings['contact_breadcrum_image'], 'contact_breadcrum_image', $siteSetting, $siteSettings);
+        $siteSetting['about_breadcrum_image'] = deletesettingmedia($about_breadcrum_image, $siteSettings['about_breadcrum_image'], 'about_breadcrum_image', $siteSetting, $siteSettings);
+        $siteSetting['teacher_breadcrum_image'] = deletesettingmedia($teacher_breadcrum_image, $siteSettings['teacher_breadcrum_image'], 'teacher_breadcrum_image', $siteSetting, $siteSettings);
+        $siteSetting['testimonial_breadcrum_image'] = deletesettingmedia($testimonial_breadcrum_image, $siteSettings['testimonial_breadcrum_image'], 'testimonial_breadcrum_image', $siteSetting, $siteSettings);
+        $siteSetting['admission_breadcrum_image'] = deletesettingmedia($admission_breadcrum_image, $siteSettings['admission_breadcrum_image'], 'admission_breadcrum_image', $siteSetting, $siteSettings);
 
         // end of new added files
 

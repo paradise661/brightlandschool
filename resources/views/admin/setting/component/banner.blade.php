@@ -2,6 +2,49 @@
     <div class="row">
 
         <fieldset class="border p-3">
+            <legend class="float-none w-auto legend-title">About, Teacher, Testimonial & Admission Banner</legend>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="about_breadcrum_image">Upload About Breadcrum
+                        Banner</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="about_breadcrum_image" data-show-remove="false"
+                            data-default-file="{{ $setting['about_breadcrum_image'] ?? '' }}" type="file"
+                            name="about_breadcrum_image">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="teacher_breadcrum_image">Upload Teacher Breadcrum
+                        Banner</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="teacher_breadcrum_image" data-show-remove="false"
+                            data-default-file="{{ $setting['teacher_breadcrum_image'] ?? '' }}" type="file"
+                            name="teacher_breadcrum_image">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="testimonial_breadcrum_image">Upload Testimonial Breadcrum
+                        Banner</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="testimonial_breadcrum_image" data-show-remove="false"
+                            data-default-file="{{ $setting['testimonial_breadcrum_image'] ?? '' }}" type="file"
+                            name="testimonial_breadcrum_image">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="admission_breadcrum_image">Upload Admission Breadcrum
+                        Banner</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="admission_breadcrum_image" data-show-remove="false"
+                            data-default-file="{{ $setting['admission_breadcrum_image'] ?? '' }}" type="file"
+                            name="admission_breadcrum_image">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="border p-3">
             <legend class="float-none w-auto legend-title">Facilities Settings</legend>
             <div class="row">
                 <div class="col-md-6">

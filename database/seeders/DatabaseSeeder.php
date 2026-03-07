@@ -174,6 +174,10 @@ class DatabaseSeeder extends Seeder
             ['admission_seo_description', 'admission '],
             ['admission_seo_keywords', 'admission '],
             ['admission_seo_schema', 'admission'],
+            ['about_breadcrum_image', null],
+            ['teacher_breadcrum_image', null],
+            ['testimonial_breadcrum_image', null],
+            ['admission_breadcrum_image', null],
 
 
 
