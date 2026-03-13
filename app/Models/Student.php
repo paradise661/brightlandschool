@@ -13,61 +13,71 @@ class Student extends Model
      * Mass assignable fields
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'date_of_birth',
+        // Student's Detail
+        'name',
+        'dob_ad',
+        'dob_bs',
+        'age',
         'gender',
-        'blood_group',
-        'nationality',
-        'religion',
-        'mother_tongue',
-        'student_photo',
-        'applying_grade',
-        'academic_year',
-        'previous_school_name',
-        'previous_grade',
+
+        // Student's Educational Information
+        'last_class_attended',
+        'result',
+        'school_name_address',
+        'medical_history',
+
+        // Father's Information
         'father_name',
+        'father_address',
         'father_occupation',
+        'father_religion',
+        'father_ethnicity',
         'father_phone',
         'father_email',
+
+        // Mother's Information
         'mother_name',
+        'mother_address',
         'mother_occupation',
+        'mother_religion',
+        'mother_ethnicity',
         'mother_phone',
         'mother_email',
+
+        // Guardian's Information
         'guardian_name',
+        'guardian_address',
         'guardian_relationship',
         'guardian_phone',
-        'guardian_email',
-        'current_address',
-        'city',
-        'state',
-        'postal_code',
-        'country',
-        'same_as_permanent',
-        'medical_conditions',
-        'emergency_contact_name',
-        'emergency_contact_number',
+
+        // School Bus Information
+        'bus_required',
+        'bus_pickup_point',
+        'bus_guardian_name',
+        'bus_address',
+        'bus_phone',
+
+        // Sibling Information
+        'has_sibling',
+        'sibling1_name',
+        'sibling1_class',
+        'sibling2_name',
+        'sibling2_class',
+        'sibling3_name',
+        'sibling3_class',
+
+        // Required Documents Upload
+        'student_photo',
         'birth_certificate',
+        'last_report_card',
         'transfer_certificate',
-        'academic_records',
-        'passport_photos',
-        'heard_about_school',
-        'why_join_school',
-        'student_hobbies',
-        'agree_terms',
-        'consent_contact',
-        'receive_updates',
+        'character_certificate',
+
+        // Declaration
+        'declaration_confirmed',
         'status',
         'source',
         'priority',
         'note',
-    ];
-
-    /**
-     * Casts
-     */
-    protected $casts = [
-        'date_of_birth'     => 'date',
-        'passport_photos'   => 'array',
     ];
 }

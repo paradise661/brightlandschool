@@ -22,60 +22,21 @@ class StoreStudentsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            /* =========================
-         * STUDENT INFORMATION
-         * ========================= */
-            'first_name'      => 'required|string|max:255',
-            'last_name'       => 'required|string|max:255',
-            'date_of_birth'   => 'required|date',
-            'gender'          => 'required|in:male,female,other',
-            'student_photo'   => 'required|image|max:2048',
+            // Student's Detail
+            'name' => 'required|string|max:255',
+            'age' => 'required|integer|min:3|max:25',
+            'gender' => 'required|in:male,female',
 
-            /* =========================
-         * ADMISSION DETAILS
-         * ========================= */
-            'applying_grade'       => 'required|string|max:255',
-            'previous_school_name' => 'nullable|string|max:255',
+            // Parental Information
+            'father_name' => 'required|string|max:255',
+            'mother_name' => 'required|string|max:255',
 
-            /* =========================
-         * FATHER DETAILS
-         * ========================= */
-            'father_name'       => 'required|string|max:255',
-            'father_occupation' => 'nullable|string|max:255',
-            'father_phone'      => 'required|string|max:20',
-            'father_email'      => 'required|email|max:255',
+            // Documents Upload
+            'birth_certificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'student_photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
 
-
-            /* =========================
-         * GUARDIAN DETAILS
-         * ========================= */
-            'guardian_name'         => 'nullable|string|max:255',
-            'guardian_relationship' => 'nullable|string|max:255',
-            'guardian_phone'        => 'nullable|string|max:20',
-            'guardian_email'        => 'nullable|email|max:255',
-
-            /* =========================
-         * ADDRESS INFORMATION
-         * ========================= */
-            'current_address'  => 'required|string',
-
-
-
-            /* =========================
-         * DOCUMENT UPLOADS
-         * ========================= */
-            'birth_certificate'    => 'required|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'transfer_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'academic_records'     => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'passport_photos'      => 'nullable|array',
-            'passport_photos.*'    => 'image|max:2048',
-
-            /* =========================
-         * ADDITIONAL INFORMATION
-         * ========================= */
-            'heard_about_school' => 'required|string|max:255',
-            'why_join_school'    => 'nullable|string',
-            'student_hobbies'   => 'nullable|string',
+            // Declaration
+            'declaration_confirmed' => 'accepted',
 
         ];
     }
@@ -83,43 +44,30 @@ class StoreStudentsRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'first_name.required' => 'Please enter first name',
-            'last_name.required' => 'Please enter last name',
-            'date_of_birth.required' => 'Please enter the date',
-            'gender.required' => 'Please select gender',
-            'nationality.required' => 'Please enter nationality',
+            // Student's Detail
+            'name.required' => "Please enter the student's full name.",
+            'age.required' => "Please enter the student's age.",
+            'age.integer' => "Age must be a number.",
+            'age.min' => "Age must be at least 3 years.",
+            'age.max' => "Age cannot exceed 25 years.",
+            'gender.required' => "Please select the student's gender.",
+            'gender.in' => "Gender must be either Male or Female.",
 
-            'student_photo.required' => 'Please upload student photo',
 
-            'applying_grade.required' => 'Please select applying grade',
-            'academic_year.required' => 'Please enter academic year',
+            // Parental Information
+            'father_name.required' => "Please enter father's name.",
 
-            'father_name.required' => 'Please enter father name',
-            'father_phone.required' => 'Please enter father phone number',
-            'father_email.required' => 'Please enter father email',
+            // Documents Upload
+            'birth_certificate.required' => "Please upload the birth certificate.",
+            'birth_certificate.file' => "The birth certificate must be a valid file.",
+            'birth_certificate.mimes' => "Birth certificate must be a file of type: pdf, jpg, jpeg, png.",
+            'birth_certificate.max' => "Birth certificate file size cannot exceed 2MB.",
 
-            'mother_name.required' => 'Please enter mother name',
-            'mother_phone.required' => 'Please enter mother phone number',
-            'mother_email.required' => 'Please enter mother email',
+            'student_photo.required' => 'Student photograph is required.',
+            'student_photo.image' => 'Photo must be an image file.',
 
-            'current_address.required' => 'Please enter current address',
-            'city.required' => 'Please enter city',
-            'state.required' => 'Please enter state',
-            'postal_code.required' => 'Please enter postal code',
-            'country.required' => 'Please enter country',
-
-            'emergency_contact_name.required' => 'Please enter emergency contact name',
-            'emergency_contact_number.required' => 'Please enter emergency contact number',
-
-            'birth_certificate.required' => 'Please upload birth certificate',
-
-            'heard_about_school.required' => 'Please tell us how you heard about the school',
-
-            'agree_terms.required' => 'Please accept the terms and conditions',
-            'agree_terms.accepted' => 'Please accept the terms and conditions',
-
-            'consent_contact.required' => 'Please give contact consent',
-            'consent_contact.accepted' => 'Please give contact consent',
+            // Declaration
+            'declaration_confirmed.accepted' => "You must confirm the declaration to proceed.",
         ];
     }
 }

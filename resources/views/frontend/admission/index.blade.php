@@ -11,16 +11,16 @@
 @section('content')
     <style>
         .form-section-header {
-            background-color: #a83535;
+            background-color: #b91c1c;
         }
 
         .form-input {
-            border: 2px solid #a83535;
+            border: 2px solid #b91c1c;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: #8b2a2a;
+            border-color: #b91c1c;
             box-shadow: 0 0 0 3px rgba(168, 53, 53, 0.1);
         }
     </style>
@@ -65,49 +65,56 @@
     </section>
 
     <div class="max-w-6xl mx-auto p-6">
-        <!-- Header Section -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-            <div class="p-8">
-
-                <!-- Title -->
-                <div class="form-section-header text-white p-4 rounded mb-4 text-center">
-                    <h2 class="text-2xl font-bold">Admission Form</h2>
-                </div>
-
-                <!-- Academic Year -->
-                <div class="text-center mb-6">
-                    <p class="text-blue-700 font-semibold text-lg">
-                        Academic Year: 2026
-                    </p>
-                </div>
-
-                <!-- Photograph Box -->
-                <div class="border-2 border-dashed border-gray-400 bg-gray-100 py-10 text-center rounded">
-
-                    <!-- Placeholder Icon -->
-                    <div class="flex justify-center mb-3 text-gray-500">
-                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M3 7h4l2-2h6l2 2h4v12H3V7z" />
-                            <circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </div>
-
-                    <!-- Placeholder Text -->
-                    <p class="font-semibold text-gray-700">PP Size Photo</p>
-                    <p class="text-gray-500 text-sm">Upload Student Photograph</p>
-
-                    {{-- <!-- Upload -->
-                    <input class="mt-4 text-sm mx-auto block" type="file"> --}}
-
-                </div>
-
-            </div>
-        </div>
 
         <!-- Main Form -->
-        <form class="space-y-6">
+        <form class="space-y-6" id="admissionForm" action="{{ route('frontend.admission.store') }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+
+            <!-- Header Section -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                <div class="p-8">
+
+                    <!-- Title -->
+                    <div class="form-section-header text-white p-4 rounded mb-4 text-center">
+                        <h2 class="text-2xl font-bold">Admission Form</h2>
+                    </div>
+
+                    <!-- Academic Year -->
+                    <div class="text-center mb-6">
+                        <p class="text-blue-700 font-semibold text-lg">
+                            Academic Year: 2026
+                        </p>
+                    </div>
+
+                    <!-- Photograph Box -->
+                    <div class="border-2 border-dashed border-gray-400 bg-gray-100 py-10 text-center rounded cursor-pointer hover:bg-gray-200 transition"
+                        id="photoUpload">
+
+                        <!-- Preview Image -->
+                        <img class="mx-auto mb-3 hidden w-24 h-24 object-cover rounded" id="photoPreview" />
+
+                        <!-- Placeholder Icon -->
+                        <div class="flex justify-center mb-3 text-gray-500" id="photoIcon">
+                            <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M3 7h4l2-2h6l2 2h4v12H3V7z" />
+                                <circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5" />
+                            </svg>
+                        </div>
+
+                        <!-- Text -->
+                        <p class="font-semibold text-gray-700">PP Size Photo</p>
+                        <p class="text-gray-500 text-sm">Upload Student Photograph</p>
+
+                        <!-- Hidden File Input -->
+                        <input class="hidden" id="studentPhoto" type="file" name="student_photo" accept="image/*">
+                        <span class="text-red-500 text-sm error-text" id="error-student_photo"></span>
+                    </div>
+
+                </div>
+            </div>
             <!-- Student's Detail Section -->
             <section class="bg-white rounded-lg shadow-md overflow-hidden">
                 <div class="form-section-header text-white p-4">
@@ -116,48 +123,53 @@
                 <div class="p-6 space-y-6">
                     <!-- Student's Name -->
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Student's Name:</label>
-                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                        <label class="block text-gray-700 font-semibold mb-2">Student's Name <span
+                                class="text-red-500">*</span></label>
+                        <input class="form-input w-full px-4 py-3 rounded" name="name" type="text"
                             placeholder="Enter student's name">
-                    </div>
-
-                    <!-- In Devanagari Script -->
-                    <div>
-                        <label class="block text-gray-700 font-semibold mb-2">In Devanagari Script:</label>
-                        <input class="form-input w-full px-4 py-3 rounded" type="text"
-                            placeholder="नेपाली नाम लेख्नुहोस्">
+                        <span class="text-red-500 text-sm error-text" id="error-name"></span>
                     </div>
 
                     <!-- Date of Birth & Age -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Date of Birth (AD):</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="date">
+                            <input class="form-input w-full px-4 py-3 rounded" id="dob_ad" name="dob_ad" type="date">
                         </div>
+
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Date of Birth (BS):</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="DD/MM/YY">
+                            <input class="form-input w-full px-4 py-3 rounded" id="dob_bs" name="dob_bs" type="text"
+                                placeholder="YYYY-MM-DD">
                         </div>
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Age:</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="number" placeholder="Age">
+                            <label class="block text-gray-700 font-semibold mb-2">Age<span
+                                    class="text-red-500">*</span></label>
+                            <input class="form-input w-full px-4 py-3 rounded" name="age" type="number"
+                                placeholder="Age">
+                            <span class="text-red-500 text-sm error-text" id="error-age"></span>
                         </div>
                     </div>
 
                     <!-- Gender -->
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Gender:</label>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Gender <span class="text-red-500">*</span>
+                        </label>
+
                         <div class="flex gap-6">
                             <label class="flex items-center">
                                 <input class="mr-2" type="radio" name="gender" value="male">
                                 <span class="text-gray-700">Male</span>
                             </label>
+
                             <label class="flex items-center">
                                 <input class="mr-2" type="radio" name="gender" value="female">
                                 <span class="text-gray-700">Female</span>
                             </label>
-
                         </div>
+
+                        <span class="text-red-500 text-sm error-text" id="error-gender"></span>
                     </div>
                 </div>
             </section>
@@ -171,22 +183,25 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Class Last Attended:</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="e.g., Grade 5">
+                            <input class="form-input w-full px-4 py-3 rounded" name="last_class_attended" type="text"
+                                placeholder="e.g., Grade 5">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Result (GPA/%):</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="e.g., 3.5">
+                            <input class="form-input w-full px-4 py-3 rounded" name="result" type="text"
+                                placeholder="e.g., 3.5">
                         </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Name and Address of the School:</label>
-                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                        <input class="form-input w-full px-4 py-3 rounded" name="school_name_address" type="text"
                             placeholder="Previous school name and address">
                     </div>
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Give Detail of Child's Illness (if
                             any):</label>
-                        <textarea class="form-input w-full px-4 py-3 rounded" placeholder="Medical history or allergies" rows="4"></textarea>
+                        <textarea class="form-input w-full px-4 py-3 rounded" name="medical_history"
+                            placeholder="Medical history or allergies" rows="4"></textarea>
                     </div>
                 </div>
             </section>
@@ -203,41 +218,42 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Father's Name (CAPITAL
-                                    LETTER):</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    LETTER)<span class="text-red-500">*</span></label>
+                                <input class="form-input w-full px-4 py-3 rounded" name="father_name" type="text"
                                     placeholder="Full name in capitals">
+                                <span class="text-red-500 text-sm error-text" id="error-father_name"></span>
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Address:</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                <input class="form-input w-full px-4 py-3 rounded" name="father_address" type="text"
                                     placeholder="Residential address">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Job title">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="father_occupation"
+                                        type="text" placeholder="Job title">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Religion:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Religion">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="father_religion"
+                                        type="text" placeholder="Religion">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Ethnicity:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Ethnicity">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="father_ethnicity"
+                                        type="text" placeholder="Ethnicity">
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="tel"
+                                    <input class="form-input w-full px-4 py-3 rounded" name="father_phone" type="tel"
                                         placeholder="Phone">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">E-mail Address:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="email"
+                                    <input class="form-input w-full px-4 py-3 rounded" name="father_email" type="email"
                                         placeholder="Email">
                                 </div>
                             </div>
@@ -250,41 +266,42 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Mother's Name (CAPITAL
-                                    LETTER):</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    LETTER)<span class="text-red-500">*</span></label>
+                                <input class="form-input w-full px-4 py-3 rounded" name="mother_name" type="text"
                                     placeholder="Full name in capitals">
+                                <span class="text-red-500 text-sm error-text" id="error-mother_name"></span>
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Address:</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                <input class="form-input w-full px-4 py-3 rounded" name="mother_address" type="text"
                                     placeholder="Residential address">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Job title">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_occupation"
+                                        type="text" placeholder="Job title">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Religion:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Religion">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_religion"
+                                        type="text" placeholder="Religion">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Ethnicity:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Ethnicity">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_ethnicity"
+                                        type="text" placeholder="Ethnicity">
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="tel"
+                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_phone" type="tel"
                                         placeholder="Phone">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">E-mail Address:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="email"
+                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_email" type="email"
                                         placeholder="Email">
                                 </div>
                             </div>
@@ -301,23 +318,24 @@
                 <div class="p-6 space-y-6">
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Guardian's Name:</label>
-                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                        <input class="form-input w-full px-4 py-3 rounded" name="guardian_name" type="text"
                             placeholder="Guardian's full name">
                     </div>
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Address:</label>
-                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                        <input class="form-input w-full px-4 py-3 rounded" name="guardian_address" type="text"
                             placeholder="Guardian's address">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Relationship with the Child:</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                placeholder="e.g., Aunt, Uncle, Grandfather">
+                            <input class="form-input w-full px-4 py-3 rounded" name="guardian_relationship"
+                                type="text" placeholder="e.g., Aunt, Uncle, Grandfather">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
-                            <input class="form-input w-full px-4 py-3 rounded" type="tel" placeholder="Phone">
+                            <input class="form-input w-full px-4 py-3 rounded" name="guardian_phone" type="tel"
+                                placeholder="Phone">
                         </div>
                     </div>
                 </div>
@@ -347,22 +365,25 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Pick-up Point:</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                <input class="form-input w-full px-4 py-3 rounded" name="bus_pickup_point" type="text"
                                     placeholder="Location with map">
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Guardian's Name for Bus:</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="Name">
+                                <input class="form-input w-full px-4 py-3 rounded" name="bus_guardian_name"
+                                    type="text" placeholder="Name">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Address:</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="Address">
+                                <input class="form-input w-full px-4 py-3 rounded" name="bus_address" type="text"
+                                    placeholder="Address">
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
-                                <input class="form-input w-full px-4 py-3 rounded" type="tel" placeholder="Phone">
+                                <input class="form-input w-full px-4 py-3 rounded" name="bus_phone" type="tel"
+                                    placeholder="Phone">
                             </div>
                         </div>
                     </div>
@@ -390,43 +411,44 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Sibling 1 - Name:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Full name">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="sibling1_name"
+                                        type="text" placeholder="Full name">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Class:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Class">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="sibling1_class"
+                                        type="text" placeholder="Class">
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Sibling 2 - Name:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Full name">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="sibling2_name"
+                                        type="text" placeholder="Full name">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Class:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Class">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="sibling2_class"
+                                        type="text" placeholder="Class">
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Sibling 3 - Name:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Full name">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="sibling3_name"
+                                        type="text" placeholder="Full name">
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Class:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
-                                        placeholder="Class">
+                                    <input class="form-input w-full px-4 py-3 rounded" name="sibling3_class"
+                                        type="text" placeholder="Class">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
             <section class="bg-white rounded-lg shadow-md overflow-hidden">
 
                 <div class="form-section-header text-white p-4">
@@ -440,17 +462,18 @@
                         <label class="block text-gray-700 font-semibold mb-2">
                             Birth Certificate <span class="text-red-600">*</span>
                         </label>
-                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png"
-                            required>
+                        <input class="w-full border rounded p-2 bg-gray-50" name="birth_certificate" type="file"
+                            accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="text-red-500 text-sm error-text" id="error-birth_certificate"></span>
                     </div>
 
                     <!-- Report Card -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Last Report Card <span class="text-red-600">*</span>
+                            Last Report Card
                         </label>
-                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png"
-                            required>
+                        <input class="w-full border rounded p-2 bg-gray-50" name="last_report_card" type="file"
+                            accept=".pdf,.jpg,.jpeg,.png">
                     </div>
 
                     <!-- Transfer Certificate -->
@@ -458,7 +481,8 @@
                         <label class="block text-gray-700 font-semibold mb-2">
                             Transfer Certificate
                         </label>
-                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                        <input class="w-full border rounded p-2 bg-gray-50" name="transfer_certificate" type="file"
+                            accept=".pdf,.jpg,.jpeg,.png">
                     </div>
 
                     <!-- Character Certificate -->
@@ -466,7 +490,8 @@
                         <label class="block text-gray-700 font-semibold mb-2">
                             Character Certificate
                         </label>
-                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                        <input class="w-full border rounded p-2 bg-gray-50" name="character_certificate" type="file"
+                            accept=".pdf,.jpg,.jpeg,.png">
                         <p class="text-xs text-gray-500 mt-1">Required for Class 6 and above</p>
                     </div>
 
@@ -514,7 +539,8 @@
                         <!-- Important Checkbox -->
                         <div class="mt-5 flex items-start gap-2">
                             <input class="mt-1 h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
-                                type="checkbox" required>
+                                type="checkbox" name="declaration_confirmed">
+                            <span class="text-red-500 text-sm error-text" id="error-declaration_confirmed"></span>
 
                             <label class="text-gray-700 text-sm">
                                 I confirm that the above information is true and I agree to follow the rules and
@@ -560,6 +586,98 @@
                     document.getElementById('bus_details').classList.add('hidden');
                 }
             });
+        });
+
+        //for student photo upload
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadBox = document.getElementById('photoUpload');
+            const fileInput = document.getElementById('studentPhoto');
+            const preview = document.getElementById('photoPreview');
+            const icon = document.getElementById('photoIcon');
+
+            // Click on div triggers file input
+            uploadBox.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // Show preview when file is selected
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.classList.remove('hidden');
+                        icon.classList.add('hidden');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        //Ajax form submit
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let form = e.target;
+            let formData = new FormData(form);
+
+            // Clear old errors
+            document.querySelectorAll('.error-text').forEach(el => el.textContent = '');
+
+            fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}",
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(async response => {
+                    const data = await response.json();
+
+                    if (response.status === 422) {
+                        // Get the first validation error
+                        const firstField = Object.keys(data.errors)[0];
+                        const firstError = data.errors[firstField][0];
+
+                        // Show in Toastr
+                        toastr.error(firstError, "Validation Error", {
+                            positionClass: 'toast-top-right',
+                            timeOut: 5000
+                        });
+
+                        // Display inline errors
+                        for (let field in data.errors) {
+                            const errorEl = document.getElementById(`error-${field}`);
+                            if (errorEl) {
+                                errorEl.textContent = data.errors[field][0];
+                            }
+                        }
+
+                        // Scroll to first error
+                        const firstErrorEl = document.getElementById(`error-${firstField}`);
+                        if (firstErrorEl) {
+                            firstErrorEl.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+
+                    } else if (response.ok) {
+                        toastr.success(data.message, "Success");
+                        form.reset();
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        toastr.error(data.message || "Something went wrong.", "Error");
+                    }
+                })
+                .catch(() => {
+                    toastr.error("Network error. Please try again.", "Error");
+                });
         });
     </script>
 @endsection

@@ -14,82 +14,68 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
 
-            /* =========================
-         * STUDENT INFORMATION
-         * ========================= */
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->date('date_of_birth')->nullable();
-            $table->enum('gender', ['male', 'female', 'other'])->nullable();
-            $table->string('blood_group')->nullable();
-            $table->string('nationality')->nullable();
-            $table->string('religion')->nullable();
-            $table->string('mother_tongue')->nullable();
-            $table->string('student_photo')->nullable();
+            // Student's Detail
+            $table->string('name')->nullable();
+            $table->date('dob_ad')->nullable();
+            $table->string('dob_bs')->nullable();
+            $table->integer('age')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
 
-            /* =========================
-         * ADMISSION DETAILS
-         * ========================= */
-            $table->string('applying_grade')->nullable();
-            $table->string('academic_year')->nullable();
-            $table->string('previous_school_name')->nullable();
-            $table->string('previous_grade')->nullable();
+            // Student's Educational Information
+            $table->string('last_class_attended')->nullable();
+            $table->string('result')->nullable();
+            $table->string('school_name_address')->nullable();
+            $table->text('medical_history')->nullable();
 
-            /* =========================
-         * FATHER DETAILS
-         * ========================= */
+            // Father's Information
             $table->string('father_name')->nullable();
+            $table->string('father_address')->nullable();
             $table->string('father_occupation')->nullable();
+            $table->string('father_religion')->nullable();
+            $table->string('father_ethnicity')->nullable();
             $table->string('father_phone')->nullable();
             $table->string('father_email')->nullable();
 
-            /* =========================
-         * MOTHER DETAILS
-         * ========================= */
+            // Mother's Information
             $table->string('mother_name')->nullable();
+            $table->string('mother_address')->nullable();
             $table->string('mother_occupation')->nullable();
+            $table->string('mother_religion')->nullable();
+            $table->string('mother_ethnicity')->nullable();
             $table->string('mother_phone')->nullable();
             $table->string('mother_email')->nullable();
 
-            /* =========================
-         * GUARDIAN DETAILS
-         * ========================= */
+            // Guardian's Information
             $table->string('guardian_name')->nullable();
+            $table->string('guardian_address')->nullable();
             $table->string('guardian_relationship')->nullable();
             $table->string('guardian_phone')->nullable();
-            $table->string('guardian_email')->nullable();
 
-            /* =========================
-         * ADDRESS INFORMATION
-         * ========================= */
-            $table->text('current_address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('country')->nullable();
-            $table->boolean('same_as_permanent')->default(false);
+            // School Bus Information
+            $table->enum('bus_required', ['yes', 'no'])->default('no');
+            $table->string('bus_pickup_point')->nullable();
+            $table->string('bus_guardian_name')->nullable();
+            $table->string('bus_address')->nullable();
+            $table->string('bus_phone')->nullable();
 
-            /* =========================
-         * MEDICAL INFORMATION
-         * ========================= */
-            $table->text('medical_conditions')->nullable();
-            $table->string('emergency_contact_name')->nullable();
-            $table->string('emergency_contact_number')->nullable();
+            // Sibling Information
+            $table->enum('has_sibling', ['yes', 'no'])->default('no');
+            $table->string('sibling1_name')->nullable();
+            $table->string('sibling1_class')->nullable();
+            $table->string('sibling2_name')->nullable();
+            $table->string('sibling2_class')->nullable();
+            $table->string('sibling3_name')->nullable();
+            $table->string('sibling3_class')->nullable();
 
-            /* =========================
-         * DOCUMENT UPLOADS
-         * ========================= */
-            $table->string('birth_certificate')->nullable();
+            // Required Documents Upload
+            $table->string('student_photo');
+            $table->string('birth_certificate');
+            $table->string('last_report_card');
             $table->string('transfer_certificate')->nullable();
-            $table->string('academic_records')->nullable();
-            $table->json('passport_photos')->nullable();
+            $table->string('character_certificate')->nullable();
 
-            /* =========================
-         * ADDITIONAL INFORMATION
-         * ========================= */
-            $table->string('heard_about_school')->nullable();
-            $table->text('why_join_school')->nullable();
-            $table->text('student_hobbies')->nullable();
+            // Declaration confirmation
+            $table->boolean('declaration_confirmed')->default(false);
 
             $table->string('priority')->nullable();
             $table->string('note')->nullable();

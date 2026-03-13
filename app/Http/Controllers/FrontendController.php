@@ -212,29 +212,13 @@ class FrontendController extends Controller
         try {
             $data = $request->validated();
 
-            // Single file uploads (safe)
-            if ($request->hasFile('birth_certificate')) {
-                $data['birth_certificate'] = fileUpload($request, 'birth_certificate', 'birth_certificates');
+            // File uploads
+            $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate'];
+            foreach ($files as $file) {
+                if ($request->hasFile($file)) {
+                    $data[$file] = fileUpload($request, $file, 'Admission');
+                }
             }
-
-            if ($request->hasFile('student_photo')) {
-                $data['student_photo'] = fileUpload($request, 'student_photo', 'student_photos');
-            }
-
-            if ($request->hasFile('transfer_certificate')) {
-                $data['transfer_certificate'] = fileUpload($request, 'transfer_certificate', 'transfer_certificates');
-            }
-
-            if ($request->hasFile('academic_records')) {
-                $data['academic_records'] = fileUpload($request, 'academic_records', 'academic_records');
-            }
-
-            // Multiple files upload
-            if ($request->hasFile('passport_photos')) {
-                $data['passport_photos'] = multiFileUpload($request, 'passport_photos', 'passport_photos');
-            }
-            // JSON field
-            $data['source'] = json_encode($data['source'] ?? []);
 
             Student::create($data);
 
@@ -243,7 +227,6 @@ class FrontendController extends Controller
                 'message' => 'Student saved successfully!'
             ]);
         } catch (\Exception $e) {
-
             return response()->json([
                 'success' => false,
                 'message' => 'Something went wrong. Please try again.'
