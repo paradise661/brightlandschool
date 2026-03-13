@@ -9,6 +9,21 @@
     ])
 @endsection
 @section('content')
+    <style>
+        .form-section-header {
+            background-color: #a83535;
+        }
+
+        .form-input {
+            border: 2px solid #a83535;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #8b2a2a;
+            box-shadow: 0 0 0 3px rgba(168, 53, 53, 0.1);
+        }
+    </style>
     <section class="relative h-[400px] overflow-hidden" id="blog-hero">
         <!-- Softer Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
@@ -49,530 +64,502 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="admission-form-section">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
-                    <div class="bg-gradient-to-r from-primary to-blue-600 text-white p-6 md:p-8">
-                        <h2 class="text-2xl md:text-3xl font-heading font-bold mb-2">Student Admission Application</h2>
-                        <p class="text-blue-100">Please fill all required fields marked with <span
-                                class="text-red-500">*</span></p>
+    <div class="max-w-6xl mx-auto p-6">
+        <!-- Header Section -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-8">
+
+                <!-- Title -->
+                <div class="form-section-header text-white p-4 rounded mb-4 text-center">
+                    <h2 class="text-2xl font-bold">Admission Form</h2>
+                </div>
+
+                <!-- Academic Year -->
+                <div class="text-center mb-6">
+                    <p class="text-blue-700 font-semibold text-lg">
+                        Academic Year: 2026
+                    </p>
+                </div>
+
+                <!-- Photograph Box -->
+                <div class="border-2 border-dashed border-gray-400 bg-gray-100 py-10 text-center rounded">
+
+                    <!-- Placeholder Icon -->
+                    <div class="flex justify-center mb-3 text-gray-500">
+                        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M3 7h4l2-2h6l2 2h4v12H3V7z" />
+                            <circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
                     </div>
 
-                    <form class="p-6 md:p-8 lg:p-12" id="admission-form"action="{{ route('frontend.admission.store') }}"
-                        method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="mb-10" id="student-information">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-user text-primary"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Student Information
-                                </h3>
-                            </div>
+                    <!-- Placeholder Text -->
+                    <p class="font-semibold text-gray-700">PP Size Photo</p>
+                    <p class="text-gray-500 text-sm">Upload Student Photograph</p>
 
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                        First Name <span class="text-red-500">*</span>
-                                    </label>
+                    {{-- <!-- Upload -->
+                    <input class="mt-4 text-sm mx-auto block" type="file"> --}}
 
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg
-                                        focus:border-primary focus:outline-none transition"
-                                        id="first_name" data-field="first_name" name="first_name" type="text"
-                                        placeholder="Enter first name">
-
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-first_name"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name <span
-                                            class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="last_name" type="text" name="last_name"
-                                        placeholder="Enter last name">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-last_name"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth <span
-                                            class="text-red-500">*</span></label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="date_of_birth" type="date" name="date_of_birth">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-date_of_birth"></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Gender <span
-                                            class="text-red-500">*</span></label>
-                                    <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="gender" name="gender">
-                                        <option value="">Select gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-gender"></p>
-                                    </select>
-
-                                </div>
-                            </div>
-
-                            <div class="mt-6">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Student Photo <span class="text-red-500">*</span>
-                                </label>
-
-                                <div class="upload-box border-2 border-dashed border-gray-300 rounded-lg p-6
-                                         text-center hover:border-primary transition cursor-pointer"
-                                    data-upload="student_photo">
-
-                                    <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
-                                    <p class="text-gray-600 mb-2">Click to upload or drag and drop</p>
-                                    <p class="text-sm text-gray-500">PNG, JPG (MAX. 2MB)</p>
-                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
-                                    <input class="hidden" data-field="student_photo" type="file" name="student_photo"
-                                        accept="image/*">
-
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-student_photo"></p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="mb-10" id="admission-details">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-green-600/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-graduation-cap text-green-600"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Admission Details</h3>
-                            </div>
-
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Applying for Grade
-                                        <span class="text-red-500">*</span></label>
-                                    <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="applying_grade" name="applying_grade">
-                                        <option value="">Select grade</option>
-                                        <option value="nursery">Nursery</option>
-                                        <option value="lkg">LKG</option>
-                                        <option value="ukg">UKG</option>
-                                        <option value="1">Grade 1</option>
-                                        <option value="2">Grade 2</option>
-                                        <option value="3">Grade 3</option>
-                                        <option value="4">Grade 4</option>
-                                        <option value="5">Grade 5</option>
-                                        <option value="6">Grade 6</option>
-                                        <option value="7">Grade 7</option>
-                                        <option value="8">Grade 8</option>
-                                        <option value="9">Grade 9</option>
-                                        <option value="10">Grade 10</option>
-                                        <option value="11">Grade 11</option>
-                                        <option value="12">Grade 12</option>
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-applying_grade"></p>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Previous School
-                                        Name</label>
-                                    <input
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        type="text" placeholder="Enter previous school name if any"
-                                        name="previous_school_name">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="mb-10" id="parent-information">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-purple-600/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-users text-purple-600"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Parent/Guardian
-                                    Information</h3>
-                            </div>
-
-                            <div class="bg-blue-50 rounded-2xl p-6 mb-6">
-                                <h4 class="text-lg font-heading font-bold text-gray-900 mb-4">Father's Details</h4>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Father's Name
-                                            <span class="text-red-500">*</span></label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            data-field="father_name" type="text" name="father_name"
-                                            placeholder="Enter father's name">
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-father_name"></p>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Occupation</label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" name="father_occupation" placeholder="Enter occupation">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number
-                                            <span class="text-red-500">*</span></label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            data-field="father_phone" type="tel"
-                                            name="father_phone"placeholder="021-1234567">
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-father_phone"></p>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address
-                                            <span class="text-red-500">*</span></label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            data-field="father_email" type="email" name="father_email"
-                                            placeholder="father@example.com">
-                                        <p class="mt-1 text-sm text-red-500 hidden" id="error-father_email"></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-green-50 rounded-2xl p-6">
-                                <h4 class="text-lg font-heading font-bold text-gray-900 mb-4">Guardian Details (if
-                                    applicable)</h4>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Guardian's
-                                            Name</label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" name="guardian_name" placeholder="Enter guardian's name">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Relationship</label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="text" name="guardian_relationship" placeholder="Enter relationship">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="tel" name="guardian_phone" placeholder="+1 (234) 567-890">
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                                        <input
-                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition bg-white"
-                                            type="email" name="guardian_email" placeholder="guardian@example.com">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-10" id="address-information">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-orange-600/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-location-dot text-orange-600"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Address Information
-                                </h3>
-                            </div>
-
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="md:col-span-2">
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Current Address <span
-                                            class="text-red-500">*</span></label>
-                                    <textarea
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        data-field="current_address" rows="3" name="current_address" placeholder="Enter complete address"></textarea>
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-current_address"></p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="mb-10" id="document-upload">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-teal-600/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-file-arrow-up text-teal-600"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Document Upload</h3>
-                            </div>
-
-                            <div class="space-y-6">
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Birth Certificate
-                                    <span class="text-red-500">*</span></label>
-                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
-                                    data-upload>
-                                    <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
-                                    <p class="text-gray-600 text-sm">Click to upload birth certificate (PDF, JPG, PNG -
-                                        MAX. 5MB)</p>
-                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
-                                    <input class="hidden" data-field="birth_certificate" type="file"
-                                        name="birth_certificate" accept=".pdf,.jpg,.jpeg,.png">
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-birth_certificate"></p>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Previous School Transfer
-                                    Certificate</label>
-                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
-                                    data-upload>
-                                    <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
-                                    <p class="text-gray-600 text-sm">Click to upload transfer certificate (PDF, JPG,
-                                        PNG - MAX. 5MB)</p>
-                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
-                                    <input class="hidden" type="file" name="transfer_certificate"
-                                        accept=".pdf,.jpg,.jpeg,.png">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Previous Academic
-                                    Records/Report Card</label>
-                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
-                                    data-upload>
-                                    <i class="fa-solid fa-file-pdf text-3xl text-gray-400 mb-2"></i>
-                                    <p class="text-gray-600 text-sm">Click to upload academic records (PDF, JPG, PNG -
-                                        MAX. 5MB)</p>
-                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
-                                    <input class="hidden" type="file" name="academic_records"
-                                        accept=".pdf,.jpg,.jpeg,.png">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Passport Size Photos (2
-                                    copies) <span class="text-red-500">*</span></label>
-                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition cursor-pointer"
-                                    data-upload>
-                                    <i class="fa-solid fa-images text-3xl text-gray-400 mb-2"></i>
-                                    <p class="text-gray-600 text-sm">Click to upload photos (JPG, PNG - MAX. 2MB each)
-                                    </p>
-                                    <p class="mt-2 text-sm text-green-600 hidden" data-filename></p>
-                                    <input class="hidden" data-field="passport_photos" type="file"
-                                        name="passport_photos[]" accept="image/*" multiple>
-                                    <p class="mt-1 text-sm text-red-500 hidden" id="error-passport_photos"></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-10" id="additional-information">
-                            <div class="flex items-center mb-6">
-                                <div class="w-10 h-10 bg-indigo-600/10 rounded-full flex items-center justify-center mr-3">
-                                    <i class="fa-solid fa-circle-info text-indigo-600"></i>
-                                </div>
-                                <h3 class="text-xl md:text-2xl font-heading font-bold text-gray-900">Additional Information
-                                </h3>
-                            </div>
-
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">How did you hear about
-                                        our school? <span class="text-red-500">*</span></label>
-                                    <select
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        name="heard_about_school">
-                                        <option value="">Select an option</option>
-                                        <option value="website">School Website</option>
-                                        <option value="social-media">Social Media</option>
-                                        <option value="friend">Friend/Relative</option>
-                                        <option value="newspaper">Newspaper/Magazine</option>
-                                        <option value="event">School Event</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Why do you want to join
-                                        Excellence Academy?</label>
-                                    <textarea
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        name="why_join_school" rows="4" placeholder="Tell us why you're interested in our school..."></textarea>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Student's Hobbies and
-                                        Interests</label>
-                                    <textarea
-                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:outline-none transition"
-                                        rows="3" name="student_hobbies" placeholder="Please mention any hobbies, interests, or special talents"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button
-                                class="px-8 py-4 bg-gradient-to-r from-primary to-blue-600 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-semibold text-lg shadow-lg"
-                                type="submit">
-                                <i class="fa-solid fa-paper-plane mr-2"></i> Submit Application
-                            </button>
-                        </div>
-
-                        <p class="text-center text-sm text-gray-600 mt-6">
-                            Need help? Contact our admissions office at <a class="text-primary hover:underline"
-                                href="tel:{{ $setting['site_phone'] ?? '' }}">{{ $setting['site_phone'] ?? '' }}</a> or <a
-                                class="text-primary hover:underline"
-                                href="mailto:{{ $setting['site_email'] ?? '' }}">{{ $setting['site_email'] ?? '' }}</a>
-                        </p>
-                    </form>
                 </div>
+
             </div>
         </div>
-    </section>
+
+        <!-- Main Form -->
+        <form class="space-y-6">
+            <!-- Student's Detail Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Student's Detail</h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <!-- Student's Name -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Student's Name:</label>
+                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                            placeholder="Enter student's name">
+                    </div>
+
+                    <!-- In Devanagari Script -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">In Devanagari Script:</label>
+                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                            placeholder="नेपाली नाम लेख्नुहोस्">
+                    </div>
+
+                    <!-- Date of Birth & Age -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Date of Birth (AD):</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="date">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Date of Birth (BS):</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="DD/MM/YY">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Age:</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="number" placeholder="Age">
+                        </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Gender:</label>
+                        <div class="flex gap-6">
+                            <label class="flex items-center">
+                                <input class="mr-2" type="radio" name="gender" value="male">
+                                <span class="text-gray-700">Male</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input class="mr-2" type="radio" name="gender" value="female">
+                                <span class="text-gray-700">Female</span>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student's Educational Information Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Student's Educational Information</h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Class Last Attended:</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="e.g., Grade 5">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Result (GPA/%):</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="e.g., 3.5">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Name and Address of the School:</label>
+                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                            placeholder="Previous school name and address">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Give Detail of Child's Illness (if
+                            any):</label>
+                        <textarea class="form-input w-full px-4 py-3 rounded" placeholder="Medical history or allergies" rows="4"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Child's Parental Information Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Child's Parental Information</h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <!-- Father's Information -->
+                    <div class="border-b pb-6">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">Father's Information</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Father's Name (CAPITAL
+                                    LETTER):</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    placeholder="Full name in capitals">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Address:</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    placeholder="Residential address">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Job title">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Religion:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Religion">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Ethnicity:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Ethnicity">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="tel"
+                                        placeholder="Phone">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">E-mail Address:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="email"
+                                        placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mother's Information -->
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">Mother's Information</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Mother's Name (CAPITAL
+                                    LETTER):</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    placeholder="Full name in capitals">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Address:</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    placeholder="Residential address">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Job title">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Religion:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Religion">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Ethnicity:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Ethnicity">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="tel"
+                                        placeholder="Phone">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">E-mail Address:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="email"
+                                        placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guardian's Information Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Guardian's Information</h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Guardian's Name:</label>
+                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                            placeholder="Guardian's full name">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Address:</label>
+                        <input class="form-input w-full px-4 py-3 rounded" type="text"
+                            placeholder="Guardian's address">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Relationship with the Child:</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                placeholder="e.g., Aunt, Uncle, Grandfather">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
+                            <input class="form-input w-full px-4 py-3 rounded" type="tel" placeholder="Phone">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- School Bus Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Whether school bus requires?</h3>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-3">Do you require school bus facility?</label>
+                        <div class="flex gap-6 mb-4">
+                            <label class="flex items-center">
+                                <input class="mr-2" type="radio" name="bus_required" value="yes">
+                                <span class="text-gray-700">Yes</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input class="mr-2" type="radio" name="bus_required" value="no">
+                                <span class="text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="hidden space-y-4" id="bus_details">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Pick-up Point:</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                    placeholder="Location with map">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Guardian's Name for Bus:</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Address:</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="text" placeholder="Address">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
+                                <input class="form-input w-full px-4 py-3 rounded" type="tel" placeholder="Phone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sibling Information Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Does the child have any brother/sister studying in this school?</h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="flex gap-6 mb-6">
+                        <label class="flex items-center">
+                            <input class="mr-2" id="sibling_yes" type="radio" name="has_sibling" value="yes">
+                            <span class="text-gray-700">Yes</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input class="mr-2" id="sibling_no" type="radio" name="has_sibling" value="no">
+                            <span class="text-gray-700">No</span>
+                        </label>
+                    </div>
+                    <div class="hidden space-y-4" id="sibling_details">
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Sibling 1 - Name:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Full name">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Class:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Class">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Sibling 2 - Name:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Full name">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Class:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Class">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Sibling 3 - Name:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Full name">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Class:</label>
+                                    <input class="form-input w-full px-4 py-3 rounded" type="text"
+                                        placeholder="Class">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Required Documents Upload</h3>
+                </div>
+
+                <div class="p-6 grid md:grid-cols-2 gap-6">
+
+                    <!-- Birth Certificate -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Birth Certificate <span class="text-red-600">*</span>
+                        </label>
+                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png"
+                            required>
+                    </div>
+
+                    <!-- Report Card -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Last Report Card <span class="text-red-600">*</span>
+                        </label>
+                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png"
+                            required>
+                    </div>
+
+                    <!-- Transfer Certificate -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Transfer Certificate
+                        </label>
+                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+
+                    <!-- Character Certificate -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Character Certificate
+                        </label>
+                        <input class="w-full border rounded p-2 bg-gray-50" type="file" accept=".pdf,.jpg,.jpeg,.png">
+                        <p class="text-xs text-gray-500 mt-1">Required for Class 6 and above</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Declaration Section -->
+            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="form-section-header text-white p-4">
+                    <h3 class="text-xl font-bold">Declaration</h3>
+                </div>
+
+                <div class="p-6 space-y-4">
+
+                    <div class="bg-amber-50 p-4 rounded border-l-4 border-red-700">
+
+                        <p class="text-gray-700 mb-3">
+                            All the information provided in this application form is correct, complete and true to the best
+                            of my knowledge.
+                        </p>
+
+                        <p class="text-gray-700 mb-3">
+                            I, father/mother/guardian (above mentioned), agree to comply with the rules and regulations
+                            of the school.
+                        </p>
+
+                        <p class="text-sm text-gray-600 italic">
+                            The form must be attached with the following documents and submitted to the school office
+                            within three days.
+                        </p>
+
+                        <ol class="list-decimal list-inside text-gray-700 mt-2 space-y-1 ml-2">
+                            <li>Recent passport size photograph of the child</li>
+                            <li>Photocopy of birth certificate</li>
+                            <li>Original report card of last attended class</li>
+                            <li>Transfer certificate</li>
+                            <li>Character certificate (Class 6 onwards)</li>
+                        </ol>
+
+                        <p class="text-sm text-gray-600 italic mt-2">
+                            (Further information will be given at the time of form submission)
+                        </p>
+
+                        <!-- Important Checkbox -->
+                        <div class="mt-5 flex items-start gap-2">
+                            <input class="mt-1 h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                                type="checkbox" required>
+
+                            <label class="text-gray-700 text-sm">
+                                I confirm that the above information is true and I agree to follow the rules and
+                                regulations of the school.
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="flex gap-4 mb-8">
+                <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded transition"
+                    type="submit">
+                    Submit Application
+                </button>
+                <button class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded transition"
+                    type="reset">
+                    Clear Form
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection
 @section('scripts')
     <script>
-        /* ======================================================
-                                                                                               CLICK UPLOAD BOX → OPEN FILE PICKER + SHOW FILE NAME
-                                                                                               ====================================================== */
-        document.querySelectorAll('[data-upload]').forEach(box => {
-            const input = box.querySelector('input[type="file"]');
-            const fileNameBox = box.querySelector('[data-filename]');
-
-            if (!input) return;
-
-            // Click anywhere on box opens file picker
-            box.addEventListener('click', () => input.click());
-
-            // Show selected file name
-            input.addEventListener('change', () => {
-                if (input.files.length > 0 && fileNameBox) {
-                    fileNameBox.innerText = `Selected: ${input.files[0].name}`;
-                    fileNameBox.classList.remove('hidden');
-
-                    box.classList.remove('border-red-500');
-                    box.classList.add('border-green-500');
-                }
-            });
+        // Toggle sibling details
+        document.getElementById('sibling_yes')?.addEventListener('change', function() {
+            document.getElementById('sibling_details').classList.remove('hidden');
+        });
+        document.getElementById('sibling_no')?.addEventListener('change', function() {
+            document.getElementById('sibling_details').classList.add('hidden');
         });
 
-        /* ======================================================
-           CLEAR ERROR WHILE TYPING / CHANGING
-           ====================================================== */
-        document.querySelectorAll('[data-field]').forEach(field => {
-
-            const clearError = () => {
-                const errorBox = document.getElementById(`error-${field.name}`);
-                if (errorBox) {
-                    errorBox.classList.add('hidden');
-                    errorBox.innerText = '';
+        // Toggle bus details
+        document.querySelectorAll('input[name="bus_required"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'yes') {
+                    document.getElementById('bus_details').classList.remove('hidden');
+                } else {
+                    document.getElementById('bus_details').classList.add('hidden');
                 }
-
-                // Normal inputs
-                field.classList.remove('border-red-500');
-                field.classList.add('border-gray-200');
-
-                // File upload box
-                if (field.type === 'file') {
-                    const uploadBox = field.closest('[data-upload]');
-                    uploadBox?.classList.remove('border-red-500');
-                }
-            };
-
-            field.addEventListener('input', clearError);
-            field.addEventListener('change', clearError);
-        });
-
-        /* ======================================================
-           FORM SUBMIT HANDLER
-           ====================================================== */
-        document.getElementById('admission-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('FORM SUBMIT TRIGGERED');
-
-            const form = this;
-            const formData = new FormData(form);
-
-            // Clear old errors
-            document.querySelectorAll('[id^="error-"]').forEach(el => {
-                el.classList.add('hidden');
-                el.innerText = '';
             });
-
-            document.querySelectorAll('[data-field]').forEach(input => {
-                input.classList.remove('border-red-500');
-                input.classList.add('border-gray-200');
-            });
-
-            document.querySelectorAll('[data-upload]').forEach(box => {
-                box.classList.remove('border-red-500', 'border-green-500');
-            });
-
-            fetch(form.action, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                        'Accept': 'application/json'
-                    },
-                    body: formData
-                })
-                .then(async res => {
-                    const data = await res.json();
-
-                    /* ---------- VALIDATION ERROR (422) ---------- */
-                    if (res.status === 422) {
-                        const firstField = Object.keys(data.errors)[0];
-                        const firstMessage = data.errors[firstField][0];
-
-                        // Show error text
-                        const errorBox = document.getElementById(`error-${firstField}`);
-                        if (errorBox) {
-                            errorBox.innerText = firstMessage;
-                            errorBox.classList.remove('hidden');
-                        }
-
-                        const input = document.querySelector(`[data-field="${firstField}"]`);
-
-                        if (input) {
-                            // FILE INPUT
-                            if (input.type === 'file') {
-                                const uploadBox = input.closest('[data-upload]');
-                                if (uploadBox) {
-                                    uploadBox.classList.add('border-red-500');
-                                    uploadBox.scrollIntoView({
-                                        behavior: 'smooth',
-                                        block: 'center'
-                                    });
-                                }
-                            }
-                            // NORMAL INPUT
-                            else {
-                                input.classList.add('border-red-500');
-                                input.focus();
-                            }
-                        }
-
-                        toastr.error(firstMessage);
-                        throw new Error('Validation failed');
-                    }
-
-                    if (!res.ok) {
-                        throw new Error(data.message || 'Something went wrong');
-                    }
-
-                    return data;
-                })
-                .then(data => {
-                    toastr.success(data.message);
-                    form.reset();
-
-                    // Hide file names after reset
-                    document.querySelectorAll('[data-filename]').forEach(el => {
-                        el.innerText = '';
-                        el.classList.add('hidden');
-                    });
-                })
-                .catch(() => {});
         });
     </script>
 @endsection
