@@ -11,16 +11,16 @@
 @section('content')
     <style>
         .form-section-header {
-            background-color: #b91c1c;
+            background-color: #1e40af;
         }
 
         .form-input {
-            border: 2px solid #b91c1c;
+            border: 2px solid #1e40af;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: #b91c1c;
+            border-color: #1e40af;
             box-shadow: 0 0 0 3px rgba(168, 53, 53, 0.1);
         }
     </style>
@@ -354,6 +354,7 @@
                                 <input class="mr-2" type="radio" name="bus_required" value="yes">
                                 <span class="text-gray-700">Yes</span>
                             </label>
+
                             <label class="flex items-center">
                                 <input class="mr-2" type="radio" name="bus_required" value="no">
                                 <span class="text-gray-700">No</span>
@@ -460,11 +461,11 @@
                     <!-- Birth Certificate -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Birth Certificate <span class="text-red-600">*</span>
+                            Birth Certificate
                         </label>
                         <input class="w-full border rounded p-2 bg-gray-50" name="birth_certificate" type="file"
                             accept=".pdf,.jpg,.jpeg,.png">
-                        <span class="text-red-500 text-sm error-text" id="error-birth_certificate"></span>
+
                     </div>
 
                     <!-- Report Card -->
@@ -507,7 +508,7 @@
 
                 <div class="p-6 space-y-4">
 
-                    <div class="bg-amber-50 p-4 rounded border-l-4 border-red-700">
+                    <div class="bg-amber-50 p-4 rounded border-l-4 border-blue-700">
 
                         <p class="text-gray-700 mb-3">
                             All the information provided in this application form is correct, complete and true to the best
@@ -539,7 +540,8 @@
                         <!-- Important Checkbox -->
                         <div class="mt-5 flex items-start gap-2">
                             <input class="mt-1 h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
-                                type="checkbox" name="declaration_confirmed">
+                                type="checkbox" name="declaration_confirmed" value="1">
+
                             <span class="text-red-500 text-sm error-text" id="error-declaration_confirmed"></span>
 
                             <label class="text-gray-700 text-sm">
@@ -555,7 +557,7 @@
 
             <!-- Submit Button -->
             <div class="flex gap-4 mb-8">
-                <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded transition"
+                <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded transition"
                     type="submit">
                     Submit Application
                 </button>
@@ -573,18 +575,22 @@
         document.getElementById('sibling_yes')?.addEventListener('change', function() {
             document.getElementById('sibling_details').classList.remove('hidden');
         });
+
         document.getElementById('sibling_no')?.addEventListener('change', function() {
             document.getElementById('sibling_details').classList.add('hidden');
         });
 
+
         // Toggle bus details
         document.querySelectorAll('input[name="bus_required"]').forEach(radio => {
             radio.addEventListener('change', function() {
+
                 if (this.value === 'yes') {
                     document.getElementById('bus_details').classList.remove('hidden');
                 } else {
                     document.getElementById('bus_details').classList.add('hidden');
                 }
+
             });
         });
 

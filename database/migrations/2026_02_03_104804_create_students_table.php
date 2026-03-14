@@ -68,9 +68,9 @@ return new class extends Migration
             $table->string('sibling3_class')->nullable();
 
             // Required Documents Upload
-            $table->string('student_photo');
-            $table->string('birth_certificate');
-            $table->string('last_report_card');
+            $table->string('student_photo')->nullable();
+            $table->string('birth_certificate')->nullable();
+            $table->string('last_report_card')->nullable();
             $table->string('transfer_certificate')->nullable();
             $table->string('character_certificate')->nullable();
 
