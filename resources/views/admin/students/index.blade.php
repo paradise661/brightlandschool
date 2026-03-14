@@ -23,21 +23,21 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($student as $key => $blog)
+                        @foreach ($student as $key => $students)
                             <tr>
                                 <td><strong>{{ $key + $student->firstItem() }}</strong></td>
-                                <td><strong>{{ $blog->first_name }} {{ $blog->last_name }}</strong></td>
-                                <td><strong>{{ $blog->father_email }}</strong></td>
-                                <td><strong>{{ $blog->father_phone }}</strong></td>
+                                <td><strong>{{ $students->name ?? '' }} </strong></td>
+                                <td><strong>{{ $students->father_email ?? '' }}</strong></td>
+                                <td><strong>{{ $students->father_phone ?? '' }}</strong></td>
                                 <td><span
-                                        class="badge rounded-pill bg-label-{{ $blog->status == 1 ? 'success' : 'danger' }}">{{ $blog->status == 1 ? 'Publish' : 'Draft' }}</span>
+                                        class="badge rounded-pill bg-label-{{ $students->status == 1 ? 'success' : 'danger' }}">{{ $students->status == 1 ? 'Publish' : 'Draft' }}</span>
                                 </td>
-                                <td>{{ $blog->created_at->diffForHumans() }}</td>
+                                <td>{{ $students->created_at->diffForHumans() }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-success" href="{{ route('student.show', $blog->id) }}"
+                                    <a class="btn btn-sm btn-success" href="{{ route('student.show', $students->id) }}"
                                         style="float: left;margin-right: 5px;"><i class="fa-solid fa-eye"></i></a>
 
-                                    <form class="delete-form" action="{{ route('student.destroy', $blog->id) }}"
+                                    <form class="delete-form" action="{{ route('student.destroy', $students->id) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
