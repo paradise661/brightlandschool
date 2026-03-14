@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <button
-                        class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg">
+                        class="bg-primary text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg">
                         Discover More About Us
                     </button>
                 </div>
@@ -257,7 +257,7 @@
             </div>
 
             <div class="mt-8 flex justify-center">
-                <a class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-secondary transition"
+                <a class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition"
                     href="{{ route('notice') }}">
                     View More
                 </a>
@@ -609,7 +609,7 @@
                         class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-snug sm:leading-tight">
                         {{ $setting['homepage_blog_title1'] ?? '' }}</h2>
                 </div>
-                <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View
+                <button class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View
                     All</button>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
