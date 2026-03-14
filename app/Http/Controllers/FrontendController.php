@@ -213,7 +213,7 @@ class FrontendController extends Controller
             $data = $request->validated();
 
             // File uploads
-            $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate'];
+            $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate', 'character_certificate'];
             foreach ($files as $file) {
                 if ($request->hasFile($file)) {
                     $data[$file] = fileUpload($request, $file, 'Admission');

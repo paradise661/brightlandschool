@@ -87,14 +87,18 @@
                             <tr>
                                 <td>Full Name</td>
                                 <td>
-                                    {{ $student->first_name ?? '-' }}
-                                    {{ $student->last_name ?? '-' }}
+                                    {{ $student->name ?? '-' }}
+
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>Date of Birth</td>
-                                <td>{{ $student->date_of_birth?->format('d M Y') ?? '-' }}</td>
+                                <td>Date of Birth(AD)</td>
+                                <td>{{ $student->dob_ad ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Date of Birth(BS)</td>
+                                <td>{{ $student->dob_bs ?? '-' }}</td>
                             </tr>
 
                             <tr>
@@ -102,100 +106,69 @@
                                 <td class="text-capitalize">{{ $student->gender ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <td>Nationality</td>
-                                <td>{{ $student->nationality ?? '-' }}</td>
+                                <td>Age</td>
+                                <td class="text-capitalize">{{ $student->age ?? '-' }}</td>
                             </tr>
-
                             <tr>
                                 <td>Religion</td>
-                                <td>{{ $student->religion ?? '-' }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Mother Tongue</td>
-                                <td>{{ $student->mother_tongue ?? '-' }}</td>
+                                <td>{{ $student->father_religion ?? '-' }}</td>
                             </tr>
 
                             <tr>
                                 <td>Current Address</td>
                                 <td>
-                                    {{ $student->current_address ?? '-' }},
-                                    {{ $student->city ?? '-' }},
-                                    {{ $student->state ?? '-' }},
-                                    {{ $student->country ?? '-' }}
+                                    {{ $student->father_address ?? '-' }},
+
                                 </td>
                             </tr>
                             <tr>
-                                <td>Applying Grade</td>
-                                <td>{{ $student->applying_grade ?? '-' }}</td>
+                                <td>Class Last Attended</td>
+                                <td>{{ $student->last_class_attended ?? '-' }}</td>
                             </tr>
 
-                            <tr>
-                                <td>Academic Year</td>
-                                <td>{{ $student->academic_year ?? '-' }}</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <!-- Academic Qualification -->
+            <div class="section">
+                <div class="card mt-4">
+                    <h5 class="card-header">Student's Details</h5>
+                    <div class="card-body">
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Information</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
 
-            <h5 class="card-header">Address Information</h5>
-            <div class="card-body">
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Information</th>
-                            </tr>
-                        </thead>
+                                    <tr>
+                                        <td>Class Last Attended</td>
+                                        <td>{{ $student->last_class_attended ?? '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Result</td>
+                                        <td>{{ $student->result ?? '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name and Address of the School</td>
+                                        <td>{{ $student->school_name_address ?? '-' }}</td>
+                                    </tr>
 
-                        <tbody class="table-border-bottom-0">
-
-                            <tr>
-                                <td>Current Address</td>
-                                <td>
-                                    {{ $student->current_address ?? '-' }}
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>City</td>
-                                <td>
-                                    {{ $student->city ?? '-' }}
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>State</td>
-                                <td>
-                                    {{ $student->state ?? '-' }}
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Postal Code</td>
-                                <td>
-                                    {{ $student->postal_code ?? '-' }}
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Country</td>
-                                <td>
-                                    {{ $student->country ?? '-' }}
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    <tr>
+                                        <td>Give Detail of Child's Illness</td>
+                                        <td>{{ $student->medical_history ?? '-' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
+            </div>
             <h5 class="card-header">Father Information</h5>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
@@ -308,94 +281,7 @@
                 </div>
             </div>
 
-            <h5 class="card-header">Additional Information</h5>
-            <div class="card-body">
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Information</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="table-border-bottom-0">
-
-                            <tr>
-                                <td>How Did You Hear About School</td>
-                                <td>
-                                    {{ $student->heard_about_school ?? '-' }}
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Why Join This School</td>
-                                <td>
-                                    {{ $student->why_join_school ?? '-' }}
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hobbies and Interests</td>
-                                <td>
-                                    {{ $student->student_hobbies ?? '-' }}
-
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
-    </div>
-
-    <!-- Academic Qualification -->
-    <div class="section">
-        <div class="card mt-4">
-            <h5 class="card-header">Medical Information</h5>
-            <div class="card-body">
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Information</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0">
-
-                            <tr>
-                                <td>Medical Conditions</td>
-                                <td>{{ $student->medical_conditions ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Blood Group</td>
-                                <td>{{ $student->blood_group ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Emergency Contact Name</td>
-                                <td>{{ $student->emergency_contact_name ?? '-' }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Emergency Contact Number</td>
-                                <td>
-                                    @if ($student->emergency_contact_number)
-                                        <a
-                                            href="tel:{{ $student->emergency_contact_number }}">{{ $student->emergency_contact_number }}</a>
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <div class="section">
@@ -435,16 +321,112 @@
                             </tr>
 
                             <tr>
-                                <td>Email</td>
+                                <td>Address</td>
                                 <td>
-                                    @if ($student->guardian_email)
-                                        <a
-                                            href="mailto:{{ $student->guardian_email }}">{{ $student->guardian_email }}</a>
+                                    {{ $student->guardian_address ?? '-' }}
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card mt-4">
+            <h5 class="card-header">Brother/Sister Information</h5>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Information</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            <!-- Guardian Info -->
+                            <tr>
+                                <td>Brother/Sister studying in this school</td>
+                                <td>
+                                    {{ $student->has_sibling ?? '-' }}
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Sibling 1 - Name/class</td>
+                                <td>
+                                    {{ $student->sibling1_name ?? '-' }}/{{ $student->sibling1_class ?? '-' }}
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Sibling 2 - Name/class</td>
+                                <td>
+                                    {{ $student->sibling2_name ?? '-' }}/{{ $student->sibling2_class ?? '-' }}
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Sibling 3 - Name/class</td>
+                                <td>
+                                    {{ $student->sibling3_name ?? '-' }}/{{ $student->sibling3_class ?? '-' }}
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="card mt-4">
+            <h5 class="card-header">School Bus Information</h5>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Information</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            <!-- Guardian Info -->
+                            <tr>
+                                <td>Require school bus</td>
+                                <td>{{ $student->bus_required ?? '-' }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Pick-up Point</td>
+                                <td>{{ $student->bus_pickup_point ?? '-' }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Address</td>
+                                <td>{{ $student->bus_address ?? '-' }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Contact Number</td>
+                                <td>
+                                    @if ($student->bus_phone)
+                                        <a href="tel:{{ $student->bus_phone }}">{{ $student->bus_phone }}</a>
                                     @else
                                         -
                                     @endif
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
