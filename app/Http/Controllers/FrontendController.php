@@ -242,7 +242,7 @@ class FrontendController extends Controller
             $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
 
             // Send email to admin
-            Mail::to('roshanhumagain53@gmail.com')
+            Mail::to('rosahnhumagain54@gmail.com')
                 ->send(new StudentFormMail($pdf->output(), $fileName));
 
             return response()->json([
