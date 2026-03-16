@@ -24,6 +24,10 @@ use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use App\Mail\StudentFormMail;
 
 class FrontendController extends Controller
 {
@@ -214,13 +218,32 @@ class FrontendController extends Controller
 
             // File uploads
             $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate', 'character_certificate'];
+
             foreach ($files as $file) {
                 if ($request->hasFile($file)) {
                     $data[$file] = fileUpload($request, $file, 'Admission');
                 }
             }
 
-            Student::create($data);
+            // Save student
+            $student = Student::create($data);
+
+            // Decode source if needed
+            if ($student->source) {
+                $student->source = is_array($student->source)
+                    ? $student->source
+                    : json_decode($student->source, true);
+            }
+
+            // Generate PDF
+            $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
+
+            $studentName = trim($student->name);
+            $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
+
+            // Send email to admin
+            Mail::to('roshanhumagain53@gmail.com')
+                ->send(new StudentFormMail($pdf->output(), $fileName));
 
             return response()->json([
                 'success' => true,
@@ -229,7 +252,7 @@ class FrontendController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong. Please try again.'
+                'message' => $e->getMessage()
             ], 500);
         }
     }
