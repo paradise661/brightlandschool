@@ -178,8 +178,11 @@ class DatabaseSeeder extends Seeder
             ['teacher_breadcrum_image', null],
             ['testimonial_breadcrum_image', null],
             ['admission_breadcrum_image', null],
-
-
+            ['mission_title', 'Our Foundation'],
+            ['mission_title1', 'Vision, Mission & Values'],
+            ['team_title1', 'Teacher'],
+            ['about_choose_title', 'Why Choose Us'],
+            ['about_choose_title1', 'What Makes Us Different'],
 
 
 

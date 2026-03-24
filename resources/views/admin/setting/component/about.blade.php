@@ -131,13 +131,48 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label class="pb-2" for="team_title">Enter Team Title</label>
-                        <input class="form-control br-8" type="text" name="team_title"
-                            value="{{ $setting['team_title'] }}" placeholder="Enter team_title Title">
+                        <label class="pb-2" for="mission_title">Enter Mission/Vission Title</label>
+                        <input class="form-control br-8" type="text" name="mission_title"
+                            value="{{ $setting['mission_title'] }}" placeholder="Enter  Title">
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="mission_title">Enter Sub Mission/Vission Title</label>
+                        <input class="form-control br-8" type="text" name="mission_title1"
+                            value="{{ $setting['mission_title1'] }}" placeholder="Enter Title">
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="team_title">Enter Team Title</label>
+                        <input class="form-control br-8" type="text" name="team_title"
+                            value="{{ $setting['team_title'] }}" placeholder="Enter  Title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="team_title">Enter Sub Team Title</label>
+                        <input class="form-control br-8" type="text" name="team_title1"
+                            value="{{ $setting['team_title1'] }}" placeholder="Enter  Title">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="about_choose_title">Enter WhyChoose Title</label>
+                        <input class="form-control br-8" type="text" name="about_choose_title"
+                            value="{{ $setting['about_choose_title'] }}" placeholder="Enter  Title">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="about_choose_title">Enter Sub WhyChoose Title</label>
+                        <input class="form-control br-8" type="text" name="about_choose_title1"
+                            value="{{ $setting['about_choose_title1'] }}" placeholder="Enter  Title">
+                    </div>
+                </div>
+
             </div>
         </fieldset>
     </div>

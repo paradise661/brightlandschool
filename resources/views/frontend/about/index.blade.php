@@ -135,9 +135,10 @@
         id="vision-mission-values">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Our Vision, Mission & Core Values</h2>
-                <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">Guiding principles that shape our educational
-                    philosophy and commitment to excellence</p>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">{{ $setting['mission_title'] ?? '' }}
+                </h2>
+                <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                    {{ $setting['mission_title1'] ?? '' }}</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($vmvItems as $mission)
@@ -158,11 +159,12 @@
     <section class="py-12 md:py-16 lg:py-20 bg-gray-50" id="leadership-team">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Teachers</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">Meet Our Leadership Team
+                <span
+                    class="text-secondary font-semibold text-sm uppercase tracking-wider">{{ $setting['team_title'] ?? '' }}</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">
+                    {{ $setting['team_title1'] ?? '' }}
                 </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Experienced educators and administrators
-                    dedicated to student success</p>
+
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -243,13 +245,12 @@
         <div class="container mx-auto px-4 md:px-6">
 
             <div class="text-center mb-12 md:mb-16">
-                <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Why Choose Us</span>
+                <span
+                    class="text-secondary font-semibold text-sm uppercase tracking-wider">{{ $setting['about_choose_title'] ?? '' }}</span>
                 <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4 mb-4">
-                    What Makes Us Different
+                    {{ $setting['about_choose_title1'] ?? '' }}
                 </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                    Discover the unique advantages that set Excellence Academy apart
-                </p>
+
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
