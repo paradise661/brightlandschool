@@ -206,58 +206,6 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function admission()
-    {
-
-        return view('frontend.admission.index');
-    }
-    public function studentStore(StoreStudentsRequest $request)
-    {
-        try {
-            $data = $request->validated();
-
-            // File uploads
-            $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate', 'character_certificate'];
-
-            foreach ($files as $file) {
-                if ($request->hasFile($file)) {
-                    $data[$file] = fileUpload($request, $file, 'Admission');
-                }
-            }
-
-            // Save student
-            $student = Student::create($data);
-
-            // Decode source if needed
-            if ($student->source) {
-                $student->source = is_array($student->source)
-                    ? $student->source
-                    : json_decode($student->source, true);
-            }
-
-            // Generate PDF
-            $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
-
-            $studentName = trim($student->name);
-            $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
-
-            // Send email to admin
-            Mail::to('rosahnhumagain54@gmail.com')
-                ->send(new StudentFormMail($pdf->output(), $fileName));
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Student saved successfully!'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-
     public function downloads()
     {
         $downloads = Download::with('category')->where('status', 1)->get();

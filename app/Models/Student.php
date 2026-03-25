@@ -79,5 +79,9 @@ class Student extends Model
         'source',
         'priority',
         'note',
+
+        'esewa_transaction_code',
+        'esewa_details',
+        'payment_status',
     ];
 }

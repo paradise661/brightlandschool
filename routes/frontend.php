@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,8 @@ Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [FrontendController::class, 'showBlog'])->name('frontend.blog.show');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('/contact', [FrontendController::class, 'contactStore'])->name('frontend.contacts.store');
-Route::get('/admission', [FrontendController::class, 'admission'])->name('frontend.admission');
-Route::post('/admission', [FrontendController::class, 'studentStore'])->name('frontend.admission.store');
+Route::get('/admission', [AdmissionController::class, 'admission'])->name('frontend.admission');
+Route::post('/admission', [AdmissionController::class, 'studentStore'])->name('frontend.admission.store');
 Route::get('/downloads', [FrontendController::class, 'downloads'])->name('downloads');
 Route::get('/downloads/{slug}/file', [FrontendController::class, 'downloadFile'])->name('downloads.file');
 
@@ -34,3 +35,7 @@ Route::get('/page/{slug}', [FrontendController::class, 'showPageSection'])->name
 
 Route::get('/reviews', [FrontendController::class, 'reviews'])->name('frontend.reviews');
 Route::get('/teachers', [FrontendController::class, 'teachers'])->name('frontend.teachers');
+
+Route::get('/esewa/success', [AdmissionController::class, 'esewaSuccess'])->name('esewa.success');
+Route::get('/esewa/failure', [AdmissionController::class, 'esewaFailure'])->name('esewa.failure');
+Route::get('/payment/confirmation', [AdmissionController::class, 'confirmation'])->name('esewa.confirmation');

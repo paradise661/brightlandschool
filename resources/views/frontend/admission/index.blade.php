@@ -671,12 +671,28 @@
                         }
 
                     } else if (response.ok) {
-                        toastr.success(data.message, "Success");
-                        form.reset();
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
+                        toastr.success("Redirecting to esewa");
+
+
+                        // esewa payment
+                        const paymentData = data.data;
+
+                        const esewaForm = document.createElement("form");
+                        esewaForm.method = "POST";
+                        esewaForm.action = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
+
+                        Object.keys(paymentData).forEach(key => {
+                            const input = document.createElement("input");
+                            input.type = "hidden";
+                            input.name = key;
+                            input.value = paymentData[key];
+                            esewaForm.appendChild(input);
                         });
+
+                        document.body.appendChild(esewaForm);
+
+                        esewaForm.submit();
+
                     } else {
                         toastr.error(data.message || "Something went wrong.", "Error");
                     }
