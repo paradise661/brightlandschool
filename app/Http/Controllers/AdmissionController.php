@@ -18,7 +18,7 @@ class AdmissionController extends Controller
         return view('frontend.admission.index');
     }
 
-    public function studentStore(Request $request)
+    public function studentStore(StoreStudentsRequest $request)
     {
         try {
             $data = $request->all();
@@ -50,8 +50,8 @@ class AdmissionController extends Controller
             $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
 
             // Send email to admin
-            // Mail::to('rosahnhumagain54@gmail.com')
-            //     ->send(new StudentFormMail($pdf->output(), $fileName));
+            Mail::to('rosahnhumagain54@gmail.com')
+                ->send(new StudentFormMail($pdf->output(), $fileName));
 
 
             // esewa

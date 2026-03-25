@@ -17,6 +17,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Payment</th>
                             <th>Status</th>
                             <th>Submitted at</th>
                             <th>Actions</th>
@@ -29,6 +30,16 @@
                                 <td><strong>{{ $students->name ?? '' }} </strong></td>
                                 <td><strong>{{ $students->father_email ?? '' }}</strong></td>
                                 <td><strong>{{ $students->father_phone ?? '' }}</strong></td>
+                                @php
+                                    $status = strtolower($students->payment_status);
+                                @endphp
+
+                                <td>
+                                    <span
+                                        class="badge rounded-pill bg-label-{{ $status === 'paid' ? 'success' : 'warning' }}">
+                                        {{ ucfirst($status) }}
+                                    </span>
+                                </td>
                                 <td><span
                                         class="badge rounded-pill bg-label-{{ $students->status == 1 ? 'success' : 'danger' }}">{{ $students->status == 1 ? 'Publish' : 'Draft' }}</span>
                                 </td>

@@ -350,6 +350,34 @@
             </div>
 
             <div class="card mt-4">
+                <h5 class="card-header">Payments Details</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>Payment Status:</td>
+                                    <td>{{ $student->payment_status ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Transcation Code:</td>
+                                    <td>{{ $student->esewa_transaction_code ?? '-' }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
                 <h5 class="card-header">Student's Details</h5>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
@@ -384,6 +412,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="card mt-4">
                 <h5 class="card-header">Students Documents</h5>
                 <div class="card-body">
