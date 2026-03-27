@@ -780,7 +780,7 @@
             <section class="bg-white rounded-lg shadow-md overflow-hidden">
 
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
-                    <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">6</span>
+                    <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">7</span>
                     <h3 class="text-xl font-bold">
                         DOCUMENTS TO BE SUBMITTED WITH THIS FORM
                     </h3>
