@@ -31,6 +31,9 @@ return new class extends Migration
             $table->text('seo_description')->nullable();
             $table->text('seo_schema')->nullable();
             $table->string('seo_keywords')->nullable();
+
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
             $table->timestamps();
         });
     }
