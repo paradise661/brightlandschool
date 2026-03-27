@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,5 @@ Route::get('/teachers', [FrontendController::class, 'teachers'])->name('frontend
 Route::get('/esewa/success', [AdmissionController::class, 'esewaSuccess'])->name('esewa.success');
 Route::get('/esewa/failure', [AdmissionController::class, 'esewaFailure'])->name('esewa.failure');
 Route::get('/payment/confirmation', [AdmissionController::class, 'confirmation'])->name('esewa.confirmation');
+
+Route::get('/calendar', [CalendarController::class, 'calendar'])->name('frontend.calendar');
