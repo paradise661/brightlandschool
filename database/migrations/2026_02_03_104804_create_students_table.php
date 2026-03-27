@@ -106,7 +106,10 @@ return new class extends Migration
             $table->string('agreement_sign')->nullable();
 
 
-
+            //eswewa
+            $table->string('esewa_transaction_code')->nullable();
+            $table->longText('esewa_details')->nullable();
+            $table->string('payment_status')->nullable();
 
             $table->string('priority')->nullable();
             $table->string('note')->nullable();

@@ -71,6 +71,13 @@
 
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Medical History</td>
+                                    <td>
+                                        {{ $student->medical_history ?? '-' }},
+
+                                    </td>
+                                </tr>
 
                             </tbody>
                         </table>
@@ -279,6 +286,63 @@
                                     <td>
                                         {{ $student->sibling3_name ?? '-' }}/{{ $student->sibling3_class ?? '-' }}
 
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h5 class="card-header">AGREEMENT OF PARENT / GUARDIAN AND THE APPLICANT</h5>
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Information</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="table-border-bottom-0">
+
+                                <tr>
+                                    <td>Name</td>
+                                    <td>
+                                        {{ $student->agreement_name ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Relation</td>
+                                    <td>
+                                        {{ $student->agreement_relations ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Date</td>
+                                    <td>
+                                        {{ $student->agreement_date ?? '-' }}
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Signature</td>
+                                    <td>
+                                        @if ($student->agreement_sign)
+                                            <a class="fancybox btn btn-sm btn-primary" data-fancybox
+                                                data-type="{{ Str::endsWith($student->agreement_sign, '.pdf') ? 'iframe' : 'image' }}"
+                                                href="{{ $student->agreement_sign }}">
+                                                View
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Not uploaded</span>
+                                        @endif
                                     </td>
                                 </tr>
 
