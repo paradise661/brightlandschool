@@ -25,16 +25,24 @@ class StoreStudentsRequest extends FormRequest
 
             // Student Detail
             'name' => 'required|string|max:255',
-            'dob_ad' => 'nullable|date',
+            'dob_ad' => 'required|date',
             'dob_bs' => 'nullable|string|max:20',
-            'age' => 'required|integer|min:3|max:25',
+            'age' => 'nullable|integer|min:3|max:25',
             'gender' => 'required|in:male,female',
+            'email' => 'nullable|email|max:255',
+            'nationality' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'student_class' => 'nullable|string|max:255',
 
             // Student Educational Information
             'last_class_attended' => 'nullable|string|max:100',
             'result' => 'nullable|string|max:100',
             'school_name_address' => 'nullable|string|max:255',
             'medical_history' => 'nullable|string|max:255',
+            'school_name' => 'nullable|string|max:255',
+            'school_passed' => 'nullable|string|max:255',
+            'school_reason' => 'nullable|string|max:255',
+            'know_us_required' => 'nullable|string|max:255',
 
             // Father Information
             'father_name' => 'required|string|max:255',
@@ -59,6 +67,10 @@ class StoreStudentsRequest extends FormRequest
             'guardian_address' => 'nullable|string|max:255',
             'guardian_relationship' => 'nullable|string|max:100',
             'guardian_phone' => 'nullable|string|max:20',
+            'guardian_qualifaction' => 'nullable|string|max:255',
+            'guardian_occupation' => 'nullable|string|max:255',
+            'guardian_office' => 'nullable|string|max:255',
+            'guardian_email' => 'nullable|email|max:255',
 
             // Bus Information
             'bus_required' => 'nullable|in:yes,no',
@@ -83,8 +95,22 @@ class StoreStudentsRequest extends FormRequest
             'transfer_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
             'character_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
 
+
+
+
             // Declaration
-            'declaration_confirmed' => 'accepted',
+            // 'declaration_confirmed' => 'accepted',
+            'declaration_relations' => 'nullable|string|max:255',
+            'declaration_sign' => 'nullable|image|max:2048',
+            'declaration_date' => 'nullable|date',
+
+
+
+            // Agreement Section
+            'agreement_name' => 'nullable|string|max:255',
+            'agreement_relations' => 'nullable|string|max:255',
+            'agreement_date' => 'nullable|date',
+            'agreement_sign' => 'nullable|image|max:2048',
 
         ];
     }

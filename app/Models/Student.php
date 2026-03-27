@@ -19,12 +19,21 @@ class Student extends Model
         'dob_bs',
         'age',
         'gender',
+        'email',
+        'nationality',
+        'address',
 
         // Student's Educational Information
         'last_class_attended',
         'result',
         'school_name_address',
         'medical_history',
+        'school_name',
+        'school_passed',
+        'school_reason',
+        'know_us_required',
+        'student_class',
+
 
         // Father's Information
         'father_name',
@@ -49,6 +58,10 @@ class Student extends Model
         'guardian_address',
         'guardian_relationship',
         'guardian_phone',
+        'guardian_qualifaction',
+        'guardian_occupation',
+        'guardian_office',
+        'guardian_email',
 
         // School Bus Information
         'bus_required',
@@ -74,7 +87,18 @@ class Student extends Model
         'character_certificate',
 
         // Declaration
+        'declaration_relations',
+        'declaration_sign',
+        'declaration_date',
         'declaration_confirmed',
+
+        // Agreement Section
+        'agreement_name',
+        'agreement_relations',
+        'agreement_date',
+        'agreement_sign',
+
+
         'status',
         'source',
         'priority',

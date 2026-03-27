@@ -21,11 +21,21 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
 
+            $table->string('email')->nullable(); //new
+            $table->string('nationality')->nullable();
+            $table->string('address')->nullable();
+
             // Student's Educational Information
             $table->string('last_class_attended')->nullable();
             $table->string('result')->nullable();
             $table->string('school_name_address')->nullable();
             $table->text('medical_history')->nullable();
+
+            $table->string('school_name')->nullable(); //new
+            $table->string('school_passed')->nullable();
+            $table->string('school_reason')->nullable();
+            $table->string('know_us_required')->nullable();
+            $table->string('student_class')->nullable();
 
             // Father's Information
             $table->string('father_name')->nullable();
@@ -35,6 +45,8 @@ return new class extends Migration
             $table->string('father_ethnicity')->nullable();
             $table->string('father_phone')->nullable();
             $table->string('father_email')->nullable();
+
+
 
             // Mother's Information
             $table->string('mother_name')->nullable();
@@ -50,6 +62,12 @@ return new class extends Migration
             $table->string('guardian_address')->nullable();
             $table->string('guardian_relationship')->nullable();
             $table->string('guardian_phone')->nullable();
+
+
+            $table->string('guardian_qualifaction')->nullable(); //new
+            $table->string('guardian_occupation')->nullable();
+            $table->string('guardian_office')->nullable();
+            $table->string('guardian_email')->nullable();
 
             // School Bus Information
             $table->enum('bus_required', ['yes', 'no'])->default('no');
@@ -76,6 +94,19 @@ return new class extends Migration
 
             // Declaration confirmation
             $table->boolean('declaration_confirmed')->default(false);
+
+            $table->string('declaration_relations')->nullable(); //new
+            $table->string('declaration_sign')->nullable();
+            $table->string('declaration_date')->nullable();
+
+            //agrement new
+            $table->string('agreement_name')->nullable();
+            $table->string('agreement_relations')->nullable();
+            $table->string('agreement_date')->nullable();
+            $table->string('agreement_sign')->nullable();
+
+
+
 
             $table->string('priority')->nullable();
             $table->string('note')->nullable();

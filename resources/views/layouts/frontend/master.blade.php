@@ -113,6 +113,9 @@
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    <link rel="stylesheet" href="{{ asset('frontend/css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/nepali.datepicker.v2.2.min.css') }}">
+
     <script>
         window.FontAwesomeConfig = {
             autoReplaceSvg: 'nest'
@@ -154,6 +157,9 @@
 
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="{{ asset('frontend/js/datepicker.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/nepali.datepicker.v2.2.min.js') }}"></script>
 
     <script>
         toastr.options = {

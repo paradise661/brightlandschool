@@ -20,11 +20,12 @@ class AdmissionController extends Controller
 
     public function studentStore(StoreStudentsRequest $request)
     {
+
         try {
             $data = $request->all();
 
             // File uploads
-            $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate', 'character_certificate'];
+            $files = ['student_photo', 'birth_certificate', 'last_report_card', 'transfer_certificate', 'character_certificate', 'agreement_sign', 'declaration_sign'];
 
             foreach ($files as $file) {
                 if ($request->hasFile($file)) {
@@ -35,6 +36,7 @@ class AdmissionController extends Controller
             // Save student
             $data['payment_status'] = 'Pending';
             $student = Student::create($data);
+
 
             // Decode source if needed
             if ($student->source) {
@@ -50,8 +52,8 @@ class AdmissionController extends Controller
             $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
 
             // Send email to admin
-            Mail::to('rosahnhumagain54@gmail.com')
-                ->send(new StudentFormMail($pdf->output(), $fileName));
+            // Mail::to('rosahnhumagain54@gmail.com')
+            //     ->send(new StudentFormMail($pdf->output(), $fileName));
 
 
             // esewa
