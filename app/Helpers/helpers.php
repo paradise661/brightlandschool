@@ -260,3 +260,24 @@ if (! function_exists('multiFileUpload')) {
         }
     }
 }
+
+if (! function_exists('getEvents')) {
+    function getEvents()
+    {
+        $events = [
+            [
+                'title' => 'Meeting with Team',
+                'start' => '2082-12-08', // BS date in YYYY-MM-DD
+                'end'   => '2082-12-10',
+                'description' => 'Discuss project progress'
+            ],
+            [
+                'title' => 'Custom Note',
+                'start' => '2082-12-11',
+                'description' => 'Your own embedded text'
+            ]
+        ];
+
+        return $events;
+    }
+}
