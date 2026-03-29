@@ -167,7 +167,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">1</span>
                     <h3 class="text-xl font-bold">
-                        PERSONAL DETAILS
+                        Personal Details
                     </h3>
                 </div>
                 <div class="p-6 space-y-6">
@@ -438,7 +438,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">2</span>
                     <h3 class="text-xl font-bold">
-                        MEDICAL INFORMATION
+                        Medical Information
                     </h3>
                 </div>
                 <div class="p-6 space-y-6">
@@ -457,7 +457,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">3</span>
                     <h3 class="text-xl font-bold">
-                        INFORMATION OF THE PREVIOUS SCHOOL ( Not applicable for Nursery )
+                        Information of the previous School ( Not applicable for Nursery )
                     </h3>
                 </div>
                 <div class="p-6 space-y-6">
@@ -613,8 +613,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">4</span>
                     <h3 class="text-xl font-bold">
-                        DISCIPLINARY RULES
-                    </h3>
+                        Disciplinary Rules </h3>
                 </div>
 
                 <div class="p-6 space-y-6">
@@ -663,7 +662,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">5</span>
                     <h3 class="text-xl font-bold">
-                        OTHER FACILITIES
+                        Other Facilities
                     </h3>
                 </div>
                 <div class="p-6 space-y-4">
@@ -717,7 +716,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">6</span>
                     <h3 class="text-xl font-bold">
-                        AGREEMENT OF PARENT / GUARDIAN AND THE APPLICANT
+                        Agreement of Parent / Guardian and the applicant
                     </h3>
                 </div>
 
@@ -782,7 +781,7 @@
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">7</span>
                     <h3 class="text-xl font-bold">
-                        DOCUMENTS TO BE SUBMITTED WITH THIS FORM
+                        Documents to be submitted with this form
                     </h3>
                 </div>
 
