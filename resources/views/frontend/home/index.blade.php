@@ -71,8 +71,8 @@
 
                 <div class="relative z-20 container mx-auto px-6 h-full flex items-center">
                     <div class="max-w-full sm:max-w-xl md:max-w-3xl text-white">
-                        <h1
-                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-snug sm:leading-tight">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-snug sm:leading-tight"
+                            style="line-height: 1.2">
                             {{ $slider->name ?? '' }}
                         </h1>
 

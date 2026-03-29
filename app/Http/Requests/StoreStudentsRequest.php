@@ -29,9 +29,9 @@ class StoreStudentsRequest extends FormRequest
             'dob_bs' => 'nullable|string|max:20',
             'age' => 'nullable|integer|min:3|max:25',
             'gender' => 'required|in:male,female',
-            'email' => 'nullable|email|max:255',
-            'nationality' => 'nullable|string|max:255',
-            'address' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'nationality' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
             'student_class' => 'nullable|string|max:255',
 
             // Student Educational Information

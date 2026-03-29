@@ -127,13 +127,6 @@
                                     <option value="grade8"
                                         {{ old('student_class', $student->student_class ?? '') == 'grade8' ? 'selected' : '' }}>
                                         Grade 8</option>
-                                    <option value="grade9"
-                                        {{ old('student_class', $student->student_class ?? '') == 'grade9' ? 'selected' : '' }}>
-                                        Grade 9</option>
-                                    <option value="grade10"
-                                        {{ old('student_class', $student->student_class ?? '') == 'grade10' ? 'selected' : '' }}>
-                                        Grade 10</option>
-
                                 </select>
                             </div>
                         </div>
@@ -231,19 +224,21 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">E-mail Address:</label>
+                            <label class="block text-gray-700 font-semibold mb-2">E-mail: <span
+                                    class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="email" type="email"
-                                placeholder="Email">
+                                placeholder="Email" autocomplete="off">
                         </div>
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Nationality :</label>
-                            <input class="form-input w-full px-4 py-3 rounded" name="nationality" type="tel"
-                                placeholder="Phone">
+                            <label class="block text-gray-700 font-semibold mb-2">Nationality:<span
+                                    class="text-red-500">*</span></label>
+                            <input class="form-input w-full px-4 py-3 rounded" name="nationality" type="text"
+                                placeholder="Nationality">
                         </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Home Address ( Permanent / Temporary
-                            )</label>
+                            )<span class="text-red-500">*</span></label>
                         <input class="form-input w-full px-4 py-3 rounded" name="address" type="text"
                             placeholder="Residential address">
                     </div>
