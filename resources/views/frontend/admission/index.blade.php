@@ -228,12 +228,15 @@
                                     class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="email" type="email"
                                 placeholder="Email" autocomplete="off">
+                            <span class="text-red-500 text-sm error-text" id="error-email"></span>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Nationality:<span
                                     class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="nationality" type="text"
                                 placeholder="Nationality">
+                            <span class="text-red-500 text-sm error-text" id="error-nationality"></span>
+
                         </div>
                     </div>
                     <div>
@@ -241,6 +244,8 @@
                             )<span class="text-red-500">*</span></label>
                         <input class="form-input w-full px-4 py-3 rounded" name="address" type="text"
                             placeholder="Residential address">
+                        <span class="text-red-500 text-sm error-text" id="error-address"></span>
+
                     </div>
                 </div>
             </section>
