@@ -103,6 +103,9 @@
                                     name="student_class">
                                     <option value="">Select Class</option>
 
+                                    <option value="nursery"
+                                        {{ old('student_class', $student->student_class ?? '') == 'nursery' ? 'selected' : '' }}>
+                                        Nursery</option>
                                     <option value="grade1"
                                         {{ old('student_class', $student->student_class ?? '') == 'grade1' ? 'selected' : '' }}>
                                         Grade 1</option>
@@ -279,13 +282,37 @@
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Educational
                                         Qualification:</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" name="father_ethnicity"
-                                        type="text" placeholder="Qualification">
+
+                                    <select class="form-input w-full px-4 py-3 rounded" name="father_ethnicity">
+                                        <option value="">Select Qualification</option>
+                                        <option value="school_level">School Level</option>
+                                        <option value="slc_passed">SLC Passed</option>
+                                        <option value="+2">+2</option>
+                                        <option value="bachelor">Bachelor</option>
+                                        <option value="masters">Masters</option>
+                                        <option value="phd">Phd.</option>
+                                        <option value="others">Others</option>
+                                    </select>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" name="father_occupation"
-                                        type="text" placeholder="Job title">
+                                    <div>
+                                        <select class="form-input w-full px-4 py-3 rounded" name="father_occupation">
+                                            <option value="">Select Occupation</option>
+                                            <option value="student">Student</option>
+                                            <option value="teacher">Teacher</option>
+                                            <option value="lecturer_professor">Lecturer/Professor</option>
+                                            <option value="government_employee">Government Employee</option>
+                                            <option value="private_employee">Private Employee</option>
+                                            <option value="business_owner">Business Owner</option>
+                                            <option value="self_employed">Self-Employed</option>
+                                            <option value="freelancer">Freelancer</option>
+                                            <option value="unemployed">Unemployed</option>
+                                            <option value="retired">Retired</option>
+                                            <option value="farmer">Farmer</option>
+                                            <option value="others">Others</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>
@@ -338,13 +365,37 @@
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Educational Qualification
                                     </label>
-                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_ethnicity"
-                                        type="text" placeholder="Qualification">
+
+                                    <select class="form-input w-full px-4 py-3 rounded" name="mother_ethnicity">
+                                        <option value="">Select Qualification</option>
+                                        <option value="school_level">School Level</option>
+                                        <option value="slc_passed">SLC Passed</option>
+                                        <option value="plus_two">+2</option>
+                                        <option value="bachelor">Bachelor</option>
+                                        <option value="masters">Masters</option>
+                                        <option value="phd">PhD</option>
+                                        <option value="others">Others</option>
+                                    </select>
                                 </div>
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Occupation</label>
-                                    <input class="form-input w-full px-4 py-3 rounded" name="mother_occupation"
-                                        type="text" placeholder="Job title">
+                                    <div>
+                                        <select class="form-input w-full px-4 py-3 rounded" name="mother_occupation">
+                                            <option value="">Select Occupation</option>
+                                            <option value="student">Student</option>
+                                            <option value="teacher">Teacher</option>
+                                            <option value="lecturer_professor">Lecturer/Professor</option>
+                                            <option value="government_employee">Government Employee</option>
+                                            <option value="private_employee">Private Employee</option>
+                                            <option value="business_owner">Business Owner</option>
+                                            <option value="self_employed">Self-Employed</option>
+                                            <option value="freelancer">Freelancer</option>
+                                            <option value="unemployed">Unemployed</option>
+                                            <option value="retired">Retired</option>
+                                            <option value="farmer">Farmer</option>
+                                            <option value="others">Others</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>
@@ -514,7 +565,8 @@
                             <span class="text-gray-700">Yes</span>
                         </label>
                         <label class="flex items-center">
-                            <input class="mr-2" id="sibling_no" type="radio" name="has_sibling" value="no">
+                            <input class="mr-2" id="sibling_no" type="radio" name="has_sibling" value="no"
+                                checked>
                             <span class="text-gray-700">No</span>
                         </label>
                     </div>
@@ -599,8 +651,9 @@
 
                             <label class="flex items-center">
                                 <input class="mr-2" type="radio" name="know_us_required" value="other"
-                                    {{ old('know_us_required', $student->know_us_required ?? '') == 'other' ? 'checked' : '' }}>
-                                <span class="text-gray-700">Other</span>
+                                    {{ old('know_us_required', $student->know_us_required ?? '') == 'other' ? 'checked' : '' }}
+                                    checked>
+                                <span class="text-gray-700">Others</span>
                             </label>
 
                         </div>
@@ -674,7 +727,7 @@
                                 <span class="text-gray-700">Yes</span>
                             </label>
                             <label class="flex items-center">
-                                <input class="mr-2" type="radio" name="bus_required" value="no">
+                                <input class="mr-2" type="radio" name="bus_required" value="no" checked>
                                 <span class="text-gray-700">No</span>
                             </label>
                         </div>
