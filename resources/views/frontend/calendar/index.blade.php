@@ -24,19 +24,19 @@
 
                 <!-- Static event items -->
                 <div class="space-y-3">
-                    <div class="bg-blue-500 text-white p-3 rounded-lg shadow cursor-pointer">
-                        <strong>Meeting with Team</strong><br>
-                        २०८२-१२-०८ - २०८२-१२-१०
-                    </div>
-                    <div class="bg-blue-500 text-white p-3 rounded-lg shadow cursor-pointer">
-                        <strong>Custom Note</strong><br>
-                        २०८२-१२-११
-                    </div>
-                    <div class="bg-blue-500 text-white p-3 rounded-lg shadow cursor-pointer">
-                        <strong>Another Event</strong><br>
-                        २०८२-१२-१२
-                    </div>
-                    <!-- Add more static events here -->
+                    @forelse($upcoming_events as $event)
+                        <div class="bg-blue-500 text-white p-3 rounded-lg shadow cursor-pointer">
+                            <strong>{{ $event->name }}</strong><br>
+                            {{ $event->start_date }}
+                            @if (!empty($event->end_date) && $event->end_date != $event->start_date)
+                                to {{ $event->end_date }}
+                            @endif
+                        </div>
+                    @empty
+                        <div class="bg-gray-300 text-gray-700 p-3 rounded-lg shadow">
+                            No events available
+                        </div>
+                    @endforelse
                 </div>
             </div>
 

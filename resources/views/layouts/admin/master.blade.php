@@ -7,9 +7,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title> @yield('title', 'Gyanmarga Education and Services') </title>
+    <title> @yield('title', 'Brightland School') </title>
 
-    <meta name="description" content="Gyanmarga Education and Services" />
+    <meta name="description" content="Brightland School" />
     <meta name='robots' content='noindex, follow' />
 
     <!-- Favicon -->
@@ -62,6 +62,11 @@
     <!-- fancybox image -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
         type="text/css" media="screen" />
+
+    <!-- CSS for Anuz Pandey Nepali Date Picker -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@anuz-pandey/nepali-date-picker/dist/nepali-date-picker.min.css">
+
     <style>
         .dash-icon {
             font-size: 2.25rem !important;
@@ -131,8 +136,27 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js">
     </script>
 
+    <!-- JS Bundle (no jQuery dependency) -->
+    <script src="https://cdn.jsdelivr.net/npm/@anuz-pandey/nepali-date-picker/dist/nepali-date-picker.bundle.min.js">
+    </script>
+
     @yield('scripts')
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initialize Start Date picker
+            new NepaliDatePicker("#bsStartDate", {
+                format: "YYYY-MM-DD",
+                closeOnDateSelect: true
+            });
+
+            // Initialize End Date picker
+            new NepaliDatePicker("#bsEndDate", {
+                format: "YYYY-MM-DD",
+                closeOnDateSelect: true
+            });
+        });
+    </script>
     <script>
         ckeditor("ckeditor");
         ckeditor("ckeditor1");

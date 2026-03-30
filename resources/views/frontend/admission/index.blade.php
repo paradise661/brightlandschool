@@ -106,6 +106,12 @@
                                     <option value="nursery"
                                         {{ old('student_class', $student->student_class ?? '') == 'nursery' ? 'selected' : '' }}>
                                         Nursery</option>
+                                    <option value="lkg"
+                                        {{ old('student_class', $student->student_class ?? '') == 'lkg' ? 'selected' : '' }}>
+                                        LKG</option>
+                                    <option value="ukg"
+                                        {{ old('student_class', $student->student_class ?? '') == 'ukg' ? 'selected' : '' }}>
+                                        UKG</option>
                                     <option value="grade1"
                                         {{ old('student_class', $student->student_class ?? '') == 'grade1' ? 'selected' : '' }}>
                                         Grade 1</option>

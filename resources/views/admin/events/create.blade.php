@@ -19,7 +19,7 @@
                     <div class="col-md-9">
                         <div class="card card-body main-description shadow br-8 p-4 mb-3">
                             <div class="row">
-                                <div class="form-group mb-3 col-md-9">
+                                <div class="form-group mb-3">
                                     <label for="name">Name</label>
                                     <input class="form-control br-8 @error('name') is-invalid @enderror" type="text"
                                         name="name" value="{{ old('name') }}" placeholder="Enter Name">
@@ -29,7 +29,38 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group mb-3 col-md-3">
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-4">
+                                    <label for="location">Location</label>
+                                    <input class="form-control br-8 @error('location') is-invalid @enderror" type="text"
+                                        name="location" value="{{ old('location') }}" placeholder="Enter location">
+                                    @error('location')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3 col-md-4">
+                                    <label for="start_date">Start Date</label>
+                                    <input class="form-control br-8 @error('start_date') is-invalid nepali-date @enderror"
+                                        id="bsStartDate" type="text" name="start_date" value="{{ old('start_date') }}"
+                                        autocomplete="off">
+                                    @error('start_date')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3 col-md-4">
+                                    <label for="end_date">End Date</label>
+                                    <input class="form-control br-8 @error('end_date') is-invalid @enderror" id="bsEndDate"
+                                        type="text" name="end_date" value="{{ old('end_date') }}" autocomplete="off">
+                                    @error('end_date')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-4">
                                     <label for="icon">Icon</label>
                                     <input class="form-control br-8 @error('icon') is-invalid @enderror" type="text"
                                         name="icon" value="{{ old('icon') }}" placeholder="Enter Icon">
@@ -39,27 +70,9 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
-                            <div class="row">
-                                <!-- Location -->
-                                <div class="form-group mb-3 col-md-3">
-                                    <label for="location">Location</label>
-                                    <input class="form-control br-8 @error('location') is-invalid @enderror" type="text"
-                                        name="location" value="{{ old('location') }}" placeholder="Enter location">
-                                    @error('location')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-3 col-md-3">
-                                    <label for="event_date">Event Date</label>
-                                    <input class="form-control br-8 @error('event_date') is-invalid @enderror"
-                                        type="date" name="event_date" value="{{ old('event_date') }}">
-                                    @error('event_date')
-                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
-                                </div>
+
                                 <!-- Start Time -->
-                                <div class="form-group mb-3 col-md-3">
+                                <div class="form-group mb-3 col-md-4">
                                     <label for="start_time">Start Time</label>
                                     <input class="form-control br-8 @error('start_time') is-invalid @enderror"
                                         type="time" name="start_time" value="{{ old('start_time') }}">
@@ -69,7 +82,7 @@
                                 </div>
 
                                 <!-- End Time -->
-                                <div class="form-group mb-3 col-md-3">
+                                <div class="form-group mb-3 col-md-4">
                                     <label for="end_time">End Time</label>
                                     <input class="form-control br-8 @error('end_time') is-invalid @enderror" type="time"
                                         name="end_time" value="{{ old('end_time') }}">
@@ -107,7 +120,8 @@
                             <div class="form-group mb-3">
                                 <label for="seo_keywords">SEO Keywords</label>
                                 <input class="form-control br-8 @error('seo_keywords') is-invalid @enderror" type="text"
-                                    name="seo_keywords" value="{{ old('seo_keywords') }}" placeholder="Enter seo keywords">
+                                    name="seo_keywords" value="{{ old('seo_keywords') }}"
+                                    placeholder="Enter seo keywords">
                                 @error('seo_keywords')
                                     <div class="invalid-feedback" style="display: block;">
                                         {{ $message }}
@@ -168,7 +182,7 @@
                             <div class="form-group mb-3">
                                 <label>Category</label>
                                 <select class="form-select @error('event_categories_id') is-invalid @enderror"
-                                    name="event_categories_id" required>
+                                    name="event_categories_id">
                                     <option value="">Select Category</option>
 
                                     @foreach ($categories as $category)

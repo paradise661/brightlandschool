@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Models\Member;
 use App\Models\Page;
 use App\Models\MenuLocation;
@@ -264,20 +265,17 @@ if (! function_exists('multiFileUpload')) {
 if (! function_exists('getEvents')) {
     function getEvents()
     {
-        $events = [
-            [
-                'title' => 'Meeting with Team',
-                'start' => '2082-12-08', // BS date in YYYY-MM-DD
-                'end'   => '2082-12-10',
-                'description' => 'Discuss project progress'
-            ],
-            [
-                'title' => 'Custom Note',
-                'start' => '2082-12-11',
-                'description' => 'Your own embedded text'
-            ]
-        ];
+        // Fetch all events
+        $events = Event::orderBy('start_date', 'asc')->get();
 
-        return $events;
+        // Map database events to the format used in your static array
+        return $events->map(function ($event) {
+            return [
+                'title'       => $event->name,
+                'start'       => $event->start_date,
+                'end'         => $event->end_date ?? null,
+                'description' => $event->description ?? '',
+            ];
+        })->toArray();
     }
 }

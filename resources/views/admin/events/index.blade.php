@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'All Posts')
+@section('title', 'All Events')
 
 @section('content')
     @include('admin.includes.message')
@@ -19,10 +19,10 @@
                         <tr>
                             <th>SN</th>
                             <th>Image</th>
-                            <th>Title</th>
+                            <th>Name</th>
+                            <th>Event Date</th>
                             <th>Order</th>
                             <th>Status</th>
-                            <th>Updated at</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -36,11 +36,16 @@
                                     </a>
                                 </td>
                                 <td><strong>{{ $blg->name ?? '' }}</strong></td>
+                                <td>
+
+                                    {{ $blg->start_date ? $blg->start_date . ($blg->end_date ? ' to ' . $blg->end_date : '') : '-' }}
+
+                                </td>
                                 <td><strong>{{ $blg->order ?? '' }}</strong></td>
                                 <td><span
                                         class="badge rounded-pill bg-label-{{ $blg->status == 1 ? 'success' : 'danger' }}">{{ $blg->status == 1 ? 'Publish' : 'Draft' }}</span>
                                 </td>
-                                <td>{{ $blg->updated_at->diffForHumans() }}</td>
+
                                 <td>
                                     <a class="btn btn-sm btn-success" href="/event/{{ $blg['slug'] }}"
                                         style="float: left;margin-right: 5px;" target="_blank"><i
