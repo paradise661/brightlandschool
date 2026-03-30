@@ -18,7 +18,7 @@ class AdmissionController extends Controller
         return view('frontend.admission.index');
     }
 
-    public function studentStore(StoreStudentsRequest $request)
+    public function studentStore(Request $request)
     {
 
         try {
@@ -60,7 +60,7 @@ class AdmissionController extends Controller
             $amount = 300;
             $transaction_uuid = $student->id . '_' .  Str::uuid()->toString();
             $product_code = "NP-ES-BRIGHTLANDSC";
-            $secret = "JhsNHgwWAEU1BBQNAgMaHxEYRTEMAxUaEgRZNhILBBUbCl83NV4gJEwwIy0wKDYuWi0yLC0sSDEsIzUyUSApJCo6NiIwLjYqOjggLg==";
+            $secret = "JwEMEAkHBwQXAVM2FAkcBAlVRT0ABwAfDBAXD0krJ0w2OEg7NzoiPzU/Kis9NjBfMjEyMjo4JjAgJDIsICAg";
 
 
             $signature = $this->generateEsewaSignature($amount, $transaction_uuid, $product_code, $secret);
