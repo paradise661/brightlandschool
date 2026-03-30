@@ -23,33 +23,99 @@
 </div>
 
 <!-- Event Modal -->
-<div id="eventModal"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
-    <div
-        style="background:#fff; padding:20px; border-radius:12px; max-width:400px; width:90%; position:relative; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
-        <span id="closeModal"
-            style="position:absolute; top:10px; right:15px; font-size:22px; cursor:pointer; font-weight:bold;">&times;</span>
-        <h3 id="modalTitle" style="margin-top:10px; font-size:18px;"></h3>
-        <p id="modalDate" style="color:#555; margin:5px 0;"></p>
-        <p id="modalDescription" style="margin-top:5px; line-height:1.4;"></p>
+<div class="event-modal" id="eventModal">
+    <div class="event-modal-content">
+        <span class="event-modal-close" id="closeModal">&times;</span>
+        <h3 class="event-modal-title" id="modalTitle"></h3>
+        <p class="event-modal-date" id="modalDate"></p>
+        <div class="event-modal-description" id="modalDescription"></div>
     </div>
 </div>
 
+<style>
+    /* Modal overlay */
+    .event-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding: 20px;
+    }
+
+    /* Modal box */
+    .event-modal-content {
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        max-width: 450px;
+        width: 100%;
+        position: relative;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+        font-family: 'Arial', sans-serif;
+        animation: fadeIn 0.3s ease;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* Close button */
+    .event-modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 26px;
+        cursor: pointer;
+        color: #333;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+
+    .event-modal-close:hover {
+        color: #007aff;
+    }
+
+    /* Title */
+    .event-modal-title {
+        margin-top: 0;
+        font-size: 22px;
+        font-weight: 600;
+        color: #222;
+    }
+
+    /* Date */
+    .event-modal-date {
+        color: #555;
+        margin: 8px 0 15px 0;
+        font-size: 14px;
+    }
+
+    /* Description */
+    .event-modal-description {
+        line-height: 1.6;
+        color: #333;
+        font-size: 15px;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
 @php
-    // sample events format
-    // $events = [
-    //     [
-    //         'title' => 'Meeting with Team',
-    //         'start' => '2082-12-08', // BS date in YYYY-MM-DD
-    //         'end' => '2082-12-10',
-    //         'description' => 'Discuss project progress',
-    //     ],
-    //     [
-    //         'title' => 'Custom Note',
-    //         'start' => '2082-12-11',
-    //         'description' => 'Your own embedded text',
-    //     ],
-    // ];
     $events = getEvents();
 @endphp
 
@@ -72,6 +138,19 @@
         return num.toString().split('').map(n => nepaliNums[n] || n).join('');
     }
 
+    // Strip HTML but keep line breaks
+    function htmlToPlainText(html) {
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+        temp.querySelectorAll('p').forEach(p => {
+            p.innerHTML = p.textContent + '\n';
+        });
+        temp.querySelectorAll('br').forEach(br => {
+            br.replaceWith('\n');
+        });
+        return temp.textContent.trim();
+    }
+
     const daysContainer = document.getElementById("days");
     const datesContainer = document.getElementById("dates");
     const monthYear = document.getElementById("monthYear");
@@ -90,7 +169,7 @@
     let currentYear = todayNepali.getYear();
     let currentMonth = todayNepali.getMonth(); // 0-based
 
-    // Modal
+    // Modal elements
     const modal = document.getElementById('eventModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDate = document.getElementById('modalDate');
@@ -121,7 +200,6 @@
         const firstDayNepali = new NepaliDate(currentYear, currentMonth, 1);
         const startDayIndex = firstDayNepali.getDay();
         const daysCount = firstDayNepali.daysInMonth();
-
         monthYear.innerText = nepaliMonths[currentMonth] + ' ' + toNepaliNumber(currentYear);
 
         // Empty slots
@@ -143,20 +221,19 @@
             div.style.minHeight = '70px';
             div.style.cursor = dayEvents.length ? 'pointer' : 'default';
             div.style.alignItems = 'center';
-            div.style.justifyContent = 'center'; // Vertically center everything
+            div.style.justifyContent = 'center';
             div.style.textAlign = 'center';
             div.style.padding = '5px';
 
-            // Date number
             const dateNumber = document.createElement('div');
             dateNumber.innerText = toNepaliNumber(d);
-            dateNumber.style.fontSize = '32px'; // bigger
+            dateNumber.style.fontSize = '32px';
             dateNumber.style.fontWeight = 'bold';
             dateNumber.style.width = '40px';
             dateNumber.style.height = '40px';
             dateNumber.style.display = 'flex';
             dateNumber.style.alignItems = 'center';
-            dateNumber.style.justifyContent = 'center'; // horizontally center
+            dateNumber.style.justifyContent = 'center';
             dateNumber.style.marginBottom = '4px';
             if (bsDate.getYear() === todayNepali.getYear() && bsDate.getMonth() === todayNepali.getMonth() && bsDate
                 .getDate() === todayNepali.getDate()) {
@@ -166,11 +243,10 @@
             }
             div.appendChild(dateNumber);
 
-            // Event titles below date
             dayEvents.forEach(ev => {
                 const span = document.createElement('div');
                 span.innerText = ev.title;
-                span.style.fontSize = '10px'; // smaller text
+                span.style.fontSize = '10px';
                 span.style.marginTop = '2px';
                 span.style.background = '#ff5722';
                 span.style.color = '#fff';
@@ -181,14 +257,14 @@
                 div.appendChild(span);
             });
 
-            // Click for modal
             if (dayEvents.length) {
                 div.addEventListener('click', () => {
                     modal.style.display = 'flex';
                     modalTitle.innerText = dayEvents.map(e => e.title).join(', ');
                     modalDate.innerText =
                         `BS: ${toNepaliNumber(bsDate.getYear())}-${toNepaliNumber(bsDate.getMonth()+1)}-${toNepaliNumber(bsDate.getDate())}`;
-                    modalDescription.innerText = dayEvents.map(e => e.description || '').join('\n');
+                    modalDescription.innerText = dayEvents.map(e => htmlToPlainText(e.description || '')).join(
+                        '\n\n');
                 });
             }
 
