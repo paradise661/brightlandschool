@@ -41,8 +41,8 @@
                 <h3 class="text-base md:text-lg font-heading font-bold mb-4 md:mb-6">Resources</h3>
                 <ul class="space-y-2 md:space-y-3 text-sm md:text-base">
 
-                    {{-- <li><a class="text-gray-400 hover:text-white transition" href="{{ route('notice') }}">Notices</a>
-                    </li> --}}
+                    <li><a class="text-gray-400 hover:text-white transition" href="{{ route('notice') }}">Notices</a>
+                    </li>
                     <li><a class="text-gray-400 hover:text-white transition"
                             href="{{ route('downloads') }}">Downloads</a></li>
                     <li><a class="text-gray-400 hover:text-white transition" href="{{ route('blog') }}">Blogs</a></li>

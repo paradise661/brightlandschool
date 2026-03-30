@@ -125,8 +125,8 @@
                             group-hover:opacity-100 group-hover:visible
                             transition-all duration-300 delay-150">
 
-                        {{-- <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('notice') }}">Notices</a> --}}
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('frontend.events') }}">Events</a>
+                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('notice') }}">Notices</a>
+                        {{-- <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('frontend.events') }}">Events</a> --}}
                         <a class="block px-4 py-2 hover:bg-gray-100"
                             href="{{ route('frontend.calendar') }}">Calendar</a>
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('blog') }}">Blogs</a>

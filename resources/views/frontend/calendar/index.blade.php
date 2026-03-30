@@ -19,21 +19,34 @@
             </div>
 
             <!-- Right Column: Static Events List (1/3 width) -->
-            <div class="w-1/3 overflow-y-auto bg-gray-100 p-4 rounded-lg">
-                <h3 class="text-lg font-semibold mb-4">Upcoming Events</h3>
+            <div class="w-1/3 overflow-y-auto bg-gray-50 p-5 rounded-xl border">
+                <h3 class="text-xl font-semibold mb-5 text-gray-800">Upcoming Events</h3>
 
-                <!-- Static event items -->
-                <div class="space-y-3">
+                <div class="space-y-4">
                     @forelse($upcoming_events as $event)
-                        <div class="bg-blue-500 text-white p-3 rounded-lg shadow cursor-pointer">
-                            <strong>{{ $event->name }}</strong><br>
-                            {{ $event->start_date }}
-                            @if (!empty($event->end_date) && $event->end_date != $event->start_date)
-                                to {{ $event->end_date }}
-                            @endif
-                        </div>
+                        <a class="block" href="{{ route('frontend.events.show', ['slug' => $event->slug]) }}">
+
+                            <div
+                                class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md hover:border-blue-400 transition duration-200">
+
+                                <!-- Event Name -->
+                                <h4 class="text-md font-semibold text-gray-900 mb-1">
+                                    {{ $event->name }}
+                                </h4>
+
+                                <!-- Date -->
+                                <p class="text-sm text-gray-500">
+                                    {{ $event->start_date }}
+                                    @if (!empty($event->end_date) && $event->end_date != $event->start_date)
+                                        <span class="mx-1">–</span> {{ $event->end_date }}
+                                    @endif
+                                </p>
+
+                            </div>
+
+                        </a>
                     @empty
-                        <div class="bg-gray-300 text-gray-700 p-3 rounded-lg shadow">
+                        <div class="bg-gray-200 text-gray-600 p-4 rounded-xl text-sm">
                             No events available
                         </div>
                     @endforelse
