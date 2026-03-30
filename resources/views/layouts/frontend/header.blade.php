@@ -1,15 +1,13 @@
 <div class="bg-primary text-white py-2 text-sm" id="top-bar">
     <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
-
-        <!-- Mobile view: email left, phone right -->
         <div class="w-full flex justify-between sm:hidden">
             <a class="flex items-center hover:text-gray-200 transition" href="mailto:info@brightland.edu.np">
                 <i class="fa-solid fa-envelope mr-2"></i>
-                <span>info@brightland.edu.np</span>
+                <span>{{ $setting['site_email'] ?? '' }}</span>
             </a>
             <a class="flex items-center hover:text-gray-200 transition" href="tel:+021-1234567">
                 <i class="fa-solid fa-phone mr-2"></i>
-                <span>021-1234567</span>
+                <span>{{ $setting['site_phone'] ?? '' }}</span>
             </a>
         </div>
 
@@ -19,7 +17,7 @@
             <!-- Email left -->
             <a class="flex items-center hover:text-gray-200 transition" href="mailto:info@brightland.edu.np">
                 <i class="fa-solid fa-envelope mr-2"></i>
-                <span>info@brightland.edu.np</span>
+                <span>{{ $setting['site_email'] ?? '' }}</span>
             </a>
 
             <!-- Social icons center -->
@@ -33,7 +31,7 @@
             <!-- Phone right -->
             <a class="flex items-center hover:text-gray-200 transition" href="tel:+021-1234567">
                 <i class="fa-solid fa-phone mr-2"></i>
-                <span>021-1234567</span>
+                <span>{{ $setting['site_phone'] ?? '' }}</span>
             </a>
 
         </div>

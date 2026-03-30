@@ -110,7 +110,7 @@
                         {{ $setting['homepage_about_title'] ?? '' }}
                     </div>
                     <h2
-                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-snug sm:leading-tight">
+                        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-snug sm:leading-tight lg:leading-tight">
                         {{ $setting['homepage_about_title1'] ?? '' }}
                     </h2>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
