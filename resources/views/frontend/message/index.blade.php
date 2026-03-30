@@ -89,7 +89,7 @@
                     </div>
                     <div class="lg:col-span-3 order-1 lg:order-2">
 
-                        <div class="prose prose-lg max-w-none">
+                        <div class="prose prose-lg max-w-none text-justify">
                             {!! $item->description ?? '' !!}
                         </div>
                     </div>

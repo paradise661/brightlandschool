@@ -148,7 +148,7 @@
                             <i class="fa-solid {{ $mission->icon ?? 'fa-eye' }} text-2xl md:text-3xl"></i>
                         </div>
                         <h3 class="text-xl md:text-2xl font-heading font-bold mb-3 md:mb-4">{{ $mission->name ?? '' }}</h3>
-                        <p class="text-blue-100 text-sm md:text-base leading-relaxed">
+                        <p class="text-blue-100 text-sm md:text-base leading-relaxed text-justify">
                             {{ strip_tags($mission->description ?? '') }}</p>
                     </div>
                 @endforeach
