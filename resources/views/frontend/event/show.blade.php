@@ -60,7 +60,8 @@
                 <div class="mb-6 md:mb-8">
 
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-6 leading-tight">
-                        {{ $event->name ?? '' }}</h1>
+                        {{ $event->name ?? '' }}
+                    </h1>
 
                     <div
                         class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-gray-200">
@@ -68,22 +69,24 @@
                             <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">
                                 {{ $event->category->name ?? 'Uncategorized' }}
                             </span>
-
                         </div>
+
                         <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                             <span class="flex items-center">
                                 <i class="fa-solid fa-calendar mr-2 text-primary"></i>
-                                {{ $event->created_at->format('F d, Y') }}
+                                {{ formatBSDateRange($event->start_date, $event->end_date) }}
                             </span>
 
-                            <span class="flex items-center"><i class="fa-solid fa-eye mr-2 text-primary"></i>
-                                {{ $event->views ?? 0 }} </span>
+                            <span class="flex items-center">
+                                <i class="fa-solid fa-eye mr-2 text-primary"></i>
+                                {{ $event->views ?? 0 }}
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 <img class="w-full rounded-2xl shadow-xl mb-8 md:mb-10" src="{{ $event->image }}"
-                    alt="students participating in science fair, innovative projects, colorful displays, excited children">
+                    alt="{{ $event->name ?? 'Event Image' }}">
 
                 <div class="prose prose-lg max-w-none" id="article-content">
                     {!! $event->description ?? '' !!}
@@ -97,8 +100,9 @@
             <div class="flex items-center mb-8 md:mb-10">
                 <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                 <div>
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">Past Events
-                        Highlights</h2>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
+                        Past Events Highlights
+                    </h2>
                     {{-- <p class="text-gray-600 text-sm md:text-base mt-2">Memorable moments from our recent events</p> --}}
                 </div>
             </div>
@@ -107,7 +111,7 @@
 
                 @foreach ($popular_events as $popular_event)
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition"
-                        id="past-event-1">
+                        id="past-event-{{ $popular_event->id }}">
                         <div class="grid md:grid-cols-2">
                             <div class="h-64 overflow-hidden">
                                 <img class="w-full h-full object-cover" src="{{ $popular_event->image }}"
@@ -119,7 +123,7 @@
                                 <div class="flex items-center justify-between mb-3">
                                     <div
                                         class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
-                                        {{ $popular_event->event_date ? \Carbon\Carbon::parse($popular_event->event_date)->format('M d, Y') : 'Jan 25, 2024' }}
+                                        {{ $popular_event->start_date ? formatBSDateRange($popular_event->start_date, $popular_event->end_date) : '-' }}
                                     </div>
 
                                     <div class="flex items-center text-gray-500 text-xs">
@@ -132,7 +136,7 @@
                                     {{ $popular_event->name ?? 'Annual Day Celebration' }}
                                 </h3>
 
-                                <p class="text-gray-600 text-sm mb-4 ">
+                                <p class="text-gray-600 text-sm mb-4">
                                     {{ Str::limit(strip_tags($popular_event->description ?? ''), 135) }}
                                 </p>
 
@@ -143,7 +147,6 @@
                                 </a>
 
                             </div>
-
                         </div>
                     </div>
                 @endforeach

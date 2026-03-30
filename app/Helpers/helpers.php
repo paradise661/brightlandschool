@@ -10,7 +10,6 @@ use App\Models\Setting;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
-
 function getSettings()
 {
     return Setting::pluck('value', 'key')->toArray();
@@ -277,5 +276,51 @@ if (! function_exists('getEvents')) {
                 'description' => $event->description ?? '',
             ];
         })->toArray();
+    }
+}
+
+if (!function_exists('toNepaliNumber')) {
+    function toNepaliNumber($number)
+    {
+        $eng = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        $nep = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+
+        return str_replace($eng, $nep, $number);
+    }
+}
+
+if (!function_exists('formatBSDate')) {
+    function formatBSDate(?string $date): string
+    {
+        if (!$date) return '-';
+
+        $bsMonths = [
+            '01' => 'बैशाख',
+            '02' => 'ज्येष्ठ',
+            '03' => 'आषाढ',
+            '04' => 'श्रावण',
+            '05' => 'भाद्र',
+            '06' => 'आश्विन',
+            '07' => 'कार्तिक',
+            '08' => 'मंसिर',
+            '09' => 'पौष',
+            '10' => 'माघ',
+            '11' => 'फाल्गुण',
+            '12' => 'चैत्र'
+        ];
+
+        $parts = explode('-', $date); // [YYYY, MM, DD]
+        $month = $bsMonths[$parts[1]] ?? '';
+        $day = ltrim($parts[2], '0'); // remove leading zero
+
+        return $month . ' ' . toNepaliNumber($day);
+    }
+}
+
+if (!function_exists('formatBSDateRange')) {
+    function formatBSDateRange(?string $start, ?string $end): string
+    {
+        if (!$start) return '-';
+        return $end ? formatBSDate($start) . ' - ' . formatBSDate($end) : formatBSDate($start);
     }
 }

@@ -55,7 +55,7 @@
                         </li>
                         <li class="text-blue-200">›</li>
                         <li class="text-white font-medium">
-                            Event
+                            Events
                         </li>
                     </ol>
                 </nav>
@@ -68,31 +68,41 @@
         <div class="container mx-auto px-4 md:px-6">
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
                 @foreach ($events as $event)
-                    <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-1">
+                    <div class="event-card bg-white rounded-2xl overflow-hidden shadow-lg" id="event-{{ $event->id }}">
                         <div class="relative h-48 overflow-hidden">
                             <img class="w-full h-full object-cover" src="{{ $event->image }}"
                                 alt="{{ $event->name ?? '' }}" />
+
                             <div
                                 class="absolute top-4 left-4 bg-primary text-white px-4 py-2 rounded-full font-bold text-sm">
                                 <i class="fa-solid {{ $event->icon ?? 'fa-calendar' }} mr-2"></i>
                                 {{ $event->category->name ?? '' }}
                             </div>
+
                             <div
                                 class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-center">
                                 <div class="text-2xl font-bold text-primary">
-                                    {{ $event->event_date ? \Carbon\Carbon::parse($event->event_date)->format('d') : '25' }}
+                                    {{ $event->start_date ? ltrim(explode('-', $event->start_date)[2], '0') : '25' }}
                                 </div>
                                 <div class="text-xs text-gray-600">
-                                    {{ $event->event_date ? \Carbon\Carbon::parse($event->event_date)->format('M') : 'JAN' }}
+                                    {{ $event->start_date ? formatBSDate($event->start_date) : 'माघ' }}
                                 </div>
                             </div>
-
                         </div>
+
                         <div class="p-6">
                             <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">{{ $event->name ?? '' }}</h3>
 
                             <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-gray-600 text-sm">
+                                    <i class="fa-solid fa-calendar text-primary mr-3 w-4"></i>
+                                    <span>
+                                        {{ formatBSDateRange($event->start_date, $event->end_date) }}
+                                    </span>
+                                </div>
+
                                 <div class="flex items-center text-gray-600 text-sm">
                                     <i class="fa-solid fa-clock text-primary mr-3 w-4"></i>
                                     <span>
@@ -107,8 +117,11 @@
                                     <span>{{ $event->location ?? 'School Auditorium' }}</span>
                                 </div>
                             </div>
+
                             <p class="text-gray-600 text-sm mb-4">
-                                {{ Str::limit(strip_tags($event->description ?? ''), 135) }}</p>
+                                {{ Str::limit(strip_tags($event->description ?? ''), 135) }}
+                            </p>
+
                             <div class="flex items-center justify-between mt-4">
                                 <a class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition"
                                     href="{{ route('frontend.events.show', ['slug' => $event->slug]) }}">
@@ -120,7 +133,6 @@
                                     <span>{{ $event->views ?? 0 }} Views</span>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 @endforeach
@@ -134,8 +146,8 @@
                 <div class="w-1 h-10 md:h-12 bg-primary mr-4"></div>
                 <div>
                     <h2 class="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gray-900">
-                        {{ $setting['events_title'] ?? '' }}</h2>
-
+                        {{ $setting['events_title'] ?? '' }}
+                    </h2>
                 </div>
             </div>
 
@@ -143,7 +155,7 @@
 
                 @foreach ($popular_events as $popular_event)
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition"
-                        id="past-event-1">
+                        id="past-event-{{ $popular_event->id }}">
                         <div class="grid md:grid-cols-2">
                             <div class="h-64 overflow-hidden">
                                 <img class="w-full h-full object-cover" src="{{ $popular_event->image }}"
@@ -155,7 +167,7 @@
                                 <div class="flex items-center justify-between mb-3">
                                     <div
                                         class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
-                                        {{ $popular_event->event_date ? \Carbon\Carbon::parse($popular_event->event_date)->format('M d, Y') : 'Jan 25, 2024' }}
+                                        {{ $popular_event->start_date ? formatBSDateRange($popular_event->start_date, $popular_event->end_date) : '-' }}
                                     </div>
 
                                     <div class="flex items-center text-gray-500 text-xs">
@@ -168,7 +180,7 @@
                                     {{ $popular_event->name ?? 'Annual Day Celebration' }}
                                 </h3>
 
-                                <p class="text-gray-600 text-sm mb-4 ">
+                                <p class="text-gray-600 text-sm mb-4">
                                     {{ Str::limit(strip_tags($popular_event->description ?? ''), 135) }}
                                 </p>
 
@@ -179,7 +191,6 @@
                                 </a>
 
                             </div>
-
                         </div>
                     </div>
                 @endforeach
