@@ -555,7 +555,7 @@
                             <label class="block text-gray-700 font-semibold mb-2">Class passed<span
                                     class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="last_class_attended" type="text"
-                                placeholder="e.g., 3.5">
+                                placeholder="e.g., 8">
                             <span class="text-red-500 text-sm error-text" id="error-last_class_attended"></span>
 
                         </div>
