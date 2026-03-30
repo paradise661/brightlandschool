@@ -18,7 +18,7 @@ class AdmissionController extends Controller
         return view('frontend.admission.index');
     }
 
-    public function studentStore(Request $request)
+    public function studentStore(StoreStudentsRequest $request)
     {
 
         try {
