@@ -278,16 +278,18 @@
                                     <span class="text-red-500 text-sm error-text" id="error-father_name"></span>
                                 </div>
                                 <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
+                                    <label class="block text-gray-700 font-semibold mb-2">Phone Number:<span
+                                            class="text-red-500">*</span></label>
                                     <input class="form-input w-full px-4 py-3 rounded" name="father_phone" type="tel"
                                         placeholder="Phone">
+                                    <span class="text-red-500 text-sm error-text" id="error-father_phone"></span>
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Educational
-                                        Qualification:</label>
+                                        Qualification:<span class="text-red-500">*</span></label>
 
                                     <select class="form-input w-full px-4 py-3 rounded" name="father_ethnicity">
                                         <option value="">Select Qualification</option>
@@ -299,9 +301,12 @@
                                         <option value="phd">Phd.</option>
                                         <option value="others">Others</option>
                                     </select>
+                                    <span class="text-red-500 text-sm error-text" id="error-father_ethnicity"></span>
+
                                 </div>
                                 <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):</label>
+                                    <label class="block text-gray-700 font-semibold mb-2">Occupation (Profession):<span
+                                            class="text-red-500">*</span></label>
                                     <div>
                                         <select class="form-input w-full px-4 py-3 rounded" name="father_occupation">
                                             <option value="">Select Occupation</option>
@@ -318,6 +323,8 @@
                                             <option value="farmer">Farmer</option>
                                             <option value="others">Others</option>
                                         </select>
+                                        <span class="text-red-500 text-sm error-text" id="error-father_occupation"></span>
+
                                     </div>
                                 </div>
 
@@ -361,15 +368,19 @@
                                     <span class="text-red-500 text-sm error-text" id="error-mother_name"></span>
                                 </div>
                                 <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">Phone Number:</label>
+                                    <label class="block text-gray-700 font-semibold mb-2">Phone Number:<span
+                                            class="text-red-500">*</span></label>
                                     <input class="form-input w-full px-4 py-3 rounded" name="mother_phone" type="tel"
                                         placeholder="Phone">
+                                    <span class="text-red-500 text-sm error-text" id="error-mother_phone"></span>
+
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">Educational Qualification
+                                    <label class="block text-gray-700 font-semibold mb-2">Educational Qualification<span
+                                            class="text-red-500">*</span>
                                     </label>
 
                                     <select class="form-input w-full px-4 py-3 rounded" name="mother_ethnicity">
@@ -382,9 +393,12 @@
                                         <option value="phd">PhD</option>
                                         <option value="others">Others</option>
                                     </select>
+                                    <span class="text-red-500 text-sm error-text" id="error-mother_ethnicity"></span>
+
                                 </div>
                                 <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">Occupation</label>
+                                    <label class="block text-gray-700 font-semibold mb-2">Occupation<span
+                                            class="text-red-500">*</span></label>
                                     <div>
                                         <select class="form-input w-full px-4 py-3 rounded" name="mother_occupation">
                                             <option value="">Select Occupation</option>
@@ -401,6 +415,8 @@
                                             <option value="farmer">Farmer</option>
                                             <option value="others">Others</option>
                                         </select>
+                                        <span class="text-red-500 text-sm error-text" id="error-mother_occupation"></span>
+
                                     </div>
                                 </div>
 
@@ -519,42 +535,59 @@
                 </div>
                 <div class="p-6 space-y-6">
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Name of the School</label>
+                        <label class="block text-gray-700 font-semibold mb-2">Name of the School<span
+                                class="text-red-500">*</span></label>
                         <input class="form-input w-full px-4 py-3 rounded" name="school_name" type="text"
                             placeholder="Previous school name and address">
+                        <span class="text-red-500 text-sm error-text" id="error-school_name"></span>
+
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Address</label>
+                            <label class="block text-gray-700 font-semibold mb-2">Address<span
+                                    class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="school_name_address" type="text"
                                 placeholder="e.g., Grade 5">
+                            <span class="text-red-500 text-sm error-text" id="error-school_name_address"></span>
+
                         </div>
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Class passed</label>
+                            <label class="block text-gray-700 font-semibold mb-2">Class passed<span
+                                    class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="last_class_attended" type="text"
                                 placeholder="e.g., 3.5">
+                            <span class="text-red-500 text-sm error-text" id="error-last_class_attended"></span>
+
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Year of passed</label>
+                            <label class="block text-gray-700 font-semibold mb-2">Year of passed<span
+                                    class="text-red-500">*</span></label>
                             <input class="form-input w-full px-4 py-3 rounded" name="school_passed" type="text"
                                 placeholder="e.g., 2082">
+                            <span class="text-red-500 text-sm error-text" id="error-school_passed"></span>
+
                         </div>
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">GPA / Percentage
+                            <label class="block text-gray-700 font-semibold mb-2">GPA / Percentage<span
+                                    class="text-red-500">*</span>
                             </label>
                             <input class="form-input w-full px-4 py-3 rounded" name="result" type="text"
                                 placeholder="e.g., 3.5">
+                            <span class="text-red-500 text-sm error-text" id="error-result"></span>
+
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Reason to discontinue the previous
-                            school</label>
+                            school<span class="text-red-500">*</span></label>
                         <input class="form-input w-full px-4 py-3 rounded" name="school_reason" type="text"
                             placeholder="Reason">
+                        <span class="text-red-500 text-sm error-text" id="error-school_reason"></span>
+
                     </div>
                 </div>
             </section>
@@ -849,38 +882,44 @@
                     <!-- Birth Certificate -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Birth Certificate
+                            Birth Certificate <span class="text-red-500">*</span>
                         </label>
                         <input class="w-full border rounded p-2 bg-gray-50" name="birth_certificate" type="file"
                             accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="text-red-500 text-sm error-text" id="error-birth_certificate"></span>
 
                     </div>
 
                     <!-- Report Card -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Progress Report
+                            Progress Report <span class="text-red-500">*</span>
                         </label>
                         <input class="w-full border rounded p-2 bg-gray-50" name="last_report_card" type="file"
                             accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="text-red-500 text-sm error-text" id="error-last_report_card"></span>
+
                     </div>
 
                     <!-- Transfer Certificate -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Transfer Certificate
+                            Transfer Certificate <span class="text-red-500">*</span>
                         </label>
                         <input class="w-full border rounded p-2 bg-gray-50" name="transfer_certificate" type="file"
                             accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="text-red-500 text-sm error-text" id="error-transfer_certificate"></span>
+
                     </div>
 
                     <!-- Character Certificate -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
-                            PP size photo
+                            PP size photo <span class="text-red-500">*</span>
                         </label>
                         <input class="w-full border rounded p-2 bg-gray-50" name="character_certificate" type="file"
                             accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="text-red-500 text-sm error-text" id="error-character_certificate"></span>
 
                     </div>
 
@@ -1160,7 +1199,7 @@
 
                         const esewaForm = document.createElement("form");
                         esewaForm.method = "POST";
-                        esewaForm.action = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
+                        esewaForm.action = "https://epay.esewa.com.np/api/epay/main/v2/form";
 
                         Object.keys(paymentData).forEach(key => {
                             const input = document.createElement("input");

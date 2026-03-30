@@ -59,8 +59,8 @@ class AdmissionController extends Controller
             // esewa
             $amount = 300;
             $transaction_uuid = $student->id . '_' .  Str::uuid()->toString();
-            $product_code = "EPAYTEST";
-            $secret = "8gBm/:&EnhH.1/q";
+            $product_code = "NP-ES-BRIGHTLANDSC";
+            $secret = "JhsNHgwWAEU1BBQNAgMaHxEYRTEMAxUaEgRZNhILBBUbCl83NV4gJEwwIy0wKDYuWi0yLC0sSDEsIzUyUSApJCo6NiIwLjYqOjggLg==";
 
             $signature = $this->generateEsewaSignature($amount, $transaction_uuid, $product_code, $secret);
 
@@ -104,7 +104,7 @@ class AdmissionController extends Controller
 
         if ($data['status'] === 'COMPLETE') {
 
-            $response = Http::get('https://rc-epay.esewa.com.np/api/epay/transaction/status/', [
+            $response = Http::get('https://epay.esewa.com.np/api/epay/transaction/status/', [
                 'product_code' => $data['product_code'],
                 'total_amount' => $data['total_amount'],
                 'transaction_uuid' => $data['transaction_uuid'],
