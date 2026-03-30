@@ -99,7 +99,7 @@
                             <div class="w-1/3 flex flex-col">
                                 <label class="font-semibold text-gray-700 mb-1">Class</label>
 
-                                <select class="border border-gray-300 rounded px-3 py-2 w-full bg-white"
+                                <select class="border border-gray-300 rounded px-3 py-2 w-full bg-white" id="studentClass"
                                     name="student_class">
                                     <option value="">Select Class</option>
 
@@ -504,7 +504,7 @@
             </section>
 
             <!-- INFORMATION OF THE PREVIOUS SCHOOL ( Not applicable for Nursery ) Section -->
-            <section class="bg-white rounded-lg shadow-md overflow-hidden">
+            <section class="bg-white rounded-lg shadow-md overflow-hidden" id="previousSchoolSection">
                 <div class="form-section-header text-white p-4 flex items-center gap-3">
                     <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full">3</span>
                     <h3 class="text-xl font-bold">
@@ -1176,5 +1176,24 @@
                     toastr.error("Network error. Please try again.", "Error");
                 });
         });
+    </script>
+
+    <script>
+        const studentClass = document.getElementById('studentClass');
+        const previousSchoolSection = document.getElementById('previousSchoolSection');
+
+        function togglePreviousSchool() {
+            if (studentClass.value === 'nursery') {
+                previousSchoolSection.style.display = 'none';
+            } else {
+                previousSchoolSection.style.display = 'block';
+            }
+        }
+
+        // Run on page load
+        togglePreviousSchool();
+
+        // Listen for change
+        studentClass.addEventListener('change', togglePreviousSchool);
     </script>
 @endsection
