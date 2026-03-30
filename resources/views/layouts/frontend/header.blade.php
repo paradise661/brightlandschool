@@ -127,6 +127,8 @@
 
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('notice') }}">Notices</a>
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('frontend.events') }}">Events</a>
+                        <a class="block px-4 py-2 hover:bg-gray-100"
+                            href="{{ route('frontend.calendar') }}">Calendar</a>
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('blog') }}">Blogs</a>
                         <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('downloads') }}">Downloads</a>
                     </div>
