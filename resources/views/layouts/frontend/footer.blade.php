@@ -5,8 +5,8 @@
                 <div class="flex items-center space-x-3 mb-4 md:mb-6">
                     <!-- LOGO -->
                     <a class="flex items-center" href="{{ url('/') }}">
-                        <img class="h-12 md:h-14 w-auto object-contain" src="{{ asset('frontend/images/logo.jpg') }}"
-                            alt="Logo">
+                        <img class="h-12 md:h-14 w-auto object-contain"
+                            src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
                     </a>
                 </div>
                 <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">{{ $setting['site_information'] ?? '' }}</p>

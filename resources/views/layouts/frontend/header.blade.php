@@ -1,11 +1,11 @@
 <div class="bg-primary text-white py-2 text-sm" id="top-bar">
     <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div class="w-full flex justify-between sm:hidden">
-            <a class="flex items-center hover:text-gray-200 transition" href="mailto:info@brightland.edu.np">
+            <a class="flex items-center hover:text-gray-200 transition" href="mailto:{{ $setting['site_email'] ?? '' }}">
                 <i class="fa-solid fa-envelope mr-2"></i>
                 <span>{{ $setting['site_email'] ?? '' }}</span>
             </a>
-            <a class="flex items-center hover:text-gray-200 transition" href="tel:+021-1234567">
+            <a class="flex items-center hover:text-gray-200 transition" href="tel:{{ $setting['site_phone'] ?? '' }}">
                 <i class="fa-solid fa-phone mr-2"></i>
                 <span>{{ $setting['site_phone'] ?? '' }}</span>
             </a>
@@ -15,7 +15,8 @@
         <div class="hidden sm:flex w-full justify-between items-center">
 
             <!-- Email left -->
-            <a class="flex items-center hover:text-gray-200 transition" href="mailto:info@brightland.edu.np">
+            <a class="flex items-center hover:text-gray-200 transition"
+                href="mailto:{{ $setting['site_email'] ?? '' }}">
                 <i class="fa-solid fa-envelope mr-2"></i>
                 <span>{{ $setting['site_email'] ?? '' }}</span>
             </a>
@@ -44,8 +45,8 @@
 
             <!-- LOGO -->
             <a class="flex items-center" href="{{ url('/') }}">
-                <img class="h-12 md:h-14 w-auto object-contain" src="{{ asset('frontend/images/logo.jpg') }}"
-                    alt="Logo">
+                <img class="h-12 md:h-14 w-auto object-contain"
+                    src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
             </a>
 
             <!-- DESKTOP NAV -->
