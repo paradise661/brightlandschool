@@ -67,7 +67,7 @@
                 </li>
             </ul>
         </li>
-        <li
+        {{-- <li
             class="menu-item {{ Request::segment(2) == 'notices' || Request::segment(2) == 'notices-category' ? 'active open' : '' }}">
             <a class="menu-link text-decoration-none menu-toggle" href="#">
                 <i class="menu-icon tf-icons bx bxs-info-circle"></i>
@@ -87,7 +87,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
         <li
             class="menu-item {{ Request::segment(2) == 'blog' || Request::segment(2) == 'blog-category' ? 'active open' : '' }}">
             <a class="menu-link text-decoration-none menu-toggle" href="#">

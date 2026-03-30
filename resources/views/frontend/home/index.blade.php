@@ -188,7 +188,7 @@
         </div>
     </section>
 
-    <section class="py-12 md:py-16 bg-gray-50" id="important-notices">
+    {{-- <section class="py-12 md:py-16 bg-gray-50" id="important-notices">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex items-center mb-8 md:mb-10">
                 <div class="w-1 h-10 md:h-12 bg-secondary mr-4"></div>
@@ -263,7 +263,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50" id="vision-mission">
         <div class="max-w-7xl mx-auto px-6">
