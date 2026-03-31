@@ -6,7 +6,7 @@
                     <!-- LOGO -->
                     <a class="flex items-center" href="{{ url('/') }}">
                         <img class="h-12 md:h-14 w-auto object-contain"
-                            src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
+                            src="{{ $setting['site_footer_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
                     </a>
                 </div>
                 <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6">{{ $setting['site_information'] ?? '' }}</p>

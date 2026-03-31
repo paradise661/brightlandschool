@@ -287,9 +287,7 @@
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $item->name }}</h3>
                         <p class="text-gray-600 leading-relaxed mb-6 ">
-
                             {!! \Illuminate\Support\Str::words($item->description, 130, '...') !!}
-
                         </p>
 
                         @if ($item->points)
