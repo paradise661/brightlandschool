@@ -73,17 +73,11 @@
             </div>
         </div>
         <div class="border-t border-gray-800 pt-6 md:pt-8">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p class="text-gray-400 text-xs md:text-sm text-center md:text-left">&copy; 2026 Brightland School. All
-                    rights reserved.</p>
-                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-center">
-                    <a class="text-gray-400 hover:text-white text-xs md:text-sm transition" href="#">Privacy
-                        Policy</a>
-                    <a class="text-gray-400 hover:text-white text-xs md:text-sm transition" href="#">Terms &
-                        Conditions</a>
-                    <a class="text-gray-400 hover:text-white text-xs md:text-sm transition" href="#">Cookie
-                        Policy</a>
-                </div>
+            <div class="flex justify-center items-center text-center">
+                <p class="text-gray-400 text-xs md:text-sm">
+                    &copy; {{ date('Y') }} Brightland School. All rights reserved.
+                </p>
+
             </div>
         </div>
     </div>
