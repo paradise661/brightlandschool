@@ -157,8 +157,8 @@
                 id="mobile-menu">
                 <div class="flex justify-between items-center px-4 py-4 border-b">
                     <a href="{{ url('/') }}">
-                        <img class="h-12 w-auto object-contain" src="{{ asset('frontend/images/logo.jpg') }}"
-                            alt="Logo">
+                        <img class="h-12 w-auto object-contain"
+                            src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
                     </a>
                     <button class="text-gray-700" id="mobile-menu-close">
                         <i class="fa-solid fa-xmark text-2xl"></i>
@@ -217,7 +217,9 @@
                         </button>
                         <div class="hidden flex-col pl-4 mobile-dropdown">
                             <a class="block py-2 hover:text-primary" href="{{ route('notice') }}">Notices</a>
-                            <a class="block py-2 hover:text-primary" href="{{ route('frontend.events') }}">Events</a>
+                            {{-- <a class="block py-2 hover:text-primary" href="{{ route('frontend.events') }}">Events</a> --}}
+                            <a class="block py-2 hover:text-primary"
+                                href="{{ route('frontend.calendar') }}">Calendar</a>
                             <a class="block py-2 hover:text-primary" href="{{ route('blog') }}">Blogs</a>
                             <a class="block py-2 hover:text-primary" href="{{ route('downloads') }}">Downloads</a>
                         </div>
