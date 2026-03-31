@@ -63,7 +63,8 @@
                                 <span class="app-brand-logo demo">
                                 </span>
                                 <img style="max-width: 250px;height:100px"
-                                    src="{{ asset('admin/assets/images/logo.jpg') }}" alt="logo">
+                                    src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}"
+                                    alt="logo">
                             </a>
                         </div>
                         <!-- /Logo -->

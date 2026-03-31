@@ -57,6 +57,7 @@ class SettingController extends Controller
         $teacher_breadcrum_image = updatesettingmedia($request, 'teacher_breadcrum_image', 'setting');
         $testimonial_breadcrum_image = updatesettingmedia($request, 'testimonial_breadcrum_image', 'setting');
         $admission_breadcrum_image = updatesettingmedia($request, 'admission_breadcrum_image', 'setting');
+        $teacher_group_photo = updatesettingmedia($request, 'teacher_group_photo', 'setting');
 
         // end of added new files
 
@@ -90,9 +91,9 @@ class SettingController extends Controller
         $siteSetting['teacher_breadcrum_image'] = deletesettingmedia($teacher_breadcrum_image, $siteSettings['teacher_breadcrum_image'], 'teacher_breadcrum_image', $siteSetting, $siteSettings);
         $siteSetting['testimonial_breadcrum_image'] = deletesettingmedia($testimonial_breadcrum_image, $siteSettings['testimonial_breadcrum_image'], 'testimonial_breadcrum_image', $siteSetting, $siteSettings);
         $siteSetting['admission_breadcrum_image'] = deletesettingmedia($admission_breadcrum_image, $siteSettings['admission_breadcrum_image'], 'admission_breadcrum_image', $siteSetting, $siteSettings);
+        $siteSetting['teacher_group_photo'] = deletesettingmedia($teacher_group_photo, $siteSettings['teacher_group_photo'] ?? null, 'teacher_group_photo', $siteSetting, $siteSettings);
 
         // end of new added files
-
 
 
 

@@ -60,14 +60,32 @@
                                 alt="{{ $team->name ?? '' }}" />
                         </div>
                         <div class="p-6">
-                            <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">{{ $team->name ?? '' }}
+                            <h3 class="text-lg md:text-xl font-heading font-bold text-gray-900 mb-1">
+                                {{ $team->name ?? '' }}
                             </h3>
-                            <p class="text-primary font-semibold text-sm mb-3">{{ $team->position ?? '' }}</p>
-
+                            <p class="text-primary font-semibold text-sm mb-3">
+                                {{ $team->position ?? '' }}
+                            </p>
                         </div>
                     </div>
                 @endforeach
             </div>
+
+            {{--  Group Photo Section --}}
+            @if (!empty($setting['teacher_group_photo']))
+                <div class="mt-12 md:mt-16 text-center">
+
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-6">
+                        {{ $setting['teacher_group_title'] ?? 'Our Team Together' }}
+                    </h2>
+
+                    <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl">
+                        <img class="w-full h-auto object-cover" src="{{ $setting['teacher_group_photo'] }}"
+                            alt="{{ $setting['teacher_group_title'] ?? 'Team Group Photo' }}">
+                    </div>
+
+                </div>
+            @endif
         </div>
     </section>
 @endsection

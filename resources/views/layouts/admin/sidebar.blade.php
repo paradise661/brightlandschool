@@ -7,7 +7,8 @@
     <div class="app-brand demo p-0">
         <a class="app-brand-link mx-auto my-0" href="{{ route('dashboard') }}" target="_blank">
             {{-- @if ($setting['site_main_logo']) --}}
-            <img style="max-width: 210px;" src="{{ asset('admin/assets/images/logo.jpg') }}" alt="logo">
+            <img style="max-width: 210px;" src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}"
+                alt="logo">
             {{-- @else --}}
             {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">ParadiseCourse</span> --}}
             {{-- @endif --}}

@@ -252,5 +252,29 @@
 
             </div>
         </fieldset>
+
+        <fieldset class="border p-3">
+            <legend class="float-none w-auto legend-title">Teacher Group Photo</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label class="pb-2" for="teacher_group_title">Enter Group
+                            Title</label>
+                        <input class="form-control br-8" type="text" name="teacher_group_title"
+                            value="{{ $setting['teacher_group_title'] ?? '' }}" placeholder="Enter Contact Title">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-group mb-3" for="teacher_group_photo">Upload Teacher Group Photo</label>
+                    <div class="custom-file">
+                        <input class="mainlogo" id="teacher_group_photo" data-show-remove="false"
+                            data-default-file="{{ $setting['teacher_group_photo'] ?? '' }}" type="file"
+                            name="teacher_group_photo">
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
     </div>
 </div>
