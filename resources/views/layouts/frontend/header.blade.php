@@ -67,7 +67,7 @@
                                 class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
                         <div
-                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl shadow-xl shadow-slate-200/80 border border-slate-100 py-2
+                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl border border-slate-100 py-2
                                 opacity-0 invisible translate-y-2
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-200 z-50">
@@ -96,7 +96,7 @@
                                 class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
                         <div
-                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl shadow-xl shadow-slate-200/80 border border-slate-100 py-2
+                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl border border-slate-100 py-2
                                 opacity-0 invisible translate-y-2
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-200 z-50">
@@ -125,7 +125,7 @@
                                 class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
                         <div
-                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl shadow-xl shadow-slate-200/80 border border-slate-100 py-2
+                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl border border-slate-100 py-2
                                 opacity-0 invisible translate-y-2
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-200 z-50">
