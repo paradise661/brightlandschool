@@ -1,277 +1,294 @@
-<div class="bg-primary text-white py-2 text-sm" id="top-bar">
-    <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <div class="w-full flex justify-between sm:hidden">
-            <a class="flex items-center hover:text-gray-200 transition" href="mailto:{{ $setting['site_email'] ?? '' }}">
-                <i class="fa-solid fa-envelope mr-2"></i>
-                <span>{{ $setting['site_email'] ?? '' }}</span>
-            </a>
-            <a class="flex items-center hover:text-gray-200 transition" href="tel:{{ $setting['site_phone'] ?? '' }}">
-                <i class="fa-solid fa-phone mr-2"></i>
-                <span>{{ $setting['site_phone'] ?? '' }}</span>
-            </a>
-        </div>
+<body class="bg-slate-50 min-h-screen">
 
-        <!-- Desktop view: email left, phone right, social center -->
-        <div class="hidden sm:flex w-full justify-between items-center">
+    <!-- TOP BAR -->
+    <div class="bg-primary text-white py-0 text-xs font-medium tracking-wide" id="top-bar">
+        <div class="container mx-auto px-4 md:px-6 flex items-center justify-between h-9">
 
-            <!-- Email left -->
-            <a class="flex items-center hover:text-gray-200 transition"
-                href="mailto:{{ $setting['site_email'] ?? '' }}">
-                <i class="fa-solid fa-envelope mr-2"></i>
-                <span>{{ $setting['site_email'] ?? '' }}</span>
-            </a>
-
-            <!-- Social icons center -->
-            <div class="flex space-x-4">
-                @foreach ($social as $socials)
-                    <a class="hover:text-gray-200 transition" href="{{ $socials->link ?? '#' }}"><i
-                            class="fa-brands {{ $socials->icon ?? '' }}"></i></a>
-                @endforeach
+            <div class="w-full flex justify-between sm:hidden">
+                <a class="flex items-center gap-1.5 hover:text-white transition-colors duration-200"
+                    href="mailto:{{ $setting['site_email'] ?? '' }}">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>{{ $setting['site_email'] ?? '' }}</span>
+                </a>
+                <a class="flex items-center gap-1.5 hover:text-white transition-colors duration-200"
+                    href="tel:{{ $setting['site_phone'] ?? '' }}">
+                    <i class="fa-solid fa-phone text-primary"></i>
+                    <span>{{ $setting['site_phone'] ?? '' }}</span>
+                </a>
             </div>
 
-            <!-- Phone right -->
-            <a class="flex items-center hover:text-gray-200 transition" href="tel:+021-1234567">
-                <i class="fa-solid fa-phone mr-2"></i>
-                <span>{{ $setting['site_phone'] ?? '' }}</span>
-            </a>
+            <div class="hidden sm:flex w-full justify-between items-center">
+                <a class="flex items-center gap-2 hover:text-white transition-colors duration-200"
+                    href="mailto:{{ $setting['site_email'] ?? '' }}">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>{{ $setting['site_email'] ?? '' }}</span>
+                </a>
+                <div class="flex items-center gap-5">
+                    @foreach ($social as $socials)
+                        <a class="hover:text-white hover:-translate-y-px transition-all duration-200"
+                            href="{{ $socials->link ?? '#' }}"><i class="fa-brands {{ $socials->icon ?? '' }}"></i></a>
+                    @endforeach
 
+                </div>
+                <a class="flex items-center gap-2 hover:text-white transition-colors duration-200"
+                    href="tel:{{ $setting['site_phone'] ?? '' }}">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>{{ $setting['site_phone'] ?? '' }}</span>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4 md:px-6">
-        <div class="flex justify-between items-center min-h-[80px]">
+    <!-- HEADER -->
+    <header class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-between items-center h-[72px]">
 
-            <!-- LOGO -->
-            <a class="flex items-center" href="{{ url('/') }}">
-                <img class="h-12 md:h-14 w-auto object-contain"
-                    src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
-            </a>
-
-            <!-- DESKTOP NAV -->
-            <nav class="hidden md:flex items-center gap-6 lg:gap-8">
-                <a class="h-10 flex items-center text-gray-700 hover:text-primary transition font-medium"
-                    href="{{ route('home') }}">
-                    Home
+                <!-- LOGO -->
+                <a class="flex items-center" href="{{ url('/') }}">
+                    <img class="h-11 md:h-[52px] w-auto object-contain"
+                        src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
                 </a>
 
-                <!-- About -->
-                <div class="relative group">
-                    <button
-                        class="h-10 flex items-center gap-1 text-gray-700 hover:text-primary transition font-medium">
-                        About Us
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
-                    </button>
-                    <div
-                        class="absolute left-0 mt-3 w-56 bg-white shadow-lg rounded-lg py-2
-                        opacity-0 invisible
-                        group-hover:opacity-100 group-hover:visible
-                        transition-all duration-300 delay-150">
+                <!-- DESKTOP NAV -->
+                <nav class="hidden md:flex items-center gap-1">
 
-                        <a class="block px-4 py-2 hover:bg-gray-100"
-                            href="{{ route('frontend.about') }}">Introduction</a>
-                        @foreach ($messageItems as $message)
-                            <a class="block px-4 py-2 hover:bg-gray-100"
-                                href="{{ route('frontend.message.show', $message->slug) }}">
-                                {{ $message->name ?? '' }}
-                            </a>
-                        @endforeach
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('frontend.teachers') }}">Our
-                            Teachers</a>
-                        <a class="block px-4 py-2 hover:bg-gray-100"
-                            href="{{ route('frontend.reviews') }}">Testimonial</a>
-                    </div>
-                </div>
-
-                <!-- Academics -->
-                <div class="relative group">
-                    <button
-                        class="h-10 flex items-center gap-1 text-gray-700 hover:text-primary transition font-medium">
-                        Academics
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
-                    </button>
-                    <div
-                        class="absolute left-0 mt-3 w-56 bg-white shadow-lg rounded-lg py-2
-                        opacity-0 invisible
-                        group-hover:opacity-100 group-hover:visible
-                        transition-all duration-300 delay-150">
-                        @foreach ($hacademy as $academy)
-                            <a class="block px-4 py-2 hover:bg-gray-100"
-                                href="{{ route('frontend.academics', $academy->slug) }}">{{ $academy->name ?? '' }}</a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <a class="h-10 flex items-center text-gray-700 hover:text-primary transition font-medium"
-                    href="{{ route('facilities') }}">
-                    Facilities
-                </a>
-
-                <a class="h-10 flex items-center text-gray-700 hover:text-primary transition font-medium"
-                    href="{{ route('frontend.gallery') }}">
-                    Gallery
-                </a>
-
-                <!-- News -->
-                <div class="relative group">
-                    <button
-                        class="h-10 flex items-center gap-1 text-gray-700 hover:text-primary transition font-medium">
-                        News & Updates
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
-                    </button>
-                    <div
-                        class="absolute left-0 mt-3 w-56 bg-white shadow-lg rounded-lg py-2
-                            opacity-0 invisible
-                            group-hover:opacity-100 group-hover:visible
-                            transition-all duration-300 delay-150">
-
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('notice') }}">Notices</a>
-                        {{-- <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('frontend.events') }}">Events</a> --}}
-                        <a class="block px-4 py-2 hover:bg-gray-100"
-                            href="{{ route('frontend.calendar') }}">Calendar</a>
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('blog') }}">Blogs</a>
-                        <a class="block px-4 py-2 hover:bg-gray-100" href="{{ route('downloads') }}">Downloads</a>
-                    </div>
-                </div>
-
-                <a class="h-10 flex items-center text-gray-700 hover:text-primary transition font-medium"
-                    href="{{ route('contact') }}">
-                    Contact
-                </a>
-
-                <a class="bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-700 transition font-semibold"
-                    href="{{ route('frontend.admission') }}">
-                    Admissions
-                </a>
-            </nav>
-
-            <!-- MOBILE MENU BUTTON -->
-            <button class="md:hidden text-gray-900" id="mobile-menu-btn">
-                <i class="fa-solid fa-bars text-2xl"></i>
-            </button>
-            <!-- MOBILE NAVIGATION -->
-            <div class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden" id="mobile-overlay"></div>
-
-            <div class="md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300"
-                id="mobile-menu">
-                <div class="flex justify-between items-center px-4 py-4 border-b">
-                    <a href="{{ url('/') }}">
-                        <img class="h-12 w-auto object-contain"
-                            src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
+                    <a class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200"
+                        href="{{ url('/') }}">
+                        Home
                     </a>
-                    <button class="text-gray-700" id="mobile-menu-close">
-                        <i class="fa-solid fa-xmark text-2xl"></i>
-                    </button>
-                </div>
 
-                <nav class="px-4 py-6 flex flex-col space-y-2 text-gray-700">
-                    <a class="block py-2 hover:text-primary font-medium" href="{{ route('home') }}">Home</a>
-
-                    <!-- About dropdown -->
-                    <div class="flex flex-col">
+                    <!-- About -->
+                    <div class="relative group">
                         <button
-                            class="flex justify-between items-center py-2 w-full hover:text-primary font-medium mobile-dropdown-btn">
-                            About Us <i class="fa-solid fa-chevron-down text-xs"></i>
+                            class="flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer">
+                            About Us
+                            <i
+                                class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
-                        <div class="hidden flex-col pl-4 mobile-dropdown">
-                            <a class="block py-2 hover:text-primary"
+                        <div
+                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl shadow-xl shadow-slate-200/80 border border-slate-100 py-2
+                                opacity-0 invisible translate-y-2
+                                group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                                transition-all duration-200 z-50">
+                            <div
+                                class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-100 rotate-45 rounded-sm">
+                            </div>
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
                                 href="{{ route('frontend.about') }}">Introduction</a>
                             @foreach ($messageItems as $message)
-                                <a class="block py-2 hover:text-primary"
-                                    href="{{ route('frontend.message.show', $message->slug) }}">
-                                    {{ $message->name ?? '' }}
-                                </a>
+                                <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
+                                    href="{{ route('frontend.message.show', $message->slug) }}">{{ $message->name ?? '' }}</a>
                             @endforeach
-                            <a class="block py-2 hover:text-primary" href="{{ route('frontend.teachers') }}">Our
-                                Teachers</a>
-                            <a class="block py-2 hover:text-primary"
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
+                                href="{{ route('frontend.teachers') }}">Our Teachers</a>
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
                                 href="{{ route('frontend.reviews') }}">Testimonial</a>
                         </div>
                     </div>
 
-                    <!-- Academics dropdown -->
-                    <div class="flex flex-col">
+                    <!-- Academics -->
+                    <div class="relative group">
                         <button
-                            class="flex justify-between items-center py-2 w-full hover:text-primary font-medium mobile-dropdown-btn">
-                            Academics <i class="fa-solid fa-chevron-down text-xs"></i>
+                            class="flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer">
+                            Academics
+                            <i
+                                class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
-                        <div class="hidden flex-col pl-4 mobile-dropdown">
+                        <div
+                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl shadow-xl shadow-slate-200/80 border border-slate-100 py-2
+                                opacity-0 invisible translate-y-2
+                                group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                                transition-all duration-200 z-50">
+                            <div
+                                class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-100 rotate-45 rounded-sm">
+                            </div>
                             @foreach ($hacademy as $academy)
-                                <a class="block py-2 hover:text-primary"
+                                <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
                                     href="{{ route('frontend.academics', $academy->slug) }}">{{ $academy->name ?? '' }}</a>
                             @endforeach
+
                         </div>
                     </div>
 
-                    <a class="block py-2 hover:text-primary font-medium"
+                    <a class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200"
                         href="{{ route('facilities') }}">Facilities</a>
-                    <a class="block py-2 hover:text-primary font-medium"
+                    <a class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200"
                         href="{{ route('frontend.gallery') }}">Gallery</a>
 
-                    <!-- News dropdown -->
-                    <div class="flex flex-col">
+                    <!-- News -->
+                    <div class="relative group">
                         <button
-                            class="flex justify-between items-center py-2 w-full hover:text-primary font-medium mobile-dropdown-btn">
-                            News & Updates <i class="fa-solid fa-chevron-down text-xs"></i>
+                            class="flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer">
+                            News &amp; Updates
+                            <i
+                                class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
                         </button>
-                        <div class="hidden flex-col pl-4 mobile-dropdown">
-                            <a class="block py-2 hover:text-primary" href="{{ route('notice') }}">Notices</a>
-                            {{-- <a class="block py-2 hover:text-primary" href="{{ route('frontend.events') }}">Events</a> --}}
-                            <a class="block py-2 hover:text-primary"
+                        <div
+                            class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 bg-white rounded-xl shadow-xl shadow-slate-200/80 border border-slate-100 py-2
+                                opacity-0 invisible translate-y-2
+                                group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                                transition-all duration-200 z-50">
+                            <div
+                                class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-slate-100 rotate-45 rounded-sm">
+                            </div>
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
+                                href="{{ route('notice') }}">Notices</a>
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
                                 href="{{ route('frontend.calendar') }}">Calendar</a>
-                            <a class="block py-2 hover:text-primary" href="{{ route('blog') }}">Blogs</a>
-                            <a class="block py-2 hover:text-primary" href="{{ route('downloads') }}">Downloads</a>
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
+                                href="{{ route('blog') }}">Blogs</a>
+                            <a class="flex items-center mx-1.5 px-3 py-2 rounded-lg text-sm text-slate-700 font-medium hover:bg-primary/5 hover:text-primary transition-all duration-150"
+                                href="{{ route('downloads') }}">Downloads</a>
                         </div>
                     </div>
 
-                    <a class="block py-2 hover:text-primary font-medium" href="{{ route('contact') }}">Contact</a>
+                    <a class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 transition-all duration-200"
+                        href="{{ route('contact') }}">Contact</a>
 
-                    <a class="block bg-primary text-white px-4 py-2 mt-2 rounded-full text-center hover:bg-red-700 font-semibold"
-                        href="{{ route('frontend.admission') }}">Admissions</a>
-                    <!-- Social icons at the bottom -->
-                    <div class="flex justify-center space-x-4 mt-6 px-4">
-                        @foreach ($social as $socials)
-                            <a class="text-gray-700 hover:text-primary transition"
-                                href="{{ $socials->link ?? '#' }}">
-                                <i class="fa-brands {{ $socials->icon ?? '' }}"></i>
-                            </a>
-                        @endforeach
-
-                    </div>
+                    <a class="ml-2 inline-flex items-center gap-1.5 bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-md shadow-primary/30 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-px active:translate-y-0 transition-all duration-200"
+                        href="{{ route('frontend.admission') }}">
+                        Admissions
+                    </a>
                 </nav>
-            </div>
 
-            <!-- SCRIPT TO TOGGLE MOBILE MENU -->
-            <script>
-                const menuBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                const overlay = document.getElementById('mobile-overlay');
-                const closeBtn = document.getElementById('mobile-menu-close');
+                <!-- MOBILE BUTTON -->
+                <button
+                    class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-slate-800 hover:bg-slate-100 transition-colors duration-200"
+                    id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
 
-                menuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.remove('translate-x-full');
-                    overlay.classList.remove('hidden');
-                });
+                <!-- MOBILE OVERLAY -->
+                <div class="md:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden" id="mobile-overlay">
+                </div>
 
-                closeBtn.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
-                    overlay.classList.add('hidden');
-                });
+                <!-- MOBILE DRAWER -->
+                <div class="md:hidden fixed top-0 right-0 w-72 h-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col"
+                    id="mobile-menu">
 
-                overlay.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
-                    overlay.classList.add('hidden');
-                });
+                    <div class="flex justify-between items-center px-5 py-4 border-b border-slate-100 shrink-0">
+                        <img class="h-10 w-auto object-contain"
+                            src="{{ $setting['site_main_logo'] ?? asset('frontend/images/logo.jpg') }}" alt="Logo">
+                        <button
+                            class="flex items-center justify-center w-9 h-9 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors duration-200"
+                            id="mobile-menu-close">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
 
-                // Dropdown toggles
-                document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const dropdown = btn.nextElementSibling;
-                        dropdown.classList.toggle('hidden');
+                    <nav class="px-3 py-4 flex flex-col gap-0.5 text-slate-700 overflow-y-auto flex-1">
+                        <a class="block px-3.5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                            href="{{ route('home') }}">Home</a>
+
+                        <div class="flex flex-col">
+                            <button
+                                class="flex justify-between items-center px-3.5 py-2.5 w-full rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150 mobile-dropdown-btn">
+                                About Us <i
+                                    class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div
+                                class="hidden flex-col pl-3 ml-3 border-l-2 border-primary/30 mt-0.5 mb-1 mobile-dropdown">
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('frontend.about') }}">Introduction</a>
+                                @foreach ($messageItems as $message)
+                                    <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                        href="{{ route('frontend.message.show', $message->slug) }}">{{ $message->name ?? '' }}</a>
+                                @endforeach
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('frontend.teachers') }}">Our Teachers</a>
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('frontend.reviews') }}">Testimonial</a>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <button
+                                class="flex justify-between items-center px-3.5 py-2.5 w-full rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150 mobile-dropdown-btn">
+                                Academics <i
+                                    class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div
+                                class="hidden flex-col pl-3 ml-3 border-l-2 border-primary/30 mt-0.5 mb-1 mobile-dropdown">
+                                @foreach ($hacademy as $academy)
+                                    <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                        href="{{ route('frontend.academics', $academy->slug) }}">{{ $academy->name ?? '' }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <a class="block px-3.5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                            href="{{ route('facilities') }}">Facilities</a>
+                        <a class="block px-3.5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                            href="{{ route('frontend.gallery') }}">Gallery</a>
+
+                        <div class="flex flex-col">
+                            <button
+                                class="flex justify-between items-center px-3.5 py-2.5 w-full rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150 mobile-dropdown-btn">
+                                News &amp; Updates <i
+                                    class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"></i>
+                            </button>
+                            <div
+                                class="hidden flex-col pl-3 ml-3 border-l-2 border-primary/30 mt-0.5 mb-1 mobile-dropdown">
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('notice') }}">Notices</a>
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('frontend.calendar') }}">Calendar</a>
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('blog') }}">Blogs</a>
+                                <a class="block px-3 py-2 rounded-lg text-sm text-slate-600 font-medium hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                                    href="{{ route('downloads') }}">Downloads</a>
+                            </div>
+                        </div>
+
+                        <a class="block px-3.5 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary/5 hover:text-primary transition-colors duration-150"
+                            href="{{ route('contact') }}">Contact</a>
+
+                        <a class="block bg-primary text-white text-sm font-bold px-4 py-3 mt-3 rounded-xl text-center shadow-md shadow-primary/30 hover:shadow-lg hover:brightness-110 transition-all duration-200"
+                            href="{{ route('frontend.admission') }}">
+                            Admissions
+                        </a>
+
+                        <div class="flex justify-center gap-3 mt-5 pt-5 border-t border-slate-100">
+                            @foreach ($social as $socials)
+                                <a class="flex items-center justify-center w-9 h-9 rounded-full bg-slate-100 text-slate-500 text-sm hover:bg-primary hover:text-white transition-all duration-200 hover:-translate-y-px"
+                                    href="{{ $socials->link ?? '#' }}"><i
+                                        class="fa-brands {{ $socials->icon ?? '' }}"></i></a>
+                            @endforeach
+
+                        </div>
+                    </nav>
+                </div>
+
+                <script>
+                    const menuBtn = document.getElementById('mobile-menu-btn');
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const overlay = document.getElementById('mobile-overlay');
+                    const closeBtn = document.getElementById('mobile-menu-close');
+
+                    menuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.remove('translate-x-full');
+                        overlay.classList.remove('hidden');
                     });
-                });
-            </script>
+                    closeBtn.addEventListener('click', () => {
+                        mobileMenu.classList.add('translate-x-full');
+                        overlay.classList.add('hidden');
+                    });
+                    overlay.addEventListener('click', () => {
+                        mobileMenu.classList.add('translate-x-full');
+                        overlay.classList.add('hidden');
+                    });
+                    document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const dropdown = btn.nextElementSibling;
+                            dropdown.classList.toggle('hidden');
+                            const icon = btn.querySelector('i');
+                            icon.classList.toggle('rotate-180');
+                        });
+                    });
+                </script>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
+
+</body>
