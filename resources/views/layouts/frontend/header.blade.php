@@ -12,7 +12,7 @@
                 </a>
                 <a class="flex items-center gap-1.5 hover:text-white transition-colors duration-200"
                     href="tel:{{ $setting['site_phone'] ?? '' }}">
-                    <i class="fa-solid fa-phone text-primary"></i>
+                    <i class="fa-solid fa-phone"></i>
                     <span>{{ $setting['site_phone'] ?? '' }}</span>
                 </a>
             </div>
