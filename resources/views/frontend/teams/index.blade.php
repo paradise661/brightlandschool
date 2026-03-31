@@ -79,7 +79,7 @@
                         {{ $setting['teacher_group_title'] ?? 'Our Team Together' }}
                     </h2>
 
-                    <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl">
+                    <div class="mx-auto rounded-2xl overflow-hidden shadow-xl">
                         <img class="w-full h-auto object-cover" src="{{ $setting['teacher_group_photo'] }}"
                             alt="{{ $setting['teacher_group_title'] ?? 'Team Group Photo' }}">
                     </div>
