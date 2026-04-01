@@ -55,8 +55,7 @@ class AdmissionController extends Controller
 
             //Send email to admin
             $emails = [
-                'brightlandhss@gmail.com',
-                'durgesh.upadhyaya7@gmail.com'
+                'brightlandhss@gmail.com'
             ];
             Mail::to($emails)
                 ->send(new StudentFormMail($pdf->output(), $fileName));
