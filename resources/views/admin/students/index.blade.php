@@ -16,7 +16,7 @@
                             <th>SN</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Phone</th>
+                            <th>Contact</th>
                             <th>Payment</th>
                             <th>Status</th>
                             <th>Submitted at</th>
@@ -29,7 +29,7 @@
                                 <td><strong>{{ $key + $student->firstItem() }}</strong></td>
                                 <td><strong>{{ $students->name ?? '' }} </strong></td>
                                 <td><strong>{{ $students->email ?? '' }}</strong></td>
-                                <td><strong>{{ $students->phone ?? '' }}</strong></td>
+                                <td><strong>{{ $students->father_phone ?? '' }}</strong></td>
                                 @php
                                     $status = strtolower($students->payment_status);
                                 @endphp
