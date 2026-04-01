@@ -22,7 +22,6 @@ class AdmissionController extends Controller
     {
 
         try {
-            // dd($request->all());
             $data = $request->all();
 
             // File uploads
@@ -47,13 +46,15 @@ class AdmissionController extends Controller
             }
 
             // Generate PDF
-            $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
+            // $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
+            $pdf = Pdf::loadView('emails.admin.admission', compact('student'));
+
 
             $studentName = trim($student->name);
-            $fileName = 'student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
+            $fileName = 'Student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
 
-            // Send email to admin
-            Mail::to('brightlandhss@gmail.com')
+            //Send email to admin
+            Mail::to('durgesh.upadhyaya7@gmail.com')
                 ->send(new StudentFormMail($pdf->output(), $fileName));
 
 

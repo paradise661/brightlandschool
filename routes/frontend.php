@@ -4,6 +4,7 @@ use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
@@ -42,3 +43,21 @@ Route::get('/esewa/failure', [AdmissionController::class, 'esewaFailure'])->name
 Route::get('/payment/confirmation', [AdmissionController::class, 'confirmation'])->name('esewa.confirmation');
 
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('frontend.calendar');
+
+Route::get('mail', function () {
+
+    $to_email = 'durgesh.upadhyaya7@gmail.com'; // change to your email
+
+    Mail::raw('This is a test email from Laravel using Brevo SMTP.', function ($message) use ($to_email) {
+        $message->to($to_email)
+            ->subject('Test Email from Laravel')
+            ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+    });
+
+    return 'Test email sent successfully!';
+});
+
+Route::get('pdf', function () {
+
+    return view('emails.admin.admission');
+});

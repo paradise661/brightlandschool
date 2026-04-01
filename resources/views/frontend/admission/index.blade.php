@@ -312,13 +312,13 @@
                                    focus:ring-blue-500 focus:border-blue-500 transition"
                                     name="father_ethnicity">
                                     <option value="">Select Qualification</option>
-                                    <option value="school_level">School Level</option>
-                                    <option value="slc_passed">SLC Passed</option>
+                                    <option value="School Level">School Level</option>
+                                    <option value="SLC Passed">SLC Passed</option>
                                     <option value="+2">+2</option>
-                                    <option value="bachelor">Bachelor</option>
-                                    <option value="masters">Masters</option>
-                                    <option value="phd">PhD</option>
-                                    <option value="others">Others</option>
+                                    <option value="Bachelor">Bachelor</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="PhD">PhD</option>
+                                    <option value="Others">Others</option>
                                 </select>
                                 <span class="text-red-500 text-xs error-text" id="error-father_ethnicity"></span>
                             </div>
@@ -332,18 +332,18 @@
                                    focus:ring-blue-500 focus:border-blue-500 transition"
                                     name="father_occupation">
                                     <option value="">Select Occupation</option>
-                                    <option value="student">Student</option>
-                                    <option value="teacher">Teacher</option>
-                                    <option value="lecturer_professor">Lecturer / Professor</option>
-                                    <option value="government_employee">Government Employee</option>
-                                    <option value="private_employee">Private Employee</option>
-                                    <option value="business_owner">Business Owner</option>
-                                    <option value="self_employed">Self-Employed</option>
-                                    <option value="freelancer">Freelancer</option>
-                                    <option value="unemployed">Unemployed</option>
-                                    <option value="retired">Retired</option>
-                                    <option value="farmer">Farmer</option>
-                                    <option value="others">Others</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Lecturer">Lecturer</option>
+                                    <option value="Government Employee">Government Employee</option>
+                                    <option value="Private Employee">Private Employee</option>
+                                    <option value="Business Owner">Business Owner</option>
+                                    <option value="Self-Employed">Self-Employed</option>
+                                    <option value="Freelancer">Freelancer</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Retired">Retired</option>
+                                    <option value="Farmer">Farmer</option>
+                                    <option value="Others">Others</option>
                                 </select>
                                 <span class="text-red-500 text-xs error-text" id="error-father_occupation"></span>
                             </div>
@@ -436,13 +436,13 @@
                                    focus:ring-blue-500 focus:border-blue-500 transition"
                                     name="mother_ethnicity">
                                     <option value="">Select Qualification</option>
-                                    <option value="school_level">School Level</option>
-                                    <option value="slc_passed">SLC Passed</option>
-                                    <option value="plus_two">+2</option>
-                                    <option value="bachelor">Bachelor</option>
-                                    <option value="masters">Masters</option>
-                                    <option value="phd">PhD</option>
-                                    <option value="others">Others</option>
+                                    <option value="School Level">School Level</option>
+                                    <option value="SLC Passed">SLC Passed</option>
+                                    <option value="+2">+2</option>
+                                    <option value="Bachelor">Bachelor</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="PhD">PhD</option>
+                                    <option value="Others">Others</option>
                                 </select>
                                 <span class="text-red-500 text-xs error-text" id="error-mother_ethnicity"></span>
                             </div>
@@ -456,18 +456,18 @@
                                    focus:ring-blue-500 focus:border-blue-500 transition"
                                     name="mother_occupation">
                                     <option value="">Select Occupation</option>
-                                    <option value="student">Student</option>
-                                    <option value="teacher">Teacher</option>
-                                    <option value="lecturer_professor">Lecturer / Professor</option>
-                                    <option value="government_employee">Government Employee</option>
-                                    <option value="private_employee">Private Employee</option>
-                                    <option value="business_owner">Business Owner</option>
-                                    <option value="self_employed">Self-Employed</option>
-                                    <option value="freelancer">Freelancer</option>
-                                    <option value="unemployed">Unemployed</option>
-                                    <option value="retired">Retired</option>
-                                    <option value="farmer">Farmer</option>
-                                    <option value="others">Others</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Lecturer">Lecturer</option>
+                                    <option value="Government Employee">Government Employee</option>
+                                    <option value="Private Employee">Private Employee</option>
+                                    <option value="Business Owner">Business Owner</option>
+                                    <option value="Self-Employed">Self-Employed</option>
+                                    <option value="Freelancer">Freelancer</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Retired">Retired</option>
+                                    <option value="Farmer">Farmer</option>
+                                    <option value="Others">Others</option>
                                 </select>
                                 <span class="text-red-500 text-xs error-text" id="error-mother_occupation"></span>
                             </div>
@@ -583,13 +583,13 @@
                                    focus:ring-blue-500 focus:border-blue-500 transition"
                                 name="guardian_qualifaction">
                                 <option value="">Select Qualification</option>
-                                <option value="school_level">School Level</option>
-                                <option value="slc_passed">SLC Passed</option>
+                                <option value="School Level">School Level</option>
+                                <option value="SLC Passed">SLC Passed</option>
                                 <option value="+2">+2</option>
-                                <option value="bachelor">Bachelor</option>
-                                <option value="masters">Masters</option>
-                                <option value="phd">PhD</option>
-                                <option value="others">Others</option>
+                                <option value="Bachelor">Bachelor</option>
+                                <option value="Masters">Masters</option>
+                                <option value="PhD">PhD</option>
+                                <option value="Others">Others</option>
                             </select>
                             <span class="text-red-500 text-xs error-text" id="error-guardian_qualifaction"></span>
 
@@ -603,18 +603,18 @@
                                    focus:ring-blue-500 focus:border-blue-500 transition"
                                 name="guardian_occupation">
                                 <option value="">Select Occupation</option>
-                                <option value="student">Student</option>
-                                <option value="teacher">Teacher</option>
-                                <option value="lecturer_professor">Lecturer / Professor</option>
-                                <option value="government_employee">Government Employee</option>
-                                <option value="private_employee">Private Employee</option>
-                                <option value="business_owner">Business Owner</option>
-                                <option value="self_employed">Self-Employed</option>
-                                <option value="freelancer">Freelancer</option>
-                                <option value="unemployed">Unemployed</option>
-                                <option value="retired">Retired</option>
-                                <option value="farmer">Farmer</option>
-                                <option value="others">Others</option>
+                                <option value="Student">Student</option>
+                                <option value="Teacher">Teacher</option>
+                                <option value="Lecturer">Lecturer</option>
+                                <option value="Government Employee">Government Employee</option>
+                                <option value="Private Employee">Private Employee</option>
+                                <option value="Business Owner">Business Owner</option>
+                                <option value="Self-Employed">Self-Employed</option>
+                                <option value="Freelancer">Freelancer</option>
+                                <option value="Unemployed">Unemployed</option>
+                                <option value="Retired">Retired</option>
+                                <option value="Farmer">Farmer</option>
+                                <option value="Others">Others</option>
                             </select>
                             <span class="text-red-500 text-xs error-text" id="error-guardian_occupation"></span>
 

@@ -31,7 +31,7 @@ class StudentFormMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Student Admission Form',
+            subject: 'New Student Admission Submitted',
         );
     }
 
