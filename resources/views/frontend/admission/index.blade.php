@@ -553,27 +553,30 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Guardian's Name <span
-                                    class="text-slate-400 font-normal text-xs">(optional)</span></label>
+                                    class="text-red-500">*</span></label>
                             <input
                                 class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
                                 name="guardian_name" type="text" placeholder="Full name">
+                            <span class="text-red-500 text-xs error-text" id="error-guardian_name"></span>
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Phone Number <span
-                                    class="text-slate-400 font-normal text-xs">(optional)</span></label>
+                                    class="text-red-500">*</span></label>
                             <input
                                 class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
                                 name="guardian_phone" type="tel" placeholder="98XXXXXXXX">
+                            <span class="text-red-500 text-xs error-text" id="error-guardian_phone"></span>
+
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Educational Qualification <span
-                                    class="text-slate-400 font-normal text-xs">(optional)</span></label>
+                                    class="text-red-500">*</span></label>
                             <select
                                 class="w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5
                                    text-sm text-slate-700 focus:outline-none focus:ring-2
@@ -588,10 +591,12 @@
                                 <option value="phd">PhD</option>
                                 <option value="others">Others</option>
                             </select>
+                            <span class="text-red-500 text-xs error-text" id="error-guardian_qualifaction"></span>
+
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Occupation <span
-                                    class="text-slate-400 font-normal text-xs">(optional)</span></label>
+                                    class="text-red-500">*</span></label>
                             <select
                                 class="w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5
                                    text-sm text-slate-700 focus:outline-none focus:ring-2
@@ -611,6 +616,8 @@
                                 <option value="farmer">Farmer</option>
                                 <option value="others">Others</option>
                             </select>
+                            <span class="text-red-500 text-xs error-text" id="error-guardian_occupation"></span>
+
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -1039,7 +1046,7 @@
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition"
                                 type="date" name="agreement_date"
-                                value="{{ old('agreement_date', $student->agreement_date ?? '') }}">
+                                value="{{ old('agreement_date', isset($student->agreement_date) ? \Carbon\Carbon::parse($student->agreement_date)->format('Y-m-d') : now()->format('Y-m-d')) }}">
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Parent's Signature</label>
@@ -1189,7 +1196,7 @@
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition"
                                 type="date" name="declaration_date"
-                                value="{{ old('declaration_date', $student->declaration_date ?? '') }}">
+                                value="{{ old('declaration_date', isset($student->declaration_date) ? \Carbon\Carbon::parse($student->declaration_date)->format('Y-m-d') : now()->format('Y-m-d')) }}">
                         </div>
                     </div>
                 </div>
@@ -1374,10 +1381,10 @@
                     if (response.status === 422) {
                         const firstField = Object.keys(data.errors)[0];
                         const firstError = data.errors[firstField][0];
-                        toastr.error(firstError, 'Validation Error', {
-                            positionClass: 'toast-top-right',
-                            timeOut: 5000
-                        });
+                        // toastr.error(firstError, 'Validation Error', {
+                        //     positionClass: 'toast-top-right',
+                        //     timeOut: 5000
+                        // });
                         for (let field in data.errors) {
                             const el = document.getElementById(`error-${field}`);
                             if (el) el.textContent = data.errors[field][0];

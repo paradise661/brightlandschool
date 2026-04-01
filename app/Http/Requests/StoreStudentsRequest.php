@@ -53,12 +53,12 @@ class StoreStudentsRequest extends FormRequest
             'mother_email' => 'nullable|email|max:255',
 
             // Guardian Information
-            'guardian_name' => 'nullable|string|max:255',
+            'guardian_name' => 'required|string|max:255',
             'guardian_address' => 'nullable|string|max:255',
             'guardian_relationship' => 'nullable|string|max:100',
-            'guardian_phone' => 'nullable|string|max:20',
-            'guardian_qualifaction' => 'nullable|string|max:255',
-            'guardian_occupation' => 'nullable|string|max:255',
+            'guardian_phone' => 'required|string|max:20',
+            'guardian_qualifaction' => 'required|string|max:255',
+            'guardian_occupation' => 'required|string|max:255',
             'guardian_office' => 'nullable|string|max:255',
             'guardian_email' => 'nullable|email|max:255',
 
@@ -116,66 +116,90 @@ class StoreStudentsRequest extends FormRequest
     public function messages(): array
     {
         return [
-            // Student's Detail
-            'name.required' => "Please enter the student's full name.",
-            'age.required' => "Please enter the student's age.",
-            'age.integer' => "Age must be a number.",
-            'age.min' => "Age must be at least 3 years.",
-            'age.max' => "Age cannot exceed 25 years.",
-            'gender.required' => "Please select the student's gender.",
-            'gender.in' => "Gender must be either Male or Female.",
 
+            // =========================
+            // Student Details
+            // =========================
+            'student_photo.required' => "*Please upload the student photo.",
+            'name.required' => "*Please enter the student's full name.",
+            'dob_ad.required' => "*Please select the date of birth (AD).",
+            'age.required' => "*Please enter the student's age.",
+            'age.integer' => "*Age must be a valid number.",
+            'age.min' => "*Age must be at least 3 years.",
+            'age.max' => "*Age cannot be more than 25 years.",
+            'gender.required' => "*Please select the student's gender.",
+            'gender.in' => "*Please select a valid gender (Male or Female).",
+            'email.required' => "*Please enter the student's email address.",
+            'email.email' => "*Please enter a valid email address for the student.",
+            'nationality.required' => "*Please enter the student's nationality.",
+            'address.required' => "*Please enter the student's address.",
 
-            // Parental Information
-            'father_name.required' => "Please enter father's name.",
-            'father_phone.required' => "Please enter father's phone number.",
-            'father_ethnicity.required' => "Please enter father's qualification.",
-            'father_occupation.required' => "Please enter father's occupation.",
+            // =========================
+            // Father Information
+            // =========================
+            'father_name.required' => "*Please enter the father's name.",
+            'father_phone.required' => "*Please enter the father's phone number.",
+            'father_ethnicity.required' => "*Please enter the father's qualification.",
+            'father_occupation.required' => "*Please enter the father's occupation.",
 
+            // =========================
             // Mother Information
-            'mother_name.required' => "Please enter mother's name.",
-            'mother_phone.required' => "Please enter mother's phone number.",
-            'mother_ethnicity.required' => "Please enter mother's qualification.",
-            'mother_occupation.required' => "Please enter mother's occupation.",
+            // =========================
+            'mother_name.required' => "*Please enter the mother's name.",
+            'mother_phone.required' => "*Please enter the mother's phone number.",
+            'mother_ethnicity.required' => "*Please enter the mother's qualification.",
+            'mother_occupation.required' => "*Please enter the mother's occupation.",
 
+            // =========================
+            // Guardian Information
+            // =========================
+            'guardian_name.required' => "*Please enter the guardian's name.",
+            'guardian_phone.required' => "*Please enter the guardian's phone number.",
+            'guardian_qualifaction.required' => "*Please enter the guardian's qualification.",
+            'guardian_occupation.required' => "*Please enter the guardian's occupation.",
 
-            'school_name.required' => 'Please enter the name of your previous school.',
-            'school_name_address.required' => 'Please provide the address of your previous school.',
-            'last_class_attended.required' => 'Please specify the last class you attended.',
-            'school_passed.required' => 'Please mention the school you passed from.',
-            'result.required' => 'Please enter your academic result from the previous school.',
-            'school_reason.required' => 'Please provide the reason for leaving your previous school.',
+            // =========================
+            // Academic Information
+            // =========================
+            'school_name.required_unless' => "*Please enter the student's previous school.",
+            'school_name_address.required_unless' => "*Please enter the previous school address.",
+            'last_class_attended.required_unless' => "*Please enter the student's last attended class.",
+            'school_passed.required_unless' => "*Please enter the school the student passed from.",
+            'result.required_unless' => "*Please enter the student's academic result.",
+            'school_reason.required_unless' => "*Please provide the reason for leaving the previous school.",
 
+            // =========================
             // Documents Upload
-            // Birth Certificate
-            'birth_certificate.required' => "Please upload the birth certificate.",
-            'birth_certificate.file' => "The birth certificate must be a valid file.",
-            'birth_certificate.mimes' => "The birth certificate must be in PDF, JPG, JPEG, or PNG format.",
-            'birth_certificate.max' => "The birth certificate file size must not exceed 2MB.",
+            // =========================
 
-            // Last Report Card
-            'last_report_card.required' => "Please upload the last report card.",
-            'last_report_card.file' => "The last report card must be a valid file.",
-            'last_report_card.mimes' => "The last report card must be in PDF, JPG, JPEG, or PNG format.",
-            'last_report_card.max' => "The last report card file size must not exceed 2MB.",
+            // Birth Certificate
+            'birth_certificate.required' => "*Please upload the birth certificate.",
+            'birth_certificate.file' => "*The birth certificate must be a valid file.",
+            'birth_certificate.mimes' => "*Allowed formats: PDF, JPG, JPEG, PNG.",
+            'birth_certificate.max' => "*File size must not exceed 2MB.",
+
+            // Report Card
+            'last_report_card.required' => "*Please upload the report card.",
+            'last_report_card.file' => "*The report card must be a valid file.",
+            'last_report_card.mimes' => "*Allowed formats: PDF, JPG, JPEG, PNG.",
+            'last_report_card.max' => "*File size must not exceed 2MB.",
 
             // Transfer Certificate
-            'transfer_certificate.required' => "Please upload the transfer certificate.",
-            'transfer_certificate.file' => "The transfer certificate must be a valid file.",
-            'transfer_certificate.mimes' => "The transfer certificate must be in PDF, JPG, JPEG, or PNG format.",
-            'transfer_certificate.max' => "The transfer certificate file size must not exceed 2MB.",
+            'transfer_certificate.required' => "*Please upload the transfer certificate.",
+            'transfer_certificate.file' => "*The transfer certificate must be a valid file.",
+            'transfer_certificate.mimes' => "*Allowed formats: PDF, JPG, JPEG, PNG.",
+            'transfer_certificate.max' => "*File size must not exceed 2MB.",
 
             // Character Certificate
-            'character_certificate.required' => "Please upload the character certificate.",
-            'character_certificate.file' => "The character certificate must be a valid file.",
-            'character_certificate.mimes' => "The character certificate must be in PDF, JPG, JPEG, or PNG format.",
-            'character_certificate.max' => "The character certificate file size must not exceed 2MB.",
+            'character_certificate.required' => "*Please upload the character certificate.",
+            'character_certificate.file' => "*The character certificate must be a valid file.",
+            'character_certificate.mimes' => "*Allowed formats: PDF, JPG, JPEG, PNG.",
+            'character_certificate.max' => "*File size must not exceed 2MB.",
 
-            // 'student_photo.required' => 'Student photograph is required.',
-            // 'student_photo.image' => 'Photo must be an image file.',
-
+            // =========================
             // Declaration
-            'declaration_confirmed.accepted' => "You must confirm the declaration to proceed.",
+            // =========================
+            'declaration_confirmed.accepted' => "*Please confirm the declaration before submitting.",
         ];
     }
 }
