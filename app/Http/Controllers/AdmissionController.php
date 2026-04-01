@@ -55,7 +55,7 @@ class AdmissionController extends Controller
 
             //Send email to admin
             $emails = [
-                'rudra.softsaro@gmail.com',
+                'brightlandhss@gmail.com',
                 'durgesh.upadhyaya7@gmail.com'
             ];
             Mail::to($emails)
