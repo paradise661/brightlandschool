@@ -123,6 +123,7 @@ class StoreStudentsRequest extends FormRequest
             'student_photo.required' => "*Please upload the student photo.",
             'name.required' => "*Please enter the student's full name.",
             'dob_ad.required' => "*Please select the date of birth (AD).",
+            'dob_ad.date' => "*The date of birth must be a valid date (AD).",
             'age.required' => "*Please enter the student's age.",
             'age.integer' => "*Age must be a valid number.",
             'age.min' => "*Age must be at least 3 years.",

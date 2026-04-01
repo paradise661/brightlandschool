@@ -1021,15 +1021,20 @@
                             type="text" name="agreement_name" placeholder="Full name">
                         &nbsp;
                         <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="agreement_relations" value="father">
+                            <input class="accent-blue-700" type="radio" name="agreement_relations" value="father"
+                                {{ old('agreement_relations', $student->agreement_relations ?? 'father') == 'father' ? 'checked' : '' }}>
                             Father
-                        </label> /
+                        </label>
+
                         <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="agreement_relations" value="mother">
+                            <input class="accent-blue-700" type="radio" name="agreement_relations" value="mother"
+                                {{ old('agreement_relations', $student->agreement_relations ?? '') == 'mother' ? 'checked' : '' }}>
                             Mother
-                        </label> /
+                        </label>
+
                         <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="agreement_relations" value="guardian">
+                            <input class="accent-blue-700" type="radio" name="agreement_relations" value="guardian"
+                                {{ old('agreement_relations', $student->agreement_relations ?? '') == 'guardian' ? 'checked' : '' }}>
                             Guardian
                         </label>
                         &nbsp;of&nbsp;<strong class="text-blue-700 uppercase" id="std-name">[Student Name]</strong>,
@@ -1155,15 +1160,20 @@
                         All the information provided in this application form is correct, complete and true to the best
                         of my knowledge. I,&nbsp;
                         <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="father">
+                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="father"
+                                {{ old('declaration_relations', $student->declaration_relations ?? 'father') == 'father' ? 'checked' : '' }}>
                             Father
-                        </label> /
+                        </label>
+
                         <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="mother">
+                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="mother"
+                                {{ old('declaration_relations', $student->declaration_relations ?? '') == 'mother' ? 'checked' : '' }}>
                             Mother
-                        </label> /
+                        </label>
+
                         <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="guardian">
+                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="guardian"
+                                {{ old('declaration_relations', $student->declaration_relations ?? '') == 'guardian' ? 'checked' : '' }}>
                             Guardian
                         </label>
                         (above mentioned) shall comply with all rules and regulations of the school.

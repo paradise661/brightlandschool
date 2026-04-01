@@ -22,6 +22,7 @@ class AdmissionController extends Controller
     {
 
         try {
+            // dd($request->all());
             $data = $request->all();
 
             // File uploads
