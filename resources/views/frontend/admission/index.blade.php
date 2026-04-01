@@ -1465,23 +1465,7 @@
     {{-- ↓↓↓ NEW: Guardian auto-fill from Father / Mother ──────────────────── --}}
     <script>
         (function() {
-            /**
-             * Reads values from the father or mother fields and copies them
-             * into the matching guardian input fields.
-             *
-             * Field mapping:
-             *   guardian_name        ← {source}_name      (text input)
-             *   guardian_phone       ← {source}_phone     (tel input)
-             *   guardian_qualifaction← {source}_ethnicity (select → text input, copies the selected option label)
-             *   guardian_occupation  ← {source}_occupation(select → text input, copies the selected option label)
-             *   guardian_office      ← {source}_religion  (text input)
-             *   guardian_email       ← {source}_email     (text input)
-             *   guardian_address     ← {source}_address   (text input)
-             *
-             * Note: guardian qualification & occupation are plain <input type="text">,
-             * while the parent equivalents are <select> elements, so we copy the
-             * human-readable label of the selected option.
-             */
+
             function fillGuardian(source) {
                 // Helper: get element by name attribute
                 const byName = name => document.querySelector(`[name="${name}"]`);
