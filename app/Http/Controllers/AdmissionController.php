@@ -54,7 +54,11 @@ class AdmissionController extends Controller
             $fileName = 'Student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
 
             //Send email to admin
-            Mail::to('durgesh.upadhyaya7@gmail.com')
+            $emails = [
+                'rudra.softsaro@gmail.com',
+                'durgesh.upadhyaya7@gmail.com'
+            ];
+            Mail::to($emails)
                 ->send(new StudentFormMail($pdf->output(), $fileName));
 
 

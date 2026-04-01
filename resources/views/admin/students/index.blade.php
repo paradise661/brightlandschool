@@ -28,8 +28,8 @@
                             <tr>
                                 <td><strong>{{ $key + $student->firstItem() }}</strong></td>
                                 <td><strong>{{ $students->name ?? '' }} </strong></td>
-                                <td><strong>{{ $students->father_email ?? '' }}</strong></td>
-                                <td><strong>{{ $students->father_phone ?? '' }}</strong></td>
+                                <td><strong>{{ $students->email ?? '' }}</strong></td>
+                                <td><strong>{{ $students->phone ?? '' }}</strong></td>
                                 @php
                                     $status = strtolower($students->payment_status);
                                 @endphp
