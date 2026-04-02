@@ -268,24 +268,27 @@
                                 <tr>
                                     <td>Sibling 1 - Name/class</td>
                                     <td>
-                                        {{ $student->sibling1_name ?? '-' }}/{{ $student->sibling1_class ?? '-' }}
-
+                                        {{ $student->sibling1_name && $student->sibling1_class
+                                            ? $student->sibling1_name . '/' . $student->sibling1_class
+                                            : '-' }}
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>Sibling 2 - Name/class</td>
                                     <td>
-                                        {{ $student->sibling2_name ?? '-' }}/{{ $student->sibling2_class ?? '-' }}
-
+                                        {{ $student->sibling2_name && $student->sibling2_class
+                                            ? $student->sibling2_name . '/' . $student->sibling2_class
+                                            : '-' }}
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>Sibling 3 - Name/class</td>
                                     <td>
-                                        {{ $student->sibling3_name ?? '-' }}/{{ $student->sibling3_class ?? '-' }}
-
+                                        {{ $student->sibling3_name && $student->sibling3_class
+                                            ? $student->sibling3_name . '/' . $student->sibling3_class
+                                            : '-' }}
                                     </td>
                                 </tr>
 
@@ -294,7 +297,7 @@
                     </div>
                 </div>
 
-                <h5 class="card-header">AGREEMENT OF PARENT / GUARDIAN AND THE APPLICANT</h5>
+                <h5 class="card-header">Agreement and Declaration OF Parent / Guardian</h5>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
                         <table class="table table-bordered table-striped">
@@ -332,12 +335,12 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Signature</td>
+                                    <td>Authorised Signature</td>
                                     <td>
-                                        @if ($student->agreement_sign)
+                                        @if ($student->declaration_sign)
                                             <a class="fancybox btn btn-sm btn-primary" data-fancybox
-                                                data-type="{{ Str::endsWith($student->agreement_sign, '.pdf') ? 'iframe' : 'image' }}"
-                                                href="{{ $student->agreement_sign }}">
+                                                data-type="{{ Str::endsWith($student->declaration_sign, '.pdf') ? 'iframe' : 'image' }}"
+                                                href="{{ $student->declaration_sign }}">
                                                 View
                                             </a>
                                         @else

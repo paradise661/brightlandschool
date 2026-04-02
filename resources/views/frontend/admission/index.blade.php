@@ -1163,7 +1163,6 @@
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 text-sm text-slate-700 leading-8">
 
                         <!-- Combined Declaration & Agreement Checkbox -->
-                        <!-- Combined Declaration & Agreement Checkbox with Justified Text -->
                         <label class="flex items-start gap-3 cursor-pointer leading-6">
                             <input class="mt-1 accent-blue-700 w-4 h-4" type="checkbox" name="agree_terms"
                                 value="1" {{ old('agree_terms') ? 'checked' : '' }} required>
@@ -1216,24 +1215,42 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-end">
-                        <div class="flex flex-col gap-1.5">
+
+                        <div class="flex flex-col gap-1.5" id="declSigArea">
                             <label class="text-sm font-semibold text-slate-700">Authorised Signature</label>
-                            <label
-                                class="relative flex items-center justify-center h-16 w-48 border-b-2 border-dotted
-                              border-slate-500 bg-slate-50 rounded-t-lg text-xs text-slate-400
-                              cursor-pointer hover:bg-slate-100 transition overflow-hidden">
-                                <input class="absolute inset-0 opacity-0 cursor-pointer" type="file"
-                                    name="declaration_sign" accept="image/*">
-                                <span class="flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5"
+
+                            <div class="hidden" id="declSigPreview">
+                                <div class="relative inline-block">
+                                    <img class="max-h-16 border border-slate-200 rounded-lg bg-white p-1" id="declSigImg"
+                                        alt="signature">
+                                    <button
+                                        class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs font-bold flex items-center justify-center hover:bg-red-600 transition"
+                                        type="button" onclick="clearSig()">✕</button>
+                                </div>
+                                <p class="text-xs text-green-600 mt-1 flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3"
                                         viewBox="0 0 24 24">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                        <polyline points="17 8 12 3 7 8" />
-                                        <line x1="12" y1="3" x2="12" y2="15" />
+                                        <path d="M20 6L9 17l-5-5" />
                                     </svg>
-                                    Upload Signature
-                                </span>
-                            </label>
+                                    Signature captured
+                                </p>
+                            </div>
+
+                            <button
+                                class="inline-flex items-center justify-center gap-2 w-48 h-11 border-2 border-dashed
+               border-slate-300 rounded-xl bg-slate-50 text-slate-500 text-sm font-medium
+               hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all"
+                                id="declSigBtn" type="button" onclick="openPad()">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 20h9" />
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                </svg>
+                                Sign here
+                            </button>
+
+                            <input class="hidden" id="declSigHidden" type="file" name="declaration_sign"
+                                accept="image/png">
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Date</label>
@@ -1278,6 +1295,9 @@
 
         </form>
     </div>{{-- .max-w-4xl --}}
+
+    {{-- ═══ SIGNATURE PAD MODAL ═══ --}}
+    @include('frontend.admission.signature-pad-modal')
 @endsection
 @section('scripts')
     <script>
@@ -1567,4 +1587,151 @@
         })();
     </script>
     {{-- ↑↑↑ END NEW ────────────────────────────────────────────────────────── --}}
+
+    {{-- Signature pad ──────────────────── --}}
+    <script>
+        (function() {
+            let isDrawing = false,
+                lastX = 0,
+                lastY = 0,
+                hasDrawn = false;
+            window.sigPenW = 2;
+            let sigPenColor = '#1e293b';
+
+            const modal = document.getElementById('sigModal');
+            const canvas = document.getElementById('sigCanvas');
+            const ctx = canvas.getContext('2d');
+            const hint = document.getElementById('canvasHint');
+
+            function initCanvas() {
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, rect.width, rect.height);
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                hasDrawn = false;
+                hint.style.opacity = '1';
+            }
+
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const src = e.touches ? e.touches[0] : e;
+                return {
+                    x: src.clientX - rect.left,
+                    y: src.clientY - rect.top
+                };
+            }
+
+            function draw(pos) {
+                if (!hasDrawn) {
+                    hasDrawn = true;
+                    hint.style.opacity = '0';
+                }
+                ctx.beginPath();
+                ctx.strokeStyle = sigPenColor;
+                ctx.lineWidth = window.sigPenW;
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+                [lastX, lastY] = [pos.x, pos.y];
+            }
+
+            canvas.addEventListener('mousedown', e => {
+                isDrawing = true;
+                const p = getPos(e);
+                [lastX, lastY] = [p.x, p.y];
+            });
+            canvas.addEventListener('mousemove', e => {
+                if (!isDrawing) return;
+                draw(getPos(e));
+            });
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            canvas.addEventListener('mouseleave', () => isDrawing = false);
+            canvas.addEventListener('touchstart', e => {
+                e.preventDefault();
+                isDrawing = true;
+                const p = getPos(e);
+                [lastX, lastY] = [p.x, p.y];
+            }, {
+                passive: false
+            });
+            canvas.addEventListener('touchmove', e => {
+                e.preventDefault();
+                if (!isDrawing) return;
+                draw(getPos(e));
+            }, {
+                passive: false
+            });
+            canvas.addEventListener('touchend', () => isDrawing = false);
+
+            window.setColor = function(c, el) {
+                sigPenColor = c;
+                document.querySelectorAll('.sig-swatch').forEach(s => s.classList.remove('ring-2', 'ring-blue-500',
+                    'ring-offset-1'));
+                el.classList.add('ring-2', 'ring-blue-500', 'ring-offset-1');
+            };
+
+            window.clearSigCanvas = function() {
+                const rect = canvas.getBoundingClientRect();
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, rect.width, rect.height);
+                hasDrawn = false;
+                hint.style.opacity = '1';
+            };
+
+            window.openPad = function() {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(initCanvas, 50);
+            };
+
+            window.closePad = function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            };
+
+            window.saveSig = function() {
+                if (!hasDrawn) {
+                    alert('Please draw your signature before saving.');
+                    return;
+                }
+
+                canvas.toBlob(function(blob) {
+                    const file = new File([blob], 'declaration_sign.png', {
+                        type: 'image/png'
+                    });
+
+                    const dt = new DataTransfer();
+                    dt.items.add(file);
+
+                    // Swap hidden input for a real file input
+                    const existingInput = document.getElementById('declSigHidden');
+                    existingInput.type = 'file';
+                    existingInput.files = dt.files;
+
+                    // Show preview
+                    document.getElementById('declSigImg').src = URL.createObjectURL(blob);
+                    document.getElementById('declSigPreview').classList.remove('hidden');
+                    document.getElementById('declSigBtn').classList.add('hidden');
+
+                    closePad();
+                }, 'image/png');
+            };
+
+            window.clearSig = function() {
+                document.getElementById('declSigImg').src = '';
+                document.getElementById('declSigHidden').value = '';
+                document.getElementById('declSigPreview').classList.add('hidden');
+                document.getElementById('declSigBtn').classList.remove('hidden');
+            };
+
+            modal.addEventListener('click', e => {
+                if (e.target === modal) closePad();
+            });
+        })();
+    </script>
 @endsection
