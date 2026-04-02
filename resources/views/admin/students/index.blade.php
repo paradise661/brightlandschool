@@ -1,11 +1,11 @@
 @extends('layouts.admin.master')
-@section('title', 'All Inquiry')
+@section('title', 'Admission')
 
 @section('content')
     @include('admin.includes.message')
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Inquiry ({{ $student->total() }})</h5>
+            <h5 class="mb-0">Student Admission Records ({{ $student->total() ?? '' }})</h5>
         </div>
 
         <div class="table-responsive text-nowrap">
