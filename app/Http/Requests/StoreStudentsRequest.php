@@ -94,10 +94,10 @@ class StoreStudentsRequest extends FormRequest
 
             // Documents Upload
             'student_photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-            'birth_certificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'last_report_card' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'transfer_certificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'character_certificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'birth_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'last_report_card' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'transfer_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'character_certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
 
             // Declaration
             'declaration_relations' => 'nullable|string|max:255',

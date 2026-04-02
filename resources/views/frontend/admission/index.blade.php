@@ -279,13 +279,12 @@
                             <div class="flex flex-col gap-1.5">
                                 <label class="text-sm font-semibold text-slate-700">
                                     Father's Name <span class="text-red-500">*</span>
-                                    <span class="text-slate-400 font-normal text-xs ml-1">(Capital Letters)</span>
                                 </label>
                                 <input
                                     class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800
                                   bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                                   focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
-                                    name="father_name" type="text" placeholder="FULL NAME IN CAPITALS">
+                                    name="father_name" type="text" placeholder="Enter Father's name">
                                 <span class="text-red-500 text-xs error-text" id="error-father_name"></span>
                             </div>
                             <div class="flex flex-col gap-1.5">
@@ -403,13 +402,12 @@
                             <div class="flex flex-col gap-1.5">
                                 <label class="text-sm font-semibold text-slate-700">
                                     Mother's Name <span class="text-red-500">*</span>
-                                    <span class="text-slate-400 font-normal text-xs ml-1">(Capital Letters)</span>
                                 </label>
                                 <input
                                     class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800
                                   bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                                   focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
-                                    name="mother_name" type="text" placeholder="FULL NAME IN CAPITALS">
+                                    name="mother_name" type="text" placeholder="Enter Mother's name">
                                 <span class="text-red-500 text-xs error-text" id="error-mother_name"></span>
                             </div>
                             <div class="flex flex-col gap-1.5">
@@ -558,7 +556,7 @@
                                 class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
-                                name="guardian_name" type="text" placeholder="Full name">
+                                name="guardian_name" type="text" placeholder="Enter Gardian's full name">
                             <span class="text-red-500 text-xs error-text" id="error-guardian_name"></span>
                         </div>
                         <div class="flex flex-col gap-1.5">
@@ -1053,7 +1051,7 @@
                                 type="date" name="agreement_date"
                                 value="{{ old('agreement_date', isset($student->agreement_date) ? \Carbon\Carbon::parse($student->agreement_date)->format('Y-m-d') : now()->format('Y-m-d')) }}">
                         </div>
-                        <div class="flex flex-col gap-1.5">
+                        {{-- <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">Parent's Signature</label>
                             <label
                                 class="relative flex items-center justify-center h-16 w-48 border-b-2 border-dotted
@@ -1071,7 +1069,7 @@
                                     Click to upload
                                 </span>
                             </label>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -1103,7 +1101,8 @@
                         @foreach ($fields as $field)
                             <div class="flex flex-col gap-2 upload-wrapper">
                                 <label class="text-sm font-semibold text-slate-700">
-                                    {{ $field['label'] }} <span class="text-red-500">*</span>
+                                    {{ $field['label'] }} <span
+                                        class="text-slate-400 font-normal text-xs ml-1">(optional)</span>
                                 </label>
                                 <label
                                     class="upload-box flex flex-col items-center justify-center w-full h-32
@@ -1137,7 +1136,12 @@
                                 <span class="text-red-500 text-xs error-text" id="error-{{ $field['name'] }}"></span>
                             </div>
                         @endforeach
+                    </div>
 
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl mt-4 p-5 text-sm text-slate-700 leading-8">
+                        <b>Note:</b>
+                        Please bring all required documents to the school during admission for verification and completion
+                        of the process.
                     </div>
                 </div>
             </div>
@@ -1157,26 +1161,58 @@
 
                 <div class="p-6 sm:p-8 space-y-5">
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 text-sm text-slate-700 leading-8">
-                        All the information provided in this application form is correct, complete and true to the best
-                        of my knowledge. I,&nbsp;
-                        <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="father"
-                                {{ old('declaration_relations', $student->declaration_relations ?? 'father') == 'father' ? 'checked' : '' }}>
-                            Father
+
+                        <!-- Combined Declaration & Agreement Checkbox -->
+                        <!-- Combined Declaration & Agreement Checkbox with Justified Text -->
+                        <label class="flex items-start gap-3 cursor-pointer leading-6">
+                            <input class="mt-1 accent-blue-700 w-4 h-4" type="checkbox" name="agree_terms"
+                                value="1" {{ old('agree_terms') ? 'checked' : '' }} required>
+                            <span class="block text-justify">
+                                I, &nbsp;
+                                <!-- Father -->
+                                <label
+                                    class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
+                                    <input class="accent-blue-700" type="radio" name="declaration_relations"
+                                        value="father"
+                                        {{ old('declaration_relations', $student->declaration_relations ?? 'father') == 'father' ? 'checked' : '' }}>
+                                    Father
+                                </label>
+
+                                <!-- Mother -->
+                                <label
+                                    class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
+                                    <input class="accent-blue-700" type="radio" name="declaration_relations"
+                                        value="mother"
+                                        {{ old('declaration_relations', $student->declaration_relations ?? '') == 'mother' ? 'checked' : '' }}>
+                                    Mother
+                                </label>
+
+                                <!-- Guardian -->
+                                <label
+                                    class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
+                                    <input class="accent-blue-700" type="radio" name="declaration_relations"
+                                        value="guardian"
+                                        {{ old('declaration_relations', $student->declaration_relations ?? '') == 'guardian' ? 'checked' : '' }}>
+                                    Guardian
+                                </label>
+                                hereby confirm that all the information provided in this application form is correct,
+                                complete, and true to the best of my knowledge. I have read, understood, and agree
+                                to abide by the
+                                <b>Disciplinary Rules & Code of Conduct</b> of the school. I also agree to all terms,
+                                conditions, and
+                                policies related to the admission process. I understand that while submission of all
+                                required documents
+                                is encouraged during the online application, I will provide any pending documents at the
+                                school during
+                                the admission process.
+                            </span>
                         </label>
 
-                        <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="mother"
-                                {{ old('declaration_relations', $student->declaration_relations ?? '') == 'mother' ? 'checked' : '' }}>
-                            Mother
-                        </label>
+                        <!-- Validation Error -->
+                        @error('agree_terms')
+                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                        @enderror
 
-                        <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
-                            <input class="accent-blue-700" type="radio" name="declaration_relations" value="guardian"
-                                {{ old('declaration_relations', $student->declaration_relations ?? '') == 'guardian' ? 'checked' : '' }}>
-                            Guardian
-                        </label>
-                        (above mentioned) shall comply with all rules and regulations of the school.
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-end">
@@ -1406,6 +1442,19 @@
                         });
 
                     } else if (response.ok) {
+                        // Validation passed, start loading state
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        const originalBtnText = submitBtn.innerHTML;
+
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = `
+                <svg class="w-4 h-4 animate-spin mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke-opacity="0.25" />
+                    <path d="M12 2a10 10 0 0 1 0 20" />
+                </svg>
+                Submitting...
+            `;
+
                         toastr.success('Redirecting to eSewa…');
                         const paymentData = data.data;
                         const esewaForm = document.createElement('form');
