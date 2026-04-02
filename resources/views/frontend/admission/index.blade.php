@@ -1167,7 +1167,7 @@
                             <input class="mt-1 accent-blue-700 w-4 h-4" type="checkbox" name="agree_terms"
                                 value="1" {{ old('agree_terms') ? 'checked' : '' }} required>
                             <span class="block text-justify">
-                                I, &nbsp;
+                                I,
                                 <!-- Father -->
                                 <label
                                     class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700 mx-1">
