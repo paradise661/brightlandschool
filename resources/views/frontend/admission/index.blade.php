@@ -167,9 +167,11 @@
                                 class="w-full border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
-                                id="datepicker-english" type="text" name="dob_ad" placeholder="YYYY-MM-DD"
-                                autocomplete="off">
-                            <span class="text-red-500 text-xs error-text" id="error-dob_ad"></span>
+                                id="datepicker-english" id="error-dob_ad" type="text" name="dob_ad"
+                                placeholder="YYYY-MM-DD" autocomplete="off" readonly
+                                onfocus="this.removeAttribute('readonly');>
+                            <span class="text-red-500
+                                text-xs error-text"></span>
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label class="text-sm font-semibold text-slate-700">
@@ -181,7 +183,7 @@
                               bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500
                               focus:border-blue-500 focus:bg-white transition placeholder-slate-300"
                                 id="datepicker-nepali" type="text" name="dob_bs" placeholder="YYYY-MM-DD"
-                                autocomplete="off">
+                                autocomplete="off" onfocus="this.removeAttribute('readonly');">
                         </div>
                     </div>
 
@@ -1378,6 +1380,7 @@
             }
         });
     </script>
+
     <script>
         // ── Sibling toggle ──
         document.getElementById('sibling_yes')?.addEventListener('change', function() {
@@ -1428,9 +1431,24 @@
         // ── AJAX form submit ──
         document.getElementById('admissionForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
             let form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Start loader
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+        <svg class="w-4 h-4 animate-spin mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25" />
+            <path d="M12 2a10 10 0 0 1 0 20" />
+        </svg>
+        Submitting...
+    `;
+
             let formData = new FormData(form);
 
+            // Clear previous errors
             document.querySelectorAll('.error-text').forEach(el => el.textContent = '');
 
             fetch(form.action, {
@@ -1445,12 +1463,8 @@
                     const data = await response.json();
 
                     if (response.status === 422) {
+                        // Validation failed, show errors
                         const firstField = Object.keys(data.errors)[0];
-                        const firstError = data.errors[firstField][0];
-                        // toastr.error(firstError, 'Validation Error', {
-                        //     positionClass: 'toast-top-right',
-                        //     timeOut: 5000
-                        // });
                         for (let field in data.errors) {
                             const el = document.getElementById(`error-${field}`);
                             if (el) el.textContent = data.errors[field][0];
@@ -1461,20 +1475,12 @@
                             block: 'center'
                         });
 
+                        // Restore button
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+
                     } else if (response.ok) {
-                        // Validation passed, start loading state
-                        const submitBtn = form.querySelector('button[type="submit"]');
-                        const originalBtnText = submitBtn.innerHTML;
-
-                        submitBtn.disabled = true;
-                        submitBtn.innerHTML = `
-                <svg class="w-4 h-4 animate-spin mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" stroke-opacity="0.25" />
-                    <path d="M12 2a10 10 0 0 1 0 20" />
-                </svg>
-                Submitting...
-            `;
-
+                        // Success, redirect to eSewa
                         toastr.success('Redirecting to eSewa…');
                         const paymentData = data.data;
                         const esewaForm = document.createElement('form');
@@ -1491,12 +1497,24 @@
                         esewaForm.submit();
 
                     } else {
+                        // Other errors
                         toastr.error(data.message || 'Something went wrong.', 'Error');
+
+                        // Restore button
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
                     }
                 })
-                .catch(() => toastr.error('Network error. Please try again.', 'Error'));
+                .catch(() => {
+                    toastr.error('Network error. Please try again.', 'Error');
+
+                    // Restore button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                });
         });
     </script>
+
     <script>
         // ── Previous school section toggle (hide for Nursery) ──
         const studentClass = document.getElementById('studentClass');
@@ -1508,6 +1526,7 @@
         togglePreviousSchool();
         studentClass.addEventListener('change', togglePreviousSchool);
     </script>
+
     <script>
         // ── Document upload previews ──
         document.querySelectorAll('.file-input').forEach(input => {

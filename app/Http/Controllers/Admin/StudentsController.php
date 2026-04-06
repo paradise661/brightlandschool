@@ -65,14 +65,14 @@ class StudentsController extends Controller
         $input = $request->all();
         $student->update($input);
 
-        return redirect()->route('student.index')->with("success", "Student student Updated successfully.");
+        return redirect()->route('student.index')->with("success", "Student Updated successfully.");
     }
 
     public function destroy(Student $student)
     {
 
         $student->delete();
-        return redirect()->route('student.index')->with('success', 'Student student Delete Successfully');
+        return redirect()->route('student.index')->with('success', 'Student Deleted Successfully');
     }
 
     public function download(Student $student)

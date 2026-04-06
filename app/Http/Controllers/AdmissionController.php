@@ -45,22 +45,6 @@ class AdmissionController extends Controller
                     : json_decode($student->source, true);
             }
 
-            // Generate PDF
-            // $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
-            $pdf = Pdf::loadView('emails.admin.admission', compact('student'));
-
-
-            $studentName = trim($student->name);
-            $fileName = 'Student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
-
-            //Send email to admin
-            $emails = [
-                'brightlandhss@gmail.com'
-            ];
-            Mail::to($emails)
-                ->send(new StudentFormMail($pdf->output(), $fileName));
-
-
             // esewa
             $amount = 300;
             $transaction_uuid = $student->id . '_' .  Str::uuid()->toString();
@@ -83,6 +67,22 @@ class AdmissionController extends Controller
                 "total_amount" => $amount,
                 "transaction_uuid" => $transaction_uuid,
             ];
+
+            // Generate PDF
+            // $pdf = Pdf::loadView('admin.students.pdf', compact('student'));
+            $pdf = Pdf::loadView('emails.admin.admission', compact('student'));
+
+
+            $studentName = trim($student->name);
+            $fileName = 'Student-' . Str::slug($studentName) . '-' . $student->id . '.pdf';
+
+            //Send email to admin
+            $emails = [
+                'brightlandhss@gmail.com'
+            ];
+            Mail::to($emails)
+                ->send(new StudentFormMail($pdf->output(), $fileName));
+
 
             return response()->json([
                 'success' => true,
