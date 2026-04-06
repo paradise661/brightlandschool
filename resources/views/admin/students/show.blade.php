@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Inquiry')
+@section('title', 'Student Admission Form Details')
 @php
     $name = 'student';
 @endphp
@@ -60,11 +60,6 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Religion</td>
-                                    <td>{{ $student->father_religion ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
                                     <td>Current Address</td>
                                     <td>
                                         {{ $student->father_address ?? '-' }},
@@ -111,6 +106,10 @@
                                         {{ $student->father_occupation ?? '-' }}
 
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>Institution/Office</td>
+                                    <td>{{ $student->father_religion ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td>Mobile</td>
