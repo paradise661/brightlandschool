@@ -46,7 +46,7 @@ class AdmissionController extends Controller
             }
 
             // esewa
-            $amount = 10;
+            $amount = 300;
             $transaction_uuid = $student->id . '_' .  Str::uuid()->toString();
             $product_code = "NP-ES-BRIGHTLANDSC";
             $secret = "JwEMEAkHBwQXAVM2FAkcBAlVRT0ABwAfDBAXD0krJ0w2OEg7NzoiPzU/Kis9NjBfMjEyMjo4JjAgJDIsICAg";
